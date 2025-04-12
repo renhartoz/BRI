@@ -76,20 +76,21 @@ export function PageNav2({ pages, exerciseName }) {
                     </Button>
         
                     {/* Floating Dropdown Grid */}
-                    <Collapse in={showGrid}>
                     <Box
                         sx={{
-                        position: 'absolute',
-                        bottom: '3.5em',
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        bgcolor: '#f5f5f5',
-                        border: '3px solid black',
-                        borderRadius: 1,
-                        p: 2,
-                        boxShadow: 4,
-                        minWidth: 220,
-                        zIndex: 200,
+                            display: showGrid ? "block" : "none",
+                            position: 'absolute',
+                            bottom: '3.5em',
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                            bgcolor: '#f5f5f5',
+                            border: '3px solid black',
+                            borderRadius: 1,
+                            p: 2,
+                            boxShadow: 4,
+                            zIndex: 200,
+                            transition: 'all 400ms cubic-bezier(0.4, 0, 0.2, 1)',
+                            overflow: 'hidden',
                         }}
                     >
                         <Box
@@ -151,7 +152,6 @@ export function PageNav2({ pages, exerciseName }) {
                             </Box>
                         }
                     </Box>
-                    </Collapse>
                 </Box>
                 <Typography color="#fff">{index + 1} / {pages.length}</Typography>
                 <Stack direction="row" gap={3}>
