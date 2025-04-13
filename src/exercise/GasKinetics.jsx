@@ -195,8 +195,8 @@ export function GasKinetics3() {
                                 v=\\sqrt{\\frac{3P}{\\rho}}&=\\sqrt{\\frac{3(1,3 \\space atm)}{\\frac{5}{6} \\space \\frac{kg}{m^{3}}}} \\\\[10pt] \
                                 &=\\sqrt{(3,9 \\cdot 1,01 \\cdot 10^{5} \\space Pa) \\biggl(\\frac{6}{5} \\biggl) \\space \\frac{kg}{m^{3}}} \\\\[10pt] \
                                 &= \\sqrt{472680 \\space \\frac{m^{2}}{s^{2}}} \\\\[10pt] \
-                                &= 687,5172 \\frac{m}{s} \\\\[10pt] \
-                                &\\thickapprox 687,52 \\frac{m}{s}\
+                                &= 687,5172 \\sapce \\frac{m}{s} \\\\[10pt] \
+                                &\\thickapprox 687,52 \\space \\frac{m}{s}\
                             \\end{aligned} \\]"}
                         </MathJax>
                     </Typography>
@@ -217,11 +217,11 @@ export function GasKinetics4() {
             <Problem
                 title={'Soal 4'}
                 equation={
-                    "Sebuah ban sepeda memiliki volume = \\(100 \\space cm^{3}\\). \
-                    Tekanan awal diban sepeda = \\(0,5 \\space atm\\). \
+                    "Sebuah ban sepeda memiliki volume \\(=100 \\space cm^{3}\\). \
+                    Tekanan awal diban sepeda \\(=0,5 \\space atm\\). \
                     Ban tersebut dipompa dengan suatu pompa yang volumenya \
-                    = \\(50 \\space cm^{3}\\). Tekanan udara luar \
-                    = \\(78 \\space cmHg\\) dan temperatur tidak berubah. \
+                    \\(=50 \\space cm^{3}\\). Tekanan udara luar \
+                    \\(=78 \\space cmHg\\) dan temperatur tidak berubah. \
                     Tekanan ban sepeda setelah dipompa sebanyak \\(4\\) kali adalah ..."
                 }
                 accordion_text="Pembahasan"
@@ -412,50 +412,31 @@ export function GasKinetics6() {
                 }
                 accordion_text="Pembahasan"
             >
-                <Stack gap={1} mt={2}>
-                    <Typography fontWeight={600} fontSize={'1.2em'}>Diketahui:</Typography>
-                    <Typography>Periksa pernyataan berikut:</Typography>
-                    <Typography>
-                        <MathJax>
-                            {"\\( P \\propto E_{k} \\dots (1) \\)"}
-                        </MathJax>
-                    </Typography>
-                    <Typography>
-                        <MathJax>
-                            {"\\( P \\propto \\frac{1}{V} \\dots (2) \\)"}
-                        </MathJax>
-                    </Typography>
-                    <Typography>
-                        <MathJax>
-                            {"\\( P \\propto n \\dots (3) \\)"}
-                        </MathJax>
-                    </Typography>
-                    <Typography>
-                        <MathJax>
-                            {"\\( P \\propto \\frac{1}{v^{2}} \\dots (1) \\)"}
-                        </MathJax>
-                    </Typography>
-                </Stack>
-                <Stack>
-                    <Typography fontWeight={600} fontSize={'1.2em'}>Formula:</Typography>
-                    <Typography>
-                        <MathJax>
-                            {"\\[ E_{k}=\\frac{3}{2}PV \\]"}
-                        </MathJax>
-                    </Typography>
-                    <Typography>
-                        <MathJax>
-                            {"\\[ PV=nRT \\]"}
-                        </MathJax>
-                    </Typography>
-                </Stack>
                 <Stack gap={3}>
-                    <Typography fontWeight={600} fontSize={'1.2em'}>Jawaban:</Typography>
-                    <Typography>
-                        <MathJax>
-                            {"\\[ (1), (2), (3) \\]"}
-                        </MathJax>
-                    </Typography>
+                    <Stack>
+                        <Typography>
+                            <MathJax>
+                                {"\\[E_{k}=\\frac{3}{2}PV\\]"}
+                            </MathJax>
+                        </Typography>
+                        <Typography textAlign={{xs:'center'}}>Pernyataan <Typography component={'span'} color="secondary" fontWeight={600}>1</Typography> dan <Typography component={'span'} color="secondary" fontWeight={600}>2</Typography> benar</Typography>
+                    </Stack>
+                    <Stack>
+                        <Typography>
+                            <MathJax>
+                                {"\\[PV=NkT\\]"}
+                            </MathJax>
+                        </Typography>
+                        <Typography textAlign={{xs:'center'}}>Pernyataan <Typography component={'span'} color="secondary" fontWeight={600}>2</Typography> dan <Typography component={'span'} color="secondary" fontWeight={600}>3</Typography> benar</Typography>
+                    </Stack>
+                    <Stack>
+                        <Typography>
+                            <MathJax>
+                                {"\\[v=\\sqrt{\\frac{3P}{\\rho}}\\]"}
+                            </MathJax>
+                        </Typography>
+                        <Typography textAlign={{xs:'center'}}>Pernyataan <Typography component={'span'} color="tertiary" fontWeight={600}>4</Typography> salah</Typography>
+                    </Stack>
                 </Stack>
             </Problem>
         </Stack>

@@ -16,7 +16,6 @@ export default function ExerciseLayout() {
     useEffect(() => {
         const matched = findParentRoute(location.pathname, routes);
         setExercise(matched);
-        console.log(matched);
     }, [location.pathname]);
     
     if (!exercise) return null; // prevent crash until loaded
