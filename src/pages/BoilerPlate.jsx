@@ -12,6 +12,7 @@ import Editor from "../components/Editor";
 import SchoolIcon from "@mui/icons-material/School";
 import EventIcon from "@mui/icons-material/Event";
 import BookIcon from "@mui/icons-material/MenuBook";
+import { useState } from "react";
 
 //colspan || 1
 const tableData = [
@@ -84,6 +85,7 @@ const tableData2 = [
 ];
 
 export default function Testing() {
+    const [content, setContent] = useState(null)
     const slides = [
         {
             bg: "/galaxy1.jpg",
@@ -627,7 +629,6 @@ export default function Testing() {
                         </Stack>
                     </Problem>
                 </Stack>
-                <CircularProgress color="primary" />
                 <Editor/>
             </Stack>
         </>
