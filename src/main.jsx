@@ -14,8 +14,8 @@ import Home from "./pages/Home.jsx";
 import Testing from "./pages/BoilerPlate.jsx";
 import CourseList from "./pages/CourseList.jsx";
 import ExerciseList from "./pages/ExerciseList.jsx";
-import BlogEditor from "./pages/BlogEditor.jsx";
-import BlogEditorForm from "./pages/BlogEditorForm.jsx";
+import EditorApp from "./editor/Lexical/App.jsx";
+
 import {
     LimitSyllabus,
     LimitIntro,
@@ -39,10 +39,12 @@ export const routes = [
             { path: "test", element: <Testing /> },
             { path: "course", element: <CourseList /> },
             { path: "exercise", element: <ExerciseList /> },
-            { path: "editor-form", element: <BlogEditorForm /> },
-            { path: "editor", element: <BlogEditor /> },
             { path: "course/limit", element: <LimitSyllabus /> },
         ],
+    },
+    {
+        path: "/editor",
+        element: <EditorApp />,
     },
     {
         path: "/comingsoon",
