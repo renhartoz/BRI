@@ -28,6 +28,7 @@ import {
     LimitAtInf2,
 } from "./course/Limit.jsx";
 import * as GK from "./exercise/GasKinetics.jsx";
+import * as TRI from "./exercise/Trigonometri.jsx";
 import PageNotFound from "./pages/404.jsx";
 import ComingSoon from "./pages/ComingSoon.jsx";
 
@@ -96,15 +97,19 @@ export const routes = [
         ],
     },
     {
-        path: "/exercise/trigonometry",
+        path: "/exercise/trigonometri",
         element: <ExerciseLayout />,
         children: [
-            { path: "1", element: <GK.GasKinetics1 /> },
-            { path: "2", element: <GK.GasKinetics2 /> },
-            { path: "3", element: <GK.GasKinetics3 /> },
-            { path: "4", element: <GK.GasKinetics4 /> },
-            { path: "5", element: <GK.GasKinetics5 /> },
-            { path: "6", element: <GK.GasKinetics6 /> },
+            { path: "1", element: <TRI.Trigonometri1 /> },
+            { path: "2", element: <TRI.Trigonometri2 /> },
+            { path: "3", element: <TRI.Trigonometri3 /> },
+            { path: "4", element: <TRI.Trigonometri4 /> },
+            { path: "5", element: <TRI.Trigonometri5 /> },
+            { path: "6", element: <TRI.Trigonometri6 /> },
+            { path: "7", element: <TRI.Trigonometri7 /> },
+            { path: "8", element: <TRI.Trigonometri8 /> },
+            { path: "9", element: <TRI.Trigonometri9 /> },
+            { path: "10", element: <TRI.Trigonometri10 /> },
         ],
     },
     {

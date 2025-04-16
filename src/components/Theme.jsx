@@ -253,6 +253,13 @@ export default function Theme(props) {
                                 md: "justify",
                                 lg: "left",
                             },
+                            // The change below is debatable
+                            fontSize:{
+                                xs:"0.7em",
+                                sm:"0.8em",
+                                md:"1em",
+                                lg:"1.2em",
+                            },
                         }),
                 },
             },
