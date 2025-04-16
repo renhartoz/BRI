@@ -20,7 +20,7 @@ export function Trigonometri1() {
             <Problem
                 title={"Soal 1"}
                 equation={
-                    <MathJax>{`\\[\\text{Nilai } \\frac{\\sin 150^\\circ + \\sin 120^\\circ}{\\cos 210^\\circ - \\cos 300^\\circ} = \\cdots \\]`}</MathJax>
+                    "\\[\\text{Nilai } \\frac{\\sin 150^\\circ + \\sin 120^\\circ}{\\cos 210^\\circ - \\cos 300^\\circ} = \\cdots \\]"
                 }
                 accordion_text="Pembahasan"
             >
@@ -29,8 +29,9 @@ export function Trigonometri1() {
                         Untuk menyelesaikan soal ini, kita akan menggunakan
                         konsep sudut berelasi.
                     </Typography>
-                    <MathJax>
-                        {`
+                    <Typography>
+                        <MathJax>
+                            {`
                             \\[
                                 \\begin{align}
                                     \\frac{\\sin 150^\\circ + \\sin 120^\\circ}{\\cos 210^\\circ - \\cos 300^\\circ} 
@@ -42,7 +43,8 @@ export function Trigonometri1() {
                                 \\end{align}
                             \\]
                         `}
-                    </MathJax>
+                        </MathJax>
+                    </Typography>
                 </Stack>
             </Problem>
         </Stack>
@@ -65,13 +67,14 @@ export function Trigonometri2() {
             <Problem
                 title={"Soal 2"}
                 equation={
-                    <MathJax>{`\\[ \\text{Nilai } \\cos (330^\\circ) \\tan(-315^\\circ) - \\sin(-210^\\circ) \\cot (330^\\circ) \\text{ adalah } \\cdots \\]`}</MathJax>
+                    "\\[ \\text{Nilai } \\cos (330^\\circ) \\tan(-315^\\circ) - \\sin(-210^\\circ) \\cot (330^\\circ) \\text{ adalah } \\cdots \\]"
                 }
                 accordion_text="Pembahasan"
             >
                 <Stack>
-                    <MathJax>
-                        {`
+                    <Typography>
+                        <MathJax>
+                            {`
                         \\begin{align}
                             \\cos 330^\\circ \\tan(-315^\\circ) - \\sin(-210^\\circ) \\cot 330^\\circ 
                             &= \\cos(360^\\circ - 30^\\circ)(-\\tan(360^\\circ - 45^\\circ)) - (-\\sin(180^\\circ + 30^\\circ)) \\cot(360^\\circ - 30^\\circ) \\\\
@@ -82,7 +85,8 @@ export function Trigonometri2() {
                             &= 0
                         \\end{align}
                         `}
-                    </MathJax>
+                        </MathJax>
+                    </Typography>
                 </Stack>
             </Problem>
         </Stack>
@@ -105,18 +109,21 @@ export function Trigonometri3() {
             <Problem
                 title={"Soal 3"}
                 equation={
-                    <MathJax>{`\\[\\text{Jika }\\tan\\alpha=\\frac{3}{4}\\text{ dengan }180^\\circ\\le\\alpha\\le270^\\circ, \\;\\text{maka nilai }\\sin\\alpha=\\dots \\]`}</MathJax>
+                    "\\[\\text{Jika }\\tan\\alpha=\\frac{3}{4}\\text{ dengan }180^\\circ\\le\\alpha\\le270^\\circ, \\;\\text{maka nilai }\\sin\\alpha=\\dots \\]"
                 }
                 accordion_text="Pembahasan"
             >
                 <Stack>
-                    <MathJax>
-                        {`\\[
-                        \\text{Perhatikan bahwa \\alpha berada di kuadran III sehingga tangen sudutnya bernilai positif, sedangkan sinus sudutnya bernilai negatif.}
-                        
+                    <Typography>
+                        <MathJax>
+                            {`\\[
+                        \\text{Perhatikan bahwa } \\alpha
+                        \\text{ berada di kuadran III sehingga tangen sudutnya bernilai positif,
+                        sedangkan sinus sudutnya bernilai negatif.}
                         \\]
                     `}
-                    </MathJax>
+                        </MathJax>
+                    </Typography>
                 </Stack>
             </Problem>
         </Stack>
@@ -139,12 +146,14 @@ export function Trigonometri4() {
             <Problem
                 title={"Soal 4"}
                 equation={
-                    <MathJax>{`\\[ \\text{Diketahui segitiga } ABC \\text{ siku-siku di } B. \\text{ Jika } \\angle A = 30^\\circ \\text{ dan } BC = 6 \\text{ cm, panjang } AC = \\cdots \\text{ cm.} \\]`}</MathJax>
+                    "\\[ \\text{Diketahui segitiga } ABC \\text{ siku-siku di } B. \\text{ Jika } \\angle A = 30^\\circ \\text{ dan } BC = 6 \\text{ cm, panjang } AC = \\cdots \\text{ cm.} \\]"
                 }
                 accordion_text="Pembahasan"
             >
                 <Stack>
-                    <MathJax>{`pending`}</MathJax>
+                    <Typography>
+                        <MathJax>{`pending`}</MathJax>
+                    </Typography>
                 </Stack>
             </Problem>
         </Stack>
@@ -172,7 +181,9 @@ export function Trigonometri5() {
                 accordion_text="Pembahasan"
             >
                 <Stack>
-                    <MathJax>{`pending`}</MathJax>
+                    <Typography>
+                        <MathJax>{`pending`}</MathJax>
+                    </Typography>
                 </Stack>
             </Problem>
         </Stack>
@@ -200,7 +211,9 @@ export function Trigonometri6() {
                 accordion_text="Pembahasan"
             >
                 <Stack>
-                    <MathJax>{`pending`}</MathJax>
+                    <Typography>
+                        <MathJax>{`pending`}</MathJax>
+                    </Typography>
                 </Stack>
             </Problem>
         </Stack>
@@ -228,7 +241,9 @@ export function Trigonometri7() {
                 accordion_text="Pembahasan"
             >
                 <Stack>
-                    <MathJax>{`pending`}</MathJax>
+                    <Typography>
+                        <MathJax>{`pending`}</MathJax>
+                    </Typography>
                 </Stack>
             </Problem>
         </Stack>
@@ -256,7 +271,9 @@ export function Trigonometri8() {
                 accordion_text="Pembahasan"
             >
                 <Stack>
-                    <MathJax>{`pending`}</MathJax>
+                    <Typography>
+                        <MathJax>{`pending`}</MathJax>
+                    </Typography>
                 </Stack>
             </Problem>
         </Stack>
@@ -284,7 +301,9 @@ export function Trigonometri9() {
                 accordion_text="Pembahasan"
             >
                 <Stack>
-                    <MathJax>{`pending`}</MathJax>
+                    <Typography>
+                        <MathJax>{`pending`}</MathJax>
+                    </Typography>
                 </Stack>
             </Problem>
         </Stack>
@@ -312,7 +331,9 @@ export function Trigonometri10() {
                 accordion_text="Pembahasan"
             >
                 <Stack>
-                    <MathJax>{`pending`}</MathJax>
+                    <Typography>
+                        <MathJax>{`pending`}</MathJax>
+                    </Typography>
                 </Stack>
             </Problem>
         </Stack>
