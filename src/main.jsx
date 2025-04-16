@@ -15,6 +15,7 @@ import Testing from "./pages/BoilerPlate.jsx";
 import CourseList from "./pages/CourseList.jsx";
 import ExerciseList from "./pages/ExerciseList.jsx";
 import EditorApp from "./editor/Lexical/App.jsx";
+import LexicalPreview from "./pages/LexicalPreview.jsx";
 
 import {
     LimitSyllabus,
@@ -45,6 +46,10 @@ export const routes = [
     {
         path: "/editor",
         element: <EditorApp />,
+    },
+    {
+        path: "/lexical-preview",
+        element: <LexicalPreview />,
     },
     {
         path: "/comingsoon",

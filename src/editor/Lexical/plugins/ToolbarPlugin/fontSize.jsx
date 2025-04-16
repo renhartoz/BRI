@@ -98,6 +98,7 @@ export default function FontSize({
         value={inputValue}
         disabled={disabled}
         className="toolbar-item font-size-input"
+        style={{width:'auto'}}
         min={MIN_ALLOWED_FONT_SIZE}
         max={MAX_ALLOWED_FONT_SIZE}
         onChange={(e) => setInputValue(e.target.value)}

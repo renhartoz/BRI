@@ -541,7 +541,7 @@ export default function ToolbarPlugin({
       );
       updateToolbarState(
         'fontFamily',
-        $getSelectionStyleValueForProperty(selection, 'font-family', 'Arial'),
+        $getSelectionStyleValueForProperty(selection, 'font-family', 'Apercu'),
       );
       let matchingParent;
       if ($isLinkNode(parent)) {
