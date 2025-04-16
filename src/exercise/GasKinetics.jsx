@@ -329,12 +329,12 @@ export function GasKinetics5() {
                     </Typography>
                     <Typography>
                         <MathJax>
-                            {"\\( T_{0} = 27^{\\circ}C \\)"}
+                            {"\\( T_{0} = 27^{\\circ}C = 300 \\space K \\)"}
                         </MathJax>
                     </Typography>
                     <Typography>
                         <MathJax>
-                            {"\\( T_{1} = 54^{\\circ}C \\)"}
+                            {"\\( T_{1} = 54^{\\circ}C = 327 \\space K \\)"}
                         </MathJax>
                     </Typography>
                     <Typography>
@@ -357,9 +357,10 @@ export function GasKinetics5() {
                         <MathJax>
                             {"\\[ \\begin{aligned} \
                                 \\frac{P_{0}V_{0}}{T_{0}}&=\\frac{P_{1}V_{1}}{T_{1}} \\\\[10pt] \
-                                \\frac{\\rho V_{0}}{27^{\\circ}C}&=\\frac{P (2V_{0})}{54^{\\circ}C} \\\\[10pt] \
-                                P &= \\frac{\\rho V_{0}}{27^{\\circ}C} \\space \\frac{54^{\\circ}C}{2V_{0}} \\\\[10pt] \
-                                P &= \\rho \
+                                \\frac{\\rho V_{0}}{300 \\space K}&=\\frac{P (2V_{0})}{327 \\space K} \\\\[10pt] \
+                                P &= \\frac{\\rho V_{0}}{300 \\space K} \\space \\frac{327 \\space K}{2V_{0}} \\\\[10pt] \
+                                P &= 0,545 \\rho \\\\ \
+                                P &\\thickapprox 0,55 \\rho \
                             \\end{aligned} \\]"}
                         </MathJax>
                     </Typography>
