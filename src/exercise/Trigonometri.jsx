@@ -116,12 +116,41 @@ export function Trigonometri3() {
                 <Stack>
                     <Typography>
                         <MathJax>
-                            {`\\[
-                        \\text{Perhatikan bahwa } \\alpha
-                        \\text{ berada di kuadran III sehingga tangen sudutnya bernilai positif,
-                        sedangkan sinus sudutnya bernilai negatif.}
-                        \\]
-                    `}
+                            {`
+                                \\(
+                                    \\text{Perhatikan bahwa } \\alpha 
+                                    \\text{ berada di kuadran III sehingga tangen sudutnya bernilai positif, sedangkan sinus sudutnya bernilai negatif.}
+                                \\)
+                                
+                                \\(
+                                    \\text{Karena } \\sin \\theta = \\frac{5}{6}, \\text{ maka bisa dianggap bahwa panjang sisi depan sudutnya } 5, \\text{ sedangkan panjang sisi miring/hipotenusanya } 6 \\text{ (} \\sin = \\frac{de}{mi} \\text{) seperti gambar berikut.}
+                                \\)
+                                
+                                \\(
+                                    \\text{Dengan demikian, } sa = \\sqrt{6^2 - 5^2} = \\sqrt{36 - 25} = \\sqrt{11}.
+                                \\)
+                                
+                                \\(
+                                    \\text{Untuk itu,}
+                                \\)
+                                
+                                \\(
+                                    \\cos \\theta = \\frac{sa}{mi} = -\\frac{\\sqrt{11}}{6} = -\\frac{1}{6}\\sqrt{11}
+                                \\)
+                            `}
+                        </MathJax>
+                    </Typography>
+                    <Typography>
+                        <MathJax>
+                            {`
+                                \\(
+                                    \\text{(cosinus sudut bernilai negatif ketika berada di kuadran II)}
+                                \\)
+                                
+                                \\(
+                                    \\text{Jadi, nilai dari } \\cos \\theta = -\\frac{1}{6}\\sqrt{11}.
+                                \\)
+                            `}
                         </MathJax>
                     </Typography>
                 </Stack>
