@@ -10,7 +10,7 @@ import {useState} from 'react';
 import {useDebounce} from '../../utils';
 
 export function CopyButton({editor, getCodeDOMNode}) {
-  const [isCopyCompleted, setCopyCompleted] = useState<boolean>(false);
+  const [isCopyCompleted, setCopyCompleted] = useState(false);
 
   const removeSuccessIcon = useDebounce(() => {
     setCopyCompleted(false);

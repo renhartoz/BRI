@@ -57,8 +57,8 @@ function getPrettierOptions(lang) {
 }
 
 export function PrettierButton({lang, editor, getCodeDOMNode}) {
-  const [syntaxError, setSyntaxError] = useState<string>('');
-  const [tipsVisible, setTipsVisible] = useState<boolean>(false);
+  const [syntaxError, setSyntaxError] = useState('');
+  const [tipsVisible, setTipsVisible] = useState(false);
 
   async function handleClick() {
     const codeDOMNode = getCodeDOMNode();
