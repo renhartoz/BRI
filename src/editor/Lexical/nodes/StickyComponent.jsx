@@ -38,8 +38,8 @@ export default function StickyComponent({
   caption,
 }) {
   const [editor] = useLexicalComposerContext();
-  const stickyContainerRef = useRef<null | HTMLDivElement>(null);
-  const positioningRef = useRef<Positioning>({
+  const stickyContainerRef = useRef(null);
+  const positioningRef = useRef({
     isDragging: false,
     offsetX: 0,
     offsetY: 0,

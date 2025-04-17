@@ -138,8 +138,8 @@ export default function Editor() {
   const editorTag = useRef();
   const handlePreview = () => {
     editor.update(() => {
-      // const html = $generateHtmlFromNodes(editor, null);
-      const html = editorTag.current.innerHTML;
+      const html = editorTag.current.querySelector('.ContentEditable__root').innerHTML;
+      // const html = $generateHtmlFromNodes(editor);
       navigate('/lexical-preview', { state: { html } });
     });
   };
@@ -216,7 +216,7 @@ export default function Editor() {
             <ImagesPlugin />
             <InlineImagePlugin />
             <LinkPlugin hasLinkAttributes={hasLinkAttributes} />
-            <PollPlugin />
+            {/* <PollPlugin /> */}
             <TwitterPlugin />
             <YouTubePlugin />
             <FigmaPlugin />
