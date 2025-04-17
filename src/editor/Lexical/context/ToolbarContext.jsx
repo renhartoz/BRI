@@ -41,7 +41,7 @@ const INITIAL_TOOLBAR_STATE = {
   codeLanguage: '',
   elementFormat: 'left',
   fontColor: '#000',
-  fontFamily: 'Arial',
+  fontFamily: 'Apercu',
   // Current font size in px
   fontSize: `${DEFAULT_FONT_SIZE}px`,
   // Font size input value - for controlled input

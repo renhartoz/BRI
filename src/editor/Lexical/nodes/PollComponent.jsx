@@ -116,7 +116,7 @@ export default function PollComponent({
   const totalVotes = useMemo(() => getTotalVotes(options), [options]);
   const [isSelected, setSelected, clearSelection] =
     useLexicalNodeSelection(nodeKey);
-  const [selection, setSelection] = useState<BaseSelection | null>(null);
+  const [selection, setSelection] = useState(null);
   const ref = useRef(null);
 
   useEffect(() => {

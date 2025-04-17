@@ -17,8 +17,11 @@ import {TabIndentationPlugin} from '@lexical/react/LexicalTabIndentationPlugin';
 import {TablePlugin} from '@lexical/react/LexicalTablePlugin';
 import {useLexicalEditable} from '@lexical/react/useLexicalEditable';
 import {CAN_USE_DOM} from '@lexical/utils';
+import { $generateHtmlFromNodes } from '@lexical/html';
 import * as React from 'react';
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useRef} from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 import {createWebsocketProvider} from './collaboration';
 import {useSettings} from './context/SettingsContext';
@@ -52,6 +55,7 @@ import {MaxLengthPlugin} from './plugins/MaxLengthPlugin';
 import MentionsPlugin from './plugins/MentionsPlugin';
 import PageBreakPlugin from './plugins/PageBreakPlugin';
 import PollPlugin from './plugins/PollPlugin';
+import RestoreFromLocalStoragePlugin from './plugins/RestoreFromLocalStoragePlugin';
 import ShortcutsPlugin from './plugins/ShortcutsPlugin';
 import SpecialTextPlugin from './plugins/SpecialTextPlugin';
 import SpeechToTextPlugin from './plugins/SpeechToTextPlugin';
@@ -71,6 +75,7 @@ const skipCollaborationInit =
   window.parent != null && window.parent.frames.right === window;
 
 export default function Editor() {
+  const navigate = useNavigate();
   const {historyState} = useSharedHistoryContext();
   const {
     settings: {
@@ -130,6 +135,15 @@ export default function Editor() {
     };
   }, [isSmallWidthViewport]);
 
+  const editorTag = useRef();
+  const handlePreview = () => {
+    editor.update(() => {
+      const html = editorTag.current.querySelector('.ContentEditable__root').innerHTML;
+      // const html = $generateHtmlFromNodes(editor);
+      navigate('/lexical-preview', { state: { html } });
+    });
+  };
+
   return (
     <>
       {isRichText && (
@@ -180,7 +194,7 @@ export default function Editor() {
             )}
             <RichTextPlugin
               contentEditable={
-                <div className="editor-scroller">
+                <div className="editor-scroller" ref={editorTag}>
                   <div className="editor" ref={onRef}>
                     <ContentEditable placeholder={placeholder} />
                   </div>
@@ -188,6 +202,7 @@ export default function Editor() {
               }
               ErrorBoundary={LexicalErrorBoundary}
             />
+            <RestoreFromLocalStoragePlugin />
             <MarkdownShortcutPlugin />
             <CodeHighlightPlugin />
             <ListPlugin hasStrictIndent={listStrictIndent} />
@@ -201,7 +216,7 @@ export default function Editor() {
             <ImagesPlugin />
             <InlineImagePlugin />
             <LinkPlugin hasLinkAttributes={hasLinkAttributes} />
-            <PollPlugin />
+            {/* <PollPlugin /> */}
             <TwitterPlugin />
             <YouTubePlugin />
             <FigmaPlugin />
@@ -264,6 +279,7 @@ export default function Editor() {
         />
       </div>
       {showTreeView && <TreeViewPlugin />}
+      <Button variant='outlined' onClick={handlePreview}>Preview</Button>
     </>
   );
 }

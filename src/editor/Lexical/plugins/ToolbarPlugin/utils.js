@@ -30,7 +30,7 @@ import {
 // It's supposed to be enum, with increment = 1 as default
 export const UpdateFontSizeType = Object.freeze({
   increment:1,
-  decrement:0,
+  decrement:.5,
 })
 
 /**

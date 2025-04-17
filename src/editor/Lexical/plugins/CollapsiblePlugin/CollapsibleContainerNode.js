@@ -127,14 +127,14 @@ export class CollapsibleContainerNode extends ElementNode {
   exportDOM() {
     const element = document.createElement('details');
     element.classList.add('Collapsible__container');
-    element.setAttribute('open', this.__open.toString());
+    element.setAttribute('open', String(this.__open ?? false));
     return {element};
   }
 
   exportJSON() {
     return {
       ...super.exportJSON(),
-      open:this.__op
+      open:this.__open
     };
   }
 

@@ -69,20 +69,20 @@ function buildImportMap(){
           ) {
             return output;
           }
-          const extraStyles = getExtraStyles(element);
-          if (extraStyles) {
-            const {forChild} = output;
-            return {
-              ...output,
-              forChild: (child, parent) => {
-                const textNode = forChild(child, parent);
-                if ($isTextNode(textNode)) {
-                  textNode.setStyle(textNode.getStyle() + extraStyles);
-                }
-                return textNode;
-              },
-            };
-          }
+          // const extraStyles = getExtraStyles(element);
+          // if (extraStyles) {
+          //   const {forChild} = output;
+          //   return {
+          //     ...output,
+          //     forChild: (child, parent) => {
+          //       const textNode = forChild(child, parent);
+          //       if ($isTextNode(textNode)) {
+          //         textNode.setStyle(textNode.getStyle() + extraStyles);
+          //       }
+          //       return textNode;
+          //     },
+          //   };
+          // }
           return output;
         },
       };

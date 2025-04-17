@@ -192,7 +192,7 @@ export function AutoEmbedDialog({
 }) {
   const [text, setText] = useState('');
   const [editor] = useLexicalComposerContext();
-  const [embedResult, setEmbedResult] = useState<EmbedMatchResult | null>(null);
+  const [embedResult, setEmbedResult] = useState(null);
 
   const validateText = useMemo(
     () =>
