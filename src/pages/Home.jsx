@@ -53,7 +53,7 @@ export default function Home() {
     return (
         <>
             <Stack direction={"column"} sx={{ backgroundColor: "#f5f5f5" }}>
-                <Carousel slides={slides} time={500000} />
+                <Carousel slides={slides} time={10000} />
                 <Stack p={"5vh 3vw"}>
                     <CustomInput
                         type="text"
