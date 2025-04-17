@@ -256,9 +256,9 @@ export default function Theme(props) {
                             // The change below is debatable
                             fontSize:{
                                 xs:"0.8em",
-                                sm:"0.8em",
+                                sm:"0.875em",
                                 md:"1em",
-                                lg:"1.2em",
+                                lg:"1.1em",
                             },
                         }),
                 },
