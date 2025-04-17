@@ -22,7 +22,7 @@ const Header = () => {
                         </Typography>
                     </Stack>
                     <Stack>
-                        <Button sx={{width: '8em'}} bdcolor={'#000'}>
+                        <Button bdcolor={'#000'}>
                             <Typography fontSize={'1em'}>
                                 Jadi Member
                             </Typography>
