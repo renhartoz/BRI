@@ -24,11 +24,10 @@ header a {
    display: block;
 }
 
-header img {
-   display: block;
+/* header img {
    height: 100%;
    width: 100%;
-}
+} */
 
 header h1 {
    text-align: left;

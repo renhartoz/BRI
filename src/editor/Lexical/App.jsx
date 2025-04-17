@@ -115,6 +115,14 @@ function App(){
       <SharedHistoryContext>
         <TableContext>
           <ToolbarContext>
+            <header>
+              <a href="https://rumahilmiah.org" target="_blank" rel="noreferrer">
+                <div style={{display:'flex', justifyContent:'center', alignItems:'center', gap:20}}>
+                    <img src={'/biru.svg'} alt="BRI Logo" style={{height:'20vh'}} />
+                    <p style={{fontSize:"3em"}}>Rumah Ilmiah</p>
+                </div>
+              </a>
+            </header>
             <div className="editor-shell">
               <Editor />
             </div>
