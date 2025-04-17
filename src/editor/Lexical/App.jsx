@@ -115,11 +115,6 @@ function App(){
       <SharedHistoryContext>
         <TableContext>
           <ToolbarContext>
-            <header>
-              <a href="https://lexical.dev" target="_blank" rel="noreferrer">
-                <img src={logo} alt="Lexical Logo" />
-              </a>
-            </header>
             <div className="editor-shell">
               <Editor />
             </div>
