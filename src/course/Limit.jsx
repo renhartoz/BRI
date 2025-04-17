@@ -4,7 +4,7 @@ import { Stack, Typography, Grid2 } from "@mui/material";
 
 import Button from "../components/Button";
 import Syllabus from "../components/Syllabus";
-import RenderContent from "./RenderContent";
+import RenderContent from "../editor/RenderContent";
 import Template from "./Template";
 import blogData from "../data/blogs.json";
 

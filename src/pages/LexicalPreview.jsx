@@ -15,7 +15,7 @@ export default function LexicalPreview() {
       <Box fontFamily={'Apercu, Inter, DM Sans, sans-serif'} lineHeight={1.7} fontWeight={400} py={1} px={5}>
         <RenderParsedHTML html={html} />
       </Box>
-      <Button variant="outlined" sx={{m:2}} onClick={()=>{navigate('/editor')}}>Back</Button>
+      <Button variant="outlined" sx={{m:2}} onClick={()=>{navigate('/lexical-editor')}}>Back</Button>
     </>
   );
 }

@@ -4,7 +4,6 @@ import { MathJax } from "better-react-mathjax";
 import Problem from "../components/Problem";
 import { CustomRawTable } from "../components/Tabel";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 import CircleIcon from '@mui/icons-material/Circle';
 
 // Function to render JSON content dynamically

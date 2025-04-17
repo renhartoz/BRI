@@ -1,20 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Stack, Typography } from "@mui/material";
-import RenderContent from "../editor/RenderContent";
-import blogData from "../data/blogs.json";
-import Loading from "../components/Loading";
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import RenderContent from '../editor/RenderContent';
+import { Stack, Typography } from '@mui/material';
+import { loadBlog } from '../Utility';
 
-export default function Template({ url }) {
-    const [blog, setBlog] = useState(null);
-
-    useEffect(() => {
-        const pageUrl = url;
-        const foundBlog = blogData.find((b) => b.url === pageUrl);
-        setBlog(foundBlog || null);
-    }, []);
-
-    if (!blog) return <Loading />;
-
+export default function ClassicPreview() {
+    const blog = loadBlog();
     return (
         <Stack
             px={{ xs: 5, sm: 8, md: 10 }}

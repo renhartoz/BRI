@@ -15,3 +15,22 @@ export function findParentRoute(pathname, routes) {
         );
     }) || null;
 }
+
+export function saveBlog(key, blog) {
+    localStorage.setItem(key, JSON.stringify(blog));
+}
+
+export function loadBlog(key) {
+    const saved = localStorage.getItem(key);
+    if (!saved) return null; // Return null or a default object
+    try {
+        return JSON.parse(saved);
+    } catch (e) {
+        console.error('Failed to parse saved blog:', e);
+        return null;
+    }
+}
+
+export function clearBlog() {
+    localStorage.removeItem(LOCAL_KEY);
+}
