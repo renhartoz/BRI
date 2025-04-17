@@ -28,6 +28,7 @@ import {
 } from "./course/Limit.jsx";
 import * as GK from "./exercise/GasKinetics.jsx";
 import * as TRI from "./exercise/Trigonometri.jsx";
+import * as LIM from "./exercise/Limit.jsx";
 import PageNotFound from "./pages/404.jsx";
 import ComingSoon from "./pages/ComingSoon.jsx";
 
@@ -105,6 +106,45 @@ export const routes = [
             { path: "8", element: <TRI.Trigonometri8 /> },
             { path: "9", element: <TRI.Trigonometri9 /> },
             { path: "10", element: <TRI.Trigonometri10 /> },
+        ],
+    },
+    {
+        path: "/exercise/limit",
+        element: <ExerciseLayout />,
+        children: [
+            { path: "1", element: <LIM.Limit1 /> },
+            { path: "2", element: <LIM.Limit2 /> },
+            { path: "3", element: <LIM.Limit3 /> },
+            { path: "4", element: <LIM.Limit4 /> },
+            { path: "5", element: <LIM.Limit5 /> },
+            { path: "6", element: <LIM.Limit6 /> },
+            { path: "7", element: <LIM.Limit7 /> },
+            { path: "8", element: <LIM.Limit8 /> },
+            { path: "9", element: <LIM.Limit9 /> },
+            { path: "10", element: <LIM.Limit10 /> },
+            { path: "11", element: <LIM.Limit11 /> },
+            { path: "12", element: <LIM.Limit12 /> },
+            { path: "13", element: <LIM.Limit13 /> },
+            { path: "14", element: <LIM.Limit14 /> },
+            { path: "15", element: <LIM.Limit15 /> },
+            { path: "16", element: <LIM.Limit16/> },
+            { path: "17", element: <LIM.Limit17 /> },
+            { path: "18", element: <LIM.Limit18 /> },
+            { path: "19", element: <LIM.Limit19 /> },
+            { path: "20", element: <LIM.Limit20 /> },
+            { path: "21", element: <LIM.Limit21 /> },
+            { path: "22", element: <LIM.Limit22 /> },
+            { path: "23", element: <LIM.Limit23 /> },
+            { path: "24", element: <LIM.Limit24 /> },
+            { path: "25", element: <LIM.Limit25 /> },
+            { path: "26", element: <LIM.Limit26 /> },
+            { path: "27", element: <LIM.Limit27 /> },
+            { path: "28", element: <LIM.Limit28 /> },
+            { path: "29", element: <LIM.Limit29 /> },
+            { path: "30", element: <LIM.Limit30 /> },
+            { path: "31", element: <LIM.Limit31 /> },
+            { path: "32", element: <LIM.Limit32 /> },
+            { path: "33", element: <LIM.Limit33 /> },
         ],
     },
     {
