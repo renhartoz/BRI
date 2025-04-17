@@ -3,7 +3,7 @@ import { Stack, Typography, Grid2 } from "@mui/material";
 import { MathJax } from "better-react-mathjax";
 import Problem from "../components/Problem";
 
-export default function ({ material, title, time }) {
+export default function ExerciseHeader({ material, title, time }) {
     return (
         <>
             <Stack gap={1} direction={"column"}>
