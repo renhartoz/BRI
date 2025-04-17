@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Theme from '../components/theme'
+import Theme from '../components/Theme';
 import {
   Dialog,
   DialogTitle,
