@@ -136,6 +136,49 @@ export default function Editor() {
   }, [isSmallWidthViewport]);
 
   const editorTag = useRef();
+  // function openEditorPreview(editorRef) {
+  //   const editorElement = editorRef.current?.querySelector('.editor');
+  //   if (!editorElement) {
+  //     console.error('Editor element not found.');
+  //     return;
+  //   }
+  
+  //   // 1. Get the full visual HTML from the editor DOM
+  //   const editorHTML = editorElement.outerHTML;
+  
+  //   // 2. Extract CSS from document.styleSheets
+  //   let combinedStyles = '';
+  //   for (const sheet of document.styleSheets) {
+  //     try {
+  //       const rules = sheet.cssRules;
+  //       if (rules) {
+  //         for (const rule of rules) {
+  //           combinedStyles += rule.cssText + '\n';
+  //         }
+  //       }
+  //     } catch (err) {
+  //       // Skip cross-origin stylesheets
+  //       console.warn('Could not read CSS rules from stylesheet:', sheet.href);
+  //     }
+  //   }
+  
+  //   // 3. Combine into a full HTML document
+  //   const fullHTML = `
+  //     <!DOCTYPE html>
+  //     <html lang="en">
+  //       <head>
+  //         <meta charset="UTF-8" />
+  //         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  //         <style>${combinedStyles}</style>
+  //         <title>Editor Preview</title>
+  //       </head>
+  //       <body style="margin: 2rem;">
+  //         ${editorHTML}
+  //       </body>
+  //     </html>
+  //   `;
+  //   return fullHTML
+  // }
   const handlePreview = () => {
     editor.update(() => {
       const html = editorTag.current.querySelector('.ContentEditable__root').innerHTML;
@@ -178,9 +221,9 @@ export default function Editor() {
         <KeywordsPlugin />
         <SpeechToTextPlugin />
         <AutoLinkPlugin />
-        <CommentPlugin
+        {/* <CommentPlugin
           providerFactory={isCollab ? createWebsocketProvider : undefined}
-        />
+        /> */}
         {isRichText ? (
           <>
             {isCollab ? (
