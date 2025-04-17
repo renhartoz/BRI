@@ -247,18 +247,12 @@ export default function Theme(props) {
                     root: ({ theme }) =>
                         theme.unstable_sx({
                             fontFamily: "Apercu, Inter, DM Sans, sans-serif",
-                            textAlign: {
-                                xs: "justify",
-                                sm: "justify",
-                                md: "justify",
-                                lg: "left",
-                            },
-                            // The change below is debatable
-                            fontSize:{
-                                xs:"0.8em",
-                                sm:"0.875em",
-                                md:"1em",
-                                lg:"1.1em",
+                            // The change below is debatable. Why? this causes conflict globally. We're locking h1 h2 h3 h4 sizes
+                            fontSize: {
+                                xs: "0.8em",
+                                sm: "0.875em",
+                                md: "1em",
+                                lg: "1.1em",
                             },
                         }),
                 },

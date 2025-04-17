@@ -25,10 +25,10 @@ export default function CourseCard({
     const theme = useTheme();
 
     return (
-        <Link to={href?href:'/comingsoon'}>
+        <Link to={href ? href : "/comingsoon"}>
             <Card
                 sx={{
-                    width:'100%',
+                    width: "100%",
                     border: "4px solid black",
                     boxShadow: "none",
                     position: "relative",
@@ -97,12 +97,20 @@ export default function CourseCard({
                     >
                         {title}
                     </Typography>
-                    {desc&&(
+                    {desc && (
                         <Typography
                             variant="body2"
                             color="text.secondary"
                             mt={1}
-                            sx={{ fontSize: "0.9em" }}
+                            sx={{
+                                fontSize: "0.9em",
+                                textAlign: {
+                                    xs: "justify",
+                                    sm: "justify",
+                                    md: "justify",
+                                    lg: "left",
+                                },
+                            }}
                         >
                             {desc}
                         </Typography>

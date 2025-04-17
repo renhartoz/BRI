@@ -73,12 +73,17 @@ export default function Footer({ sx }) {
         >
             {/* Left Section */}
             <Stack width={{ md: "30%" }} gap={2}>
-                <Typography variant="h4" color="kurai_ao">
+                <Typography variant="h5" color="kurai_ao">
                     Bimbel Rumah Ilmiah
                 </Typography>
-                <Typography color="kurai_ao" textAlign="justify" mb={2}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Illo impedit ab, culpa natus accusamus vero assumenda.
+                <Typography color="kurai_ao" align={"justify"} mb={2}>
+                    Rumah Ilmiah adalah bimbingan belajar yang berkomitmen pada
+                    moto "Menjadikan esok hari lebih baik dari hari ini." Kami
+                    menyediakan kursus berkualitas tinggi lengkap dengan materi
+                    dan latihan yang terintegrasi langsung di website,
+                    memudahkan akses belajar kapan saja. Dengan pendekatan yang
+                    terstruktur dan dukungan penuh bagi siswa, kami hadir untuk
+                    menemani perjalanan belajar yang lebih efektif dan bermakna.
                 </Typography>
                 <SocialButtons sx={{ display: { xs: "none", md: "flex" } }} />
             </Stack>
@@ -121,7 +126,7 @@ export default function Footer({ sx }) {
                         color_title="kurai_ao"
                         bgcolor_text="#f0f0f0"
                         color_text="#000"
-                        sx={{ boxShadow: 0, border:"none" }}
+                        sx={{ boxShadow: 0, border: "none" }}
                         nopaddinginline
                         nohover
                     />
