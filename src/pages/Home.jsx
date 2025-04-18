@@ -134,7 +134,7 @@ export default function Home() {
                     </Grid2>
                 </Stack>
             </Stack>
-            <Stack direction={"column"} sx={{ backgroundColor: "#e0e0ff" }}>
+            <Stack direction={"column"} sx={{ backgroundColor: "#e5edff" }}>
                 <Stack
                     direction={"column"}
                     gap={2}
@@ -204,7 +204,7 @@ export default function Home() {
                     width: "100%",
                     height: "100%",
                 }}
-                px={{ xs: 5, sm: 10 }} //TODO: Check this for errors
+                px={{ xs: 5, sm: 10 }}
                 py={5}
                 className="radialbg"
                 direction={"row"}
@@ -396,7 +396,7 @@ export default function Home() {
                     width: "100%",
                     height: "100%",
                 }}
-                px={{ xs: 5, sm: 10 }} //TODO: Check this for errors
+                px={{ xs: 5, sm: 10 }}
                 py={5}
                 className="radialbg2"
                 direction={"row"}
