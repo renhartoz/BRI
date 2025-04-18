@@ -8,18 +8,18 @@
         "content": [
             {
                 "type": "paragraph",
-                "text": "Bayangkan seorang pembalap Formula 1 melaju di lintasan. Jika kita menghitung kecepatannya setiap detik, semakin kecil interval waktunya, semakin akurat hasilnya. Tapi bagaimana kalau kita ingin tahu kecepatannya",
+                "text": "Bayangkan seorang pembalap Formula 1 melaju di lintasan. Jika kita menghitung kecepatannya setiap detik, semakin kecil interval waktunya, semakin akurat hasilnya. Tapi bagaimana kalau kita ingin tahu kecepatannya ",
                 "children": [
                     {
                         "type": "paragraph",
-                        "text": " tepat pada satu momen?",
+                        "text": "tepat pada satu momen",
                         "props": { "fontWeight": 600, "className": "highlight" }
                     }
                 ]
             },
             {
                 "type": "paragraph",
-                "text": "Itulah pertanyaan yang juga dipikirkan Isaac Newton saat ia mengembangkan kalkulus. Dia ingin memahami bagaimana sesuatu berubah ",
+                "text": "? Itulah pertanyaan yang juga dipikirkan Isaac Newton saat ia mengembangkan kalkulus. Dia ingin memahami bagaimana sesuatu berubah ",
                 "children": [
                     {
                         "type": "paragraph",
@@ -2738,6 +2738,73 @@
                     }
                 ]
             }
+        ]
+    },
+    {
+        "name": "deriv_intro",
+        "url": "/BRI/course/deriv/intro",
+        "unit": "Konsep Turunan",
+        "subunit": "Introduksi Turunan",
+        "time": "15 min",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Bayangkan kamu melihat grafik harga saham di layar. Garisnya naik dan turun sepanjang hari. Tapi di satu titik tertentu, kamu ingin tahu: apakah saham sedang naik cepat, melambat, atau bahkan mulai turun? Jawabannya ada pada kemiringan grafik di titik itu, yaitu ",
+            "children": [
+              {
+                "type": "paragraph",
+                "text": "turunan",
+                "props": {
+                  "fontWeight": 400,
+                  "className": "highlight"
+                }
+              },
+              {
+                "type": "paragraph",
+                "text": ". Turunan adalah cara matematis untuk mengukur ",
+                "props": {
+                  "fontWeight": 400
+                }
+              },
+              {
+                "type": "paragraph",
+                "text": "arah dan kecepatan perubahan",
+                "props": {
+                  "fontWeight": 400,
+                  "className": "highlight"
+                }
+              },
+              {
+                "type": "paragraph",
+                "text": " dari suatu nilai dalam waktu nyata.",
+                "props": {
+                  "fontWeight": 400
+                }
+              }
+            ],
+            "props": {
+              "textAlign": "justify"
+            }
+          },
+          {
+            "type": "formula",
+            "text": "",
+            "children": [
+              {
+                "type": "math",
+                "text": "\\[ \\frac{d}{dx}(f(x))=\\lim\\limits_{h \\to 0}\\frac{f(x+h)-f(x)}{h} \\]",
+                "justify": "center",
+                "direction": "row"
+              }
+            ],
+            "gap": "3"
+          },
+          {
+            "type": "stack",
+            "direction": "column",
+            "gap": "2",
+            "children": []
+          }
         ]
     }
 ]

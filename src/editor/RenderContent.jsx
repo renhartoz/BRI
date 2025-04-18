@@ -6,7 +6,6 @@ import { CustomRawTable } from "../components/Tabel";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CircleIcon from '@mui/icons-material/Circle';
 
-// Function to render JSON content dynamically
 const RenderContent = ({ data }) => {
     if (!data) return null;
 
@@ -98,8 +97,8 @@ const RenderContent = ({ data }) => {
                     <Stack
                         key={index}
                         gap={item.gap||3}
-                        px={item.props&&item.props.paddingX || {xs:1, sm:2, md:3}}
-                        py={item.props&&item.props.paddingY || 2}
+                        px={item.props&&item.props.px || {xs:1, sm:2, md:3}}
+                        py={item.props&&item.props.py || 2}
                         width={'100%'}
                         sx={{
                             backgroundColor: item.props&&item.props.backgroundColor || "#e0f0ff",

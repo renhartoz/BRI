@@ -41,7 +41,7 @@ export default function RestoreFromLocalStoragePlugin() {
       } catch (err) {
         console.error('Failed to save editor state:', err);
       }
-    }, 5000); // Debounce: save 1s after typing stops
+    }, 1000); // Debounce: save 1s after typing stops
   }, []);
 
   return <OnChangePlugin onChange={onChange} />;
