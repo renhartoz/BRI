@@ -16,7 +16,7 @@ import Button from "../components/Button";
 import CourseCard from "../components/Card";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import courses_data from "../data/course.json";
-import exercise_data from '../data/exercise.json'
+import exercise_data from "../data/exercise.json";
 
 const courses = courses_data.slice(0, 4);
 const exercises = exercise_data.slice(0, 4);
@@ -109,8 +109,8 @@ export default function Home() {
                         fontSize={{ xs: ".9em", sm: "1em", md: "1.2em" }}
                         sx={{ mb: 2 }}
                     >
-                        Mempelajari kursus terpercaya dengan
-                        mengikuti silabus dan konsep yang telah kami design
+                        Mempelajari kursus terpercaya dengan mengikuti silabus
+                        dan konsep yang telah kami design
                     </Typography>
                     <Grid2
                         container
@@ -121,7 +121,13 @@ export default function Home() {
                         columns={{ xs: 1, sm: 2, md: 4 }}
                     >
                         {courses.map((item) => (
-                            <Grid2 key={item.id} size={1} display={'flex'} justifyContent={'center'} alignItems={'center'}>
+                            <Grid2
+                                key={item.id}
+                                size={1}
+                                display={"flex"}
+                                justifyContent={"center"}
+                                alignItems={"center"}
+                            >
                                 <Stack
                                     justifyContent={"center"}
                                     alignItems={"center"}
@@ -174,8 +180,8 @@ export default function Home() {
                         fontSize={{ xs: ".9em", sm: "1em", md: "1.2em" }}
                         sx={{ mb: 2 }}
                     >
-                        Kumpulan soal-soal latihan berkualitas yang telah didesain sedemikian rupa 
-                        untuk menguji kemampuan Anda
+                        Kumpulan soal-soal latihan berkualitas yang telah
+                        didesain sedemikian rupa untuk menguji kemampuan Anda
                     </Typography>
                     <Grid2
                         container
@@ -186,7 +192,13 @@ export default function Home() {
                         columns={{ xs: 1, sm: 2, md: 4 }}
                     >
                         {exercises.map((item) => (
-                            <Grid2 key={item.id} size={1} display={'flex'} justifyContent={'center'} alignItems={'center'}>
+                            <Grid2
+                                key={item.id}
+                                size={1}
+                                display={"flex"}
+                                justifyContent={"center"}
+                                alignItems={"center"}
+                            >
                                 <Stack
                                     justifyContent={"center"}
                                     alignItems={"center"}
@@ -370,25 +382,14 @@ export default function Home() {
                 </Stack>
                 <Stack>
                     <Tiles
-                        bg={"/galaxy1.jpg"}
+                        bg={"/misc/jaminan.png"}
                         bgcolor={"primary.main"}
                         bdcolor={"#000"}
                         sx={{
                             maxWidth: { xs: "100vw", md: "25vw" },
                         }}
-                    >
-                        <Typography
-                            variant="body2"
-                            sx={{
-                                color: "#fff",
-                                fontSize: "0.9rem",
-                                fontWeight: "bold",
-                                textAlign: "center",
-                            }}
-                        >
-                            Galaxy
-                        </Typography>
-                    </Tiles>
+                        nochildren
+                    />
                 </Stack>
             </Stack>
             <Stack
@@ -407,25 +408,14 @@ export default function Home() {
             >
                 <Stack>
                     <Tiles
-                        bg={"/cave2.jpg"}
+                        bg={"/misc/membership.png"}
                         bgcolor={"secondary.main"}
                         bdcolor={"#000"}
                         sx={{
                             maxWidth: { xs: "100vw", md: "25vw" },
                         }}
-                    >
-                        <Typography
-                            variant="body2"
-                            sx={{
-                                color: "#fff",
-                                fontSize: "0.9rem",
-                                fontWeight: "bold",
-                                textAlign: "center",
-                            }}
-                        >
-                            Cave
-                        </Typography>
-                    </Tiles>
+                        nochildren
+                    />
                 </Stack>
 
                 {/* Membership Box */}
