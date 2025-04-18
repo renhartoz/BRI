@@ -8,10 +8,8 @@ import {
   $getNodeByKey,
   $getSelection,
   $isNodeSelection,
-  BaseSelection,
   CLICK_COMMAND,
   COMMAND_PRIORITY_LOW,
-  NodeKey,
 } from 'lexical';
 import * as React from 'react';
 import {useEffect, useMemo, useRef, useState} from 'react';
