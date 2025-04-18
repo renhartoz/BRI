@@ -16,8 +16,10 @@ import Button from "../components/Button";
 import CourseCard from "../components/Card";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import courses_data from "../data/course.json";
+import exercise_data from '../data/exercise.json'
 
 const courses = courses_data.slice(0, 4);
+const exercises = exercise_data.slice(0, 4);
 
 export default function Home() {
     const slides = [
@@ -102,14 +104,13 @@ export default function Home() {
                         />
                     </Stack>
                     <Typography
-                        variant="p"
                         textAlign={"justify"}
                         color="black_blue"
                         fontSize={{ xs: ".9em", sm: "1em", md: "1.2em" }}
                         sx={{ mb: 2 }}
                     >
-                        Mempelajari design dan code lebih terpercaya dengan
-                        mengikuti roadmap yang telah kami design
+                        Mempelajari kursus terpercaya dengan
+                        mengikuti silabus dan konsep yang telah kami design
                     </Typography>
                     <Grid2
                         container
@@ -120,7 +121,72 @@ export default function Home() {
                         columns={{ xs: 1, sm: 2, md: 4 }}
                     >
                         {courses.map((item) => (
-                            <Grid2 key={item.id} size={1}>
+                            <Grid2 key={item.id} size={1} display={'flex'} justifyContent={'center'} alignItems={'center'}>
+                                <Stack
+                                    justifyContent={"center"}
+                                    alignItems={"center"}
+                                    maxWidth={300}
+                                >
+                                    <CourseCard {...item} />
+                                </Stack>
+                            </Grid2>
+                        ))}
+                    </Grid2>
+                </Stack>
+            </Stack>
+            <Stack direction={"column"} sx={{ backgroundColor: "#e0e0ff" }}>
+                <Stack
+                    direction={"column"}
+                    gap={2}
+                    sx={{
+                        padding: "2% 3%",
+                    }}
+                    justifyContent={"center"}
+                >
+                    <Stack>
+                        <Stack
+                            direction={"row"}
+                            alignItems={"center"}
+                            justifyContent={"space-between"}
+                        >
+                            <Typography
+                                variant="h3"
+                                textAlign={{ xs: "center", sm: "justify" }}
+                                component={"h1"}
+                                fontSize={{ xs: "2em", sm: "3.5em" }}
+                                color="quaternary"
+                            >
+                                Uji Kompetensi
+                            </Typography>
+                            <Link to={"/course"}>
+                                <Typography color="tertiary" fontSize={"1em"}>
+                                    Lihat Semua
+                                </Typography>
+                            </Link>
+                        </Stack>
+                        <Divider
+                            sx={{ border: ".3vh solid #222", width: "100%" }}
+                        />
+                    </Stack>
+                    <Typography
+                        textAlign={"justify"}
+                        color="black_blue"
+                        fontSize={{ xs: ".9em", sm: "1em", md: "1.2em" }}
+                        sx={{ mb: 2 }}
+                    >
+                        Kumpulan soal-soal latihan berkualitas yang telah didesain sedemikian rupa 
+                        untuk menguji kemampuan Anda
+                    </Typography>
+                    <Grid2
+                        container
+                        spacing={2}
+                        direction={"row"}
+                        justifyContent={"center"}
+                        alignItems={"center"}
+                        columns={{ xs: 1, sm: 2, md: 4 }}
+                    >
+                        {exercises.map((item) => (
+                            <Grid2 key={item.id} size={1} display={'flex'} justifyContent={'center'} alignItems={'center'}>
                                 <Stack
                                     justifyContent={"center"}
                                     alignItems={"center"}
@@ -189,14 +255,13 @@ export default function Home() {
                             Jaminan Kursus Online
                         </Typography>
                         <Typography
-                            variant="p"
                             textAlign={"justify"}
                             color="black_blue"
                             fontSize={{ xs: ".7em", sm: "1em" }}
                         >
                             Pilih dan belajar puluhan kursus online di{" "}
                             <Typography
-                                variant="b"
+                                component="b"
                                 color="primary"
                                 fontWeight={800}
                             >
@@ -229,7 +294,6 @@ export default function Home() {
                                 Kurikulum Berkualitas
                             </Typography>
                             <Typography
-                                variant="p"
                                 textAlign={"justify"}
                                 color="black_blue"
                                 fontSize={{ xs: ".7em", sm: "1em" }}
@@ -262,7 +326,6 @@ export default function Home() {
                                 Materi Penunjang
                             </Typography>
                             <Typography
-                                variant="p"
                                 textAlign={"justify"}
                                 color="black_blue"
                                 fontSize={{ xs: ".7em", sm: "1em" }}
@@ -294,7 +357,6 @@ export default function Home() {
                                 Test Kemampuan Pemahaman
                             </Typography>
                             <Typography
-                                variant="p"
                                 textAlign={"justify"}
                                 color="black_blue"
                                 fontSize={{ xs: ".7em", sm: "1em" }}
@@ -417,7 +479,7 @@ export default function Home() {
                         >
                             Nikmati semua akses ke{" "}
                             <Typography
-                                variant="b"
+                                component="b"
                                 color="primary"
                                 fontWeight={800}
                             >
@@ -425,7 +487,7 @@ export default function Home() {
                             </Typography>{" "}
                             mulai dari{" "}
                             <Typography
-                                variant="b"
+                                component="b"
                                 color="secondary"
                                 fontWeight={800}
                             >

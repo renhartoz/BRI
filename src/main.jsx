@@ -108,7 +108,7 @@ export const routes = [
         ],
     },
     {
-        path: "/exercise/trigonometri",
+        path: "/exercise/trigonometry",
         element: <ExerciseLayout />,
         children: [
             { path: "1", element: <TRI.Trigonometri1 /> },
@@ -124,7 +124,7 @@ export const routes = [
         ],
     },
     {
-        path: "/exercise/limit",
+        path: "/exercise/limit-at-infty",
         element: <ExerciseLayout />,
         children: [
             { path: "1", element: <LIM.Limit1 /> },

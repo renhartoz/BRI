@@ -9,23 +9,31 @@ export default function Theme(props) {
     let kurai_ao_dark = "#0A2472";
     let kurai_ao_main = "#0A2472";
     let kurai_ao_light = "#3b508e";
+    
     let primary_dark = "#1565c0";
     let primary_main = "#1976d2";
     let primary_light = "#42a5f5";
-    let black_blue_dark = "#111344";
-    let black_blue_main = "#151855";
-    let black_blue_light = "#444677";
+    
     let secondary_dark = "#00786d";
     let secondary_main = "#009688";
     let secondary_light = "#33aba0";
+    
     let tertiary_dark = "#b72e2a";
     let tertiary_main = "#e53935";
     let tertiary_light = "#ea615d";
+    
     let quaternary_dark = "#cc8000";
     let quaternary_main = "#ffa000";
     let quaternary_light = "#ffb333";
 
-    // go cry lol
+    let black_blue_dark = "#111344";
+    let black_blue_main = "#151855";
+    let black_blue_light = "#444677";
+
+    let black_red_dark = "#441311";
+    let black_red_main = "#551815";
+    let black_red_light = "#774644";
+    
     // Forest Green Palette
     let forest_green_black = "#134b32";
     let forest_green_dark = "#196442";
@@ -101,170 +109,127 @@ export default function Theme(props) {
     let white_dark = "#a1b0c8";
     let white_main = "#c9dcfa";
     let white_light = "#d4e3fb";
-    let theme = createTheme({});
-    theme = createTheme(theme, {
+    // let theme = createTheme({});
+    const theme = createTheme({
         palette: {
-            primary: theme.palette.augmentColor({
-                color: {
-                    dark: primary_dark,
-                    main: primary_main,
-                    light: primary_light,
-                },
-                name: "primary",
-            }),
-            black_blue: theme.palette.augmentColor({
-                color: {
-                    dark: black_blue_dark,
-                    main: black_blue_main,
-                    light: black_blue_light,
-                },
-                name: "black_blue",
-            }),
-            kurai_ao: theme.palette.augmentColor({
-                color: {
-                    dark: kurai_ao_dark,
-                    main: kurai_ao_main,
-                    light: kurai_ao_light,
-                },
-                name: "kurai_ao",
-            }),
-            secondary: theme.palette.augmentColor({
-                color: {
-                    dark: secondary_dark,
-                    main: secondary_main,
-                    light: secondary_light,
-                },
-                name: "secondary",
-            }),
-            tertiary: theme.palette.augmentColor({
-                color: {
-                    dark: tertiary_dark,
-                    main: tertiary_main,
-                    light: tertiary_light,
-                },
-                name: "tertiary",
-            }),
-            quaternary: theme.palette.augmentColor({
-                color: {
-                    dark: quaternary_dark,
-                    main: quaternary_main,
-                    light: quaternary_light,
-                },
-                name: "quaternary",
-            }),
-            white: theme.palette.augmentColor({
-                color: {
-                    dark: white_dark,
-                    main: white_main,
-                    light: white_light,
-                },
-                name: "white",
-            }),
-            forestGreen: theme.palette.augmentColor({
-                color: {
-                    dark: forest_green_dark,
-                    main: forest_green_main,
-                    light: forest_green_light,
-                },
-                name: "forestGreen",
-            }),
-            crimsonRoot: theme.palette.augmentColor({
-                color: {
-                    dark: crimson_root_dark,
-                    main: crimson_root_main,
-                    light: crimson_root_light,
-                },
-                name: "crimsonRoot",
-            }),
-            kansaiBlue: theme.palette.augmentColor({
-                color: {
-                    dark: kansai_blue_dark,
-                    main: kansai_blue_main,
-                    light: kansai_blue_light,
-                },
-                name: "kansaiBlue",
-            }),
-            elusiveTeal: theme.palette.augmentColor({
-                color: {
-                    dark: elusive_teal_dark,
-                    main: elusive_teal_main,
-                    light: elusive_teal_light,
-                },
-                name: "elusiveTeal",
-            }),
-            richPurple: theme.palette.augmentColor({
-                color: {
-                    dark: rich_purple_dark,
-                    main: rich_purple_main,
-                    light: rich_purple_light,
-                },
-                name: "richPurple",
-            }),
-            lightViolet: theme.palette.augmentColor({
-                color: {
-                    dark: light_violet_dark,
-                    main: light_violet_main,
-                    light: light_violet_light,
-                },
-                name: "lightViolet",
-            }),
-            mundaneBlue: theme.palette.augmentColor({
-                color: {
-                    dark: mundane_blue_dark,
-                    main: mundane_blue_main,
-                    light: mundane_blue_light,
-                },
-                name: "mundaneBlue",
-            }),
-            tangerine: theme.palette.augmentColor({
-                color: {
-                    dark: tangerine_dark,
-                    main: tangerine_main,
-                    light: tangerine_light,
-                },
-                name: "tangerine",
-            }),
-            matchaGreen: theme.palette.augmentColor({
-                color: {
-                    dark: matcha_green_dark,
-                    main: matcha_green_main,
-                    light: matcha_green_light,
-                },
-                name: "matchaGreen",
-            }),
-            deepslate: theme.palette.augmentColor({
-                color: {
-                    dark: deepslate_dark,
-                    main: deepslate_main,
-                    light: deepslate_light,
-                },
-                name: "deepslate",
-            }),
+            primary: {
+                dark: primary_dark,
+                main: primary_main,
+                light: primary_light,
+            },
+            kurai_ao: {
+                dark: kurai_ao_dark,
+                main: kurai_ao_main,
+                light: kurai_ao_light,
+            },
+            secondary: {
+                dark: secondary_dark,
+                main: secondary_main,
+                light: secondary_light,
+            },
+            tertiary: {
+                dark: tertiary_dark,
+                main: tertiary_main,
+                light: tertiary_light,
+            },
+            quaternary: {
+                dark: quaternary_dark,
+                main: quaternary_main,
+                light: quaternary_light,
+            },
+            black_blue: {
+                dark: black_blue_dark,
+                main: black_blue_main,
+                light: black_blue_light,
+            },
+            black_red: {
+                dark: black_red_dark,
+                main: black_red_main,
+                light: black_red_light,
+            },
+            white: {
+                dark: white_dark,
+                main: white_main,
+                light: white_light,
+            },
+            forestGreen: {
+                dark: forest_green_dark,
+                main: forest_green_main,
+                light: forest_green_light,
+            },
+            crimsonRoot: {
+                dark: crimson_root_dark,
+                main: crimson_root_main,
+                light: crimson_root_light,
+            },
+            kansaiBlue: {
+                dark: kansai_blue_dark,
+                main: kansai_blue_main,
+                light: kansai_blue_light,
+            },
+            elusiveTeal: {
+                dark: elusive_teal_dark,
+                main: elusive_teal_main,
+                light: elusive_teal_light,
+            },
+            richPurple: {
+                dark: rich_purple_dark,
+                main: rich_purple_main,
+                light: rich_purple_light,
+            },
+            lightViolet: {
+                dark: light_violet_dark,
+                main: light_violet_main,
+                light: light_violet_light,
+            },
+            mundaneBlue: {
+                dark: mundane_blue_dark,
+                main: mundane_blue_main,
+                light: mundane_blue_light,
+            },
+            tangerine: {
+                dark: tangerine_dark,
+                main: tangerine_main,
+                light: tangerine_light,
+            },
+            matchaGreen: {
+                dark: matcha_green_dark,
+                main: matcha_green_main,
+                light: matcha_green_light,
+            },
+            deepslate: {
+                dark: deepslate_dark,
+                main: deepslate_main,
+                light: deepslate_light,
+            },
         },
-        components: {
-            MuiTypography: {
-                styleOverrides: {
-                    root: ({ theme }) =>
-                        theme.unstable_sx({
-                            fontFamily: "Apercu, Inter, DM Sans, sans-serif",
-                            // The change below is debatable. Why? this causes conflict globally. We're locking h1 h2 h3 h4 sizes
-                            fontSize: {
-                                xs: "0.8em",
-                                sm: "0.875em",
-                                md: "1em",
-                                lg: "1.1em",
-                            },
-                        }),
-                },
-            },
-            MuiButton: {
-                styleOverrides: {
-                    root: {
-                        fontFamily: "Inter, DM Sans, sans-serif",
-                    },
-                },
-            },
+        typography: {
+            fontFamily: '"Apercu", "Inter", "DM Sans", sans-serif',
         },
     });
     return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>;
 }
+
+        //     MuiTypography: {
+        //         styleOverrides: {
+        //             root: ({ theme }) =>
+        //                 theme.unstable_sx({
+        //                     fontFamily: "Apercu, Inter, DM Sans, sans-serif",
+        //                     // The change below is debatable. Why? this causes conflict globally. We're locking h1 h2 h3 h4 sizes
+                            // fontSize: {
+                            //     xs: "0.8em",
+                            //     sm: "0.875em",
+                            //     md: "1em",
+                            //     lg: "1.1em",
+                            // },
+        //                 }),
+        //         },
+        //     },
+        //     MuiButton: {
+        //         styleOverrides: {
+        //             root: {
+        //                 fontFamily: "Inter, DM Sans, sans-serif",
+        //             },
+        //         },
+        //     },
+        // },

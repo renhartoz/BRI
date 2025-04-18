@@ -10,34 +10,20 @@
     },
     {
         "id": 2,
-        "image": "/cave2.jpg",
-        "title": "Calculus 1",
+        "image": "/course/limit/limit.png",
+        "title": "Trigonometri",
         "subject": "MTK",
-        "level": "Intermediate",
-        "Free": true
+        "level": "Beginner",
+        "Free": true,
+        "href": "/exercise/trigonometry/1"
     },
     {
         "id": 3,
-        "image": "/home3.jpg",
-        "title": "Learn Python 3",
-        "subject": "INF",
-        "level": "Beginner",
-        "Free": true
-    },
-    {
-        "id": 4,
-        "image": "/ocean4.jpg",
-        "title": "Calculus 2",
+        "image": "/course/limit/limit.png",
+        "title": "Limit Tak Hingga",
         "subject": "MTK",
-        "level": "Advanced",
-        "Free": false
-    },
-    {
-        "id": 5,
-        "image": "/galaxy1.jpg",
-        "title": "Learn Flask",
-        "subject": "INF",
         "level": "Intermediate",
-        "Free": false
+        "Free": true,
+        "href": "/exercise/limit-at-infty/1"
     }
 ]   

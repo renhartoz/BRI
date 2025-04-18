@@ -8,41 +8,5 @@
         "level": "Beginner",
         "Free": true,
         "href": "/course/limit"
-    },
-    {
-        "id": 2,
-        "image": "/cave2.jpg",
-        "title": "Calculus 1",
-        "desc": "An introductory course that teaches fundamental concepts and techniques of calculus.",
-        "subject": "MTK",
-        "level": "Intermediate",
-        "Free": true
-    },
-    {
-        "id": 3,
-        "image": "/home3.jpg",
-        "title": "Learn Python 3",
-        "desc": "Learn the basics of Python 3.12, one of the most versatile and in-demand programming languages today.",
-        "subject": "INF",
-        "level": "Beginner",
-        "Free": true
-    },
-    {
-        "id": 4,
-        "image": "/ocean4.jpg",
-        "title": "Calculus 2",
-        "desc": "A math course that covers integral and differential calculus, sequences and series, and parametric equations.",
-        "subject": "MTK",
-        "level": "Advanced",
-        "Free": false
-    },
-    {
-        "id": 5,
-        "image": "/galaxy1.jpg",
-        "title": "Learn Flask",
-        "desc": "Learn the basics of the world's fastest-growing web programming framework.",
-        "subject": "INF",
-        "level": "Intermediate",
-        "Free": false
     }
 ]   
