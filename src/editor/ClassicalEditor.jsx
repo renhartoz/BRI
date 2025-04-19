@@ -29,7 +29,7 @@ import CustomInput from '../form/CustomInput';
 import CustomInputNumber from '../form/CustomInputNumber';
 import SelectField from '../form/SelectField';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { saveBlog, loadBlog } from '../Utility';
+import { saveBlog, loadBlog, getBlockRef, getParentAndIndex } from '../Utility';
 
 import TextFieldsIcon from '@mui/icons-material/TextFields';
 import FunctionsIcon from '@mui/icons-material/Functions';
@@ -131,12 +131,25 @@ function MenuButtons({ addBlock }) {
   )
 }
 
-function RenderBlock({ blog, setBlog }) {
+function RenderBlock({ blocks, path = [], setBlog, blog }) {
   const [expandedBlocks, setExpandedBlocks] = useState({});
-  const [propsDialogIndex, setPropsDialogIndex] = useState(null);
+  const [propsDialogPath, setPropsDialogPath] = useState(null);
   const [tempProps, setTempProps] = useState({});
 
-  // ➕ Add content block
+  const updateBlock = (path, field, value) => {
+    const updated = [...blog.content];
+    const [parent, index] = getParentAndIndex(updated, path);
+    parent[index][field] = value;
+    setBlog({ ...blog, content: updated });
+  };
+
+  const removeBlock = (path) => {
+    const updated = [...blog.content];
+    const [parent, index] = getParentAndIndex(updated, path);
+    parent.splice(index, 1);
+    setBlog({ ...blog, content: updated });
+  };
+
   const addBlock = (type) => {
     const newBlock = {
       type,
@@ -152,411 +165,376 @@ function RenderBlock({ blog, setBlog }) {
         ? { text: '', children: [] }
         : { text: '' }),
     };
-    setBlog((prev) => ({
-      ...prev,
-      content: [...prev.content, newBlock],
-    }));
-  };
-
-  // ✏️ Update individual block
-  const updateBlock = (index, field, value) => {
-    const updated = [...blog.content];
-    updated[index][field] = value;
+    const updated = [...blog.content, newBlock];
     setBlog({ ...blog, content: updated });
   };
 
-  const updateListItem = (blockIndex, itemIndex, value) => {
+  const addChild = (path, type) => {
     const updated = [...blog.content];
-    updated[blockIndex].items[itemIndex] = value;
+    const [parent, index] = getParentAndIndex(updated, path);
+    const block = parent[index];
+    if (!block.children) block.children = [];
+
+    const newBlock = {
+      type,
+      ...(type === 'image' || type === 'video'
+        ? { src: '', alt: '' }
+        : type === 'math'
+        ? { text: '\\( x + y = z \\)' }
+        : type === 'list'
+        ? { title: 'List Title', items: ['Item 1', 'Item 2'], bullet: '1' }
+        : type === 'stack'
+        ? { direction: 'column', gap: 2, children: [] }
+        : type === 'paragraph'
+        ? { text: '', children: [] }
+        : { text: '' }),
+    };
+
+    block.children.push(newBlock);
     setBlog({ ...blog, content: updated });
   };
 
-  const addListItem = (blockIndex) => {
+  const updateListItem = (path, itemIndex, value) => {
     const updated = [...blog.content];
-    updated[blockIndex].items.push('New Item');
+    const [parent, index] = getParentAndIndex(updated, path);
+    parent[index].items[itemIndex] = value;
+    setBlog({ ...blog, content: updated });
+  };
+  
+  const addListItem = (path) => {
+    const updated = [...blog.content];
+    const [parent, index] = getParentAndIndex(updated, path);
+    parent[index].items.push('New Item');
+    setBlog({ ...blog, content: updated });
+  };
+  
+  const removeListItem = (path, itemIndex) => {
+    const updated = [...blog.content];
+    const [parent, index] = getParentAndIndex(updated, path);
+    parent[index].items.splice(itemIndex, 1);
     setBlog({ ...blog, content: updated });
   };
 
-  const removeListItem = (blockIndex, itemIndex) => {
-    const updated = [...blog.content];
-    updated[blockIndex].items.splice(itemIndex, 1);
-    setBlog({ ...blog, content: updated });
-  };
-
-  // Add a child to a paragraph or stack
-  const addChild = (blockIndex, type) => {
+  const getBlockId = (blockPath) => blockPath.join('-');
+  const handleDragEnd = (event) => {
+    const { active, over } = event;
+    if (!over || active.id === over.id) return;
+    
+    // Parse the IDs to get the paths
+    const activePath = active.id.split('-').map(Number);
+    const overPath = over.id.split('-').map(Number);
+    
+    // Check if we're moving within the same parent or between different parents
+    const activeParentPath = activePath.slice(0, -1);
+    const overParentPath = overPath.slice(0, -1);
+    const sameParent = JSON.stringify(activeParentPath) === JSON.stringify(overParentPath);
+    
     const updated = [...blog.content];
     
-    // If the parent block doesn't have a children array, initialize it
-    if (!updated[blockIndex].children) {
-      updated[blockIndex].children = [];
+    if (sameParent) {
+      // Moving within the same parent container
+      const [parent, _] = getParentAndIndex(updated, activeParentPath);
+      const activeIndex = activePath[activePath.length - 1];
+      const overIndex = overPath[overPath.length - 1];
+      
+      // Reorder the array
+      const [movedItem] = parent.splice(activeIndex, 1);
+      parent.splice(overIndex, 0, movedItem);
+    } else {
+      // Moving between different parents
+      const [activeParent, activeIndex] = getParentAndIndex(updated, activePath);
+      const [overParent, overIndex] = getParentAndIndex(updated, overPath);
+      
+      // Extract the moved item
+      const [movedItem] = activeParent.splice(activeIndex, 1);
+      
+      // Insert into the new parent
+      overParent.splice(overIndex, 0, movedItem);
     }
     
-    let newChild = {};
-    
-    if (type === 'paragraph') {
-      newChild = {
-        type: 'paragraph',
-        text: '',
-        props: { fontWeight: 400 }
-      };
-    } else if (type === 'math') {
-      newChild = {
-        type: 'math',
-        text: '\\( x + y = z \\)'
-      };
-    } else if (type === 'stack') {
-      newChild = {
-        type: 'stack',
-        direction: 'column',
-        gap: 2,
-        children: []
-      };
-    }
-    
-    updated[blockIndex].children.push(newChild);
     setBlog({ ...blog, content: updated });
   };
 
-  // ❌ Delete block
-  const removeBlock = (index) => {
-    const updated = blog.content.filter((_, i) => i !== index);
-    setBlog({ ...blog, content: updated });
-  };
+  const renderBlockUI = (block, index, path) => {
+    const fullPath = [...path, index];
+    const pathKey = fullPath.join('.');
 
-  const toggleBlockExpansion = (index) => {
-    setExpandedBlocks(prev => ({
-      ...prev,
-      [index]: !prev[index]
-    }));
+    return (
+      <Stack
+        key={index}
+        direction="column"
+        spacing={2}
+        alignItems="stretch"
+        border="1px solid #ccc"
+        p={2}
+      >
+        <Stack direction="row" justifyContent="space-between" alignItems="center">
+          <SortableItem id={getBlockId(fullPath)}>
+            <Typography fontWeight={600}>{block.type.toUpperCase()}</Typography>
+          </SortableItem>
+          <Stack direction="row" spacing={1}>
+            {['paragraph', 'stack', 'formula'].includes(block.type) && (
+              <IconButton size="small" onClick={(e) => {
+                e.stopPropagation();
+                setExpandedBlocks(prev => ({ ...prev, [pathKey]: !prev[pathKey] }))
+              }}>
+                {expandedBlocks[pathKey] ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+              </IconButton>
+            )}
+            <IconButton color="error" onClick={() => removeBlock(fullPath)}>
+              <DeleteIcon />
+            </IconButton>
+            <IconButton
+              size="small"
+              onClick={() => {
+                setTempProps(block.props || {});
+                setPropsDialogPath(fullPath);
+              }}
+            >
+              <SettingsIcon fontSize="small" />
+            </IconButton>
+          </Stack>
+        </Stack>
+
+        {/* RENDER BASED ON TYPE */}
+        {block.type === 'paragraph' || block.type === 'heading' ? (
+          <CustomInput
+            multiline
+            placeholder="Text"
+            value={block.text || ''}
+            setValue={(val) => updateBlock(fullPath, 'text', val)}
+          />
+        ) : block.type === 'math' ? (
+          <Stack gap={3}>
+            <Stack flex={1}>
+              <CustomInput
+                multiline
+                placeholder="Text"
+                value={block.text || ''}
+                setValue={(val) => updateBlock(fullPath, 'text', val)}
+              />
+            </Stack>
+            <Stack direction="row" spacing={2}>
+              <Stack flex={1}>
+                <Typography variant="caption">Direction</Typography>
+                <SelectField
+                  value={block.direction || 'column'}
+                  setValue={(val) => updateBlock(fullPath, 'direction', val)}
+                  choices={[
+                    ["row", "Row (Horizontal)"],
+                    ["column", "Column (Vertical)"]
+                  ]}
+                  fullWidth
+                />
+              </Stack>
+              <Stack flex={1}>
+                <Typography variant="caption">Gap</Typography>
+                <CustomInputNumber
+                  value={block.gap || 0}
+                  setValue={(val) => updateBlock(fullPath, 'gap', val)}
+                  fullWidth
+                />
+              </Stack>
+              <Stack flex={1}>
+                <Typography variant="caption">Justify</Typography>
+                <SelectField
+                  value={block.justify || 'normal'}
+                  setValue={(val) => updateBlock(fullPath, 'justify', val)}
+                  choices={[
+                    ["normal", "Normal"],
+                    ["center", "Center"],
+                    ["flex-start", "Start"],
+                    ["flex-end", "End"],
+                    ["space-between", "Space Between"]
+                  ]}
+                  fullWidth
+                />
+              </Stack>
+              <Stack flex={1}>
+                <Typography variant="caption">Align</Typography>
+                <SelectField
+                  value={block.align || 'normal'}
+                  setValue={(val) => updateBlock(fullPath, 'align', val)}
+                  choices={[
+                    ["normal", "Normal"],
+                    ["center", "Center"],
+                    ["flex-start", "Start"],
+                    ["flex-end", "End"],
+                    ["stretch", "Stretch"]
+                  ]}
+                  fullWidth
+                />
+              </Stack>
+            </Stack>
+          </Stack>
+        ) : block.type === 'stack' ? (
+          <Stack direction="row" spacing={2}>
+            <Stack flex={1}>
+              <Typography variant="caption">Direction</Typography>
+              <SelectField
+                value={block.direction || 'column'}
+                setValue={(val) => updateBlock(fullPath, 'direction', val)}
+                choices={[
+                  ["row", "Row (Horizontal)"],
+                  ["column", "Column (Vertical)"]
+                ]}
+                fullWidth
+              />
+            </Stack>
+            <Stack flex={1}>
+              <Typography variant="caption">Gap</Typography>
+              <CustomInputNumber
+                value={block.gap || 0}
+                setValue={(val) => updateBlock(fullPath, 'gap', val)}
+                fullWidth
+              />
+            </Stack>
+            <Stack flex={1}>
+              <Typography variant="caption">Justify</Typography>
+              <SelectField
+                value={block.justify || 'normal'}
+                setValue={(val) => updateBlock(fullPath, 'justify', val)}
+                choices={[
+                  ["normal", "Normal"],
+                  ["center", "Center"],
+                  ["flex-start", "Start"],
+                  ["flex-end", "End"],
+                  ["space-between", "Space Between"]
+                ]}
+                fullWidth
+              />
+            </Stack>
+            <Stack flex={1}>
+              <Typography variant="caption">Align</Typography>
+              <SelectField
+                value={block.align || 'normal'}
+                setValue={(val) => updateBlock(fullPath, 'align', val)}
+                choices={[
+                  ["normal", "Normal"],
+                  ["center", "Center"],
+                  ["flex-start", "Start"],
+                  ["flex-end", "End"],
+                  ["stretch", "Stretch"]
+                ]}
+                fullWidth
+              />
+            </Stack>
+          </Stack>
+        ) : block.type === 'formula' ? (
+          <Stack direction="row" spacing={2}>
+            <Stack flex={1}>
+              <Typography variant="caption">Gap</Typography>
+              <CustomInputNumber
+                value={block.gap || 0}
+                setValue={(val) => updateBlock(fullPath, 'gap', val)}
+                fullWidth
+              />
+            </Stack>
+          </Stack>
+        ) : block.type === 'image' || block.type === 'video' ? (
+          <>
+            <CustomInput
+              placeholder="Source URL"
+              value={block.src || ''}
+              setValue={(val) => updateBlock(fullPath, 'src', val)}
+            />
+            <CustomInput
+              placeholder="Alt / Caption"
+              value={block.alt || ''}
+              setValue={(val) => updateBlock(fullPath, 'alt', val)}
+            />
+          </>
+        ) : block.type === 'list' ? (
+          <>
+            <CustomInput
+              placeholder="List Title"
+              value={block.title || ''}
+              setValue={(val) => updateBlock(fullPath, 'title', val)}
+            />
+            <CustomInput
+              placeholder="Bullet (1, a, A, bullet, check)"
+              value={block.bullet || ''}
+              setValue={(val) => updateBlock(fullPath, 'bullet', val)}
+            />
+            <Stack spacing={1}>
+              {block.items?.map((itm, i) => (
+                <Stack direction="row" spacing={1} key={i}>
+                  <CustomInput
+                    value={itm}
+                    setValue={(val) => updateListItem(fullPath, i, val)}
+                  />
+                  <IconButton
+                    size="small"
+                    color="error"
+                    onClick={() => removeListItem(fullPath, i)}
+                  >
+                    <DeleteIcon fontSize="small" />
+                  </IconButton>
+                </Stack>
+              ))}
+              <Button onClick={() => addListItem(fullPath)} size="small">
+                + Add Item
+              </Button>
+            </Stack>
+          </>
+        ) : null}
+
+        {['paragraph', 'stack', 'formula'].includes(block.type) && (
+          <Collapse in={expandedBlocks[pathKey]}>
+            <Stack spacing={2} sx={{ pl: 2, borderLeft: '2px solid #ccc', mt: 2 }}>
+              <Typography variant="subtitle2">Children</Typography>
+              {block.children && block.children.length > 0 && (
+                <DndContext
+                  collisionDetection={closestCenter}
+                  onDragEnd={handleDragEnd}
+                >
+                  <SortableContext
+                    items={(block.children || []).map((_, childIndex) => 
+                      getBlockId([...fullPath, childIndex])
+                    )}
+                    strategy={verticalListSortingStrategy}
+                  >
+                    <Stack spacing={2}>
+                      {(block.children || []).map((childBlock, childIndex) => (
+                        renderBlockUI(childBlock, childIndex, fullPath)
+                      ))}
+                    </Stack>
+                  </SortableContext>
+                </DndContext>
+              )}
+              <MenuButtons addBlock={(type) => addChild(fullPath, type)} />
+            </Stack>
+          </Collapse>
+        )}
+      </Stack>
+    );
   };
 
   return (
     <>
-      <MenuButtons addBlock={addBlock} />
-      <Stack spacing={2}>
-        {blog.content.map((item, index) => (
-          <Stack
-            key={index}
-            direction="column"
-            spacing={2}
-            alignItems="stretch"
-            border="1px solid #ccc"
-            p={2}
-          >
-            <Stack direction="row" justifyContent="space-between" alignItems="center">
-              <Typography fontWeight={600}>{item.type.toUpperCase()}</Typography>
-              <Stack direction="row" spacing={1}>
-                {(item.type === 'paragraph' || item.type === 'stack' || item.type === 'formula') && (
-                  <IconButton size="small" onClick={() => toggleBlockExpansion(index)}>
-                    {expandedBlocks[index] ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-                  </IconButton>
-                )}
-                <IconButton color="error" onClick={() => removeBlock(index)}>
-                  <DeleteIcon />
-                </IconButton>
-                <IconButton size="small" onClick={() => {
-                    setTempProps(item.props || {});
-                    setPropsDialogIndex(index);
-                }}>
-                    <SettingsIcon fontSize="small" />
-                </IconButton>
-              </Stack>
-            </Stack>
-
-            {item.type === 'paragraph' ? (
-              <>
-                <CustomInput
-                  multiline
-                  placeholder="Text"
-                  value={item.text || ''}
-                  setValue={(val) => updateBlock(index, 'text', val)}
-                />
-                <Collapse in={expandedBlocks[index]}>
-                  <Stack spacing={2} sx={{ pl: 2, borderLeft: '2px solid #ccc', mt: 2 }}>
-                    <Typography variant="subtitle2">Children</Typography>
-                    
-                    {item.children?.map((child, childIndex) => (
-                      <RenderChildBlock
-                        key={childIndex}
-                        blockIndex={index}
-                        child={child}
-                        childIndex={childIndex}
-                        update={(childIdx, field, value) => {
-                          const updated = [...blog.content];
-                          updated[index].children[childIdx] = {
-                            ...updated[index].children[childIdx],
-                            [field]: value,
-                          };
-                          setBlog({ ...blog, content: updated });
-                        }}
-                        remove={(childIdx) => {
-                          const updated = [...blog.content];
-                          updated[index].children.splice(childIdx, 1);
-                          setBlog({ ...blog, content: updated });
-                        }}
-                      />
-                    ))}
-                    
-                    <Button 
-                      startIcon={<AddIcon />} 
-                      variant="outlined" 
-                      size="small"
-                      onClick={() => addChild(index, 'paragraph')}
-                    >
-                      Add Child Text
-                    </Button>
-                  </Stack>
-                </Collapse>
-              </>
-            ) : item.type === 'heading' ? (
-              <CustomInput
-                multiline
-                placeholder="Text"
-                value={item.text || ''}
-                setValue={(val) => updateBlock(index, 'text', val)}
-              />
-            ) : item.type === 'math' ? (
-              <Stack gap={3}>
-                <Stack flex={1}>
-                  <CustomInput
-                    multiline
-                    placeholder="Text"
-                    value={item.text || ''}
-                    setValue={(val) => updateBlock(index, 'text', val)}
-                  />
-                </Stack>
-                <Stack direction="row" spacing={2}>
-                  <Stack flex={1}>
-                    <Typography variant="caption">Direction</Typography>
-                    <SelectField
-                      value={item.direction || 'column'}
-                      setValue={(val) => updateBlock(index, 'direction', val)}
-                      choices={[
-                        ["row", "Row (Horizontal)"],
-                        ["column", "Column (Vertical)"]
-                      ]}
-                      fullWidth
-                    />
-                  </Stack>
-                  <Stack flex={1}>
-                    <Typography variant="caption">Gap</Typography>
-                    <CustomInputNumber
-                      value={item.gap || 0}
-                      setValue={(val) => updateBlock(index, 'gap', val)}
-                      fullWidth
-                    />
-                  </Stack>
-                  <Stack flex={1}>
-                    <Typography variant="caption">Justify</Typography>
-                    <SelectField
-                      value={item.justify || 'normal'}
-                      setValue={(val) => updateBlock(index, 'justify', val)}
-                      choices={[
-                        ["normal", "Normal"],
-                        ["center", "Center"],
-                        ["flex-start", "Start"],
-                        ["flex-end", "End"],
-                        ["space-between", "Space Between"]
-                      ]}
-                      fullWidth
-                    />
-                  </Stack>
-                  <Stack flex={1}>
-                    <Typography variant="caption">Align</Typography>
-                    <SelectField
-                      value={item.align || 'normal'}
-                      setValue={(val) => updateBlock(index, 'align', val)}
-                      choices={[
-                        ["normal", "Normal"],
-                        ["center", "Center"],
-                        ["flex-start", "Start"],
-                        ["flex-end", "End"],
-                        ["stretch", "Stretch"]
-                      ]}
-                      fullWidth
-                    />
-                  </Stack>
-                </Stack>
-              </Stack>
-            ) : item.type === 'stack' ? (
-              <>
-                <Stack direction="row" spacing={2}>
-                  <Stack flex={1}>
-                    <Typography variant="caption">Direction</Typography>
-                    <SelectField
-                      value={item.direction || 'column'}
-                      setValue={(val) => updateBlock(index, 'direction', val)}
-                      choices={[
-                        ["row", "Row (Horizontal)"],
-                        ["column", "Column (Vertical)"]
-                      ]}
-                      fullWidth
-                    />
-                  </Stack>
-                  <Stack flex={1}>
-                    <Typography variant="caption">Gap</Typography>
-                    <CustomInputNumber
-                      value={item.gap || 0}
-                      setValue={(val) => updateBlock(index, 'gap', val)}
-                      fullWidth
-                    />
-                  </Stack>
-                  <Stack flex={1}>
-                    <Typography variant="caption">Justify</Typography>
-                    <SelectField
-                      value={item.justify || 'normal'}
-                      setValue={(val) => updateBlock(index, 'justify', val)}
-                      choices={[
-                        ["normal", "Normal"],
-                        ["center", "Center"],
-                        ["flex-start", "Start"],
-                        ["flex-end", "End"],
-                        ["space-between", "Space Between"]
-                      ]}
-                      fullWidth
-                    />
-                  </Stack>
-                  <Stack flex={1}>
-                    <Typography variant="caption">Align</Typography>
-                    <SelectField
-                      value={item.align || 'normal'}
-                      setValue={(val) => updateBlock(index, 'align', val)}
-                      choices={[
-                        ["normal", "Normal"],
-                        ["center", "Center"],
-                        ["flex-start", "Start"],
-                        ["flex-end", "End"],
-                        ["stretch", "Stretch"]
-                      ]}
-                      fullWidth
-                    />
-                  </Stack>
-                </Stack>
-                
-                <Collapse in={expandedBlocks[`${index}`]}>
-                  <Stack spacing={2} sx={{ pl: 2, borderLeft: '2px solid #ccc', mt: 2 }}>
-                    <Typography variant="subtitle2">Stack Children</Typography>
-                    {item.children?.map((child, childIndex) => (
-                      <RenderChildBlock
-                        key={childIndex}
-                        blockIndex={index}
-                        child={child}
-                        childIndex={childIndex}
-                        update={(childIdx, field, value) => {
-                          const updated = [...blog.content];
-                          updated[index].children[childIdx] = {
-                            ...updated[index].children[childIdx],
-                            [field]: value,
-                          };
-                          setBlog({ ...blog, content: updated });
-                        }}
-                        remove={(childIdx) => {
-                          const updated = [...blog.content];
-                          updated[index].children.splice(childIdx, 1);
-                          setBlog({ ...blog, content: updated });
-                        }}
-                      />
-                    ))}
-                    <MenuButtons addBlock={addChild} />
-                  </Stack>
-                </Collapse>
-              </>
-            ) : item.type === 'formula' ? (
-              <>
-                <Stack direction="row" spacing={2}>
-                  <Stack flex={1}>
-                    <Typography variant="caption">Gap</Typography>
-                    <CustomInputNumber
-                      value={item.gap || 0}
-                      setValue={(val) => updateBlock(index, 'gap', val)}
-                      fullWidth
-                    />
-                  </Stack>
-                </Stack>
-            
-                <Collapse in={expandedBlocks[index]}>
-                  <Stack spacing={2} sx={{ pl: 2, borderLeft: '2px solid #ccc', mt: 2 }}>
-                    <Typography variant="subtitle2">Formula Children</Typography>
-                    {item.children?.map((child, childIndex) => (
-                      <RenderChildBlock
-                        key={childIndex}
-                        blockIndex={index}
-                        child={child}
-                        childIndex={childIndex}
-                        update={(childIdx, field, value) => {
-                          const updated = [...blog.content];
-                          updated[index].children[childIdx] = {
-                            ...updated[index].children[childIdx],
-                            [field]: value,
-                          };
-                          setBlog({ ...blog, content: updated });
-                        }}
-                        remove={(childIdx) => {
-                          const updated = [...blog.content];
-                          updated[index].children.splice(childIdx, 1);
-                          setBlog({ ...blog, content: updated });
-                        }}
-                      />
-                    ))}
-                    <MenuButtons addBlock={addChild} />
-                  </Stack>
-                </Collapse>
-              </>
-            ) : item.type === 'image' || item.type === 'video' ? (
-              <>
-                <CustomInput
-                  placeholder="Source URL"
-                  value={item.src || ''}
-                  setValue={(val) => updateBlock(index, 'src', val)}
-                />
-                <CustomInput
-                  placeholder="Alt / Caption"
-                  value={item.alt || ''}
-                  setValue={(val) => updateBlock(index, 'alt', val)}
-                />
-              </>
-            ) : item.type === 'list' ? (
-              <>
-                <CustomInput
-                  placeholder="List Title"
-                  value={item.title || ''}
-                  setValue={(val) => updateBlock(index, 'title', val)}
-                />
-                <CustomInput
-                  placeholder="Bullet (1, a, A, bullet, check)"
-                  value={item.bullet || ''}
-                  setValue={(val) => updateBlock(index, 'bullet', val)}
-                />
-                <Stack spacing={1}>
-                  {item.items.map((itm, i) => (
-                    <Stack direction="row" spacing={1} key={i}>
-                      <CustomInput
-                        value={itm}
-                        setValue={(val) => updateListItem(index, i, val)}
-                      />
-                      <IconButton
-                        size="small"
-                        color="error"
-                        onClick={() => removeListItem(index, i)}
-                      >
-                        <DeleteIcon fontSize="small" />
-                      </IconButton>
-                    </Stack>
-                  ))}
-                  <Button onClick={() => addListItem(index)} size="small">
-                    + Add Item
-                  </Button>
-                </Stack>
-              </>
-            ) : null}
+      {path.length === 0 && <MenuButtons addBlock={addBlock} />}
+      <DndContext
+        collisionDetection={closestCenter}
+        onDragEnd={handleDragEnd}
+      >
+        <SortableContext
+          items={blocks.map((_, i) => getBlockId([...path, i]))}
+          strategy={verticalListSortingStrategy}
+        >
+          <Stack spacing={2}>
+            {blocks.map((block, index) => (
+              renderBlockUI(block, index, path)
+            ))}
           </Stack>
-        ))}
-      </Stack>
+        </SortableContext>
+      </DndContext>
+      {/* <Stack spacing={2}>
+        {blocks.map((block, index) => renderBlockUI(block, index, path))}
+      </Stack> */}
 
       <Dialog
-          open={propsDialogIndex !== null}
-          onClose={() => setPropsDialogIndex(null)}
+          open={propsDialogPath !== null}
+          onClose={() => setPropsDialogPath(null)}
           maxWidth="sm"
           fullWidth
       >
@@ -613,13 +591,13 @@ function RenderBlock({ blog, setBlog }) {
               </Stack>
           </DialogContent>
           <DialogActions>
-              <Button onClick={() => setPropsDialogIndex(null)}>Cancel</Button>
+              <Button onClick={() => setPropsDialogPath(null)}>Cancel</Button>
               <Button
                   onClick={() => {
                       const updated = [...blog.content];
-                      updated[propsDialogIndex].props = tempProps;
+                      updated[propsDialogPath].props = tempProps;
                       setBlog({ ...blog, content: updated });
-                      setPropsDialogIndex(null);
+                      setPropsDialogPath(null);
                   }}
                   variant="contained"
               >
@@ -628,335 +606,7 @@ function RenderBlock({ blog, setBlog }) {
           </DialogActions>
       </Dialog>
     </>
-  )
-}
-
-function RenderChildBlock({ blockIndex, child, childIndex, update, remove }) {
-	const [showDialog, setShowDialog] = useState(false);
-	const [tempProps, setTempProps] = useState(child.props || {});
-
-	const updateNested = (subIndex, field, value) => {
-		const newChildren = [...(child.children || [])];
-		newChildren[subIndex] = {
-			...newChildren[subIndex],
-			[field]: value,
-		};
-		update(childIndex, "children", newChildren);
-	};
-
-	const removeNested = (subIndex) => {
-		const newChildren = [...(child.children || [])];
-		newChildren.splice(subIndex, 1);
-		update(childIndex, "children", newChildren);
-	};
-
-	const addNested = (type) => {
-		const newChildren = [...(child.children || [])];
-		newChildren.push({ type, text: "" });
-		update(childIndex, "children", newChildren);
-	};
-
-	return (
-		<Stack gap={3} p={1} border="1px dashed #ccc" borderRadius={1}>
-			<Stack direction="row" justifyContent="space-between" alignItems="center">
-				<Typography fontSize="0.9rem" fontWeight={500}>
-					Child {childIndex + 1} ({child.type})
-				</Typography>
-				<Stack direction="row">
-					<IconButton size="small" onClick={() => setShowDialog(true)}>
-						<SettingsIcon fontSize="small" />
-					</IconButton>
-					<IconButton size="small" color="error" onClick={() => remove(childIndex)}>
-						<DeleteIcon fontSize="small" />
-					</IconButton>
-				</Stack>
-			</Stack>
-
-			{(child.type === "paragraph" || child.type === "heading") && (
-				<CustomInput
-					multiline
-					placeholder="Text"
-					value={child.text || ""}
-					setValue={(val) => update(childIndex, "text", val)}
-				/>
-			)}
-      {(child.type==="math") && (
-        <Stack gap={3}>
-          <Stack flex={1}>
-            <CustomInput
-              multiline
-              placeholder="Text"
-              value={child.text || ""}
-              setValue={(val) => update(childIndex, "text", val)}
-            />
-          </Stack>
-          <Stack direction="row" spacing={2}>
-            <Stack flex={1}>
-              <Typography variant="caption">Direction</Typography>
-              <SelectField
-                value={child.direction || 'column'}
-                setValue={(val) => update(childIndex, 'direction', val)}
-                choices={[
-                  ["row", "Row (Horizontal)"],
-                  ["column", "Column (Vertical)"]
-                ]}
-                fullWidth
-              />
-            </Stack>
-            <Stack flex={1}>
-              <Typography variant="caption">Gap</Typography>
-              <CustomInputNumber
-                value={child.gap || 0}
-                setValue={(val) => update(childIndex, 'gap', val)}
-                fullWidth
-              />
-            </Stack>
-            <Stack flex={1}>
-              <Typography variant="caption">Justify</Typography>
-              <SelectField
-                value={child.justify || 'normal'}
-                setValue={(val) => update(childIndex, 'justify', val)}
-                choices={[
-                  ["normal", "Normal"],
-                  ["center", "Center"],
-                  ["flex-start", "Start"],
-                  ["flex-end", "End"],
-                  ["space-between", "Space Between"]
-                ]}
-                fullWidth
-              />
-            </Stack>
-            <Stack flex={1}>
-              <Typography variant="caption">Align</Typography>
-              <SelectField
-                value={child.align || 'normal'}
-                setValue={(val) => update(childIndex, 'align', val)}
-                choices={[
-                  ["normal", "Normal"],
-                  ["center", "Center"],
-                  ["flex-start", "Start"],
-                  ["flex-end", "End"],
-                  ["stretch", "Stretch"]
-                ]}
-                fullWidth
-              />
-            </Stack>
-          </Stack>
-        </Stack>
-      )}
-
-			{child.type === "stack" && (
-				<>
-					{/* Stack props config */}
-					<Stack direction="row" spacing={2}>
-						<SelectField
-							label="Direction"
-							value={child.direction || "column"}
-							setValue={(val) => update(childIndex, "direction", val)}
-							choices={[
-								["row", "Row"],
-								["column", "Column"],
-							]}
-							fullWidth
-						/>
-						<CustomInputNumber
-							placeholder="Gap"
-							value={child.gap || 0}
-							setValue={(val) => update(childIndex, "gap", val)}
-							fullWidth
-						/>
-            <SelectField
-              value={child.justify || 'normal'}
-              setValue={(val) => update(childIndex, 'justify', val)}
-              choices={[
-                ["normal", "Normal"],
-                ["center", "Center"],
-                ["flex-start", "Start"],
-                ["flex-end", "End"],
-                ["space-between", "Space Between"]
-              ]}
-              fullWidth
-            />
-            <SelectField
-              value={child.align || 'normal'}
-              setValue={(val) => update(childIndex, 'align', val)}
-              choices={[
-                ["normal", "Normal"],
-                ["center", "Center"],
-                ["flex-start", "Start"],
-                ["flex-end", "End"],
-                ["stretch", "Stretch"]
-              ]}
-              fullWidth
-            />
-					</Stack>
-
-					{/* Recursively render nested children */}
-					<Stack spacing={2} mt={1} pl={2} borderLeft="2px solid #ccc">
-						{child.children?.map((sub, i) => (
-							<RenderChildBlock
-								key={i}
-								blockIndex={blockIndex}
-								child={sub}
-								childIndex={i}
-								update={updateNested}
-								remove={removeNested}
-							/>
-						))}
-
-  					<Stack direction="row" justifyContent={'center'} alignItems={'center'} spacing={2}>
-              <Tooltip title="Add Paragraph">
-                <IconButton 
-                  color="primary" 
-                  onClick={() => addNested('paragraph')}
-                  sx={{ border: '1px solid', borderRadius: '8px', padding: '8px' }}
-                >
-                  <TextFieldsIcon />
-                </IconButton>
-              </Tooltip>
-              
-              <Tooltip title="Add Math">
-                <IconButton 
-                  color="primary" 
-                  onClick={() => addNested('math')}
-                  sx={{ border: '1px solid', borderRadius: '8px', padding: '8px' }}
-                >
-                  <FunctionsIcon />
-                </IconButton>
-              </Tooltip>
-              
-              <Tooltip title="Add Image">
-                <IconButton 
-                  color="primary" 
-                  onClick={() => addNested('image')}
-                  sx={{ border: '1px solid', borderRadius: '8px', padding: '8px' }}
-                >
-                  <ImageIcon />
-                </IconButton>
-              </Tooltip>
-              
-              <Tooltip title="Add Video">
-                <IconButton 
-                  color="primary" 
-                  onClick={() => addNested('video')}
-                  sx={{ border: '1px solid', borderRadius: '8px', padding: '8px' }}
-                >
-                  <VideocamIcon />
-                </IconButton>
-              </Tooltip>
-              
-              <Tooltip title="Add Heading">
-                <IconButton 
-                  color="primary" 
-                  onClick={() => addNested('heading')}
-                  sx={{ border: '1px solid', borderRadius: '8px', padding: '8px' }}
-                >
-                  <TitleIcon />
-                </IconButton>
-              </Tooltip>
-              
-              <Tooltip title="Add Formula">
-                <IconButton 
-                  color="primary" 
-                  onClick={() => addNested('formula')}
-                  sx={{ border: '1px solid', borderRadius: '8px', padding: '8px' }}
-                >
-                  <CalculateIcon />
-                </IconButton>
-              </Tooltip>
-              
-              <Tooltip title="Add List">
-                <IconButton 
-                  color="primary" 
-                  onClick={() => addNested('list')}
-                  sx={{ border: '1px solid', borderRadius: '8px', padding: '8px' }}
-                >
-                  <FormatListBulletedIcon />
-                </IconButton>
-              </Tooltip>
-              
-              <Tooltip title="Add Stack">
-                <IconButton 
-                  color="primary" 
-                  onClick={() => addNested('stack')}
-                  sx={{ border: '1px solid', borderRadius: '8px', padding: '8px' }}
-                >
-                  <ViewComfyIcon />
-                </IconButton>
-              </Tooltip>
-            </Stack>
-					</Stack>
-				</>
-			)}
-
-			{/* Props Dialog */}
-			<Dialog open={showDialog} onClose={() => setShowDialog(false)} fullWidth maxWidth="sm">
-				<DialogTitle>Edit Props</DialogTitle>
-				<DialogContent>
-					<Stack gap={3} mt={1}>
-            <CustomInput
-                placeholder="CSS Class"
-                value={tempProps.className || ''}
-                setValue={(val) => setTempProps({ ...tempProps, className: val })}
-                fullWidth
-            />
-						<CustomInput
-                placeholder="Font Color"
-                value={tempProps.color || ''}
-                setValue={(val) => setTempProps({ ...tempProps, color: val })}
-                fullWidth
-            />
-            <CustomInput
-                placeholder="Background Color"
-                value={tempProps.backgroundColor || ''}
-                setValue={(val) => setTempProps({ ...tempProps, backgroundColor: val })}
-                fullWidth
-            />
-            <CustomInput
-                placeholder="Font Family"
-                value={tempProps.fontFamily || ''}
-                setValue={(val) => setTempProps({ ...tempProps, fontFamily: val })}
-                fullWidth
-            />
-            <SelectField
-                label="Font Weight"
-                value={tempProps.fontWeight || 400}
-                setValue={(val) => setTempProps({ ...tempProps, fontWeight: val })}
-                choices={[
-                    [400, "Normal"],
-                    [600, "Bold"],
-                    [700, "Extra Bold"]
-                ]}
-                fullWidth
-            />
-            <SelectField
-                label="Text Align"
-                value={tempProps.textAlign || 'left'}
-                setValue={(val) => setTempProps({ ...tempProps, textAlign: val })}
-                choices={[
-                    ['left', 'Left'],
-                    ['center', 'Center'],
-                    ['right', 'Right'],
-                    ['justify', 'Justify']
-                ]}
-                fullWidth
-            />
-					</Stack>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={() => setShowDialog(false)}>Cancel</Button>
-					<Button
-						onClick={() => {
-							update(childIndex, "props", tempProps);
-							setShowDialog(false);
-						}}
-					>
-						Save
-					</Button>
-				</DialogActions>
-			</Dialog>
-		</Stack>
-	);
+  );
 }
 
 export default function ClassicEditor() {
@@ -988,18 +638,6 @@ export default function ClassicEditor() {
   useEffect(() => {
     saveBlog('editor', blog);
   }, [blog]);
-
-  // Later
-  const handleDragEnd = (event) => {
-    const { active, over } = event;
-    if (active.id !== over.id) {
-      const oldIndex = parseInt(active.id);
-      const newIndex = parseInt(over.id);
-
-      const reordered = arrayMove(blog.content, oldIndex, newIndex);
-      setBlog({ ...blog, content: reordered });
-    }
-  };
 
   // ⬇ Export to JSON
   const exportJSON = () => {
@@ -1113,7 +751,7 @@ export default function ClassicEditor() {
           </Stack>
         </Stack>
 
-        <RenderBlock blog={blog} setBlog={setBlog} />
+        <RenderBlock blog={blog} setBlog={setBlog} blocks={blog.content} />
 
         <Stack direction="row" spacing={2} justifyContent={'center'} alignItems={'center'}>
           <Tooltip title="Import JSON">
