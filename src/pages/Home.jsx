@@ -160,12 +160,12 @@ export default function Home() {
                                 textAlign={{ xs: "center", sm: "justify" }}
                                 component={"h1"}
                                 fontSize={{ xs: "2em", sm: "3.5em" }}
-                                color="quaternary"
+                                color="#DB6400"
                             >
                                 Uji Kompetensi
                             </Typography>
                             <Link to={"/course"}>
-                                <Typography color="tertiary" fontSize={"1em"}>
+                                <Typography color="#DB6400" fontSize={"1em"}>
                                     Lihat Semua
                                 </Typography>
                             </Link>
@@ -251,7 +251,7 @@ export default function Home() {
                             textAlign={{ xs: "center", sm: "justify" }}
                             component={"h1"}
                             fontSize={{ xs: "1em", sm: "1.2em" }}
-                            color="quaternary"
+                            color="#E06600"
                             fontWeight={700}
                         >
                             Apa saja keuntungan Kursus Online di Rumah Ilmiah?
@@ -446,7 +446,7 @@ export default function Home() {
                             textAlign={{ xs: "center", sm: "justify" }}
                             component={"h1"}
                             fontSize={{ xs: "1em", sm: "1.2em" }}
-                            color="quaternary"
+                            color="#E06600"
                             fontWeight={700}
                         >
                             Apa keuntungan Membership?
