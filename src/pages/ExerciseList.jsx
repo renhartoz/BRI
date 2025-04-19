@@ -9,7 +9,7 @@ import {
     useMediaQuery,
     Drawer,
     IconButton,
-    Chip
+    Chip,
 } from "@mui/material";
 import CourseCard from "../components/Card";
 import CustomInput from "../form/CustomInput";
@@ -84,37 +84,70 @@ export default function ExerciseList() {
             (level.length === 0 || level.includes(exercise.level))
     );
 
-    useEffect(()=>{
+    useEffect(() => {
         setExercise_len(filteredexercises.length);
     }, [filteredexercises]);
 
     return (
         <>
-            <Stack direction={'column'}>
-                <Stack px={4} py={2} direction={'row'} gap={3} alignItems={'center'}>
-                    <Typography fontSize={'2.5em'} color="primary" fontWeight={700}>
+            <Stack direction={"column"}>
+                <Stack
+                    px={4}
+                    py={2}
+                    direction={"row"}
+                    gap={3}
+                    alignItems={"center"}
+                >
+                    <Typography
+                        fontSize={"2.5em"}
+                        color="primary"
+                        fontWeight={700}
+                    >
                         Exercise List
                     </Typography>
-                    <Chip label={ <Typography fontSize="1.2em" fontFamily={"monospace"}>{exercise_len} results</Typography> } size="small" sx={{color:"#fff", backgroundColor: "#000", px:1, py:2}} />
+                    <Chip
+                        label={
+                            <Typography
+                                fontSize="1.2em"
+                                fontFamily={"monospace"}
+                            >
+                                {exercise_len} results
+                            </Typography>
+                        }
+                        size="small"
+                        sx={{
+                            color: "#fff",
+                            backgroundColor: "#000",
+                            px: 1,
+                            py: 2,
+                        }}
+                    />
                 </Stack>
-                <Grid2 container columns={4} border={'1px solid #000'} borderRight={'none'} mb={5}>
+                <Grid2
+                    container
+                    columns={4}
+                    border={"1px solid #000"}
+                    borderRight={"none"}
+                    mb={5}
+                >
                     {!isMobile && (
-                        <Grid2 size={1}
+                        <Grid2
+                            size={1}
                             sx={{
                                 height: "100%",
                                 overflowY: "auto",
-                                position:"sticky",
-                                top:'15vh',
+                                position: "sticky",
+                                top: "15vh",
                             }}
                         >
                             <Stack
                                 sx={{
-                                    backgroundColor:"#fff",
-                                    borderRight:"1px solid #000",
-                                    borderBottom:'1px solid #000',
-                                    zIndex:1000,
-                                    maxHeight:"calc(100vh - 94px)",
-                                    overflowY:'auto'
+                                    backgroundColor: "#fff",
+                                    borderRight: "1px solid #000",
+                                    borderBottom: "1px solid #000",
+                                    zIndex: 1000,
+                                    maxHeight: "calc(100vh - 94px)",
+                                    overflowY: "auto",
                                 }}
                                 px={4}
                                 py={4}
@@ -128,7 +161,10 @@ export default function ExerciseList() {
                                 >
                                     <FilterListIcon />
                                     <Typography
-                                        textAlign={{ xs: "center", sm: "justify" }}
+                                        textAlign={{
+                                            xs: "center",
+                                            sm: "justify",
+                                        }}
                                         fontSize={{ xs: "1em", sm: "1.8em" }}
                                         color="secondary"
                                         fontWeight={600}
@@ -137,7 +173,10 @@ export default function ExerciseList() {
                                     </Typography>
                                 </Stack>
                                 <Divider
-                                    sx={{ border: "1.5px solid #aaa", margin: 0 }}
+                                    sx={{
+                                        border: "1.5px solid #aaa",
+                                        margin: 0,
+                                    }}
                                 />
 
                                 {filterOptions.map((filter, index) => (
@@ -177,15 +216,20 @@ export default function ExerciseList() {
                         </Grid2>
                     )}
 
-                    <Grid2 size={{xs:4,md:3}}>
+                    <Grid2 size={{ xs: 4, md: 3 }}>
                         <Box
                             sx={{
-                                px:3,
-                                py:4,
+                                px: 3,
+                                py: 4,
                             }}
                             id="exercise"
                         >
-                            <Stack mb={4} direction="row" alignItems="center" gap={2}>
+                            <Stack
+                                mb={4}
+                                direction="row"
+                                alignItems="center"
+                                gap={2}
+                            >
                                 {/* Search Input */}
                                 <Stack flexGrow={1}>
                                     <CustomInput
@@ -195,7 +239,9 @@ export default function ExerciseList() {
                                         value={search}
                                         color="#000"
                                         setValue={setSearch}
-                                        startIcon={<SearchIcon />}
+                                        startIcon={
+                                            <SearchIcon sx={{ ml: 2 }} />
+                                        }
                                         placeholder="Cari Kursus Online"
                                     />
                                 </Stack>
@@ -215,7 +261,11 @@ export default function ExerciseList() {
                             </Stack>
 
                             {/* exercise Grid2 */}
-                            <Grid2 container spacing={6} justifyContent="center">
+                            <Grid2
+                                container
+                                spacing={6}
+                                justifyContent="center"
+                            >
                                 {filteredexercises.map((exercise) => (
                                     <Grid2 key={exercise.id} maxWidth={300}>
                                         <CourseCard {...exercise} />
@@ -231,16 +281,16 @@ export default function ExerciseList() {
                 open={openDrawer}
                 onClose={() => setOpenDrawer(false)}
                 slotProps={{
-                    backdrop:{
+                    backdrop: {
                         sx: {
                             backgroundColor: "rgba(0, 0, 0, 0.618)",
-                        }
-                    }
+                        },
+                    },
                 }}
             >
                 <Stack
                     sx={{
-                        width: {xs:"75vw", sm:"45vw"},
+                        width: { xs: "75vw", sm: "45vw" },
                         height: "100vh",
                         overflowY: "auto",
                         px: 2,
@@ -251,10 +301,7 @@ export default function ExerciseList() {
                     gap={2}
                     id="drawer-filter"
                 >
-                    <Stack
-                        direction={"row"}
-                        justifyContent={"space-between"}
-                    >
+                    <Stack direction={"row"} justifyContent={"space-between"}>
                         <Typography
                             fontSize="1.8em"
                             color="secondary"
@@ -269,9 +316,7 @@ export default function ExerciseList() {
                             <CloseIcon />
                         </IconButton>
                     </Stack>
-                    <Divider
-                        sx={{ border: "1.5px solid #aaa", margin: 0 }}
-                    />
+                    <Divider sx={{ border: "1.5px solid #aaa", margin: 0 }} />
 
                     {filterOptions.map((filter, index) => (
                         <React.Fragment key={filter.title}>
@@ -280,10 +325,7 @@ export default function ExerciseList() {
                                 justifyContent="center"
                                 px={2}
                             >
-                                <Typography
-                                    fontSize="1.2em"
-                                    fontWeight={800}
-                                >
+                                <Typography fontSize="1.2em" fontWeight={800}>
                                     {filter.title}
                                 </Typography>
                                 {filter.options.map((option) => (

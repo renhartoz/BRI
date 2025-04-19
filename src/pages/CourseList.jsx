@@ -195,7 +195,7 @@ export default function CourseList() {
                                         value={search}
                                         color="#000"
                                         setValue={setSearch}
-                                        startIcon={<SearchIcon />}
+                                        startIcon={<SearchIcon sx={{ml:2}} />}
                                         placeholder="Cari Kursus Online"
                                     />
                                 </Stack>

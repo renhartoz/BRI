@@ -186,10 +186,20 @@ export default function Navbar() {
                                 alignContent: "center",
                             }}
                         >
-                            <Icon sx={{ height: "5vh" }}>
+                            <Icon
+                                sx={{
+                                    height: "5vh",
+                                    display: "flex",
+                                    maxHeight: "5vh",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
                                 <img
                                     src="/putih.svg"
-                                    style={{ maxHeight: "5vh" }}
+                                    style={{
+                                        maxHeight: "5vh",
+                                    }}
                                     alt="Rumah Ilmiah"
                                 />
                             </Icon>
@@ -326,7 +336,14 @@ export function Navbar2({ course }) {
                                 display: { xs: "none", sm: "block" },
                             }}
                         >
-                            <Icon sx={{ height: "5vh" }}>
+                            <Icon
+                                sx={{
+                                    height: "5vh",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
                                 <img
                                     src="/putih.svg"
                                     style={{ maxHeight: "5vh" }}
@@ -407,7 +424,14 @@ export function Navbar3({ exercise }) {
                                 display: { xs: "none", sm: "block" },
                             }}
                         >
-                            <Icon sx={{ height: "5vh" }}>
+                            <Icon
+                                sx={{
+                                    height: "5vh",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
                                 <img
                                     src="/putih.svg"
                                     style={{ maxHeight: "5vh" }}
