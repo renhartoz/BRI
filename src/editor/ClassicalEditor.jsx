@@ -611,8 +611,8 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
 
 export default function ClassicEditor() {
   const navigate = useNavigate();
-  const [time, setTime] = useState(()=>loadBlog('editor').time.split(' ')[0]||'');
-  const [timeUnit, setTimeUnit] = useState(()=>loadBlog('editor').time.split(' ')[1]||'min');
+  const [time, setTime] = useState(()=>loadBlog('editor')?.time.split(' ')[0]||'');
+  const [timeUnit, setTimeUnit] = useState(()=>loadBlog('editor')?.time.split(' ')[1]||'min');
   const [blog, setBlog] = useState(()=>loadBlog('editor')||{
     name: '',
     url: '',
