@@ -14,12 +14,16 @@
                         "type": "paragraph",
                         "text": "tepat pada satu momen",
                         "props": { "fontWeight": 600, "className": "highlight" }
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "?"
                     }
                 ]
             },
             {
                 "type": "paragraph",
-                "text": "? Itulah pertanyaan yang juga dipikirkan Isaac Newton saat ia mengembangkan kalkulus. Dia ingin memahami bagaimana sesuatu berubah ",
+                "text": "Itulah pertanyaan yang juga dipikirkan Isaac Newton saat ia mengembangkan kalkulus. Dia ingin memahami bagaimana sesuatu berubah ",
                 "children": [
                     {
                         "type": "paragraph",
