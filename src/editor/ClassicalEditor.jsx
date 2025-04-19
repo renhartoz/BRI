@@ -593,12 +593,12 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
           <DialogActions>
               <Button onClick={() => setPropsDialogPath(null)}>Cancel</Button>
               <Button
-                    onClick={() => {
-                        const updated = [...blog.content];
-                        const [parent, index] = getParentAndIndex(updated, propsDialogPath);
-                        parent[index].props = tempProps;
-                        setBlog({ ...blog, content: updated 
-                    });
+                  onClick={() => {
+                      const updated = [...blog.content];
+                      const [parent, index] = getParentAndIndex(updated, propsDialogPath);
+                      parent[index].props = tempProps;
+                      setBlog({ ...blog, content: updated });
+                  }}
                   variant="contained"
               >
                   Save
