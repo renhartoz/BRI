@@ -34,3 +34,15 @@ export function loadBlog(key) {
 export function clearBlog() {
     localStorage.removeItem(LOCAL_KEY);
 }
+
+export function getBlockRef(content, path) {
+    return path.reduce((acc, idx) => acc[idx].children || acc[idx], content);
+}
+
+export function getParentAndIndex(content, path) {
+    if (path.length === 1) return [content, path[0]];
+    const parentPath = path.slice(0, -1);
+    const index = path[path.length - 1];
+    const parent = parentPath.reduce((acc, idx) => acc[idx].children, content);
+    return [parent, index];
+}
