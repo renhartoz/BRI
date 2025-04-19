@@ -40,7 +40,8 @@ import CalculateIcon from '@mui/icons-material/Calculate';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import JSONIcon from '@mui/icons-material/DataObject';
 import ViewComfyIcon from '@mui/icons-material/ViewComfy';
-import AddIcon from '@mui/icons-material/Add';
+import TaskIcon from '@mui/icons-material/Task';
+
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -127,6 +128,16 @@ function MenuButtons({ addBlock }) {
             <ViewComfyIcon />
           </IconButton>
         </Tooltip>
+
+        <Tooltip title="Add Example">
+          <IconButton 
+            color="primary" 
+            onClick={() => addBlock('example')}
+            sx={{ border: '1px solid', borderRadius: '8px', padding: '8px' }}
+          >
+            <TaskIcon />
+          </IconButton>
+        </Tooltip>
       </Stack>
   )
 }
@@ -135,6 +146,27 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
   const [expandedBlocks, setExpandedBlocks] = useState({});
   const [propsDialogPath, setPropsDialogPath] = useState(null);
   const [tempProps, setTempProps] = useState({});
+
+  const defaultBlock = (type) => {
+    return {
+      type,
+      ...(type === 'image' || type === 'video'
+        ? { src: '', alt: '' }
+        : type === 'math'
+        ? { text: '\\( {} \\)', justify: 'center' }
+        : type === 'list'
+        ? { title: 'List Title', items: ['Item 1', 'Item 2'], bullet: '1' }
+        : type === 'stack'
+        ? { direction: 'column', gap: 2, children: [] }
+        : type === 'paragraph'
+        ? { text: '', children: [] }
+        : type === 'formula'
+        ? { gap: 1, children: [] }
+        : type === 'example'
+        ? { title: 'Contoh #', equation: '\\[ {} \\]', children: [] }
+        : { text: '' }),
+      }
+    };
 
   const updateBlock = (path, field, value) => {
     const updated = [...blog.content];
@@ -151,20 +183,7 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
   };
 
   const addBlock = (type) => {
-    const newBlock = {
-      type,
-      ...(type === 'image' || type === 'video'
-        ? { src: '', alt: '' }
-        : type === 'math'
-        ? { text: '\\( x + y = z \\)' }
-        : type === 'list'
-        ? { title: 'List Title', items: ['Item 1', 'Item 2'], bullet: '1' }
-        : type === 'stack'
-        ? { direction: 'column', gap: 2, children: [] }
-        : type === 'paragraph'
-        ? { text: '', children: [] }
-        : { text: '' }),
-    };
+    const newBlock = defaultBlock(type)
     const updated = [...blog.content, newBlock];
     setBlog({ ...blog, content: updated });
   };
@@ -175,21 +194,7 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
     const block = parent[index];
     if (!block.children) block.children = [];
 
-    const newBlock = {
-      type,
-      ...(type === 'image' || type === 'video'
-        ? { src: '', alt: '' }
-        : type === 'math'
-        ? { text: '\\( x + y = z \\)' }
-        : type === 'list'
-        ? { title: 'List Title', items: ['Item 1', 'Item 2'], bullet: '1' }
-        : type === 'stack'
-        ? { direction: 'column', gap: 2, children: [] }
-        : type === 'paragraph'
-        ? { text: '', children: [] }
-        : { text: '' }),
-    };
-
+    const newBlock = defaultBlock(type)
     block.children.push(newBlock);
     setBlog({ ...blog, content: updated });
   };
@@ -215,49 +220,90 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
     setBlog({ ...blog, content: updated });
   };
 
-  const getBlockId = (blockPath) => blockPath.join('-');
+  const getBlockId = (blockPath) => `block-${blockPath.join('-')}`;
+  const parseBlockId = (id) => {
+    return id.replace('block-', '').split('-').map(Number);
+  };
+  const getBlockAtPath = (content, path) => {
+    let current = content;
+    let parent = null;
+    let index = null;
+    
+    for (let i = 0; i < path.length; i++) {
+      const idx = path[i];
+      if (i === path.length - 1) {
+        parent = current;
+        index = idx;
+      } else {
+        current = current[idx].children || [];
+      }
+    }
+    
+    return { parent, index };
+  };
   const handleDragEnd = (event) => {
     const { active, over } = event;
     if (!over || active.id === over.id) return;
     
     // Parse the IDs to get the paths
-    const activePath = active.id.split('-').map(Number);
-    const overPath = over.id.split('-').map(Number);
+    const activePath = parseBlockId(active.id);
+    const overPath = parseBlockId(over.id);
+    
+    // Create a deep copy of the content
+    const updated = JSON.parse(JSON.stringify(blog.content));
+    
+    // Get parent and index for the active item
+    const { parent: activeParent, index: activeIndex } = getBlockAtPath(updated, activePath);
+    if (!activeParent) return;
+    
+    // Get parent and index for the over item
+    const { parent: overParent, index: overIndex } = getBlockAtPath(updated, overPath);
+    if (!overParent) return;
     
     // Check if we're moving within the same parent or between different parents
-    const activeParentPath = activePath.slice(0, -1);
-    const overParentPath = overPath.slice(0, -1);
-    const sameParent = JSON.stringify(activeParentPath) === JSON.stringify(overParentPath);
-    
-    const updated = [...blog.content];
+    const sameParent = activeParent === overParent;
     
     if (sameParent) {
-      // Moving within the same parent container
-      const [parent, _] = getParentAndIndex(updated, activeParentPath);
-      const activeIndex = activePath[activePath.length - 1];
-      const overIndex = overPath[overPath.length - 1];
-      
-      // Reorder the array
-      const [movedItem] = parent.splice(activeIndex, 1);
-      parent.splice(overIndex, 0, movedItem);
-    } else {
-      // Moving between different parents
-      const [activeParent, activeIndex] = getParentAndIndex(updated, activePath);
-      const [overParent, overIndex] = getParentAndIndex(updated, overPath);
-      
-      // Extract the moved item
+      // Reorder within the same parent
       const [movedItem] = activeParent.splice(activeIndex, 1);
-      
-      // Insert into the new parent
-      overParent.splice(overIndex, 0, movedItem);
+      activeParent.splice(overIndex, 0, movedItem);
+    } else {
+      // For this simplified version, we'll only allow dragging within the same parent level
+      // You could implement cross-parent movement if needed
+      console.warn("Cross-parent dragging is not supported in this implementation");
+      return;
     }
     
     setBlog({ ...blog, content: updated });
+  };
+  const renderChildrenDnd = (children, parentPath) => {
+    if (!children || children.length === 0) return null;
+    
+    return (
+      <DndContext
+        collisionDetection={closestCenter}
+        onDragEnd={handleDragEnd}
+      >
+        <SortableContext
+          items={children.map((_, childIndex) => 
+            getBlockId([...parentPath, childIndex])
+          )}
+          strategy={verticalListSortingStrategy}
+        >
+          <Stack spacing={2}>
+            {children.map((childBlock, childIndex) => (
+              renderBlockUI(childBlock, childIndex, parentPath)
+            ))}
+          </Stack>
+        </SortableContext>
+      </DndContext>
+    );
   };
 
   const renderBlockUI = (block, index, path) => {
     const fullPath = [...path, index];
     const pathKey = fullPath.join('.');
+    const nestedBlocks = ['paragraph', 'stack', 'formula', 'example'];
 
     return (
       <Stack
@@ -273,11 +319,8 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
             <Typography fontWeight={600}>{block.type.toUpperCase()}</Typography>
           </SortableItem>
           <Stack direction="row" spacing={1}>
-            {['paragraph', 'stack', 'formula'].includes(block.type) && (
-              <IconButton size="small" onClick={(e) => {
-                e.stopPropagation();
-                setExpandedBlocks(prev => ({ ...prev, [pathKey]: !prev[pathKey] }))
-              }}>
+            {nestedBlocks.includes(block.type) && (
+              <IconButton size="small" onClick={() => setExpandedBlocks(prev => ({ ...prev, [pathKey]: !prev[pathKey] }))}>
                 {expandedBlocks[pathKey] ? <ExpandLessIcon /> : <ExpandMoreIcon />}
               </IconButton>
             )}
@@ -477,31 +520,56 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
               </Button>
             </Stack>
           </>
+        ) : block.type === "example" ? (
+          <Stack gap={3}>
+            <Stack flex={1}>
+              <CustomInput
+                multiline
+                placeholder="Title"
+                value={block.title || ''}
+                setValue={(val) => updateBlock(fullPath, 'title', val)}
+              />
+            </Stack>
+            <Stack flex={1}>
+              <CustomInput
+                multiline
+                placeholder="Equation"
+                value={block.equation || ''}
+                setValue={(val) => updateBlock(fullPath, 'equation', val)}
+              />
+            </Stack>
+            <Stack flex={1}>
+              <CustomInput
+                multiline
+                placeholder="Instruction"
+                value={block.instruction || ''}
+                setValue={(val) => updateBlock(fullPath, 'instruction', val)}
+              />
+            </Stack>
+            <Stack flex={1}>
+              <CustomInput
+                multiline
+                placeholder="Note"
+                value={block.note || ''}
+                setValue={(val) => updateBlock(fullPath, 'note', val)}
+              />
+            </Stack>
+            <Stack flex={1}>
+              <CustomInput
+                multiline
+                placeholder="Accordion Text"
+                value={block.accordion_text || ''}
+                setValue={(val) => updateBlock(fullPath, 'accordion_text', val)}
+              />
+            </Stack>
+          </Stack>
         ) : null}
 
-        {['paragraph', 'stack', 'formula'].includes(block.type) && (
+        {nestedBlocks.includes(block.type) && (
           <Collapse in={expandedBlocks[pathKey]}>
             <Stack spacing={2} sx={{ pl: 2, borderLeft: '2px solid #ccc', mt: 2 }}>
               <Typography variant="subtitle2">Children</Typography>
-              {block.children && block.children.length > 0 && (
-                <DndContext
-                  collisionDetection={closestCenter}
-                  onDragEnd={handleDragEnd}
-                >
-                  <SortableContext
-                    items={(block.children || []).map((_, childIndex) => 
-                      getBlockId([...fullPath, childIndex])
-                    )}
-                    strategy={verticalListSortingStrategy}
-                  >
-                    <Stack spacing={2}>
-                      {(block.children || []).map((childBlock, childIndex) => (
-                        renderBlockUI(childBlock, childIndex, fullPath)
-                      ))}
-                    </Stack>
-                  </SortableContext>
-                </DndContext>
-              )}
+              {block.children && block.children.length > 0 && renderChildrenDnd(block.children, fullPath)}
               <MenuButtons addBlock={(type) => addChild(fullPath, type)} />
             </Stack>
           </Collapse>
@@ -528,9 +596,6 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
           </Stack>
         </SortableContext>
       </DndContext>
-      {/* <Stack spacing={2}>
-        {blocks.map((block, index) => renderBlockUI(block, index, path))}
-      </Stack> */}
 
       <Dialog
           open={propsDialogPath !== null}
