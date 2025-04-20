@@ -663,6 +663,7 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
                       const [parent, index] = getParentAndIndex(updated, propsDialogPath);
                       parent[index].props = tempProps;
                       setBlog({ ...blog, content: updated });
+                      setPropsDialogPath(null);
                   }}
                   variant="contained"
               >
