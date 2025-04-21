@@ -160,15 +160,6 @@ export default function Home() {
                                 textAlign={{ xs: "center", sm: "justify" }}
                                 component={"h1"}
                                 fontSize={{ xs: "2em", sm: "3.5em" }}
-                                color="tangerine.dark"
-                            >
-                                Uji Kompetensi
-                            </Typography>
-                            <Typography
-                                variant="h3"
-                                textAlign={{ xs: "center", sm: "justify" }}
-                                component={"h1"}
-                                fontSize={{ xs: "2em", sm: "3.5em" }}
                                 color="#DB6400"
                             >
                                 Uji Kompetensi
