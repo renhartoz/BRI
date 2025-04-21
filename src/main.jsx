@@ -29,6 +29,12 @@ import {
     LimitAtInf,
     LimitAtInf2,
 } from "./course/Limit.jsx";
+
+import {
+    DerivSyllabus,
+    DerivIntro,
+} from "./course/Deriv.jsx";
+
 import * as GK from "./exercise/GasKinetics.jsx";
 import * as TRI from "./exercise/Trigonometri.jsx";
 import * as LIM from "./exercise/Limit.jsx";
@@ -45,6 +51,7 @@ export const routes = [
             { path: "course", element: <CourseList /> },
             { path: "exercise", element: <ExerciseList /> },
             { path: "course/limit", element: <LimitSyllabus /> },
+            { path: "course/deriv", element: <DerivSyllabus /> },
         ],
     },
     { 
@@ -71,7 +78,6 @@ export const routes = [
         path: "/course/limit",
         element: <CourseLayout />,
         children: [
-            // { path: "", element: <Navigate to={getInitialRoute("limit")} replace /> },
             { path: "intro", element: <LimitIntro /> },
             { path: "approach", element: <LimitApproach /> },
             { path: "property", element: <LimitProperty /> },
@@ -79,6 +85,13 @@ export const routes = [
             { path: "infinity", element: <LimitInf /> },
             { path: "atinfinity", element: <LimitAtInf /> },
             { path: "atinfinity2", element: <LimitAtInf2 /> },
+        ],
+    },
+    {
+        path: "/course/deriv",
+        element: <CourseLayout />,
+        children: [
+            { path: "intro", element: <DerivIntro /> },
         ],
     },
     {

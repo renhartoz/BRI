@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Stack, Typography } from "@mui/material";
 import RenderContent from "../editor/RenderContent";
-import blogData from "../data/blogs.json";
 import Loading from "../components/Loading";
 
-export default function Template({ url }) {
+export default function Template({ blogData, url }) {
     const [blog, setBlog] = useState(null);
 
     useEffect(() => {

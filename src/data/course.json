@@ -8,5 +8,15 @@
         "level": "Beginner",
         "Free": true,
         "href": "/course/limit"
+    },
+    {
+        "id": 2,
+        "image": "/course/limit/limit.png",
+        "title": "Derivatif",
+        "desc": "Konsep dasar dalam kalkulus untuk mengukur intensitas perubahan nilai fungsi terhadap perubahan nilai variabelnya.",
+        "subject": "MTK",
+        "level": "Beginner",
+        "Free": true,
+        "href": "/course/deriv"
     }
 ]   

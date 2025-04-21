@@ -2795,6 +2795,25 @@
             "text": "",
             "children": [
               {
+                "type": "paragraph",
+                "text": "",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "text": "Derivatif",
+                    "children": [],
+                    "props": {
+                      "fontWeight": 600
+                    }
+                  },
+                  {
+                    "type": "paragraph",
+                    "text": " dari \\(f(x)\\) terhadap \\(x\\) didefinisikan sebagai berikut",
+                    "children": []
+                  }
+                ]
+              },
+              {
                 "type": "math",
                 "text": "\\[ \\frac{d}{dx}(f(x))=\\lim\\limits_{h \\to 0}\\frac{f(x+h)-f(x)}{h} \\]",
                 "justify": "center",
@@ -2804,10 +2823,46 @@
             "gap": "3"
           },
           {
-            "type": "stack",
-            "direction": "column",
-            "gap": "2",
-            "children": []
+            "type": "example",
+            "title": "Contoh 1",
+            "equation": "\\[ f(x)=10 \\]",
+            "children": [
+              {
+                "type": "math",
+                "text": "\\[ \\begin{aligned}\n\\frac{d}{dx}(f(x)) &= \\lim\\limits_{h \\to 0}\\frac{f(x+h)-f(x)}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{blue}10}-{\\color{blue}10}}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{green}0}}{h} \\\\[10pt]\n&= 0 \n\\end{aligned} \\]",
+                "justify": "center"
+              }
+            ],
+            "instruction": "Cari \\( \\frac{d}{dx}(f(x)) \\)",
+            "accordion_text": "Pembahasan"
+          },
+          {
+            "type": "example",
+            "title": "Contoh 2",
+            "equation": "\\[ f(x)=2x \\]",
+            "children": [
+              {
+                "type": "math",
+                "text": "\\[ \\begin{aligned}\n\\frac{d}{dx}(f(x)) &= \\lim\\limits_{h \\to 0}\\frac{f(x+h)-f(x)}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{blue}2(x+h)}-{\\color{blue}2x}}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{orange}2x+2h}-2x}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{green}2h}}{h} \\\\[10pt]\n&= 2\n\\end{aligned} \\]",
+                "justify": "center"
+              }
+            ],
+            "instruction": "Cari \\( \\frac{d}{dx}(f(x)) \\)",
+            "accordion_text": "Pembahasan"
+          },
+          {
+            "type": "example",
+            "title": "Contoh 3",
+            "equation": "\\[ f(x)=3x^{2} \\]",
+            "children": [
+              {
+                "type": "math",
+                "text": "\\[ \\begin{aligned}\n\\frac{d}{dx}(f(x)) &= \\lim\\limits_{h \\to 0}\\frac{f(x+h)-f(x)}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{blue}3(x+h)^{2}}-{\\color{blue}3x^{2}}}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{orange}3x^{2}+6hx+h^{2}}-3x^{2}}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{green}6hx+h^{2}}}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{purple}h(6x+h)}}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}{\\color{green}(6x+h)} \\\\[10pt]\n&= 6x\n\\end{aligned} \\]",
+                "justify": "center"
+              }
+            ],
+            "instruction": "Cari \\( \\frac{d}{dx}(f(x)) \\)",
+            "accordion_text": "Pembahasan"
           }
         ]
     }

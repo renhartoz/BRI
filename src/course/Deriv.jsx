@@ -5,7 +5,7 @@ import { Stack, Typography, Grid2 } from "@mui/material";
 import Button from "../components/Button";
 import Syllabus from "../components/Syllabus";
 import Template from "./Template";
-import blogData from "../data/blogs/limit.json";
+import blogData from "../data/blogs/deriv.json";
 
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
@@ -16,9 +16,9 @@ import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import ExtensionOutlinedIcon from "@mui/icons-material/ExtensionOutlined";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 
-export function LimitSyllabus() {
+export function DerivSyllabus() {
     const syllabusData = {
-        title: "Silabus: Limit Fungsi",
+        title: "Silabus: Derivatif",
         unit: 6,
         subunit: 15,
         quiz: 8,
@@ -99,12 +99,12 @@ export function LimitSyllabus() {
                                 fontSize={{ xs: "2em", md: "2.4em" }}
                                 fontWeight={700}
                             >
-                                Limit Fungsi
+                                Derivatif
                             </Typography>
                             <Typography fontSize={{ xs: "1em", md: "1.2em" }}>
-                                Konsep dasar dalam kalkulus dan analisis
-                                mengenai hasil fungsi tersebut di dekat input
-                                tertentu
+                                Konsep dasar dalam kalkulus untuk 
+                                mengukur intensitas perubahan nilai fungsi 
+                                terhadap perubahan nilai variabelnya
                             </Typography>
                             <Typography fontSize={{ xs: "1em", md: "1.2em" }}>
                                 Termasuk{" "}
@@ -113,7 +113,7 @@ export function LimitSyllabus() {
                                     fontSize={"inherit"}
                                     fontWeight={600}
                                 >
-                                    Teorema Limit, Limit Tentu, Limit Tak Hingga
+                                    Definisi Derivatif, Sifat Diferensial, Aturan Rantai
                                 </Typography>
                                 , dan lain-lain
                             </Typography>
@@ -205,9 +205,8 @@ export function LimitSyllabus() {
                         </Stack>
                     </Stack>
                     <Stack>
-                        <Link to={"/course/limit/intro"}>
+                        <Link to={"/course/deriv/intro"}>
                             <Button bdcolor={"#000"} sx={{ width: "5em" }}>
-                                {" "}
                                 Mulai
                             </Button>
                         </Link>
@@ -341,7 +340,7 @@ export function LimitSyllabus() {
                                     letterSpacing={-1}
                                     fontWeight={600}
                                 >
-                                    Aljabar Lanjut
+                                    Limit Fungsi
                                 </Typography>
                             </Stack>
                         </Stack>
@@ -424,44 +423,8 @@ export function LimitSyllabus() {
     );
 }
 
-export function LimitIntro() {
+export function DerivIntro() {
     return (
-        <Template blogData={blogData} url={"/course/limit/intro"} />
-    );
-}
-
-export function LimitApproach() {
-    return (
-        <Template blogData={blogData} url={"/course/limit/approach"} />
-    );
-}
-
-export function LimitProperty() {
-    return (
-        <Template blogData={blogData} url={"/course/limit/property"} />
-    );
-}
-
-export function LimitEvaluation() {
-    return (
-        <Template blogData={blogData} url={"/course/limit/evaluation"} />
-    );
-}
-
-export function LimitInf() {
-    return (
-        <Template blogData={blogData} url={"/course/limit/infinity"} />
-    );
-}
-
-export function LimitAtInf() {
-    return (
-        <Template blogData={blogData} url={"/course/limit/atinfinity"} />
-    );
-}
-
-export function LimitAtInf2() {
-    return (
-        <Template blogData={blogData} url={"/course/limit/atinfinity2"} />
+        <Template blogData={blogData} url={"/course/deriv/intro"} />
     );
 }
