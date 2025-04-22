@@ -15,44 +15,25 @@ import LeaderboardOutlinedIcon from "@mui/icons-material/LeaderboardOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import ExtensionOutlinedIcon from "@mui/icons-material/ExtensionOutlined";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import { DescriptionRounded } from "@mui/icons-material";
 
-export function LimitSyllabus() {
-    const syllabusData = {
-        title: "Silabus: Limit Fungsi",
-        unit: 6,
-        subunit: 15,
-        quiz: 8,
-        content: [
-            {
-                point: "Konsep Dasar Limit",
-                desc: "Memahami pengertian limit fungsi dan bagaimana konsep ini digunakan dalam kalkulus.",
-            },
-            {
-                point: "Teknik Evaluasi Limit",
-                desc: "Menggunakan metode matematis untuk mencari nilai limit suatu fungsi.",
-            },
-            {
-                point: "Limit Tak Hingga",
-                desc: "Menghitung limit fungsi ketika x mendekati nilai tak hingga.",
-            },
-            {
-                point: "Limit Logaritma dan Eksponensial",
-                desc: "Memahami bagaimana cara menyelesaikan limit fungsi yang mengandung logaritma dan eksponensial.",
-            },
-            {
-                point: "Limit Fungsi Trigonometri",
-                desc: "Menghitung limit fungsi trigonometri dengan berbagai teknik.",
-            },
-            {
-                point: "Limit Menggunakan Kaidah L'Hôpital",
-                desc: "Mengenal dan menggunakan aturan L'Hôpital untuk menyelesaikan limit dengan bentuk tak tentu.",
-            },
-        ],
-    };
-
+export default function SyllabusTemplate({
+    color,
+    title,
+    desc,
+    subUnits,
+    firstPageURL,
+    level,
+    time,
+    subUnit,
+    preReq,
+    descSyllabus,
+    skills,
+    syllabusData,
+}) {
     return (
         <>
-        {/* add color for each subject */}
+            {/* add color for each subject */}
             <Stack
                 sx={{
                     width: "100%",
@@ -101,24 +82,21 @@ export function LimitSyllabus() {
                                 fontSize={{ xs: "2em", md: "2.4em" }}
                                 fontWeight={700}
                             >
-                                Limit Fungsi
+                                {title}
                             </Typography>
                             {/* desc */}
                             <Typography fontSize={{ xs: "1em", md: "1.2em" }}>
-                                Konsep dasar dalam kalkulus dan analisis
-                                mengenai hasil fungsi tersebut di dekat input
-                                tertentu
+                                {desc}
                             </Typography>
                             <Typography fontSize={{ xs: "1em", md: "1.2em" }}>
-                                Termasuk{" "}
-                                {/* subunits(make it in array) */}
+                                Termasuk {/* subunits(make it in array) */}
                                 {/* change b to span */}
                                 <Typography
                                     component={"span"}
                                     fontSize={"inherit"}
                                     fontWeight={600}
                                 >
-                                    Teorema Limit, Limit Tentu, Limit Tak Hingga
+                                    {subUnits.join(", ")}
                                 </Typography>
                                 , dan lain-lain
                             </Typography>
@@ -211,7 +189,7 @@ export function LimitSyllabus() {
                     </Stack>
                     <Stack>
                         {/* url that send to first page */}
-                        <Link to={"/course/limit/intro"}>
+                        <Link to={firstPageURL}>
                             <Button bdcolor={"#000"} sx={{ width: "5em" }}>
                                 {" "}
                                 Mulai
@@ -262,13 +240,13 @@ export function LimitSyllabus() {
                                     Skill Level
                                 </Typography>
                                 {/* level */}
-                                
+
                                 <Typography
                                     fontSize={"1.5em"}
                                     letterSpacing={-1}
                                     fontWeight={600}
                                 >
-                                    Intermediate
+                                    {level}
                                 </Typography>
                             </Stack>
                         </Stack>
@@ -296,7 +274,7 @@ export function LimitSyllabus() {
                                     letterSpacing={-1}
                                     fontWeight={600}
                                 >
-                                    15 jam
+                                    {time}
                                 </Typography>
                             </Stack>
                         </Stack>
@@ -324,7 +302,7 @@ export function LimitSyllabus() {
                                     letterSpacing={-1}
                                     fontWeight={600}
                                 >
-                                    15
+                                    {subUnit}
                                 </Typography>
                             </Stack>
                         </Stack>
@@ -352,7 +330,7 @@ export function LimitSyllabus() {
                                     letterSpacing={-1}
                                     fontWeight={600}
                                 >
-                                    Aljabar Lanjut
+                                    {preReq}
                                 </Typography>
                             </Stack>
                         </Stack>
@@ -377,12 +355,7 @@ export function LimitSyllabus() {
                     </Typography>
                     {/* desc_syllabus */}
                     <Typography textAlign={"justify"}>
-                        Dalam matematika, limit adalah nilai yang didekati suatu
-                        fungsi saat mendekati nilai tertentu. Limit sangat
-                        penting dalam kalkulus dan analisis matematika. Dalam
-                        kursus ini, Anda akan mempelajari dasar-dasar limit
-                        fungsi dan mengeksplorasi berbagai teori mengenai limit
-                        fungsi.
+                        {descSyllabus}
                     </Typography>
                 </Stack>
                 <Stack gap={1}>
@@ -400,11 +373,7 @@ export function LimitSyllabus() {
                         sx={{ width: { xs: "80vw", sm: "25vw", lg: "30vw" } }}
                     >
                         {/* skills (make it to an array) */}
-                        {[
-                            "Konsep Fundamental Limit Fungsi",
-                            "Penerapan Limit Fungsi",
-                            "Persiapan untuk konsep derivatif",
-                        ].map((item, index) => (
+                        {skills.map((item, index) => (
                             <Grid2 xs={3} sm={3} key={index}>
                                 <Stack
                                     direction="row"
@@ -438,43 +407,29 @@ export function LimitSyllabus() {
 }
 
 export function LimitIntro() {
-    return (
-        <Template blogData={blogData} url={"/course/limit/intro"} />
-    );
+    return <Template blogData={blogData} url={"/course/limit/intro"} />;
 }
 
 export function LimitApproach() {
-    return (
-        <Template blogData={blogData} url={"/course/limit/approach"} />
-    );
+    return <Template blogData={blogData} url={"/course/limit/approach"} />;
 }
 
 export function LimitProperty() {
-    return (
-        <Template blogData={blogData} url={"/course/limit/property"} />
-    );
+    return <Template blogData={blogData} url={"/course/limit/property"} />;
 }
 
 export function LimitEvaluation() {
-    return (
-        <Template blogData={blogData} url={"/course/limit/evaluation"} />
-    );
+    return <Template blogData={blogData} url={"/course/limit/evaluation"} />;
 }
 
 export function LimitInf() {
-    return (
-        <Template blogData={blogData} url={"/course/limit/infinity"} />
-    );
+    return <Template blogData={blogData} url={"/course/limit/infinity"} />;
 }
 
 export function LimitAtInf() {
-    return (
-        <Template blogData={blogData} url={"/course/limit/atinfinity"} />
-    );
+    return <Template blogData={blogData} url={"/course/limit/atinfinity"} />;
 }
 
 export function LimitAtInf2() {
-    return (
-        <Template blogData={blogData} url={"/course/limit/atinfinity2"} />
-    );
+    return <Template blogData={blogData} url={"/course/limit/atinfinity2"} />;
 }
