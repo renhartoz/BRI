@@ -19,17 +19,13 @@ import {
 
 import SortableItem from './SortableItem';
 import { DndContext, closestCenter } from '@dnd-kit/core';
-import { SortableContext, arrayMove, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 
-import WebIcon from '@mui/icons-material/Web';
-import DownloadIcon from '@mui/icons-material/Download';
-import UploadIcon from '@mui/icons-material/Upload';
 import { useNavigate } from 'react-router-dom';
 import CustomInput from '../form/CustomInput';
 import CustomInputNumber from '../form/CustomInputNumber';
 import SelectField from '../form/SelectField';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { saveBlog, loadBlog, getBlockRef, getParentAndIndex } from '../Utility';
+import { saveBlog, loadBlog, getParentAndIndex } from '../Utility';
 
 import TextFieldsIcon from '@mui/icons-material/TextFields';
 import FunctionsIcon from '@mui/icons-material/Functions';
@@ -41,10 +37,16 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import JSONIcon from '@mui/icons-material/DataObject';
 import ViewComfyIcon from '@mui/icons-material/ViewComfy';
 import TaskIcon from '@mui/icons-material/Task';
+import TableIcon from '@mui/icons-material/TableView';
 
+import CopyIcon from '@mui/icons-material/ContentCopy';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import SettingsIcon from '@mui/icons-material/Settings';
+import DeleteIcon from '@mui/icons-material/Delete';
+import WebIcon from '@mui/icons-material/Web';
+import DownloadIcon from '@mui/icons-material/Download';
+import UploadIcon from '@mui/icons-material/Upload';
 
 function MenuButtons({ addBlock }) {
   return (
@@ -138,6 +140,16 @@ function MenuButtons({ addBlock }) {
             <TaskIcon />
           </IconButton>
         </Tooltip>
+
+        <Tooltip title="Add Table">
+          <IconButton 
+            color="primary" 
+            onClick={() => addBlock('table')}
+            sx={{ border: '1px solid', borderRadius: '8px', padding: '8px' }}
+          >
+            <TableIcon />
+          </IconButton>
+        </Tooltip>
       </Stack>
   )
 }
@@ -164,6 +176,8 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
         ? { gap: 1, children: [] }
         : type === 'example'
         ? { title: 'Contoh #', equation: '\\[ {} \\]', children: [] }
+        : type === 'table'
+        ? { data: [] }
         : { text: '' }),
       }
     };
@@ -174,20 +188,17 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
     parent[index][field] = value;
     setBlog({ ...blog, content: updated });
   };
-
   const removeBlock = (path) => {
     const updated = [...blog.content];
     const [parent, index] = getParentAndIndex(updated, path);
     parent.splice(index, 1);
     setBlog({ ...blog, content: updated });
   };
-
   const addBlock = (type) => {
     const newBlock = defaultBlock(type)
     const updated = [...blog.content, newBlock];
     setBlog({ ...blog, content: updated });
   };
-
   const addChild = (path, type) => {
     const updated = [...blog.content];
     const [parent, index] = getParentAndIndex(updated, path);
@@ -205,18 +216,137 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
     parent[index].items[itemIndex] = value;
     setBlog({ ...blog, content: updated });
   };
-  
   const addListItem = (path) => {
     const updated = [...blog.content];
     const [parent, index] = getParentAndIndex(updated, path);
     parent[index].items.push('New Item');
     setBlog({ ...blog, content: updated });
-  };
-  
+  };  
   const removeListItem = (path, itemIndex) => {
     const updated = [...blog.content];
     const [parent, index] = getParentAndIndex(updated, path);
     parent[index].items.splice(itemIndex, 1);
+    setBlog({ ...blog, content: updated });
+  };
+
+  const addTableRow = (path) => {
+    const updated = [...blog.content];
+    const [parent, index] = getParentAndIndex(updated, path);
+    const table = parent[index];
+    
+    // Initialize table data if it doesn't exist
+    if (!table.data || !Array.isArray(table.data) || table.data.length === 0) {
+      table.data = [];
+    }
+    
+    // Create a new row with the same number of columns as existing rows or default to 2
+    const numCols = table.data[0]?.length || 2;
+    const newRow = Array(numCols).fill().map(() => ({
+      type: 'paragraph',
+      text: '',
+    }));
+    
+    table.data.push(newRow);
+    setBlog({ ...blog, content: updated });
+  };
+  const addTableColumn = (path) => {
+    const updated = [...blog.content];
+    const [parent, index] = getParentAndIndex(updated, path);
+    const table = parent[index];
+    
+    // Initialize table data if it doesn't exist
+    if (!table.data || !Array.isArray(table.data) || table.data.length === 0) {
+      table.data = [[], []]; // Start with two empty rows
+    }
+    
+    // Add a new cell to each row
+    table.data.forEach(row => {
+      row.push({
+        type: 'paragraph',
+        text: '',
+      });
+    });
+    
+    setBlog({ ...blog, content: updated });
+  };
+  const removeTableRow = (path, rowIndex) => {
+    const updated = [...blog.content];
+    const [parent, index] = getParentAndIndex(updated, path);
+    const table = parent[index];
+    
+    // Check if there's data and at least one row
+    if (table.data && Array.isArray(table.data) && table.data.length > 1) {
+      // Remove the row at the specified index
+      table.data.splice(rowIndex, 1);
+      setBlog({ ...blog, content: updated });
+    } else {
+      // Don't remove the last row
+      alert("Cannot remove the last row");
+    }
+  };
+  const removeTableColumn = (path, colIndex) => {
+    const updated = [...blog.content];
+    const [parent, index] = getParentAndIndex(updated, path);
+    const table = parent[index];
+    
+    // Check if there's data and at least one column
+    if (table.data && Array.isArray(table.data) && 
+        table.data[0] && table.data[0].length > 1) {
+      // Remove the column at the specified index from each row
+      table.data.forEach(row => {
+        row.splice(colIndex, 1);
+      });
+      setBlog({ ...blog, content: updated });
+    } else {
+      // Don't remove the last column
+      alert("Cannot remove the last column");
+    }
+  };
+  const handleCellTextChange = (path, rowIndex, colIndex, val) => {
+    const updated = [...blog.content];
+    const [parent, index] = getParentAndIndex(updated, path);
+    const cell = parent[index].data[rowIndex][colIndex];
+    
+    // Check if the text contains a backslash and should be converted to math
+    if (val.includes('\\') && cell.type !== 'math') {
+      // Convert the cell to math type
+      parent[index].data[rowIndex][colIndex] = {
+        type: 'math',
+        text: val,
+      };
+    } else {
+      // Just update the text
+      cell.text = val;
+    }
+    
+    setBlog({ ...blog, content: updated });
+  };
+  const toggleCellType = (path, rowIndex, colIndex) => {
+    const updated = [...blog.content];
+    const [parent, index] = getParentAndIndex(updated, path);
+    const cell = parent[index].data[rowIndex][colIndex];
+    
+    if (cell.type === 'paragraph') {
+      if (String(cell.text).startsWith('\\(') && String(cell.text).endsWith('\\)')) {
+        parent[index].data[rowIndex][colIndex] = {
+          type: 'math',
+          text: cell.text || '\\( {} \\)',
+          justify: 'center',
+        };
+      } else {
+        parent[index].data[rowIndex][colIndex] = {
+          type: 'math',
+          text: `\\( ${cell.text} \\)` || '\\( {} \\)',
+          justify: 'center',
+        };
+      }
+    } else if (cell.type === 'math') {
+      parent[index].data[rowIndex][colIndex] = {
+        type: 'paragraph',
+        text: cell.text || '',
+      };
+    }
+    
     setBlog({ ...blog, content: updated });
   };
 
@@ -502,10 +632,13 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
             <Stack spacing={1}>
               {block.items?.map((itm, i) => (
                 <Stack direction="row" spacing={1} key={i}>
-                  <CustomInput
-                    value={itm}
-                    setValue={(val) => updateListItem(fullPath, i, val)}
-                  />
+                  <Stack flex={1}>
+                    <CustomInput
+                      value={itm}
+                      setValue={(val) => updateListItem(fullPath, i, val)}
+                      fullWidth
+                    />
+                  </Stack>
                   <IconButton
                     size="small"
                     color="error"
@@ -563,6 +696,81 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
               />
             </Stack>
           </Stack>
+        ) : block.type === "table" ? (
+          <Stack spacing={2}>
+            {/* Table header with column remove buttons */}
+            {block.data && block.data[0] && (
+              <Stack direction="row" spacing={1}>
+                <Box width={24}></Box> {/* Space for row buttons */}
+                {block.data[0].map((_, colIndex) => (
+                  <Box key={colIndex} flex={1} textAlign="center">
+                    <IconButton 
+                      size="small" 
+                      color="error" 
+                      onClick={() => removeTableColumn(fullPath, colIndex)}
+                      disabled={block.data[0].length <= 1}
+                    >
+                      <DeleteIcon fontSize="small" />
+                    </IconButton>
+                  </Box>
+                ))}
+              </Stack>
+            )}
+            
+            {/* Table rows */}
+            {(block.data || []).map((row, rowIndex) => (
+              <Stack key={rowIndex} direction="row" spacing={1} alignItems="center">
+                {/* Row remove button */}
+                <Box>
+                  <IconButton 
+                    size="small" 
+                    color="error" 
+                    onClick={() => removeTableRow(fullPath, rowIndex)}
+                    disabled={block.data.length <= 1}
+                  >
+                    <DeleteIcon fontSize="small" />
+                  </IconButton>
+                </Box>
+                
+                {/* Row cells */}
+                {row.map((cell, colIndex) => (
+                  <Box key={colIndex} border="1px solid #ccc" p={1} flex={1} minWidth={100}>
+                    <Stack spacing={1}>
+                      {/* Cell type indicator and toggle button */}
+                      <Stack direction="row" justifyContent="space-between" alignItems="center">
+                        <Typography variant="caption" color="textSecondary">
+                          {cell.type === 'math' ? 'Math' : 'Text'}
+                        </Typography>
+                        <IconButton 
+                          size="small" 
+                          onClick={() => toggleCellType(fullPath, rowIndex, colIndex)}
+                        >
+                          {cell.type === 'math' ? 
+                            <FunctionsIcon fontSize="small" /> : 
+                            <TextFieldsIcon fontSize="small" />
+                          }
+                        </IconButton>
+                      </Stack>
+                      
+                      {/* Cell content input */}
+                      <CustomInput
+                        multiline
+                        placeholder={cell.type === 'math' ? "Math expression" : "Cell text"}
+                        value={cell.text || ''}
+                        setValue={(val) => handleCellTextChange(fullPath, rowIndex, colIndex, val)}
+                      />
+                    </Stack>
+                  </Box>
+                ))}
+              </Stack>
+            ))}
+            
+            {/* Add row/column buttons */}
+            <Stack direction="row" spacing={1}>
+              <Button onClick={() => addTableRow(fullPath)}>+ Add Row</Button>
+              <Button onClick={() => addTableColumn(fullPath)}>+ Add Column</Button>
+            </Stack>
+          </Stack>
         ) : null}
 
         {nestedBlocks.includes(block.type) && (
@@ -580,7 +788,9 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
 
   return (
     <>
-      {path.length === 0 && <MenuButtons addBlock={addBlock} />}
+      <Stack position={'sticky'} top={0} py={3} zIndex={10} backgroundColor={"#fff"}>
+        {path.length === 0 && <MenuButtons addBlock={addBlock} />}
+      </Stack>
       <DndContext
         collisionDetection={closestCenter}
         onDragEnd={handleDragEnd}
@@ -692,6 +902,15 @@ export default function ClassicEditor() {
   const [importOpen, setImportOpen] = useState(false);
   const [importText, setImportText] = useState(JSON.stringify(blog, "", 4));
 
+  useEffect(() => {
+      const handleStorage = () => {
+          const updatedBlog = loadBlog('editor');
+          setImportText(updatedBlog);
+      };
+  
+      window.addEventListener('storage', handleStorage);
+      return () => window.removeEventListener('storage', handleStorage);
+  }, []);
 
   // 💾 Save to localStorage on change
   useEffect(() => {
@@ -702,7 +921,13 @@ export default function ClassicEditor() {
   }, [time, timeUnit]);
   
   useEffect(() => {
-    saveBlog('editor', blog);
+    const handler = setTimeout(() => {
+      saveBlog('editor', blog);
+    }, 2000); // debounce time in ms
+  
+    return () => {
+      clearTimeout(handler); // clear previous timer on re-render
+    };
   }, [blog]);
 
   // ⬇ Export to JSON
@@ -881,7 +1106,7 @@ export default function ClassicEditor() {
               setSnackbarOpen(true);
             }}
           >
-            <DownloadIcon fontSize="small" />
+            <CopyIcon fontSize="small" />
           </IconButton>
         </DialogTitle>
 
@@ -944,7 +1169,7 @@ export default function ClassicEditor() {
                   Array.isArray(parsed.content)
                 ) {
                   setBlog(parsed);
-                  localStorage.setItem('classic-editor-blog', JSON.stringify(parsed));
+                  localStorage.setItem('editor', JSON.stringify(parsed));
                   setImportOpen(false);
                   setImportText('');
                 } else {

@@ -19,7 +19,7 @@ export default function Problem({ title, equation, children, instruction, note, 
                         </Typography>
                     )}
                     {equation && (
-                        <Typography fontSize={"1.2em"} textAlign={"center"} sx={{overflowX:"auto", overflowY: "hidden"}}>
+                        <Typography fontSize={"1.2em"} sx={{overflowX:"auto", overflowY: "hidden"}}>
                             <MathJax>{equation}</MathJax>
                         </Typography>
                     )}

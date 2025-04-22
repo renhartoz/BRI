@@ -6,12 +6,19 @@ import Footer from "./components/Footer";
 import { MathJaxContext } from "better-react-mathjax";
 import ScrollToTop from "./components/ScrollToTop";
 
+const config = {
+    loader: { load: ['[tex]/color'] },
+    tex: {
+        packages: { '[+]': ['color'] },
+    },
+};
+
 export default function App() {
     return (
         <>
             <Stack sx={{minHeight: '100vh'}}>
                 <Theme>
-                    <MathJaxContext>
+                    <MathJaxContext config={config}>
                         <Header />
                         <Stack flexGrow={1}>
                             <Outlet />

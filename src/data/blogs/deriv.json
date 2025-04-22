@@ -1,124 +1,764 @@
 [
-    {
-        "name": "deriv_intro",
-        "url": "/course/deriv/intro",
-        "unit": "Konsep Turunan",
-        "subunit": "Introduksi Turunan",
-        "time": "15 min",
-        "content": [
+  {
+    "name": "deriv_intro",
+    "url": "/course/deriv/intro",
+    "unit": "Konsep Derivatif",
+    "subunit": "Introduksi Derivatif",
+    "time": "15 min",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Bayangkan kamu melihat grafik harga saham di layar. Garisnya naik dan turun sepanjang hari. Tapi di satu titik tertentu, kamu ingin tahu: apakah saham sedang naik cepat, melambat, atau bahkan mulai turun? Jawabannya ada pada kemiringan grafik di titik itu, yaitu ",
+        "children": [
           {
             "type": "paragraph",
-            "text": "Bayangkan kamu melihat grafik harga saham di layar. Garisnya naik dan turun sepanjang hari. Tapi di satu titik tertentu, kamu ingin tahu: apakah saham sedang naik cepat, melambat, atau bahkan mulai turun? Jawabannya ada pada kemiringan grafik di titik itu, yaitu ",
-            "children": [
-              {
-                "type": "paragraph",
-                "text": "turunan",
-                "props": {
-                  "fontWeight": 400,
-                  "className": "highlight"
-                }
-              },
-              {
-                "type": "paragraph",
-                "text": ". Turunan adalah cara matematis untuk mengukur ",
-                "props": {
-                  "fontWeight": 400
-                }
-              },
-              {
-                "type": "paragraph",
-                "text": "arah dan kecepatan perubahan",
-                "props": {
-                  "fontWeight": 400,
-                  "className": "highlight"
-                }
-              },
-              {
-                "type": "paragraph",
-                "text": " dari suatu nilai dalam waktu nyata.",
-                "props": {
-                  "fontWeight": 400
-                }
-              }
-            ],
+            "text": "derivatif",
             "props": {
-              "textAlign": "justify"
+              "fontWeight": 400,
+              "className": "highlight"
             }
           },
           {
-            "type": "formula",
+            "type": "paragraph",
+            "text": ". Derivatif (atau turunan) adalah cara matematis untuk mengukur ",
+            "props": {
+              "fontWeight": 400
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "arah dan kecepatan perubahan",
+            "props": {
+              "fontWeight": 400,
+              "className": "highlight"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": " dari suatu nilai dalam waktu nyata.",
+            "props": {
+              "fontWeight": 400
+            }
+          }
+        ],
+        "props": {
+          "textAlign": "justify"
+        }
+      },
+      {
+        "type": "formula",
+        "text": "",
+        "children": [
+          {
+            "type": "paragraph",
             "text": "",
             "children": [
               {
                 "type": "paragraph",
-                "text": "",
+                "text": "Derivatif",
+                "children": [],
+                "props": {
+                  "fontWeight": 600
+                }
+              },
+              {
+                "type": "paragraph",
+                "text": " dari \\(f(x)\\) terhadap \\(x\\) didefinisikan sebagai berikut",
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "math",
+            "text": "\\[ \\frac{d}{dx}(f(x))=\\lim\\limits_{h \\to 0}\\frac{f(x+h)-f(x)}{h} \\]",
+            "justify": "center",
+            "direction": "row"
+          }
+        ],
+        "gap": "3"
+      },
+      {
+        "type": "example",
+        "title": "Contoh 1",
+        "equation": "\\[ f(x)=10 \\]",
+        "children": [
+          {
+            "type": "math",
+            "text": "\\[ \\begin{aligned}\n\\frac{d}{dx}(f(x)) &= \\lim\\limits_{h \\to 0}\\frac{f(x+h)-f(x)}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{blue}10}-{\\color{blue}10}}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{green}0}}{h} \\\\[10pt]\n&= 0 \n\\end{aligned} \\]",
+            "justify": "center"
+          }
+        ],
+        "instruction": "Cari \\( \\frac{d}{dx}(f(x)) \\)",
+        "accordion_text": "Pembahasan"
+      },
+      {
+        "type": "example",
+        "title": "Contoh 2",
+        "equation": "\\[ f(x)=2x \\]",
+        "children": [
+          {
+            "type": "math",
+            "text": "\\[ \\begin{aligned}\n\\frac{d}{dx}(f(x)) &= \\lim\\limits_{h \\to 0}\\frac{f(x+h)-f(x)}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{blue}2(x+h)}-{\\color{blue}2x}}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{orange}2x+2h}-2x}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{green}2h}}{h} \\\\[10pt]\n&= 2\n\\end{aligned} \\]",
+            "justify": "center"
+          }
+        ],
+        "instruction": "Cari \\( \\frac{d}{dx}(f(x)) \\)",
+        "accordion_text": "Pembahasan"
+      },
+      {
+        "type": "example",
+        "title": "Contoh 3",
+        "equation": "\\[ f(x)=3x^{2} \\]",
+        "children": [
+          {
+            "type": "math",
+            "text": "\\[ \\begin{aligned}\n\\frac{d}{dx}(f(x)) &= \\lim\\limits_{h \\to 0}\\frac{f(x+h)-f(x)}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{blue}3(x+h)^{2}}-{\\color{blue}3x^{2}}}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{orange}3x^{2}+6hx+h^{2}}-3x^{2}}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{green}6hx+h^{2}}}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{purple}h(6x+h)}}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}{\\color{green}(6x+h)} \\\\[10pt]\n&= 6x\n\\end{aligned} \\]",
+            "justify": "center"
+          }
+        ],
+        "instruction": "Cari \\( \\frac{d}{dx}(f(x)) \\)",
+        "accordion_text": "Pembahasan"
+      },
+      {
+        "type": "stack",
+        "direction": "column",
+        "gap": "0",
+        "children": [
+          {
+            "type": "heading",
+            "text": "Notasi"
+          },
+          {
+            "type": "table",
+            "data": [
+              [
+                {
+                  "type": "paragraph",
+                  "text": "Style"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Derivatif Pertama"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Derivatif Kedua"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Derivatif ke-n"
+                }
+              ],
+              [
+                {
+                  "type": "paragraph",
+                  "text": "Lagrange"
+                },
+                {
+                  "type": "math",
+                  "text": "\\( y' \\)",
+                  "justify": "center"
+                },
+                {
+                  "type": "math",
+                  "text": "\\( y'' \\)",
+                  "justify": "center"
+                },
+                {
+                  "type": "math",
+                  "text": "\\( y^{(n)} \\)",
+                  "justify": "center"
+                }
+              ],
+              [
+                {
+                  "type": "paragraph",
+                  "text": "Leibniz"
+                },
+                {
+                  "type": "math",
+                  "text": "\\( \\frac{dy}{dx} \\)",
+                  "justify": "center"
+                },
+                {
+                  "type": "math",
+                  "text": "\\( \\frac{d^{2}y}{dx^{2}} \\)",
+                  "justify": "center"
+                },
+                {
+                  "type": "math",
+                  "text": "\\( \\frac{d^{n}y}{dx^{n}} \\)",
+                  "justify": "center"
+                }
+              ],
+              [
+                {
+                  "type": "paragraph",
+                  "text": "Newton"
+                },
+                {
+                  "type": "math",
+                  "text": "\\( \\dot{y} \\)",
+                  "justify": "center"
+                },
+                {
+                  "type": "math",
+                  "text": "\\( \\ddot{y} \\)",
+                  "justify": "center"
+                },
+                {
+                  "type": "math",
+                  "text": "\\( \\overset{n}{\\dot{y}} \\)",
+                  "justify": "center"
+                }
+              ],
+              [
+                {
+                  "type": "paragraph",
+                  "text": "Euler"
+                },
+                {
+                  "type": "math",
+                  "text": "\\( D_{x}y \\)",
+                  "justify": "center"
+                },
+                {
+                  "type": "math",
+                  "text": "\\( D^{2}_{x}y \\)",
+                  "justify": "center"
+                },
+                {
+                  "type": "math",
+                  "text": "\\( D^{n}_{x}y \\)",
+                  "justify": "center"
+                }
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Note: Pada kursus ini, ",
+            "children": [
+              {
+                "type": "paragraph",
+                "text": "notasi Leibniz",
+                "children": [],
+                "props": {
+                  "className": "highlight"
+                }
+              },
+              {
+                "type": "paragraph",
+                "text": " akan sering digunakan, karena ",
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "text": "notasi ini dapat membantu penjelasan konsep lanjutan ",
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "text": "derivatif",
+                "children": [],
+                "props": {
+                  "className": "highlight"
+                }
+              },
+              {
+                "type": "paragraph",
+                "text": " dan ",
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "text": "diferensial",
+                "children": [],
+                "props": {
+                  "className": "highlight"
+                }
+              }
+            ]
+          }
+        ],
+        "justify": "center",
+        "align": "normal"
+      }
+    ]
+  },
+  {
+    "name": "deriv_property",
+    "url": "/course/deriv/property",
+    "unit": "Aturan Dasar",
+    "subunit": "Sifat Derivatif",
+    "time": "15 min",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Pada bagian pertama bab ini, kita melihat definisi turunan dan menghitung beberapa turunan menggunakan definisi tersebut. Untuk fungsi yang lebih kompleks, menggunakan definisi turunan akan menjadi tugas yang hampir mustahil. Untungnya, definisi tersebut tidak perlu terlalu sering digunakan. Definisi derivatif harus digunakan pada momen tertentu, namun banyak sekali rumus dan sifat yang dapat digunakan untuk menyelesaikan derivatif, tanpa penggunaan definisi tersebut.",
+        "children": [],
+        "props": {
+          "textAlign": "justify"
+        }
+      },
+      {
+        "type": "stack",
+        "direction": "column",
+        "gap": "0",
+        "children": [
+          {
+            "type": "heading",
+            "text": "Kaidah Pangkat"
+          },
+          {
+            "type": "formula",
+            "gap": 1,
+            "children": [
+              {
+                "type": "math",
+                "text": "\\[ \\frac{d}{dx}(x^{n}) = nx^{n-1} \\]",
+                "justify": "center"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "stack",
+        "direction": "column",
+        "gap": "0",
+        "children": [
+          {
+            "type": "heading",
+            "text": "Sifat Derivatif"
+          },
+          {
+            "type": "formula",
+            "gap": "0",
+            "children": [
+              {
+                "type": "list",
+                "title": "Asumsikan \\(c\\) adalah konstan",
+                "items": [
+                  "\\[ \\frac{d}{dx}(f(x) \\pm g(x)) = \\frac{d}{dx}(f(x)) \\pm \\frac{d}{dx}(g(x)) \\]",
+                  "\\[ \\frac{d}{dx}(c f(x)) = c\\frac{d}{dx}(f(x)) \\]"
+                ],
+                "bullet": "1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "example",
+        "title": "Contoh 1",
+        "equation": "\\[ f(x)=7x^{100}-4x^{12}+9x-18 \\]",
+        "children": [
+          {
+            "type": "math",
+            "text": "\\[ \\begin{aligned}\n\\frac{d}{dx}(f(x)) &= \\frac{d}{dx}\\left(7x^{100}-4x^{12}+9x-18\\right) \\\\[10pt]\n&= 7\\frac{d}{dx}\\left(x^{100}\\right)-4\\frac{d}{dx}\\left(x^{12}\\right)+9\\frac{d}{dx}\\left(x\\right)-18\\frac{d}{dx}\\left(x^{0}\\right) \\\\[10pt]\n&= 7\\left(100\\right)x^{99}-4\\left(12\\right)x^{11}+9\\left(1\\right)x^{0}-18\\left(0\\right)x^{-1} \\\\[10pt]\n&= 700x^{99}-48x^{11}+9\n\\end{aligned} \\]",
+            "justify": "center"
+          }
+        ],
+        "instruction": "Cari \\( \\frac{d}{dx}(f(x)) \\)",
+        "accordion_text": "Pembahasan"
+      },
+      {
+        "type": "paragraph",
+        "text": "Dari ",
+        "children": [
+          {
+            "type": "paragraph",
+            "text": "Contoh 1",
+            "children": [],
+            "props": {
+              "className": "highlight"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": ", dapat disimpulkan bahwa  ",
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "text": "derivatif",
+            "children": [],
+            "props": {
+              "className": "highlight"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": " dari sebuah konstan bernilai \\(0\\). Fenomena ini terjadi sesuai dengan ",
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "text": "Kaidah Pangkat",
+            "children": [],
+            "props": {
+              "className": "highlight"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": " yang membuat hasil derivatif dari sebuah konstan menjadi \\(0\\), mengingat konstan merupakan koefisien dari \\(x^{0}\\) pada fungsi polinomial",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "formula",
+        "gap": 1,
+        "children": [
+          {
+            "type": "math",
+            "text": "\\[ \\frac{d}{dx}(c)=0 \\]",
+            "justify": "center"
+          }
+        ]
+      },
+      {
+        "type": "example",
+        "title": "Contoh 2",
+        "equation": "\\[ y=8z^{3}-\\frac{1}{z^{5}}+2z-23 \\]",
+        "children": [
+          {
+            "type": "math",
+            "text": "\\[ \\begin{aligned}\n\\frac{dy}{dz} &= \\frac{d}{dz}\\left(8z^{3}-\\frac{1}{z^{5}}+2z-23\\right) \\\\[10pt]\n&= 8\\frac{d}{dz}\\left(z^{3}\\right)-\\frac{d}{dz}\\left(z^{-5}\\right)+2\\frac{d}{dz}\\left(z\\right)-\\frac{d}{dz}\\left(23\\right) \\\\[10pt]\n&= 8\\left(3\\right)z^{2}-\\left(-5\\right)z^{-6}+2\\left(1\\right)z^{0}-0 \\\\[10pt]\n&= 24z^{2}+5z^{-6}+2\n\\end{aligned} \\]",
+            "justify": "center"
+          }
+        ],
+        "instruction": "Cari \\( \\frac{dy}{dz} \\)",
+        "accordion_text": "Pembahasan"
+      },
+      {
+        "type": "example",
+        "title": "Contoh 3",
+        "equation": "\\[ h(t)=\\frac{2\\sqrt{t^{5}}+t^{2}-5}{t^{2}} \\]",
+        "children": [
+          {
+            "type": "math",
+            "text": "\\[ \\begin{aligned}\n\\frac{d}{dt}(h(t)) &= \\frac{d}{dt}\\left(\\frac{2\\sqrt{t^{5}}+t^{2}-5}{t^{2}}\\right) \\\\[10pt]\n&= \\frac{d}{dt}\\left(2\\sqrt{t}+1-5t^{-2}\\right) \\\\[10pt]\n&= 2\\frac{d}{dt}\\left(t^{\\frac{1}{2}}\\right)+\\frac{d}{dt}\\left(1\\right)-5\\frac{d}{dt}\\left(t^{-2}\\right) \\\\[10pt]\n&= 2\\left(\\frac{1}{2}\\right)t^{-\\frac{1}{2}}+0-5\\left(-2\\right)t^{-3} \\\\[10pt]\n&= t^{-\\frac{1}{2}}+10t^{-3}\n\\end{aligned} \\]",
+            "justify": "center"
+          }
+        ],
+        "instruction": "Cari \\( \\frac{d}{dt}(h(t)) \\)",
+        "accordion_text": "Pembahasan"
+      }
+    ]
+  },
+  {
+    "name": "deriv_chain",
+    "url": "/course/deriv/chain",
+    "unit": "Konsep Derivatif",
+    "subunit": "Aturan Dasar",
+    "time": "20 min",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Di bagian ini, kita akan membahas salah satu kaidah penting yang ada di derivatif, yaitu ",
+        "children": [
+          {
+            "type": "paragraph",
+            "text": "Aturan Rantai",
+            "children": [],
+            "props": {
+              "className": "highlight"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": ". Untuk fungsi yang lebih membutuhkan komputasi tinggi, menggunakan derivatif tanpa aturan rantai akan menjadi tugas yang mustahil. Tanpa menggunakan aturan rantai, kita tidak dapat mencari turunan dengan cara komputasi yang sederhana.",
+            "children": []
+          }
+        ],
+        "props": {
+          "textAlign": "justify"
+        }
+      },
+      {
+        "type": "example",
+        "title": "Contoh 1",
+        "equation": "\\[ f(x)=(2x+5)^{4} \\]",
+        "children": [
+          {
+            "type": "math",
+            "text": "\\[ \\begin{aligned}\n\\frac{d}{dx}(f(x)) &= \\frac{d}{dx}\\left(2x+5\\right)^{4} \\\\[10pt]\n&= \\frac{d}{dx}\\left(16x^{4}+160x^{3}+600x^{2}+1000x+625\\right) \\\\[10pt]\n&= 16\\frac{d}{dx}\\left(x^{4}\\right)+160\\frac{d}{dx}\\left(x^{3}\\right)+600\\frac{d}{dx}\\left(x^{2}\\right)+1000\\frac{d}{dx}\\left(x\\right)+\\frac{d}{dx}\\left(625\\right) \\\\[10pt]\n&= 16\\left(4\\right)x^{3}+160\\left(3\\right)x^{2}+600\\left(2\\right)x+1000\\left(1\\right)x^{0}+0 \\\\[10pt]\n&= 64x^{3}+480x^{2}+1200x+1000 \\\\[10pt]\n\\end{aligned} \\]",
+            "justify": "center"
+          }
+        ],
+        "instruction": "Cari \\( \\frac{d}{dx}(f(x)) \\)",
+        "accordion_text": "Pembahasan"
+      },
+      {
+        "type": "stack",
+        "direction": "column",
+        "gap": "0",
+        "children": [
+          {
+            "type": "heading",
+            "text": "Aturan Rantai"
+          },
+          {
+            "type": "formula",
+            "gap": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "text": "Asumsikan ",
                 "children": [
                   {
                     "type": "paragraph",
-                    "text": "Derivatif",
-                    "children": [],
-                    "props": {
-                      "fontWeight": 600
-                    }
-                  },
-                  {
-                    "type": "paragraph",
-                    "text": " dari \\(f(x)\\) terhadap \\(x\\) didefinisikan sebagai berikut",
+                    "text": "\\(y = f(u) \\) dan \\(u=g(x)\\)",
                     "children": []
                   }
                 ]
               },
               {
                 "type": "math",
-                "text": "\\[ \\frac{d}{dx}(f(x))=\\lim\\limits_{h \\to 0}\\frac{f(x+h)-f(x)}{h} \\]",
-                "justify": "center",
-                "direction": "row"
-              }
-            ],
-            "gap": "3"
-          },
-          {
-            "type": "example",
-            "title": "Contoh 1",
-            "equation": "\\[ f(x)=10 \\]",
-            "children": [
-              {
-                "type": "math",
-                "text": "\\[ \\begin{aligned}\n\\frac{d}{dx}(f(x)) &= \\lim\\limits_{h \\to 0}\\frac{f(x+h)-f(x)}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{blue}10}-{\\color{blue}10}}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{green}0}}{h} \\\\[10pt]\n&= 0 \n\\end{aligned} \\]",
+                "text": "\\[ \\frac{dy}{dx}=\\frac{dy}{du}\\space\\frac{du}{dx} \\]",
                 "justify": "center"
               }
-            ],
-            "instruction": "Cari \\( \\frac{d}{dx}(f(x)) \\)",
-            "accordion_text": "Pembahasan"
-          },
-          {
-            "type": "example",
-            "title": "Contoh 2",
-            "equation": "\\[ f(x)=2x \\]",
-            "children": [
-              {
-                "type": "math",
-                "text": "\\[ \\begin{aligned}\n\\frac{d}{dx}(f(x)) &= \\lim\\limits_{h \\to 0}\\frac{f(x+h)-f(x)}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{blue}2(x+h)}-{\\color{blue}2x}}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{orange}2x+2h}-2x}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{green}2h}}{h} \\\\[10pt]\n&= 2\n\\end{aligned} \\]",
-                "justify": "center"
-              }
-            ],
-            "instruction": "Cari \\( \\frac{d}{dx}(f(x)) \\)",
-            "accordion_text": "Pembahasan"
-          },
-          {
-            "type": "example",
-            "title": "Contoh 3",
-            "equation": "\\[ f(x)=3x^{2} \\]",
-            "children": [
-              {
-                "type": "math",
-                "text": "\\[ \\begin{aligned}\n\\frac{d}{dx}(f(x)) &= \\lim\\limits_{h \\to 0}\\frac{f(x+h)-f(x)}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{blue}3(x+h)^{2}}-{\\color{blue}3x^{2}}}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{orange}3x^{2}+6hx+h^{2}}-3x^{2}}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{green}6hx+h^{2}}}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}\\frac{{\\color{purple}h(6x+h)}}{h} \\\\[10pt]\n&= \\lim\\limits_{h \\to 0}{\\color{green}(6x+h)} \\\\[10pt]\n&= 6x\n\\end{aligned} \\]",
-                "justify": "center"
-              }
-            ],
-            "instruction": "Cari \\( \\frac{d}{dx}(f(x)) \\)",
-            "accordion_text": "Pembahasan"
+            ]
           }
         ]
-    }
+      },
+      {
+        "type": "example",
+        "title": "Recap Contoh 1",
+        "equation": "\\[ f(x)=(2x+5)^{4} \\]",
+        "children": [
+          {
+            "type": "math",
+            "text": "\\[ \\begin{aligned}\n\\frac{d}{dx}(f(x)) &= \\frac{d}{dx}\\left((2x+5)^{4}\\right) \\\\[10pt]\n&= \\frac{d}{d(2x+5)}\\left( (2x+5)^{4} \\right) \\space \\frac{d}{dx}\\left(2x+5\\right) \\\\[10pt]\n&= 4\\left( 2x+5 \\right)^{3} (2) \\\\[10pt]\n&= 8\\left(2x+5\\right)^{3}\n\\end{aligned} \\]",
+            "justify": "center"
+          }
+        ],
+        "instruction": "Cari \\( \\frac{d}{dx}(f(x)) \\)",
+        "accordion_text": "Pembahasan"
+      },
+      {
+        "type": "example",
+        "title": "Contoh 2",
+        "equation": "\\[ a(t)=\\sqrt{\\frac{1}{2}t+7} \\]",
+        "children": [
+          {
+            "type": "math",
+            "text": "\\[ \\begin{aligned}\n\\frac{d}{dt}(a(t)) &= \\frac{d}{dt}\\left(\\sqrt{\\frac{1}{2}t+7}\\right) \\\\[10pt]\n&= \\frac{d}{dt}\\left(\\left(\\frac{1}{2}t+7\\right)^{\\frac{1}{2}}\\right) \\\\[10pt]\n&= \\frac{1}{2}\\left( \\frac{1}{2}t+7 \\right)^{-\\frac{1}{2}} \\left(\\frac{1}{2}\\right) \\\\[10pt]\n&= \\frac{1}{4}\\left( \\frac{1}{2}t+7 \\right)^{-\\frac{1}{2}}\n\\end{aligned} \\]",
+            "justify": "center"
+          }
+        ],
+        "instruction": "Cari \\( \\frac{d}{dt}(a(t)) \\)",
+        "accordion_text": "Pembahasan"
+      },
+      {
+        "type": "example",
+        "title": "Contoh 3",
+        "equation": "\\[ f(x)=(2x^2+5x+2)^{100} \\]",
+        "children": [
+          {
+            "type": "math",
+            "text": "\\[ \\begin{aligned}\n\\frac{d}{dx}(f(x)) &= \\frac{d}{dx}\\left((2x^2+5x+2)^{100}\\right) \\\\[10pt]\n&= 100\\left( 2x^2+5x+2 \\right)^{99} (4x+5)\n\\end{aligned} \\]",
+            "justify": "center"
+          }
+        ],
+        "instruction": "Cari \\( \\frac{d}{dx}(f(x)) \\)",
+        "accordion_text": "Pembahasan"
+      }
+    ]
+  },
+  {
+    "name": "deriv_product",
+    "url": "/course/deriv/product",
+    "unit": "Aturan Dasar",
+    "subunit": "Aturan Perkalian dan Pembagian",
+    "time": "20 min",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Pada bagian sebelumnya kita sudah mengetahui bagaimana cara mengatasi operasi penjumlahan, pengurangan, dan perkalian skalar pada soal derivatif. Sekarang kita akan membahas secara spesifik mengenai aturan yang berlaku pada derivatif dari perkalian atau pembagian antara dua fungsi. Pada bagian ini, kita akan sering menggunakan notasi Lagrange untuk menghindari penulisan yang padat.",
+        "children": [],
+        "props": {
+          "textAlign": "justify"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Sebagai contoh, kita memiliki ",
+        "children": [
+          {
+            "type": "paragraph",
+            "text": "\\(2\\) fungsi: \\(f(x)=2x^{4}\\) dan \\(g(x)=3x^{5}\\)",
+            "children": []
+          },
+          {
+            "type": "math",
+            "text": "\\[ \\frac{d}{dx}(f(x)g(x))=\\frac{d}{dx}\\left(\\left( 2x^{4} \\right)\\left( 3x^{5} \\right)\\right)=\\frac{d}{dx}\\left( 6x^{9} \\right))=54x^{8} \\]",
+            "justify": "center"
+          },
+          {
+            "type": "paragraph",
+            "text": "Sekarang mari kita cek apakah sifat perkalian \\(2\\) fungsi pada derivatif dapat dipisah seperti limit",
+            "children": []
+          },
+          {
+            "type": "math",
+            "text": "\\[ \\frac{d}{dx}(f(x)) \\space \\frac{d}{dx}(g(x))=\\frac{d}{dx}\\left( 2x^{4} \\right)\\frac{d}{dx}\\left( 3x^{5} \\right)=\\left( 8x^{3} \\right) \\left( 15x^{4} \\right) = 120x^{7}\\ \\]",
+            "justify": "center"
+          },
+          {
+            "type": "paragraph",
+            "text": "Maka dapat disimpulkan bahwa",
+            "children": []
+          },
+          {
+            "type": "math",
+            "text": "\\[ \\frac{d}{dx}\\left(f(x)g(x)\\right) \\neq \\frac{d}{dx}\\left(f(x)\\right)\\frac{d}{dx}\\left(g(x)\\right)\\]",
+            "justify": "center"
+          }
+        ]
+      },
+      {
+        "type": "stack",
+        "direction": "column",
+        "gap": "0",
+        "children": [
+          {
+            "type": "heading",
+            "text": "Aturan Perkalian"
+          },
+          {
+            "type": "formula",
+            "gap": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "text": "Asumsikan ",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "text": "\\(u = f(x) \\) dan \\(v=g(x)\\)",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "type": "math",
+                "text": "\\[ (uv)'=u'v+uv' \\]",
+                "justify": "center"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Aturan pembagian sebenarnya dapat didefinisikan sebagai perkalian pecahan. Maka sebenarnya, kita bisa mendapatkan turunan dari pembagian menggunakan aturan perkalian. Namun untuk mempercepat komputasi, matematikawan sudah membuat aturan pembagian sebagai sebuah formula yang siap dipakai.",
+        "children": []
+      },
+      {
+        "type": "stack",
+        "direction": "column",
+        "gap": "0",
+        "children": [
+          {
+            "type": "paragraph",
+            "text": "Aturan Pembagian",
+            "children": []
+          },
+          {
+            "type": "formula",
+            "gap": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "text": "Asumsikan ",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "text": "\\(u=f(x)\\) dan \\(v=g(x)\\)",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "type": "math",
+                "text": "\\[ \\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^{2}} \\]",
+                "justify": "center"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "example",
+        "title": "Contoh 1",
+        "equation": "\\[ f(x)=5x^{2}\\sqrt{(19-2x)^{5}} \\]",
+        "children": [
+          {
+            "type": "math",
+            "text": "\\[ \\begin{aligned}\n\\frac{d}{dx}(f(x)) &= \\frac{d}{dx}\\left(5x^{2}(19-2x)^{\\frac{5}{2}}\\right) \\\\[10pt]\n&= (10x)(19-2x)^{\\frac{5}{2}}+\\left(5x^{2}\\right)\\left( \\frac{5}{2}(19-2x)^{\\frac{3}{2}}(-2) \\right) \\\\[10pt]\n&= (10x)(19-2x)^{\\frac{5}{2}}-\\left(25x^{2}\\right)(19-2x)^{\\frac{3}{2}} \\\\[10pt]\n&= 5x(19-2x)^{\\frac{3}{2}}(2(19-2x)-5x) \\\\[10pt]\n&= 5x(19-2x)^{\\frac{3}{2}}(38-9x) \\\\[10pt]\n\\end{aligned} \\]",
+            "justify": "center"
+          }
+        ],
+        "instruction": "Cari \\( \\frac{d}{dx}(f(x)) \\)",
+        "accordion_text": "Pembahasan"
+      },
+      {
+        "type": "example",
+        "title": "Contoh 2",
+        "equation": "\\[ W(z)=\\frac{4z}{(4-3z)^{3}} \\]",
+        "children": [
+          {
+            "type": "math",
+            "text": "\\[ \\begin{aligned}\n\\frac{d}{dt}(W(z)) &= \\frac{d}{dt}\\left(\\frac{4z}{(4-3z)^{3}}\\right) \\\\[10pt]\n&= \\frac{4(4-3z)^{3}-4z(3)(4-3z)^{2}(-3)}{\\left((4-3z)^{3}\\right)^{2}} \\\\[10pt]\n&= \\frac{4(4-3z)^{3}+36z(4-3z)^{2}}{\\left(4-3z\\right)^{6}} \\\\[10pt]\n&= \\frac{4(4-3z)^{2} \\left((4-3z)+9z\\right)}{\\left(4-3z\\right)^{6}} \\\\[10pt]\n&= \\frac{4 \\left(4+6z\\right)}{\\left(4-3z\\right)^{4}} \\\\[10pt]\n\\end{aligned} \\]",
+            "justify": "center"
+          }
+        ],
+        "instruction": "Cari \\( \\frac{d}{dt}(W(z)) \\)",
+        "accordion_text": "Pembahasan"
+      },
+      {
+        "type": "paragraph",
+        "text": "Sebagai tambahan, perlu dicatat bahwa ",
+        "children": [
+          {
+            "type": "paragraph",
+            "text": "Aturan Perkalian",
+            "children": [],
+            "props": {
+              "className": "highlight"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": " tidak hanya berlaku untuk \\(2\\) fungsi, namun juga berlaku untuk \\(>2\\) fungsi.",
+            "children": []
+          },
+          {
+            "type": "math",
+            "text": "\\[\n\\left( \\prod_{i=1}^{n} f_i \\right)'\n= \\sum_{j=1}^{n} \\left( f_j' \\cdot \\prod_{\\substack{i=1 \\\\ i \\ne j}}^{n} f_i \\right)\n\\]",
+            "justify": "center"
+          },
+          {
+            "type": "paragraph",
+            "text": "Sebagai contoh:",
+            "children": []
+          },
+          {
+            "type": "math",
+            "text": "\\[ (abc)'=a'bc+ab'c+abc' \\]",
+            "justify": "center"
+          },
+          {
+            "type": "math",
+            "text": "\\[ (abcd)'=a'bcd+ab'cd+abc'd+abcd' \\]",
+            "justify": "center"
+          }
+        ]
+      }
+    ]
+  }
 ]

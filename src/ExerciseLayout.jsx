@@ -23,11 +23,18 @@ export default function ExerciseLayout() {
     const slug = exercise.path.split('/').filter(Boolean).pop();
     const url = (exercise.children || []).map(child => `${exercise.path}/${child.path}`);
 
+    const config = {
+        loader: { load: ['[tex]/color'] },
+        tex: {
+            packages: { '[+]': ['color'] },
+        },
+    };
+
     return (
         <>
             <Stack sx={{minHeight: '100vh'}}>
                 <Theme>
-                    <MathJaxContext>
+                    <MathJaxContext config={config}>
                         <Navbar3 exercise={slug} />
                         <Stack flexGrow={1}>
                             <Outlet />

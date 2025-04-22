@@ -70,7 +70,7 @@ const RenderContent = ({ data }) => {
 
             case "stack":
                 return (
-                    <Stack key={index} gap={item.gap||0} direction={item.direction||'column'} justifyContent={item.justify||'normal'} alignItems={item.align||'normal'} flexWrap={item.wrap||'wrap'} {...(item.props || {})}>
+                    <Stack key={index} gap={parseInt(item.gap)||0} direction={item.direction||'column'} justifyContent={item.justify||'normal'} alignItems={item.align||'normal'} flexWrap={item.wrap||'wrap'} {...(item.props || {})}>
                         {item.children && <RenderContent data={item.children} />}
                     </Stack>
                 );
@@ -114,7 +114,11 @@ const RenderContent = ({ data }) => {
                 case "list":
                     return (
                         <Stack key={index} gap={item.gap || 0} direction={item.direction || 'column'} justifyContent={item.justify || 'normal'} {...(item.props || {})}>
-                            <Typography fontSize={'1em'} fontWeight={600}>{item.title}</Typography>
+                            <Typography>
+                                <MathJax>
+                                    {item.title}
+                                </MathJax>
+                            </Typography>
                             <Grid2 container spacing={.5} direction={'column'}>
                                 {item.items.map((listItem, listIndex) => (
                                     <Grid2 xs={3} sm={3} key={listIndex}>

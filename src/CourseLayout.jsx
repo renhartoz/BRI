@@ -23,10 +23,17 @@ export default function CourseLayout() {
     const slug = course.path.split("/").filter(Boolean).pop();
     const url = (course.children || []).map(child => `${course.path}/${child.path}`);
 
+    const config = {
+        loader: { load: ['[tex]/color'] },
+        tex: {
+            packages: { '[+]': ['color'] },
+        },
+    };
+
     return (
         <Stack sx={{ minHeight: '100vh' }}>
             <Theme>
-                <MathJaxContext>
+                <MathJaxContext config={config}>
                     <Navbar2 course={slug} />
                     <Stack flexGrow={1}>
                         <Outlet />

@@ -428,3 +428,21 @@ export function DerivIntro() {
         <Template blogData={blogData} url={"/course/deriv/intro"} />
     );
 }
+
+export function DerivProperty() {
+    return (
+        <Template blogData={blogData} url={"/course/deriv/property"} />
+    );
+}
+
+export function DerivChain() {
+    return (
+        <Template blogData={blogData} url={"/course/deriv/chain"} />
+    );
+}
+
+export function DerivProduct() {
+    return (
+        <Template blogData={blogData} url={"/course/deriv/product"} />
+    );
+}

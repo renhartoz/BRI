@@ -13,7 +13,6 @@ import {
 import { tableCellClasses } from "@mui/material/TableCell";
 import Paper from "@mui/material/Paper";
 
-// GYATTTTTT
 // This function calculates the contrast text color based on the background color
 const getContrastTextColor = (bgColor) => {
     const hex = bgColor.replace("#", "");
@@ -155,10 +154,10 @@ export function CustomRawTable({
                 spacing={spacing}
                 sx={{
                     // mx: { xs: 0, md: "auto" },
-                    mx: { xs: 7, sm: 10, md: 15 },
                     height: "fit-content",
                     justifyContent: "center",
                     alignItems: "center",
+                    width:"100%", 
                 }}
             >
                 {Array.isArray(content) &&
