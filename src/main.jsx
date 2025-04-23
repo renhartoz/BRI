@@ -55,7 +55,7 @@ export const routes = [
             { path: "test", element: <Testing /> },
             { path: "course", element: <CourseList /> },
             { path: "exercise", element: <ExerciseList /> },
-            // { path: "course/trigonometri", element: <TrigonometriSyllabus /> },
+            { path: "course/trigonometri", element: <TrigonometriSyllabus /> },
             { path: "course/limit", element: <LimitSyllabus /> },
             { path: "course/deriv", element: <DerivSyllabus /> },
         ],

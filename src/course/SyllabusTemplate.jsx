@@ -33,309 +33,350 @@ export default function SyllabusTemplate({
 }) {
     return (
         <>
-            {/* add color for each subject */}
-            <Stack
-                sx={{
-                    width: "100%",
-                    height: "100%",
-                }}
-                px={{ xs: 4, sm: 6, md: 10 }}
-                py={5}
-                pb={12}
-                className="radialbg2"
-                direction={"column"}
-                justifyContent={"center"}
-                alignItems={"center"}
-                flexWrap={{ xs: "wrap", md: "nowrap" }}
-                gap={6}
-            >
+            <Stack className="radialbg2">
+                {/* add color for each subject */}
                 <Stack
-                    alignItems={"flex-start"}
-                    gap={3}
-                    px={4}
-                    py={3}
                     sx={{
-                        backgroundColor: "#f5f5f5",
-                        borderRadius: "8px",
+                        width: "100%",
+                        height: "100%",
+                    }}
+                    px={{ xs: 4, sm: 6, md: 10 }}
+                    py={5}
+                    pb={5}
+                    direction={"column"}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    flexWrap={{ xs: "wrap", md: "nowrap" }}
+                    gap={6}
+                >
+                    <Stack
+                        alignItems={"flex-start"}
+                        gap={3}
+                        px={4}
+                        py={3}
+                        sx={{
+                            backgroundColor: "#f5f5f5",
+                            borderRadius: "8px",
+                        }}
+                    >
+                        <Stack
+                            direction={"row"}
+                            flexWrap={"wrap"}
+                            alignItems={"flex-start"}
+                            gap={3}
+                        >
+                            <Stack
+                                direction={"column"}
+                                gap={2}
+                                flexGrow={1}
+                                maxWidth={{ xs: "100%", md: "40vw" }}
+                            >
+                                <Typography
+                                    fontFamily={"monospace"}
+                                    fontSize={{ xs: "1.2em", md: "1.5em" }}
+                                >
+                                    Course
+                                </Typography>
+                                {/* title */}
+                                <Typography
+                                    fontSize={{ xs: "2em", md: "2.4em" }}
+                                    fontWeight={700}
+                                >
+                                    {title}
+                                </Typography>
+                                {/* desc */}
+                                <Typography
+                                    fontSize={{ xs: "1em", md: "1.2em" }}
+                                >
+                                    {desc}
+                                </Typography>
+                                <Typography
+                                    fontSize={{ xs: "1em", md: "1.2em" }}
+                                >
+                                    Termasuk {/* subunits(make it in array) */}
+                                    {/* change b to span */}
+                                    <Typography
+                                        component={"span"}
+                                        fontSize={"inherit"}
+                                        fontWeight={600}
+                                    >
+                                        {subUnits.join(", ")}
+                                    </Typography>
+                                    , dan lain-lain
+                                </Typography>
+                            </Stack>
+                            <Stack
+                                direction={"column"}
+                                gap={3.5}
+                                flexGrow={1}
+                                width={"30vw"}
+                                px={3}
+                                py={2}
+                                sx={{
+                                    border: `2px solid #000`,
+                                    overflow: "hidden",
+                                    boxShadow: `5px 5px 0px #000`,
+                                    backgroundColor: "#ffffff",
+                                }}
+                            >
+                                <Typography
+                                    fontSize={{ xs: "1em", md: "1.2em" }}
+                                    fontWeight={600}
+                                >
+                                    Kursus ini termasuk
+                                </Typography>
+                                <Stack direction={"column"} gap={2}>
+                                    <Stack
+                                        direction="row"
+                                        alignItems="center"
+                                        gap={1.5}
+                                        borderBottom={"1px solid #000"}
+                                        pb={2}
+                                    >
+                                        <AutoAwesomeOutlinedIcon
+                                            sx={{
+                                                color: "primary.main",
+                                                fontSize: "1.2em",
+                                            }}
+                                        />
+                                        <Typography
+                                            variant="body1"
+                                            fontSize={{ xs: ".8em", sm: "1em" }}
+                                            color="black_blue"
+                                        >
+                                            Konsep dasar untuk menambah
+                                            pengetahuan
+                                        </Typography>
+                                    </Stack>
+                                    <Stack
+                                        direction="row"
+                                        alignItems="center"
+                                        gap={1.5}
+                                        borderBottom={"1px solid #000"}
+                                        pb={2}
+                                    >
+                                        <ArticleOutlinedIcon
+                                            sx={{
+                                                color: "primary.main",
+                                                fontSize: "1.2em",
+                                            }}
+                                        />
+                                        <Typography
+                                            variant="body1"
+                                            fontSize={{ xs: ".8em", sm: "1em" }}
+                                            color="black_blue"
+                                        >
+                                            Ringkasan padat mengenai topik
+                                            kursus
+                                        </Typography>
+                                    </Stack>
+                                    <Stack
+                                        direction="row"
+                                        alignItems="center"
+                                        gap={1.5}
+                                        pb={1}
+                                    >
+                                        <QuizOutlinedIcon
+                                            sx={{
+                                                color: "primary.main",
+                                                fontSize: "1.2em",
+                                            }}
+                                        />
+                                        <Typography
+                                            variant="body1"
+                                            fontSize={{ xs: ".8em", sm: "1em" }}
+                                            color="black_blue"
+                                        >
+                                            Kuis untuk menguji pengetahuan Anda
+                                        </Typography>
+                                    </Stack>
+                                </Stack>
+                            </Stack>
+                        </Stack>
+                        <Stack>
+                            {/* url that send to first page */}
+                            <Link to={firstPageURL}>
+                                <Button bdcolor={"#000"} sx={{ width: "5em" }}>
+                                    {" "}
+                                    Mulai
+                                </Button>
+                            </Link>
+                        </Stack>
+                    </Stack>
+                </Stack>
+                <Stack
+                    sx={{
+                        position: "relative",
+                        width: "100%",
+                        // mt: "-8vh",
+                        "&:before": {
+                            content: '""',
+                            position: "absolute",
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            height: "50%",
+                            backgroundColor: "#fff",
+                            backgroundSize: "4px 4px",
+                            zIndex: 0,
+                        },
                     }}
                 >
                     <Stack
-                        direction={"row"}
-                        flexWrap={"wrap"}
-                        alignItems={"flex-start"}
-                        gap={3}
+                        justifyContent={"center"}
+                        alignItems={"center"}
+                        // css here
+                        sx={{
+                            position: "relative",
+                            zIndex: 1,
+                            width: "100%",
+                            height: "100%",
+                        }}
                     >
-                        <Stack
-                            direction={"column"}
-                            gap={2}
-                            flexGrow={1}
-                            maxWidth={{ xs: "100%", md: "40vw" }}
-                        >
-                            <Typography
-                                fontFamily={"monospace"}
-                                fontSize={{ xs: "1.2em", md: "1.5em" }}
-                            >
-                                Course
-                            </Typography>
-                            {/* title */}
-                            <Typography
-                                fontSize={{ xs: "2em", md: "2.4em" }}
-                                fontWeight={700}
-                            >
-                                {title}
-                            </Typography>
-                            {/* desc */}
-                            <Typography fontSize={{ xs: "1em", md: "1.2em" }}>
-                                {desc}
-                            </Typography>
-                            <Typography fontSize={{ xs: "1em", md: "1.2em" }}>
-                                Termasuk {/* subunits(make it in array) */}
-                                {/* change b to span */}
-                                <Typography
-                                    component={"span"}
-                                    fontSize={"inherit"}
-                                    fontWeight={600}
-                                >
-                                    {subUnits.join(", ")}
-                                </Typography>
-                                , dan lain-lain
-                            </Typography>
-                        </Stack>
-                        <Stack
-                            direction={"column"}
-                            gap={3.5}
-                            flexGrow={1}
-                            width={"30vw"}
-                            px={3}
-                            py={2}
+                        <Grid2
+                            container
                             sx={{
-                                border: `2px solid #000`,
-                                overflow: "hidden",
-                                boxShadow: `5px 5px 0px #000`,
-                                backgroundColor: "#ffffff",
+                                width: { xs: "88vw", sm: "80vw", md: "90vw" },
+                                height: "100%",
+                                backgroundColor: "#fff",
+                                border: "1px solid #000",
                             }}
+                            px={{ xs: 6, sm: 8, md: 4 }}
+                            py={4}
+                            columns={{ xs: 1, sm: 2, md: 2, lg: 4 }}
+                            direction={"row"}
+                            justifyContent={"space-around"}
+                            alignItems={"center"}
+                            spacing={6}
                         >
-                            <Typography
-                                fontSize={{ xs: "1em", md: "1.2em" }}
-                                fontWeight={600}
-                            >
-                                Kursus ini termasuk
-                            </Typography>
-                            <Stack direction={"column"} gap={2}>
+                            <Grid2 size={1}>
                                 <Stack
-                                    direction="row"
-                                    alignItems="center"
-                                    gap={1.5}
-                                    borderBottom={"1px solid #000"}
-                                    pb={2}
+                                    direction={"row"}
+                                    gap={{ xs: 4, sm: 2, md: 1 }}
+                                    alignItems={"center"}
                                 >
-                                    <AutoAwesomeOutlinedIcon
+                                    <LeaderboardOutlinedIcon
                                         sx={{
                                             color: "primary.main",
-                                            fontSize: "1.2em",
+                                            fontSize: "4em",
                                         }}
                                     />
-                                    <Typography
-                                        variant="body1"
-                                        fontSize={{ xs: ".8em", sm: "1em" }}
-                                        color="black_blue"
-                                    >
-                                        Konsep dasar untuk menambah pengetahuan
-                                    </Typography>
+                                    <Stack direction={"column"}>
+                                        <Typography
+                                            fontFamily={"monospace"}
+                                            fontSize={"1.5em"}
+                                            letterSpacing={2.5}
+                                        >
+                                            Skill Level
+                                        </Typography>
+                                        {/* level */}
+
+                                        <Typography
+                                            fontSize={"1.5em"}
+                                            letterSpacing={-1}
+                                            fontWeight={600}
+                                        >
+                                            {level}
+                                        </Typography>
+                                    </Stack>
                                 </Stack>
+                            </Grid2>
+                            <Grid2 size={1}>
                                 <Stack
-                                    direction="row"
-                                    alignItems="center"
-                                    gap={1.5}
-                                    borderBottom={"1px solid #000"}
-                                    pb={2}
+                                    direction={"row"}
+                                    gap={{ xs: 4, sm: 2, md: 1 }}
+                                    alignItems={"center"}
                                 >
-                                    <ArticleOutlinedIcon
+                                    <AccessTimeOutlinedIcon
                                         sx={{
                                             color: "primary.main",
-                                            fontSize: "1.2em",
+                                            fontSize: "4em",
                                         }}
                                     />
-                                    <Typography
-                                        variant="body1"
-                                        fontSize={{ xs: ".8em", sm: "1em" }}
-                                        color="black_blue"
-                                    >
-                                        Ringkasan padat mengenai topik kursus
-                                    </Typography>
+                                    <Stack direction={"column"}>
+                                        <Typography
+                                            fontFamily={"monospace"}
+                                            fontSize={"1.5em"}
+                                            letterSpacing={2.5}
+                                        >
+                                            Estimasi Waktu
+                                        </Typography>
+                                        {/* time */}
+                                        <Typography
+                                            fontSize={"1.5em"}
+                                            letterSpacing={-1}
+                                            fontWeight={600}
+                                        >
+                                            {time}
+                                        </Typography>
+                                    </Stack>
                                 </Stack>
+                            </Grid2>
+                            <Grid2 size={1}>
                                 <Stack
-                                    direction="row"
-                                    alignItems="center"
-                                    gap={1.5}
-                                    pb={1}
+                                    direction={"row"}
+                                    gap={{ xs: 4, sm: 2, md: 1 }}
+                                    alignItems={"center"}
                                 >
-                                    <QuizOutlinedIcon
+                                    <ExtensionOutlinedIcon
                                         sx={{
                                             color: "primary.main",
-                                            fontSize: "1.2em",
+                                            fontSize: "4em",
                                         }}
                                     />
-                                    <Typography
-                                        variant="body1"
-                                        fontSize={{ xs: ".8em", sm: "1em" }}
-                                        color="black_blue"
-                                    >
-                                        Kuis untuk menguji pengetahuan Anda
-                                    </Typography>
+                                    <Stack direction={"column"}>
+                                        <Typography
+                                            fontFamily={"monospace"}
+                                            fontSize={"1.5em"}
+                                            letterSpacing={2.5}
+                                        >
+                                            Subtopik
+                                        </Typography>
+                                        {/* subunit */}
+                                        <Typography
+                                            fontSize={"1.5em"}
+                                            letterSpacing={-1}
+                                            fontWeight={600}
+                                        >
+                                            {subUnit}
+                                        </Typography>
+                                    </Stack>
                                 </Stack>
-                            </Stack>
-                        </Stack>
-                    </Stack>
-                    <Stack>
-                        {/* url that send to first page */}
-                        <Link to={firstPageURL}>
-                            <Button bdcolor={"#000"} sx={{ width: "5em" }}>
-                                {" "}
-                                Mulai
-                            </Button>
-                        </Link>
+                            </Grid2>
+                            <Grid2 size={1}>
+                                <Stack
+                                    direction={"row"}
+                                    gap={{ xs: 4, sm: 2, md: 1 }}
+                                    alignItems={"center"}
+                                >
+                                    <FormatListBulletedIcon
+                                        sx={{
+                                            color: "primary.main",
+                                            fontSize: "4em",
+                                        }}
+                                    />
+                                    <Stack direction={"column"}>
+                                        <Typography
+                                            fontFamily={"monospace"}
+                                            fontSize={"1.5em"}
+                                            letterSpacing={2.5}
+                                        >
+                                            Prasyarat
+                                        </Typography>
+                                        {/* pre-requisite */}
+                                        <Typography
+                                            fontSize={"1.5em"}
+                                            letterSpacing={-1}
+                                            fontWeight={600}
+                                        >
+                                            {preReq}
+                                        </Typography>
+                                    </Stack>
+                                </Stack>
+                            </Grid2>
+                        </Grid2>
                     </Stack>
                 </Stack>
-            </Stack>
-            <Stack
-                justifyContent={"center"}
-                alignItems={"center"}
-                sx={{
-                    width: "100%",
-                    mt: "-8vh",
-                }}
-            >
-                <Grid2
-                    container
-                    sx={{
-                        width: { xs: "88vw", sm: "80vw", md: "90vw" },
-                        height: "100%",
-                        backgroundColor: "#fff",
-                        border: "1px solid #000",
-                    }}
-                    px={{ xs: 6, sm: 8, md: 4 }}
-                    py={4}
-                    columns={{ xs: 1, sm: 2, md: 2, lg: 4 }}
-                    direction={"row"}
-                    justifyContent={"space-around"}
-                    alignItems={"center"}
-                    spacing={6}
-                >
-                    <Grid2 size={1}>
-                        <Stack
-                            direction={"row"}
-                            gap={{ xs: 4, sm: 2, md: 1 }}
-                            alignItems={"center"}
-                        >
-                            <LeaderboardOutlinedIcon
-                                sx={{ color: "primary.main", fontSize: "4em" }}
-                            />
-                            <Stack direction={"column"}>
-                                <Typography
-                                    fontFamily={"monospace"}
-                                    fontSize={"1.5em"}
-                                    letterSpacing={2.5}
-                                >
-                                    Skill Level
-                                </Typography>
-                                {/* level */}
-
-                                <Typography
-                                    fontSize={"1.5em"}
-                                    letterSpacing={-1}
-                                    fontWeight={600}
-                                >
-                                    {level}
-                                </Typography>
-                            </Stack>
-                        </Stack>
-                    </Grid2>
-                    <Grid2 size={1}>
-                        <Stack
-                            direction={"row"}
-                            gap={{ xs: 4, sm: 2, md: 1 }}
-                            alignItems={"center"}
-                        >
-                            <AccessTimeOutlinedIcon
-                                sx={{ color: "primary.main", fontSize: "4em" }}
-                            />
-                            <Stack direction={"column"}>
-                                <Typography
-                                    fontFamily={"monospace"}
-                                    fontSize={"1.5em"}
-                                    letterSpacing={2.5}
-                                >
-                                    Estimasi Waktu
-                                </Typography>
-                                {/* time */}
-                                <Typography
-                                    fontSize={"1.5em"}
-                                    letterSpacing={-1}
-                                    fontWeight={600}
-                                >
-                                    {time}
-                                </Typography>
-                            </Stack>
-                        </Stack>
-                    </Grid2>
-                    <Grid2 size={1}>
-                        <Stack
-                            direction={"row"}
-                            gap={{ xs: 4, sm: 2, md: 1 }}
-                            alignItems={"center"}
-                        >
-                            <ExtensionOutlinedIcon
-                                sx={{ color: "primary.main", fontSize: "4em" }}
-                            />
-                            <Stack direction={"column"}>
-                                <Typography
-                                    fontFamily={"monospace"}
-                                    fontSize={"1.5em"}
-                                    letterSpacing={2.5}
-                                >
-                                    Subtopik
-                                </Typography>
-                                {/* subunit */}
-                                <Typography
-                                    fontSize={"1.5em"}
-                                    letterSpacing={-1}
-                                    fontWeight={600}
-                                >
-                                    {subUnit}
-                                </Typography>
-                            </Stack>
-                        </Stack>
-                    </Grid2>
-                    <Grid2 size={1}>
-                        <Stack
-                            direction={"row"}
-                            gap={{ xs: 4, sm: 2, md: 1 }}
-                            alignItems={"center"}
-                        >
-                            <FormatListBulletedIcon
-                                sx={{ color: "primary.main", fontSize: "4em" }}
-                            />
-                            <Stack direction={"column"}>
-                                <Typography
-                                    fontFamily={"monospace"}
-                                    fontSize={"1.5em"}
-                                    letterSpacing={2.5}
-                                >
-                                    Prasyarat
-                                </Typography>
-                                {/* pre-requisite */}
-                                <Typography
-                                    fontSize={"1.5em"}
-                                    letterSpacing={-1}
-                                    fontWeight={600}
-                                >
-                                    {preReq}
-                                </Typography>
-                            </Stack>
-                        </Stack>
-                    </Grid2>
-                </Grid2>
             </Stack>
             <Stack
                 px={{ xs: 5, sm: 7, md: 10 }}
