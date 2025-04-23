@@ -664,9 +664,8 @@
         "gap": "0",
         "children": [
           {
-            "type": "paragraph",
-            "text": "Aturan Pembagian",
-            "children": []
+            "type": "heading",
+            "text": "Aturan Pembagian"
           },
           {
             "type": "formula",
@@ -756,6 +755,266 @@
             "type": "math",
             "text": "\\[ (abcd)'=a'bcd+ab'cd+abc'd+abcd' \\]",
             "justify": "center"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "deriv_interpretation",
+    "url": "/course/deriv/interpretation",
+    "unit": "Konsep Derivatif",
+    "subunit": "Interpretasi Derivatif",
+    "time": "20 min",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Sebelum beralih ke bagian derivatif fungsi khusus, kita perlu mengevaluasi apa itu sebenarnya turunan dan apa manfaatnya? Semua interpretasi ini muncul dari mengingat kembali bagaimana definisi turunan kita muncul. Definisi tersebut muncul dengan memperhatikan bahwa semua soal yang kita kerjakan di kursus ",
+        "children": [
+          {
+            "type": "paragraph",
+            "text": "Limit Fungsi",
+            "children": [],
+            "props": {
+              "className": "highlight"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": " mengharuskan kita untuk mengevaluasi limit yang sama.",
+            "children": []
+          }
+        ],
+        "props": {
+          "textAlign": "justify"
+        }
+      },
+      {
+        "type": "stack",
+        "direction": "column",
+        "gap": "2",
+        "children": [
+          {
+            "type": "stack",
+            "direction": "column",
+            "gap": "0",
+            "children": [
+              {
+                "type": "heading",
+                "text": "Tingkat Perubahan"
+              },
+              {
+                "type": "paragraph",
+                "text": "Penafsiran pertama dari derivatif adalah ",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "text": "laju perubahan",
+                    "children": [],
+                    "props": {
+                      "className": "highlight"
+                    }
+                  },
+                  {
+                    "type": "paragraph",
+                    "text": ". Ini bukanlah masalah pertama yang kita bahas dalam kursus ",
+                    "children": []
+                  },
+                  {
+                    "type": "paragraph",
+                    "text": "Limit",
+                    "children": [],
+                    "props": {
+                      "className": "highlight"
+                    }
+                  },
+                  {
+                    "type": "paragraph",
+                    "text": ", tetapi ini adalah penafsiran yang paling penting dari ",
+                    "children": []
+                  },
+                  {
+                    "type": "paragraph",
+                    "text": "derivatif",
+                    "children": [],
+                    "props": {
+                      "className": "highlight"
+                    }
+                  },
+                  {
+                    "type": "paragraph",
+                    "text": ". Jika \\(f(x)\\) merupakan kuantitas pada sembarang \\(x\\) maka \\( \\frac{d}{dx}(f(x)) \\) merupakan laju perubahan sesaat dari \\(f(x)\\) pada \\(x=a\\).",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "example",
+            "title": "Contoh 1",
+            "equation": "Jarak tempuh sebuah mobil pada waktu \\(t\\) adalah \\( s(t)=2t^{2}-5x+9 \\). Apakah mobil tersebut bergerak maju atau mundur pada \\(t=0\\) dan \\(t=2\\)? Berapa kecepatan mobil pada waktu tersebut?",
+            "children": [
+              {
+                "type": "math",
+                "text": "\\[ v(t)=\\frac{d}{dt}s(t) = 4t-5 \\]",
+                "justify": "center"
+              },
+              {
+                "type": "stack",
+                "direction": "column",
+                "gap": "1",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "text": "Mobil tersebut bergerak ",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "text": "mundur",
+                        "children": [],
+                        "props": {
+                          "fontFamily": "",
+                          "fontWeight": 600
+                        }
+                      },
+                      {
+                        "type": "paragraph",
+                        "text": " dengan kecepatan \\(5\\) pada \\(t=0\\)",
+                        "children": []
+                      }
+                    ],
+                    "props": {
+                      "textAlign": "left"
+                    }
+                  },
+                  {
+                    "type": "math",
+                    "text": "\\( v(0)=4(0)-5=-5 \\)",
+                    "justify": "center"
+                  }
+                ]
+              },
+              {
+                "type": "stack",
+                "direction": "column",
+                "gap": 2,
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "text": "Mobil tersebut bergerak ",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "text": "maju",
+                        "children": [],
+                        "props": {
+                          "fontWeight": 600
+                        }
+                      },
+                      {
+                        "type": "paragraph",
+                        "text": " dengan kecepatan \\(3\\) pada \\(t=2\\)",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "type": "math",
+                    "text": "\\[ v(2)=4(2)-5=3 \\]",
+                    "justify": "center"
+                  }
+                ]
+              }
+            ],
+            "accordion_text": "Pembahasan"
+          }
+        ]
+      },
+      {
+        "type": "stack",
+        "direction": "column",
+        "gap": "2",
+        "children": [
+          {
+            "type": "stack",
+            "direction": "column",
+            "gap": "0",
+            "children": [
+              {
+                "type": "heading",
+                "text": "Kemiringan Garis Singgung"
+              },
+              {
+                "type": "paragraph",
+                "text": "Interpretasi utama berikutnya dari derivatif adalah ",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "text": "kemiringan garis singgung",
+                    "children": [],
+                    "props": {
+                      "className": "highlight"
+                    }
+                  },
+                  {
+                    "type": "paragraph",
+                    "text": ". Gradien garis singgung ke \\(f(x)\\) pada \\(x=a\\) adalah \\(f'(a)\\)",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "formula",
+            "gap": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "text": "Asumsikan ",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "text": "\\(y\\) adalah persamaan garis singgung dari \\(f(x)\\) pada \\(x=a\\)",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "type": "math",
+                "text": "\\[ y=f(a)+f'(a)(x-a) \\]",
+                "justify": "center"
+              }
+            ]
+          },
+          {
+            "type": "example",
+            "title": "Contoh 2",
+            "equation": "Tentukan persamaan garis singgung \\(\\space y=4x^{3}-5x^{2}+3x-2 \\space\\) di axis \\(4\\)",
+            "children": [
+              {
+                "type": "math",
+                "text": "\\[ f(a) = 4(4)^{3}-5(4)^{2}+3(4)-2 = 256-80+12-2 = 186 \\]",
+                "justify": "center"
+              },
+              {
+                "type": "math",
+                "text": "\\[ \\begin{aligned} \nf'(x) &= 12x^{2}-10x+3 \\\\[10pt]\nf'(4) &= 12(4)^{2}-10(4)+3 = 192-40+3 = 155\n\\end{aligned} \\]",
+                "justify": "center"
+              },
+              {
+                "type": "math",
+                "text": "\\[\\begin{aligned}\ny&=f(a)+f'(a)(x-a) \\\\[10pt]\n&=186+155(x-4) \\\\[10pt]\n&=186+155x-620 \\\\[10pt]\n&=155x-434 \n\\end{aligned}\\]",
+                "justify": "center"
+              },
+              {
+                "type": "math",
+                "text": "\\[ \\boxed{y=155x-434} \\]",
+                "justify": "center"
+              }
+            ],
+            "accordion_text": "Pembahasan"
           }
         ]
       }

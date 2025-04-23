@@ -446,3 +446,9 @@ export function DerivProduct() {
         <Template blogData={blogData} url={"/course/deriv/product"} />
     );
 }
+
+export function DerivInterpretation() {
+    return (
+        <Template blogData={blogData} url={"/course/deriv/interpretation"} />
+    );
+}

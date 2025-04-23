@@ -36,6 +36,7 @@ import {
     DerivProperty,
     DerivChain,
     DerivProduct,
+    DerivInterpretation
 } from "./course/Deriv.jsx";
 
 import * as GK from "./exercise/GasKinetics.jsx";
@@ -100,6 +101,7 @@ export const routes = [
             { path: "property", element: <DerivProperty /> },
             { path: "chain", element: <DerivChain /> },
             { path: "product", element: <DerivProduct /> },
+            { path: "interpretation", element: <DerivInterpretation/> }
         ],
     },
     {

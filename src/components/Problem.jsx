@@ -6,7 +6,7 @@ export default function Problem({ title, equation, children, instruction, note, 
     return (
         <>
             <Stack sx={{ ...sx }}>
-                <Typography fontWeight={600} fontSize={'1.2em'} mt={2}>{title}</Typography>
+                <Typography fontWeight={600} fontSize={'1.2em'} mt={1}>{title}</Typography>
                 <Stack
                     px={3}
                     py={2}

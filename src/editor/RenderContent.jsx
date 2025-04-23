@@ -63,7 +63,7 @@ const RenderContent = ({ data }) => {
 
             case "heading":
                 return (
-                    <Typography key={index} fontWeight={600} fontSize={'1.2em'} {...(item.props || {})}>
+                    <Typography key={index} fontWeight={600} variant="h6" {...(item.props || {})}>
                         {item.text}
                     </Typography>
                 );
