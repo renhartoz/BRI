@@ -6,8 +6,9 @@ import Button from "../components/Button";
 import Carousel from "../components/Carousel";
 import Tiles from "../components/Tiles";
 import Dropdown from "../components/Dropdown";
-import Problem from "../components/Problem";
+import Problem from "../maths/Problem";
 import Editor from "../components/Editor";
+import NumberLine from "../maths/NumberLine";
 
 import SchoolIcon from "@mui/icons-material/School";
 import EventIcon from "@mui/icons-material/Event";
@@ -630,6 +631,14 @@ export default function Testing() {
                     </Problem>
                 </Stack>
                 <Editor/>
+                <NumberLine
+                    dots={[
+                        [0, true],
+                        [2, false],
+                        [3, false],
+                    ]}
+                    signs={['+', '-', '+', '+']}
+                />
             </Stack>
         </>
     );

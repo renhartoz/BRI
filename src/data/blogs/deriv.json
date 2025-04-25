@@ -1019,5 +1019,339 @@
         ]
       }
     ]
+  },
+  {
+    "name": "deriv_app",
+    "url": "/course/deriv/graph",
+    "unit": "Aplikasi Derivatif",
+    "subunit": "Analisis Grafik Fungsi",
+    "time": "20 min",
+    "content": [
+        {
+            "type": "stack",
+            "direction": "column",
+            "gap": "1",
+            "children": [
+                {
+                    "type": "paragraph",
+                    "text": "Turunan suatu fungsi tidak hanya memberi informasi tentang laju perubahan, tetapi juga memberikan ",
+                    "children": [
+                        {
+                            "type": "paragraph",
+                            "text": "ciri-ciri bentuk grafik fungsi",
+                            "children": [],
+                            "props": {
+                                "fontWeight": 600
+                            }
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": " tersebut. Dengan menggunakan turunan pertama dan kedua, kita bisa mengetahui:",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "type": "list",
+                    "title": "",
+                    "items": [
+                        "Di mana fungsi naik atau turun",
+                        "Titik-titik stasioner lokal (nilai maksimum/minimum lokal)",
+                        "Cekung ke atas/bawah (konkavitas grafik)",
+                        "Titik belok (di mana grafik berubah arah cekungannya)"
+                    ],
+                    "bullet": ""
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Analisis ini sangat penting dalam memahami perilaku fungsi tanpa harus menggambarkan grafik secara detail.",
+                    "children": []
+                }
+            ]
+        },
+        {
+            "type": "stack",
+            "direction": "column",
+            "gap": "0",
+            "children": [
+                {
+                    "type": "heading",
+                    "text": "Fungsi Naik/Turun"
+                },
+                {
+                    "type": "formula",
+                    "gap": 1,
+                    "children": [
+                        {
+                            "type": "paragraph",
+                            "text": "Jika ",
+                            "children": [
+                                {
+                                    "type": "paragraph",
+                                    "text": "\\(f(x)\\) naik, maka:",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "type": "math",
+                            "text": "\\[ \\frac{d}{dx}(f(x))>0 \\]",
+                            "justify": "center"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Jika ",
+                            "children": [
+                                {
+                                    "type": "paragraph",
+                                    "text": "\\(f(x)\\) turun, maka:",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "type": "math",
+                            "text": "\\[ \\frac{d}{dx}(f(x))<0 \\]",
+                            "justify": "center"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "stack",
+            "direction": "column",
+            "gap": "0",
+            "children": [
+                {
+                    "type": "heading",
+                    "text": "Titik Stasioner"
+                },
+                {
+                    "type": "formula",
+                    "gap": 1,
+                    "children": [
+                        {
+                            "type": "math",
+                            "text": "\\[ \\frac{d}{dx}(f(x))=0 \\]",
+                            "justify": "center"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "stack",
+            "direction": "column",
+            "gap": "0",
+            "children": [
+                {
+                    "type": "heading",
+                    "text": "Konkavitas"
+                },
+                {
+                    "type": "formula",
+                    "gap": 1,
+                    "children": [
+                        {
+                            "type": "paragraph",
+                            "text": "Jika ",
+                            "children": [
+                                {
+                                    "type": "paragraph",
+                                    "text": "\\(f(x)\\) ",
+                                    "children": []
+                                },
+                                {
+                                    "type": "paragraph",
+                                    "text": "cekung ke atas",
+                                    "children": [],
+                                    "props": {
+                                        "fontWeight": 600
+                                    }
+                                },
+                                {
+                                    "type": "paragraph",
+                                    "text": ", maka:",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "type": "math",
+                            "text": "\\[ \\frac{d^{2}}{dx^{2}}(f(x))>0 \\]",
+                            "justify": "center"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Jika ",
+                            "children": [
+                                {
+                                    "type": "paragraph",
+                                    "text": "\\(f(x)\\) ",
+                                    "children": []
+                                },
+                                {
+                                    "type": "paragraph",
+                                    "text": "cekung ke bawah",
+                                    "children": [],
+                                    "props": {
+                                        "fontWeight": 600
+                                    }
+                                },
+                                {
+                                    "type": "paragraph",
+                                    "text": ", maka:",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "type": "math",
+                            "text": "\\[ \\frac{d^{2}}{dx^{2}}(f(x))<0 \\]",
+                            "justify": "center"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Jika ",
+                            "children": [
+                                {
+                                    "type": "paragraph",
+                                    "text": "\\(f(x)\\) merupakan ",
+                                    "children": []
+                                },
+                                {
+                                    "type": "paragraph",
+                                    "text": "titik belok",
+                                    "children": [],
+                                    "props": {
+                                        "fontWeight": 600
+                                    }
+                                },
+                                {
+                                    "type": "paragraph",
+                                    "text": ", maka:",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "type": "math",
+                            "text": "\\[ \\frac{d^{2}}{dx^{2}}(f(x))=0 \\]",
+                            "justify": "center"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "example",
+            "title": "Contoh",
+            "equation": "\\[ f(x)=x^{3}-3x^{2}+1 \\]",
+            "children": [
+                {
+                    "type": "stack",
+                    "direction": "column",
+                    "gap": "3",
+                    "children": [
+                        {
+                            "type": "stack",
+                            "direction": "column",
+                            "gap": "1",
+                            "children": [
+                                {
+                                    "type": "paragraph",
+                                    "text": "Langkah 1: Cari ",
+                                    "children": [
+                                        {
+                                            "type": "paragraph",
+                                            "text": "derivatif pertama dan kedua",
+                                            "children": [],
+                                            "props": {
+                                                "className": "highlight"
+                                            }
+                                        }
+                                    ],
+                                    "props": {
+                                        "fontWeight": 600
+                                    }
+                                },
+                                {
+                                    "type": "math",
+                                    "text": "\\[ \\frac{d}{dx}(f(x))=3x^{2}-6x \\]",
+                                    "justify": "center"
+                                },
+                                {
+                                    "type": "math",
+                                    "text": "\\[ \\frac{d^{2}}{dx^{2}}(f(x))=6x-6 \\]",
+                                    "justify": "center"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "stack",
+                            "direction": "column",
+                            "gap": "1",
+                            "children": [
+                                {
+                                    "type": "paragraph",
+                                    "text": "Langkah 2: Cari ",
+                                    "children": [
+                                        {
+                                            "type": "paragraph",
+                                            "text": "Titik Statsioner",
+                                            "children": [],
+                                            "props": {
+                                                "className": "highlight"
+                                            }
+                                        }
+                                    ],
+                                    "props": {
+                                        "fontWeight": 600
+                                    }
+                                },
+                                {
+                                    "type": "math",
+                                    "text": "\\[ \\begin{aligned} \n\\frac{d}{dx}(f(x))&=0 \\\\[10pt]\n3x^{2}-6x&=0 \\\\[10pt]\n3x(x-2)&=0 \\\\[10pt]\nx=0 \\quad &\\vee \\quad x=2\n\\end{aligned}\\]",
+                                    "justify": "center"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "stack",
+                            "direction": "column",
+                            "gap": "1",
+                            "children": [
+                                {
+                                    "type": "paragraph",
+                                    "text": "Langkah 3: Cari ",
+                                    "children": [
+                                        {
+                                            "type": "paragraph",
+                                            "text": "derivatif pertama dan kedua",
+                                            "children": [],
+                                            "props": {
+                                                "className": "highlight"
+                                            }
+                                        }
+                                    ],
+                                    "props": {
+                                        "fontWeight": 600
+                                    }
+                                },
+                                {
+                                    "type": "math",
+                                    "text": "\\[ \\begin{aligned} \n\\frac{d}{dx}(f(x))&=0 \\\\[10pt]\n3x^{2}-6x&=0 \\\\[10pt]\n3x(x-2)&=0 \\\\[10pt]\nx=0 \\quad &\\vee \\quad x=2\n\\end{aligned}\\]",
+                                    "justify": "center"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "instruction": "Tentukan interval naik-turun, titik optimum, dan titik belok dari fungsi",
+            "accordion_text": "Pembahasan"
+        }
+    ]
   }
 ]

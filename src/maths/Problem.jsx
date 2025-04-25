@@ -1,5 +1,5 @@
 import { Stack, Typography, Button } from "@mui/material";
-import Accordion from "./Accordion";
+import Accordion from "../components/Accordion";
 import { MathJax } from "better-react-mathjax";
 
 export default function Problem({ title, equation, children, instruction, note, accordion_text="Solution", sx }) {

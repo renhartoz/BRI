@@ -154,7 +154,7 @@ function MenuButtons({ addBlock }) {
   )
 }
 
-function RenderBlock({ blocks, path = [], setBlog, blog }) {
+function RenderBlock({ path = [], setContent, content }) {
   const [expandedBlocks, setExpandedBlocks] = useState({});
   const [propsDialogPath, setPropsDialogPath] = useState(null);
   const [tempProps, setTempProps] = useState({});
@@ -163,74 +163,74 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
     return {
       type,
       ...(type === 'image' || type === 'video'
-        ? { src: '', alt: '' }
-        : type === 'math'
-        ? { text: '\\( {} \\)', justify: 'center' }
-        : type === 'list'
-        ? { title: 'List Title', items: ['Item 1', 'Item 2'], bullet: '1' }
-        : type === 'stack'
-        ? { direction: 'column', gap: 2, children: [] }
-        : type === 'paragraph'
-        ? { text: '', children: [] }
-        : type === 'formula'
-        ? { gap: 1, children: [] }
-        : type === 'example'
-        ? { title: 'Contoh #', equation: '\\[ {} \\]', children: [] }
-        : type === 'table'
-        ? { data: [] }
-        : { text: '' }),
-      }
-    };
+      ? { src: '', alt: '' }
+      : type === 'math'
+      ? { text: '\\[ {} \\]', justify: 'center' }
+      : type === 'list'
+      ? { title: '', items: ['Item 1', 'Item 2'], bullet: '1' }
+      : type === 'stack'
+      ? { direction: 'column', gap: 2, children: [] }
+      : type === 'paragraph'
+      ? { text: '', children: [] }
+      : type === 'formula'
+      ? { gap: 1, children: [] }
+      : type === 'example'
+      ? { title: 'Contoh #', equation: '\\[ {} \\]', children: [] }
+      : type === 'table'
+      ? { data: [] }
+      : { text: '' }),
+    }
+  };
 
   const updateBlock = (path, field, value) => {
-    const updated = [...blog.content];
+    const updated = [...content];
     const [parent, index] = getParentAndIndex(updated, path);
     parent[index][field] = value;
-    setBlog({ ...blog, content: updated });
+    setContent(updated);
   };
   const removeBlock = (path) => {
-    const updated = [...blog.content];
+    const updated = [...content];
     const [parent, index] = getParentAndIndex(updated, path);
     parent.splice(index, 1);
-    setBlog({ ...blog, content: updated });
+    setContent(updated);
   };
   const addBlock = (type) => {
     const newBlock = defaultBlock(type)
-    const updated = [...blog.content, newBlock];
-    setBlog({ ...blog, content: updated });
+    const updated = [...content, newBlock];
+    setContent(updated);
   };
   const addChild = (path, type) => {
-    const updated = [...blog.content];
+    const updated = [...content];
     const [parent, index] = getParentAndIndex(updated, path);
     const block = parent[index];
     if (!block.children) block.children = [];
 
     const newBlock = defaultBlock(type)
     block.children.push(newBlock);
-    setBlog({ ...blog, content: updated });
+    setContent(updated);
   };
 
   const updateListItem = (path, itemIndex, value) => {
-    const updated = [...blog.content];
+    const updated = [...content];
     const [parent, index] = getParentAndIndex(updated, path);
     parent[index].items[itemIndex] = value;
-    setBlog({ ...blog, content: updated });
+    setContent(updated);
   };
   const addListItem = (path) => {
-    const updated = [...blog.content];
+    const updated = [...content];
     const [parent, index] = getParentAndIndex(updated, path);
     parent[index].items.push('New Item');
-    setBlog({ ...blog, content: updated });
+    setContent(updated);
   };  
   const removeListItem = (path, itemIndex) => {
-    const updated = [...blog.content];
+    const updated = [...content];
     const [parent, index] = getParentAndIndex(updated, path);
     parent[index].items.splice(itemIndex, 1);
-    setBlog({ ...blog, content: updated });
+    setContent(updated);
   };
 
   const addTableRow = (path) => {
-    const updated = [...blog.content];
+    const updated = [...content];
     const [parent, index] = getParentAndIndex(updated, path);
     const table = parent[index];
     
@@ -247,10 +247,10 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
     }));
     
     table.data.push(newRow);
-    setBlog({ ...blog, content: updated });
+    setContent(updated);
   };
   const addTableColumn = (path) => {
-    const updated = [...blog.content];
+    const updated = [...content];
     const [parent, index] = getParentAndIndex(updated, path);
     const table = parent[index];
     
@@ -267,10 +267,10 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
       });
     });
     
-    setBlog({ ...blog, content: updated });
+    setContent(updated);
   };
   const removeTableRow = (path, rowIndex) => {
-    const updated = [...blog.content];
+    const updated = [...content];
     const [parent, index] = getParentAndIndex(updated, path);
     const table = parent[index];
     
@@ -278,14 +278,14 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
     if (table.data && Array.isArray(table.data) && table.data.length > 1) {
       // Remove the row at the specified index
       table.data.splice(rowIndex, 1);
-      setBlog({ ...blog, content: updated });
+      setContent(updated);
     } else {
       // Don't remove the last row
       alert("Cannot remove the last row");
     }
   };
   const removeTableColumn = (path, colIndex) => {
-    const updated = [...blog.content];
+    const updated = [...content];
     const [parent, index] = getParentAndIndex(updated, path);
     const table = parent[index];
     
@@ -296,14 +296,14 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
       table.data.forEach(row => {
         row.splice(colIndex, 1);
       });
-      setBlog({ ...blog, content: updated });
+      setContent(updated);
     } else {
       // Don't remove the last column
       alert("Cannot remove the last column");
     }
   };
   const handleCellTextChange = (path, rowIndex, colIndex, val) => {
-    const updated = [...blog.content];
+    const updated = [...content];
     const [parent, index] = getParentAndIndex(updated, path);
     const cell = parent[index].data[rowIndex][colIndex];
     
@@ -319,10 +319,10 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
       cell.text = val;
     }
     
-    setBlog({ ...blog, content: updated });
+    setContent(updated);
   };
   const toggleCellType = (path, rowIndex, colIndex) => {
-    const updated = [...blog.content];
+    const updated = [...content];
     const [parent, index] = getParentAndIndex(updated, path);
     const cell = parent[index].data[rowIndex][colIndex];
     
@@ -347,7 +347,7 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
       };
     }
     
-    setBlog({ ...blog, content: updated });
+    setContent(updated);
   };
 
   const getBlockId = (blockPath) => `block-${blockPath.join('-')}`;
@@ -380,7 +380,7 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
     const overPath = parseBlockId(over.id);
     
     // Create a deep copy of the content
-    const updated = JSON.parse(JSON.stringify(blog.content));
+    const updated = JSON.parse(JSON.stringify(content, null, 4));
     
     // Get parent and index for the active item
     const { parent: activeParent, index: activeIndex } = getBlockAtPath(updated, activePath);
@@ -404,7 +404,7 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
       return;
     }
     
-    setBlog({ ...blog, content: updated });
+    setContent(updated);
   };
   const renderChildrenDnd = (children, parentPath) => {
     if (!children || children.length === 0) return null;
@@ -796,11 +796,11 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
         onDragEnd={handleDragEnd}
       >
         <SortableContext
-          items={blocks.map((_, i) => getBlockId([...path, i]))}
+          items={content.map((_, i) => getBlockId([...path, i]))}
           strategy={verticalListSortingStrategy}
         >
           <Stack spacing={2}>
-            {blocks.map((block, index) => (
+            {content.map((block, index) => (
               renderBlockUI(block, index, path)
             ))}
           </Stack>
@@ -869,10 +869,10 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
               <Button onClick={() => setPropsDialogPath(null)}>Cancel</Button>
               <Button
                   onClick={() => {
-                      const updated = [...blog.content];
+                      const updated = [...content];
                       const [parent, index] = getParentAndIndex(updated, propsDialogPath);
                       parent[index].props = tempProps;
-                      setBlog({ ...blog, content: updated });
+                      setContent(updated);
                       setPropsDialogPath(null);
                   }}
                   variant="contained"
@@ -885,36 +885,31 @@ function RenderBlock({ blocks, path = [], setBlog, blog }) {
   );
 }
 
+const MemoizedRenderBlock = React.memo(RenderBlock);
+
 export default function ClassicEditor() {
   const navigate = useNavigate();
   const [time, setTime] = useState(()=>loadBlog('editor')?.time.split(' ')[0]||'');
   const [timeUnit, setTimeUnit] = useState(()=>loadBlog('editor')?.time.split(' ')[1]||'min');
-  const [blog, setBlog] = useState(()=>loadBlog('editor')||{
-    name: '',
-    url: '',
-    unit: '',
-    subunit: '',
-    time: time + ' ' + timeUnit,
-    content: [],
+  const [content, setContent] = useState(() => loadBlog('editor')?.content || []);
+  const [meta, setMeta] = useState(() => {
+    const loaded = loadBlog('editor') || {};
+    return {
+      name: loaded.name || '',
+      url: loaded.url || '',
+      unit: loaded.unit || '',
+      subunit: loaded.subunit || '',
+      time: loaded.time || '0 min'
+    };
   });
   const [jsonDialogOpen, setJsonDialogOpen] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [importOpen, setImportOpen] = useState(false);
-  const [importText, setImportText] = useState(JSON.stringify(blog, "", 4));
-
-  useEffect(() => {
-      const handleStorage = () => {
-          const updatedBlog = loadBlog('editor');
-          setImportText(updatedBlog);
-      };
-  
-      window.addEventListener('storage', handleStorage);
-      return () => window.removeEventListener('storage', handleStorage);
-  }, []);
+  const [importText, setImportText] = useState("");
 
   // 💾 Save to localStorage on change
   useEffect(() => {
-    setBlog(prev => ({
+    setMeta(prev => ({
       ...prev,
       time: `${time} ${timeUnit}`,
     }));
@@ -922,22 +917,20 @@ export default function ClassicEditor() {
   
   useEffect(() => {
     const handler = setTimeout(() => {
-      saveBlog('editor', blog);
-    }, 2000); // debounce time in ms
+      saveBlog('editor', { ...meta, content });
+    }, 500);
   
-    return () => {
-      clearTimeout(handler); // clear previous timer on re-render
-    };
-  }, [blog]);
+    return () => clearTimeout(handler);
+  }, [content, meta]);
 
   // ⬇ Export to JSON
   const exportJSON = () => {
-    const json = JSON.stringify(blog, null, 2);
+    const json = JSON.stringify({ ...meta, content }, null, 4);
     const blob = new Blob([json], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `${blog.title || 'untitled'}.json`;
+    a.download = `${meta.title || 'untitled'}.json`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -969,8 +962,8 @@ export default function ClassicEditor() {
                   useThemeColor={true}
                   required
                   name='blog_name'
-                  value={blog.name}
-                  setValue={(val) => setBlog({ ...blog, name: val })}
+                  value={meta.name}
+                  setValue={(val) => setMeta({ ...meta, name: val })}
               />
           </Stack>
           <Stack width={'80%'}>
@@ -981,8 +974,8 @@ export default function ClassicEditor() {
                   useThemeColor={true}
                   required
                   name='url_path'
-                  value={blog.url}
-                  setValue={(val) => setBlog({ ...blog, url: val })}
+                  value={meta.url}
+                  setValue={(val) => setMeta({ ...meta, url: val })}
               />
           </Stack>
           <Stack width={'80%'}>
@@ -993,8 +986,8 @@ export default function ClassicEditor() {
                   useThemeColor={true}
                   required
                   name='unit'
-                  value={blog.unit}
-                  setValue={(val) => setBlog({ ...blog, unit: val })}
+                  value={meta.unit}
+                  setValue={(val) => setMeta({ ...meta, unit: val })}
               />
           </Stack>
           <Stack width={'80%'}>
@@ -1005,8 +998,8 @@ export default function ClassicEditor() {
                   useThemeColor={true}
                   required
                   name='subunit'
-                  value={blog.subunit}
-                  setValue={(val) => setBlog({ ...blog, subunit: val })}
+                  value={meta.subunit}
+                  setValue={(val) => setMeta({ ...meta, subunit: val })}
               />
           </Stack>
           <Stack width={'80%'}>
@@ -1042,7 +1035,7 @@ export default function ClassicEditor() {
           </Stack>
         </Stack>
 
-        <RenderBlock blog={blog} setBlog={setBlog} blocks={blog.content} />
+        <MemoizedRenderBlock content={content} setContent={setContent} />
 
         <Stack direction="row" spacing={2} justifyContent={'center'} alignItems={'center'}>
           <Tooltip title="Import JSON">
@@ -1102,7 +1095,7 @@ export default function ClassicEditor() {
           <IconButton
             sx={{ ml: 1 }}
             onClick={() => {
-              navigator.clipboard.writeText(JSON.stringify(blog, null, 2));
+              navigator.clipboard.writeText(JSON.stringify({...meta, content}, null, 4));
               setSnackbarOpen(true);
             }}
           >
@@ -1115,7 +1108,7 @@ export default function ClassicEditor() {
             multiline
             fullWidth
             minRows={15}
-            value={JSON.stringify(blog, null, 2)}
+            value={JSON.stringify({...meta, content}, null, 4)}
             variant="outlined"
             slotProps={{
               input: {
@@ -1157,32 +1150,37 @@ export default function ClassicEditor() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setImportOpen(false)}>Cancel</Button>
-          <Button
-            onClick={() => {
-              try {
+    <Button onClick={() => setImportOpen(false)}>Cancel</Button>
+    <Button
+        onClick={() => {
+            try {
                 const parsed = JSON.parse(importText);
                 if (
-                  parsed &&
-                  parsed.name &&
-                  parsed.content &&
-                  Array.isArray(parsed.content)
+                    parsed &&
+                    typeof parsed === "object" &&
+                    parsed.name &&
+                    parsed.content &&
+                    Array.isArray(parsed.content)
                 ) {
-                  setBlog(parsed);
-                  localStorage.setItem('editor', JSON.stringify(parsed));
-                  setImportOpen(false);
-                  setImportText('');
+                    const { name, url, unit, subunit, time, content } = parsed;
+
+                    setMeta({ name, url, unit, subunit, time });
+                    setContent(content);
+
+                    localStorage.setItem('editor', JSON.stringify(parsed));
+                    setImportOpen(false);
+                    setImportText('');
                 } else {
-                  alert("Invalid JSON structure.");
+                    alert("Invalid JSON structure.");
                 }
-              } catch (err) {
+            } catch (err) {
                 alert("Invalid JSON format.");
-              }
-            }}
-            variant="contained"
-          >
-            Import
-          </Button>
+            }
+        }}
+        variant="contained"
+    >
+        Import
+    </Button>
         </DialogActions>
       </Dialog>
     </Theme>
