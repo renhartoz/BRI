@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { Stack, Typography, Grid2 } from "@mui/material";
 import { MathJax } from "better-react-mathjax";
 import Problem from "../maths/Problem";
+import NumberLine from "../maths/NumberLine";
+import FunctionGraph from "../maths/FunctionGraph";
 import { CustomRawTable } from "../components/Tabel";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CircleIcon from '@mui/icons-material/Circle';
@@ -175,6 +177,16 @@ const RenderContent = ({ data }) => {
                         variant={"secondary"}
                         {...(item.props || {})}
                     />
+                )
+            
+            case "number_line":
+                return (
+                    <NumberLine dots={item.dots} signs={item.signs} />
+                )
+            
+            case "func_graph":
+                return (
+                    <FunctionGraph x={item.x} fn={item.func} height={item.height} />
                 )
 
             default:

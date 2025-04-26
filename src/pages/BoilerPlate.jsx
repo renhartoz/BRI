@@ -9,6 +9,7 @@ import Dropdown from "../components/Dropdown";
 import Problem from "../maths/Problem";
 import Editor from "../components/Editor";
 import NumberLine from "../maths/NumberLine";
+import FunctionGraph from "../maths/FunctionGraph";
 
 import SchoolIcon from "@mui/icons-material/School";
 import EventIcon from "@mui/icons-material/Event";
@@ -639,6 +640,7 @@ export default function Testing() {
                     ]}
                     signs={['+', '-', '+', '+']}
                 />
+                <FunctionGraph x={[0, 4, 1]} y={[0, 16, 2]} fn={'y=x^2'} />
             </Stack>
         </>
     );

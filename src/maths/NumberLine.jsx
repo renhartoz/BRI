@@ -1,98 +1,89 @@
-import Plot from 'react-plotly.js';
+import React from 'react';
+import { Box } from '@mui/material';
 
-const NumberLine = ({ dots = [], signs = null }) => {
+export default function NumberLine({ dots = [], signs = null }) {
     if (!dots.length) return null;
+
+    const width = 500;
+    const height = 100;
+    const padding = 50;
 
     const minX = Math.min(...dots.map(([x]) => x)) - 1;
     const maxX = Math.max(...dots.map(([x]) => x)) + 1;
+    const range = maxX - minX;
 
-    // 1. Main line
-    const lineTrace = {
-        x: [minX, maxX],
-        y: [0, 0],
-        type: 'scatter',
-        mode: 'lines',
-        line: { color: 'black' },
-        showlegend: false,
-        hoverinfo: 'skip',
-    };
+    const scaleX = (x) => ((x - minX) / range) * (width - 2 * padding) + padding;
 
-    // 2. Dots (filled or unfilled)
-    const dotTraces = dots.map(([x, filled]) => ({
-        x: [x],
-        y: [0],
-        type: 'scatter',
-        mode: 'markers+text',
-        marker: filled
-        ? { color: 'black', size: 10, symbol: 'circle' }
-        : { color: 'white', size: 10, line: { color: 'black', width: 2 }, symbol: 'circle' },
-        text: [`${x}`],
-        textposition: 'bottom center',
-        showlegend: false,
-        hoverinfo: 'skip',
-    }));
+    const dotY = 50;
+    const signY = 30;
+    const labelY = 75;
 
-  // 3. Sign positions (evenly spaced between start and end)
-    let signTrace = {};
+    const signPositions = [];
     if (signs && signs.length === dots.length + 1) {
-        const positions = [];
-
-        // Calculate gap between each dot
         for (let i = -1; i < dots.length; i++) {
             if (i === -1) {
-                // Before first dot
-                const [x1] = dots[0];
-                const x = x1 - .5;
-                positions.push(x);
+                const [x] = dots[0];
+                signPositions.push(x - 0.5);
             } else if (i === dots.length - 1) {
-                // After last dot
-                const [x1] = dots[dots.length - 1];
-                const x = x1 + .5;
-                positions.push(x);
+                const [x] = dots[dots.length - 1];
+                signPositions.push(x + 0.5);
             } else {
                 const [x1] = dots[i];
                 const [x2] = dots[i + 1];
-                const x = (x1 + x2) / 2;
-                positions.push(x);
+                signPositions.push((x1 + x2) / 2);
             }
         }
-
-        signTrace = {
-            x: positions,
-            y: positions.map(() => 0.3),
-            type: 'scatter',
-            mode: 'text',
-            text: signs,
-            textposition: 'bottom center',
-            showlegend: false,
-            hoverinfo: 'skip',
-        };
     }
 
     return (
-        <Plot
-            data={[lineTrace, ...dotTraces, ...(signs ? [signTrace] : [])]}
-            layout={{
-                width: 500,
-                height: 200,
-                margin: { l: 30, r: 30, t: 10, b: 40 },
-                xaxis: {
-                    range: [minX, maxX],
-                    zeroline: false,
-                    showgrid: false,
-                    showticklabels: false,
-                },
-                yaxis: {
-                    range: [-0.5, 1],
-                    visible: false,
-                },
-                font: {
-                    size: 18,
-                },
-            }}
-            config={{ staticPlot: true }}
-        />
-    );
-};
+        <Box sx={{ width: `${width}px`, height: `${height}px`, position: 'relative' }}>
+            <svg width="100%" height="100%">
+                {/* Main line */}
+                <line
+                    x1={scaleX(minX)}
+                    y1={dotY}
+                    x2={scaleX(maxX)}
+                    y2={dotY}
+                    stroke="black"
+                    strokeWidth={2}
+                />
 
-export default NumberLine;
+                {/* Dots and labels */}
+                {dots.map(([x, filled], i) => {
+                    const cx = scaleX(x);
+                    return (
+                        <g key={`dot-${i}`}>
+                            <circle
+                                cx={cx}
+                                cy={dotY}
+                                r={6}
+                                fill={filled ? 'black' : 'white'}
+                                stroke="black"
+                                strokeWidth={2}
+                            />
+                            <text
+                                x={cx - 6}
+                                y={labelY}
+                                fontSize="14"
+                            >
+                                {x}
+                            </text>
+                        </g>
+                    );
+                })}
+
+                {/* Signs */}
+                {signs && signPositions.map((pos, i) => (
+                    <text
+                        key={`sign-${i}`}
+                        x={scaleX(pos) - 5}
+                        y={signY}
+                        fontSize="20"
+                    >
+                        {signs[i]}
+                    </text>
+                ))}
+            </svg>
+        </Box>
+    );
+}

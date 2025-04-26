@@ -24,6 +24,7 @@ export default function CustomInputNumber({
     palette = "primary",         // theme color palette (e.g. "primary", "secondary")
     useThemeColor = false,       // toggle to use palette color
     fullWidth = true,
+    placeholder="",
     ...rest
 }) {
     const theme = useTheme();
@@ -74,6 +75,7 @@ export default function CustomInputNumber({
                     label={label}
                     variant="outlined"
                     value={value}
+                    placeholder={placeholder}
                     onChange={handleChange}
                     multiline={multiline}
                     maxRows={rows}
@@ -89,6 +91,36 @@ export default function CustomInputNumber({
                                 <InputAdornment position="end">{unit}</InputAdornment>
                             ),
                         }
+                    }}
+                    sx={{
+                        input: {
+                            fontSize: { xs: ".8rem", md: "1rem" },
+                            py: 2,
+                            px: 3,
+                            '::placeholder': {
+                                color: '#888',
+                                fontWeight: 600,
+                                opacity: 1,
+                            },
+                        },
+                        label: {
+                            fontSize: { xs: ".8rem", md: "1rem" },
+                            fontWeight: "bold",
+                        },
+                        "& .MuiInput-underline:before": {
+                            borderBottom: "none",
+                        },
+                        "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
+                            borderBottom: "none",
+                        },
+                        "& .MuiInput-underline:after": {
+                            borderBottom: "none",
+                        },
+                        "& .MuiFormHelperText-root": {
+                            fontSize: "0.8rem",
+                            fontWeight: "bold",
+                        },
+                        backgroundColor: "white",
                     }}
                     {...rest}
                 />

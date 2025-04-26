@@ -24,6 +24,7 @@ import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { useNavigate } from 'react-router-dom';
 import CustomInput from '../form/CustomInput';
 import CustomInputNumber from '../form/CustomInputNumber';
+import CustomCheck from '../form/CustomCheck';
 import SelectField from '../form/SelectField';
 import { saveBlog, loadBlog, getParentAndIndex } from '../Utility';
 
@@ -38,6 +39,8 @@ import JSONIcon from '@mui/icons-material/DataObject';
 import ViewComfyIcon from '@mui/icons-material/ViewComfy';
 import TaskIcon from '@mui/icons-material/Task';
 import TableIcon from '@mui/icons-material/TableView';
+import NumberLineIcon from '@mui/icons-material/Commit';
+import GraphIcon from '@mui/icons-material/AutoGraph';
 
 import CopyIcon from '@mui/icons-material/ContentCopy';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -50,7 +53,7 @@ import UploadIcon from '@mui/icons-material/Upload';
 
 function MenuButtons({ addBlock }) {
   return (
-    <Stack direction="row" justifyContent={'center'} alignItems={'center'} spacing={2}>
+      <Stack direction="row" justifyContent={'center'} alignItems={'center'} flexWrap={'nowrap'} spacing={2} sx={{overflowX:'auto'}}>
         <Tooltip title="Add Paragraph">
           <IconButton 
             color="primary" 
@@ -148,6 +151,26 @@ function MenuButtons({ addBlock }) {
             sx={{ border: '1px solid', borderRadius: '8px', padding: '8px' }}
           >
             <TableIcon />
+          </IconButton>
+        </Tooltip>
+
+        <Tooltip title="Add Number Line">
+          <IconButton 
+            color="primary" 
+            onClick={() => addBlock('number_line')}
+            sx={{ border: '1px solid', borderRadius: '8px', padding: '8px' }}
+          >
+            <NumberLineIcon />
+          </IconButton>
+        </Tooltip>
+
+        <Tooltip title="Add Function Graph">
+          <IconButton 
+            color="primary" 
+            onClick={() => addBlock('func_graph')}
+            sx={{ border: '1px solid', borderRadius: '8px', padding: '8px' }}
+          >
+            <GraphIcon />
           </IconButton>
         </Tooltip>
       </Stack>
@@ -505,6 +528,7 @@ function RenderBlock({ path = [], setContent, content }) {
                 <CustomInputNumber
                   value={block.gap || 0}
                   setValue={(val) => updateBlock(fullPath, 'gap', val)}
+                  decimal
                   fullWidth
                 />
               </Stack>
@@ -559,6 +583,7 @@ function RenderBlock({ path = [], setContent, content }) {
               <CustomInputNumber
                 value={block.gap || 0}
                 setValue={(val) => updateBlock(fullPath, 'gap', val)}
+                decimal
                 fullWidth
               />
             </Stack>
@@ -600,6 +625,7 @@ function RenderBlock({ path = [], setContent, content }) {
               <CustomInputNumber
                 value={block.gap || 0}
                 setValue={(val) => updateBlock(fullPath, 'gap', val)}
+                decimal
                 fullWidth
               />
             </Stack>
@@ -771,6 +797,100 @@ function RenderBlock({ path = [], setContent, content }) {
               <Button onClick={() => addTableColumn(fullPath)}>+ Add Column</Button>
             </Stack>
           </Stack>
+        ) : block.type === 'number_line' ? (
+          <>
+            {/* Dots Editor */}
+            <Stack gap={3}>
+                {block.dots?.map((itm, i) => (
+                    <Stack direction="row" spacing={1} key={i} alignItems="center">
+                        <Stack flex={1}>
+                            <CustomInput
+                                placeholder="Position (x)"
+                                value={itm[0]}
+                                setValue={(val) => {
+                                    const updatedDots = [...block.dots];
+                                    updatedDots[i][0] = Number(val);
+                                    updateBlock(fullPath, 'dots', updatedDots);
+                                }}
+                                fullWidth
+                            />
+                        </Stack>
+                        <CustomCheck
+                            label="Filled"
+                            val={itm[1]}
+                            setVal={(val) => {
+                                const updatedDots = [...block.dots];
+                                console.log(val);
+                                updatedDots[i][1] = val;
+                                updateBlock(fullPath, 'dots', updatedDots);
+                            }}
+                        />
+                        <IconButton
+                            size="small"
+                            color="error"
+                            onClick={() => {
+                                const updatedDots = [...block.dots];
+                                updatedDots.splice(i, 1);
+                                updateBlock(fullPath, 'dots', updatedDots);
+                            }}
+                        >
+                            <DeleteIcon fontSize="small" />
+                        </IconButton>
+                    </Stack>
+                ))}
+                <Button
+                    onClick={() => {
+                        const updatedDots = [...(block.dots || [])];
+                        updatedDots.push([0, true]); // default new dot
+                        updateBlock(fullPath, 'dots', updatedDots);
+                    }}
+                    size="small"
+                    variant="outlined"
+                >
+                    + Add Dot
+                </Button>
+            </Stack>
+
+            {/* Signs Editor */}
+            <CustomInput 
+                placeholder="Signs"
+                value={(block.signs || []).join(', ')}
+                setValue={(val) => {
+                    const signsArray = val.split(',').map(s => s.trim());
+                    updateBlock(fullPath, 'signs', signsArray);
+                }}
+                fullWidth
+                sx={{ mt: 2 }}
+            />
+          </>
+        ) : block.type === 'func_graph' ? (
+          <>
+            <Stack gap={3}>
+              <CustomInput 
+                  placeholder="Domain"
+                  value={(block.x || []).join(', ')}
+                  setValue={(val) => {
+                      const xArray = val.split(',').map(s => s.trim());
+                      updateBlock(fullPath, 'x', xArray);
+                  }}
+                  fullWidth
+                  sx={{ mt: 2 }}
+              />
+              <CustomInput
+                  multiline
+                  placeholder="Function"
+                  value={block.fn || ''}
+                  setValue={(val) => updateBlock(fullPath, 'fn', val)}
+              />
+              <CustomInputNumber
+                  placeholder="Height"
+                  value={block.height || 0}
+                  decimal
+                  setValue={(val) => updateBlock(fullPath, 'height', val)}
+                  fullWidth
+              />
+            </Stack>
+          </>
         ) : null}
 
         {nestedBlocks.includes(block.type) && (

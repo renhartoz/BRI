@@ -1,4 +1,5 @@
-import { Stack, Typography, Button } from "@mui/material";
+import React from 'react';
+import { Box, Stack, Typography } from "@mui/material";
 import Accordion from "../components/Accordion";
 import { MathJax } from "better-react-mathjax";
 
@@ -33,7 +34,7 @@ export default function Problem({ title, equation, children, instruction, note, 
                             question={
                                 <Typography fontWeight={750}>{accordion_text}</Typography>
                             }
-                            answer={ <>{children}</> }
+                            answer={ <Box mt={2}>{children}</Box> }
                             bgcolor_title="inherit"
                             color_title="kurai_ao"
                             bgcolor_text="inherit"
