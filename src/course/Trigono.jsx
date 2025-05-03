@@ -1,7 +1,9 @@
 import SyllabusTemplate from "./SyllabusTemplate";
+import Template from "./Template";
+import trigonoData from "../data/blogs/trigono.json";
 // import course from "../data/course.json";
 
-export default function TrigonometriSyllabus() {
+export function TrigonoSyllabus() {
     // const course = course.find((c) => c.id === 3);
     return (
         <SyllabusTemplate
@@ -9,7 +11,7 @@ export default function TrigonometriSyllabus() {
             title="Trigonometri"
             desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             subUnits={["Lorem", "Ipsum", "Dolor"]}
-            firstPageURL="/course/trigonometri"
+            firstPageURL="/course/trigonometri/intro"
             level="Intermediate"
             time="15"
             subUnit="20"
@@ -50,4 +52,39 @@ export default function TrigonometriSyllabus() {
             }}
         />
     );
+}
+
+export function TrigonoIntro() {
+    return (
+        <>
+            <Template
+                blogData={trigonoData}
+                url={"/course/trigonometri/intro"}
+            />
+        </>
+    );
+}
+
+export function TrigonoRadian() {
+    return <></>;
+}
+
+export function TrigonoRelations() {
+    return <></>;
+}
+
+export function TrigonoIdentity() {
+    return <></>;
+}
+
+export function TrigonoAngleProp() {
+    return <></>;
+}
+
+export function TrigonoOtherProp() {
+    return <></>;
+}
+
+export function TrigonoEquation() {
+    return <></>;
 }

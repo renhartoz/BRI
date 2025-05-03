@@ -4,7 +4,7 @@ import { MathJax } from "better-react-mathjax";
 import Problem from "../maths/Problem";
 import ExerciseHeader from "./ExerciseHeader";
 
-export function Trigonometri1() {
+export function Trigono1() {
     return (
         <Stack
             px={{ xs: 5, sm: 8, md: 10 }}
@@ -51,7 +51,7 @@ export function Trigonometri1() {
     );
 }
 
-export function Trigonometri2() {
+export function Trigono2() {
     return (
         <Stack
             px={{ xs: 5, sm: 8, md: 10 }}
@@ -93,7 +93,7 @@ export function Trigonometri2() {
     );
 }
 
-export function Trigonometri3() {
+export function Trigono3() {
     return (
         <Stack
             px={{ xs: 5, sm: 8, md: 10 }}
@@ -159,7 +159,7 @@ export function Trigonometri3() {
     );
 }
 
-export function Trigonometri4() {
+export function Trigono4() {
     return (
         <Stack
             px={{ xs: 5, sm: 8, md: 10 }}
@@ -189,7 +189,7 @@ export function Trigonometri4() {
     );
 }
 
-export function Trigonometri5() {
+export function Trigono5() {
     return (
         <Stack
             px={{ xs: 5, sm: 8, md: 10 }}
@@ -219,7 +219,7 @@ export function Trigonometri5() {
     );
 }
 
-export function Trigonometri6() {
+export function Trigono6() {
     return (
         <Stack
             px={{ xs: 5, sm: 8, md: 10 }}
@@ -249,7 +249,7 @@ export function Trigonometri6() {
     );
 }
 
-export function Trigonometri7() {
+export function Trigono7() {
     return (
         <Stack
             px={{ xs: 5, sm: 8, md: 10 }}
@@ -279,7 +279,7 @@ export function Trigonometri7() {
     );
 }
 
-export function Trigonometri8() {
+export function Trigono8() {
     return (
         <Stack
             px={{ xs: 5, sm: 8, md: 10 }}
@@ -309,7 +309,7 @@ export function Trigonometri8() {
     );
 }
 
-export function Trigonometri9() {
+export function Trigono9() {
     return (
         <Stack
             px={{ xs: 5, sm: 8, md: 10 }}
@@ -339,7 +339,7 @@ export function Trigonometri9() {
     );
 }
 
-export function Trigonometri10() {
+export function Trigono10() {
     return (
         <Stack
             px={{ xs: 5, sm: 8, md: 10 }}
