@@ -123,7 +123,7 @@ const RenderContent = ({ data }) => {
                             </Typography>
                             <Grid2 container spacing={.5} direction={'column'}>
                                 {item.items.map((listItem, listIndex) => (
-                                    <Grid2 xs={3} sm={3} key={listIndex}>
+                                    <Grid2 key={listIndex}>
                                         <Stack direction="row" alignItems="center" gap={1}>
                                             {item.bullet === "1" ? (
                                                 <Typography sx={{ color: item.color||"primary.main", fontSize: "1.2em" }}>{listIndex+1}.&nbsp;</Typography>
@@ -155,8 +155,9 @@ const RenderContent = ({ data }) => {
                     <Problem
                         key={index}
                         title={item.title}
-                        equation={item.equation}
                         instruction={item.instruction}
+                        equation={item.equation}
+                        option={item.option}
                         note={item.note}
                         accordion_text={item.accordion_text}
                         {...(item.props || {})}
@@ -181,12 +182,12 @@ const RenderContent = ({ data }) => {
             
             case "number_line":
                 return (
-                    <NumberLine dots={item.dots} signs={item.signs} />
+                    <NumberLine key={index} dots={item.dots} signs={item.signs} />
                 )
             
             case "func_graph":
                 return (
-                    <FunctionGraph x={item.x} fn={item.func} height={item.height} />
+                    <FunctionGraph key={index} x={item.x} fn={item.fn} height={item.height} />
                 )
 
             default:

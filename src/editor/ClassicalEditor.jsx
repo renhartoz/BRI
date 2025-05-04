@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Theme from '../components/Theme';
 import {
   Dialog,
@@ -721,6 +721,97 @@ function RenderBlock({ path = [], setContent, content }) {
                 setValue={(val) => updateBlock(fullPath, 'accordion_text', val)}
               />
             </Stack>
+            <Collapse in={expandedBlocks[fullPath]}>
+              <Stack spacing={2} sx={{ pl: 2, borderLeft: '2px solid #ccc', mt: 2 }}>
+                <Typography variant="subtitle2">Options</Typography>
+
+                <Stack gap={3}>
+                  {(block.option?.items || []).map((item, idx) => (
+                    <Stack key={idx} direction="row" spacing={1} alignItems="center">
+                      <Stack flex={1}>
+                        <CustomInput
+                          fullWidth
+                          placeholder={`Option ${idx + 1}`}
+                          value={item}
+                          setValue={(val) => {
+                            const newOptions = [...(block.option?.items || [])];
+                            newOptions[idx] = val;
+                            updateBlock(fullPath, 'option', {
+                              ...(block.option || { bullet: "1", items: [] }),
+                              items: newOptions,
+                            });
+                          }}
+                        />
+                      </Stack>
+                      <IconButton
+                        size="small"
+                        color="error"
+                        onClick={() => {
+                          const newOptions = [...(block.option?.items || [])];
+                          newOptions.splice(idx, 1);
+                          updateBlock(fullPath, 'option', {
+                            ...(block.option || { bullet: "1", items: [] }),
+                            items: newOptions,
+                          });
+                        }}
+                      >
+                        <DeleteIcon fontSize="small" />
+                      </IconButton>
+                    </Stack>
+                  ))}
+                </Stack>
+
+                <Button
+                  variant="outlined"
+                  size="small"
+                  onClick={() => {
+                    const newOptions = [...(block.option?.items || [])];
+                    newOptions.push("New Option");
+                    updateBlock(fullPath, 'option', {
+                      ...(block.option || { bullet: "1", items: [] }),
+                      items: newOptions,
+                    });
+                  }}
+                >
+                  + Add Option
+                </Button>
+
+                <Stack flex={1} mt={2}>
+                  <CustomInput
+                    placeholder="Bullet Type (1, a, A, bullet, check)"
+                    value={block.option?.bullet || ''}
+                    setValue={(val) => {
+                      updateBlock(fullPath, 'option', {
+                        ...(block.option || { items: [] }),
+                        bullet: val,
+                      });
+                    }}
+                  />
+                </Stack>
+
+                <Stack flex={1} mt={2}>
+                  <CustomInput
+                    placeholder="Color"
+                    value={block.option?.color || ''}
+                    setValue={(val) => {
+                      updateBlock(fullPath, 'option', {
+                        ...(block.option || { items: [] }),
+                        color: val,
+                      });
+                    }}
+                  />
+                </Stack>
+              </Stack>
+            </Collapse>
+            <Stack direction="row" justifyContent="flex-end">
+                <Button
+                    size="small"
+                    onClick={() => setExpandedBlocks(prev => ({ ...prev, [pathKey]: !prev[pathKey] }))}
+                    startIcon={expandedBlocks[fullPath] ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                >
+                    {expandedBlocks[fullPath] ? "Hide Options" : "Show Options"}
+                </Button>
+            </Stack>
           </Stack>
         ) : block.type === "table" ? (
           <Stack spacing={2}>
@@ -870,7 +961,7 @@ function RenderBlock({ path = [], setContent, content }) {
                   placeholder="Domain"
                   value={(block.x || []).join(', ')}
                   setValue={(val) => {
-                      const xArray = val.split(',').map(s => s.trim());
+                      const xArray = val.split(',').map(s => parseFloat(s.trim()));
                       updateBlock(fullPath, 'x', xArray);
                   }}
                   fullWidth
@@ -886,7 +977,7 @@ function RenderBlock({ path = [], setContent, content }) {
                   placeholder="Height"
                   value={block.height || 0}
                   decimal
-                  setValue={(val) => updateBlock(fullPath, 'height', val)}
+                  setValue={(val) => updateBlock(fullPath, 'height', parseFloat(val))}
                   fullWidth
               />
             </Stack>

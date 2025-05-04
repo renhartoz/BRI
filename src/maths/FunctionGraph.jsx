@@ -46,7 +46,6 @@ export default function FunctionGraph({
 			xAxis={[{
 				dataKey: 'x',
 				tickMinStep: x[2],
-				tickInterval: x[2],
 				tickValues: xTicks,
 				min: x[0],
 				max: x[1]
