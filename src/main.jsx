@@ -40,12 +40,22 @@ import {
     DerivGraph,
 } from "./course/Deriv.jsx";
 
+import {
+    TrigonoSyllabus,
+    TrigonoIntro,
+    TrigonoRadian,
+    TrigonoRelations,
+    TrigonoIdentity,
+    TrigonoAngleProp,
+    TrigonoOtherProp,
+    TrigonoEquation,
+} from "./course/Trigono.jsx";
+
 import * as GK from "./exercise/GasKinetics.jsx";
-import * as TRI from "./exercise/Trigonometri.jsx";
+import * as TRI from "./exercise/Trigono.jsx";
 import * as LIM from "./exercise/Limit.jsx";
 import PageNotFound from "./pages/404.jsx";
 import ComingSoon from "./pages/ComingSoon.jsx";
-import TrigonometriSyllabus from "./course/Trigonometri.jsx";
 
 export const routes = [
     {
@@ -56,18 +66,18 @@ export const routes = [
             { path: "test", element: <Testing /> },
             { path: "course", element: <CourseList /> },
             { path: "exercise", element: <ExerciseList /> },
-            { path: "course/trigonometri", element: <TrigonometriSyllabus /> },
+            { path: "course/trigonometri", element: <TrigonoSyllabus /> },
             { path: "course/limit", element: <LimitSyllabus /> },
             { path: "course/deriv", element: <DerivSyllabus /> },
         ],
     },
-    { 
-        path: "/editor", 
-        element: <ClassicEditor /> 
+    {
+        path: "/editor",
+        element: <ClassicEditor />,
     },
-    { 
-        path: "/preview", 
-        element: <ClassicPreview /> 
+    {
+        path: "/preview",
+        element: <ClassicPreview />,
     },
     {
         path: "/lexical-editor",
@@ -102,8 +112,21 @@ export const routes = [
             { path: "property", element: <DerivProperty /> },
             { path: "chain", element: <DerivChain /> },
             { path: "product", element: <DerivProduct /> },
-            { path: "interpretation", element: <DerivInterpretation/> },
-            { path: "graph", element: <DerivGraph/> },
+            { path: "interpretation", element: <DerivInterpretation /> },
+            { path: "graph", element: <DerivGraph /> },
+        ],
+    },
+    {
+        path: "/course/trigonometri",
+        element: <CourseLayout />,
+        children: [
+            { path: "intro", element: <TrigonoIntro /> },
+            { path: "radian", element: <TrigonoRadian /> },
+            { path: "relations", element: <TrigonoRelations /> },
+            { path: "identity", element: <TrigonoIdentity /> },
+            { path: "angle-prop", element: <TrigonoAngleProp /> },
+            { path: "other-prop", element: <TrigonoOtherProp /> },
+            { path: "equation", element: <TrigonoEquation /> },
         ],
     },
     {
@@ -133,19 +156,19 @@ export const routes = [
         ],
     },
     {
-        path: "/exercise/trigonometry",
+        path: "/exercise/trigonometri",
         element: <ExerciseLayout />,
         children: [
-            { path: "1", element: <TRI.Trigonometri1 /> },
-            { path: "2", element: <TRI.Trigonometri2 /> },
-            { path: "3", element: <TRI.Trigonometri3 /> },
-            { path: "4", element: <TRI.Trigonometri4 /> },
-            { path: "5", element: <TRI.Trigonometri5 /> },
-            { path: "6", element: <TRI.Trigonometri6 /> },
-            { path: "7", element: <TRI.Trigonometri7 /> },
-            { path: "8", element: <TRI.Trigonometri8 /> },
-            { path: "9", element: <TRI.Trigonometri9 /> },
-            { path: "10", element: <TRI.Trigonometri10 /> },
+            { path: "1", element: <TRI.Trigono1 /> },
+            { path: "2", element: <TRI.Trigono2 /> },
+            { path: "3", element: <TRI.Trigono3 /> },
+            { path: "4", element: <TRI.Trigono4 /> },
+            { path: "5", element: <TRI.Trigono5 /> },
+            { path: "6", element: <TRI.Trigono6 /> },
+            { path: "7", element: <TRI.Trigono7 /> },
+            { path: "8", element: <TRI.Trigono8 /> },
+            { path: "9", element: <TRI.Trigono9 /> },
+            { path: "10", element: <TRI.Trigono10 /> },
         ],
     },
     {
@@ -167,7 +190,7 @@ export const routes = [
             { path: "13", element: <LIM.Limit13 /> },
             { path: "14", element: <LIM.Limit14 /> },
             { path: "15", element: <LIM.Limit15 /> },
-            { path: "16", element: <LIM.Limit16/> },
+            { path: "16", element: <LIM.Limit16 /> },
             { path: "17", element: <LIM.Limit17 /> },
             { path: "18", element: <LIM.Limit18 /> },
             { path: "19", element: <LIM.Limit19 /> },

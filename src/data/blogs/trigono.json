@@ -1,0 +1,127 @@
+[
+    {
+        "name": "trigonometri_intro",
+        "url": "/course/trigonometri/intro",
+        "unit": "Trigonometri",
+        "subunit": "Introduction",
+        "time": "5 min",
+        "content": [
+            {
+                "type": "heading",
+                "text": "Asal Usul Trigonometri"
+            },
+            {
+                "type": "image",
+                "src": "https://raw.githubusercontent.com/komatsuben/tenkai/refs/heads/docs/images/trigonometry%20application.png",
+                "alt": "Pengaplikasian Trigonometri"
+            },
+            {
+                "type": "paragraph",
+                "text": "Trigonometri berasal dari dua kata Yunani: \"trigonon\" (yang berarti tiga sudut) dan \"metron\" (mengukur).\nSejak zaman kuno, umat manusia menghadapi masalah yang sangat praktis:",
+                "children": [
+                    {
+                        "type": "paragraph",
+                        "text": "\"Bagaimana mengukur jarak atau sudut ketika kita tidak bisa langsung menjangkaunya?\"",
+                        "children": [],
+                        "props": {
+                            "fontWeight": 600
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "list",
+                "title": "Contohnya:",
+                "items": [
+                    "Bagaimana mengetahui tinggi sebuah menara tanpa harus memanjatnya?",
+                    "Bagaimana menentukan jarak antar bintang yang sangat jauh di langit?",
+                    "Bagaimana menghitung panjang sisi sebuah segitiga hanya dengan mengukur sudutnya?"
+                ],
+                "bullet": "bullet"
+            },
+            {
+                "type": "paragraph",
+                "text": "Inilah masalah praktis yang melahirkan trigonometri. Sebuah cara untuk menghubungkan ",
+                "children": [
+                    {
+                        "type": "paragraph",
+                        "text": "panjang dan sudut dalam segitiga.",
+                        "children": [],
+                        "props": {
+                            "fontWeight": 600
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "heading",
+                "text": "Syarat-syarat Trigonometri"
+            },
+            {
+                "type": "list",
+                "title": "Konsep dasar yang perlu diketahui:",
+                "items": [
+                    "Segitiga: Trigonometri pada dasarnya selalu berkaitan dengan segitiga, terutama segitiga siku-siku.",
+                    "Sudut: Kita harus bisa mengukur atau memperkirakan besar sudut.",
+                    "Panjang sisi: Kita harus bisa mengukur atau mencari panjang sisi dari segitiga."
+                ],
+                "bullet": "bullet"
+            },
+            {
+                "type": "list",
+                "title": "Trigonometri hanya berlaku apabila",
+                "items": [
+                    "Ada sudut yang bisa diukur",
+                    "Ada sisi yang bisa dihitung",
+                    "Segitiga memiliki sudut 90° (siku-siku)."
+                ],
+                "bullet": "1"
+            },
+            {
+                "type": "heading",
+                "text": "Singkat Kata"
+            },
+            {
+                "type": "paragraph",
+                "text": "Trigonometri adalah ",
+                "children": [
+                    {
+                        "type": "paragraph",
+                        "text": "perbandingan",
+                        "children": [],
+                        "props": {
+                            "fontWeight": 700
+                        }
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": " antar sisi dalam segitiga.",
+                        "children": []
+                    }
+                ],
+                "props": {
+                    "fontWeight": 400
+                }
+            },
+            {
+                "type": "paragraph",
+                "text": "Artinya, selama kita tahu ",
+                "children": [
+                    {
+                        "type": "paragraph",
+                        "text": "satu sudut dan satu sisi",
+                        "children": [],
+                        "props": {
+                            "fontWeight": 600
+                        }
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": ", kita bisa menghitung sisi lainnya hanya dengan menggunakan perbandingan sederhana.",
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
+]
