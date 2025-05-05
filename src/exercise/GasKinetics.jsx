@@ -208,9 +208,9 @@ export function GasKinetics3() {
                                 "\\[ \\begin{aligned} \
                                 \\rho=\\frac{m}{V}&=\\frac{2 \\space kg}{2,4 \\space m^{3}}=\\frac{5}{6} \\space \\frac{kg}{m^{3}} \\\\[10pt] \
                                 v=\\sqrt{\\frac{3P}{\\rho}}&=\\sqrt{\\frac{3(1,3 \\space atm)}{\\frac{5}{6} \\space \\frac{kg}{m^{3}}}} \\\\[10pt] \
-                                &=\\sqrt{(3,9 \\cdot 1,01 \\cdot 10^{5} \\space Pa) \\biggl(\\frac{6}{5} \\biggl) \\space \\frac{kg}{m^{3}}} \\\\[10pt] \
+                                &=\\sqrt{(3,9 \\cdot 1,01 \\cdot 10^{5} \\space Pa) \\biggl(\\frac{6}{5} \\biggl) \\space \\frac{m^{3}}{kg}} \\\\[10pt] \
                                 &= \\sqrt{472680 \\space \\frac{m^{2}}{s^{2}}} \\\\[10pt] \
-                                &= 687,5172 \\sapce \\frac{m}{s} \\\\[10pt] \
+                                &= 687,5172 \\space \\frac{m}{s} \\\\[10pt] \
                                 &\\thickapprox 687,52 \\space \\frac{m}{s}\
                             \\end{aligned} \\]"
                             }
