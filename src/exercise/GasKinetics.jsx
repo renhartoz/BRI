@@ -212,7 +212,7 @@ export function GasKinetics3() {
                                 &= \\sqrt{472680 \\space \\frac{m^{2}}{s^{2}}} \\\\[10pt] \
                                 &= 687,5172 \\space \\frac{m}{s} \\\\[10pt] \
                                 &\\thickapprox 687,52 \\space \\frac{m}{s}\
-                            \\end{aligned} \\]"
+                                \\end{aligned} \\]"
                             }
                         </MathJax>
                     </Typography>

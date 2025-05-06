@@ -1033,22 +1033,109 @@ function RenderBlock({ path = [], setContent, content }) {
                       setValue={(val) => setTempProps({ ...tempProps, className: val })}
                       fullWidth
                   />
-                  <CustomInput
-                      placeholder="Font Color"
-                      value={tempProps.color || ''}
-                      setValue={(val) => setTempProps({ ...tempProps, color: val })}
-                      fullWidth
-                  />
-                  <CustomInput
-                      placeholder="Background Color"
-                      value={tempProps.backgroundColor || ''}
-                      setValue={(val) => setTempProps({ ...tempProps, backgroundColor: val })}
-                      fullWidth
-                  />
+                  <Stack direction={"row"} gap={2}>
+                    <Stack width={"50%"}>
+                      <CustomInputNumber
+                          placeholder="Margin"
+                          value={tempProps.margin || ''}
+                          setValue={(val) => setTempProps({ ...tempProps, margin: val })}
+                          fullWidth
+                          decimal
+                      />
+                    </Stack>
+                    <Stack width={"50%"}>
+                      <CustomInputNumber
+                          placeholder="Padding"
+                          value={tempProps.padding || ''}
+                          setValue={(val) => setTempProps({ ...tempProps, padding: val })}
+                          fullWidth
+                          decimal
+                      />
+                    </Stack>
+                  </Stack>
+                  <Stack direction={"row"} gap={2}>
+                    <Stack width={"50%"}>
+                      <CustomInput
+                          placeholder="Width"
+                          value={tempProps.width || ''}
+                          setValue={(val) => setTempProps({ ...tempProps, width: val })}
+                          fullWidth
+                      />
+                    </Stack>
+                    <Stack width={"50%"}>
+                      <CustomInput
+                          placeholder="Height"
+                          value={tempProps.height || ''}
+                          setValue={(val) => setTempProps({ ...tempProps, height: val })}
+                          fullWidth
+                      />
+                    </Stack>
+                  </Stack>
+                  <Stack direction={"row"} gap={2}>
+                    <Stack width={"50%"}>
+                      <CustomInput
+                          placeholder="Font Color"
+                          value={tempProps.color || ''}
+                          setValue={(val) => setTempProps({ ...tempProps, color: val })}
+                          fullWidth
+                      />
+                    </Stack>
+                    <Stack width={"50%"}>
+                      <CustomInput
+                          placeholder="Background Color"
+                          value={tempProps.backgroundColor || ''}
+                          setValue={(val) => setTempProps({ ...tempProps, backgroundColor: val })}
+                          fullWidth
+                      />
+                    </Stack>
+                  </Stack>
+                  <Stack direction={"row"} gap={2}>
+                    <Stack direction={"row"} gap={2} width={"75%"}>
+                      <Stack width={"50%"}>
+                        <CustomInput
+                            placeholder="Border Color"
+                            value={tempProps.borderColor || ''}
+                            setValue={(val) => setTempProps({ ...tempProps, borderColor: val })}
+                            fullWidth
+                        />
+                      </Stack>
+                      <Stack width={"50%"}>
+                        <CustomInput
+                            placeholder="Border Width (px)"
+                            value={tempProps.borderWidth || ''}
+                            setValue={(val) => setTempProps({ ...tempProps, borderWidth: `${val}px` })}
+                            fullWidth
+                        />
+                      </Stack>
+                    </Stack>
+                      <Stack width={"25%"}>
+                        <SelectField
+                            label="Border Style"
+                            value={tempProps.borderStyle || 'solid'}
+                            setValue={(val) => setTempProps({ ...tempProps, borderStyle: val })}
+                            choices={[
+                                ['solid', 'Solid'],
+                                ['dashed', 'Dashed'],
+                                ['dotted', 'Dotted'],
+                                ['double', 'Double'],
+                                ['groove', 'Groove'],
+                                ['ridge', 'Ridge'],
+                                ['inset', 'Inset'],
+                                ['outset', 'Outset']
+                            ]}
+                        />
+                      </Stack>
+                  </Stack>
                   <CustomInput
                       placeholder="Font Family"
                       value={tempProps.fontFamily || ''}
                       setValue={(val) => setTempProps({ ...tempProps, fontFamily: val })}
+                      fullWidth
+                  />
+                  <CustomInput
+                      placeholder="Text Decoration"
+                      value={tempProps.textDecoration || ''}
+                      setValue={(val) => setTempProps({ ...tempProps, textDecoration: val })}
                       fullWidth
                   />
                   <SelectField
@@ -1071,6 +1158,17 @@ function RenderBlock({ path = [], setContent, content }) {
                           ['center', 'Center'],
                           ['right', 'Right'],
                           ['justify', 'Justify']
+                      ]}
+                      fullWidth
+                  />
+                  <SelectField
+                      label="Font Style"
+                      value={tempProps.fontStyle || 'normal'}
+                      setValue={(val) => setTempProps({ ...tempProps, fontStyle: val })}
+                      choices={[
+                          ['normal', 'Normal'],
+                          ['italic', 'Italic'],
+                          ['oblique', 'Oblique']
                       ]}
                       fullWidth
                   />
