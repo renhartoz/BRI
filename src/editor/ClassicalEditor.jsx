@@ -1101,9 +1101,9 @@ function RenderBlock({ path = [], setContent, content }) {
                       </Stack>
                       <Stack width={"50%"}>
                         <CustomInput
-                            placeholder="Border Width (px)"
+                            placeholder="Border Width"
                             value={tempProps.borderWidth || ''}
-                            setValue={(val) => setTempProps({ ...tempProps, borderWidth: `${val}px` })}
+                            setValue={(val) => setTempProps({ ...tempProps, borderWidth: val })}
                             fullWidth
                         />
                       </Stack>
