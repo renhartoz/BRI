@@ -96,7 +96,7 @@ a {
 }
 
 .col-half {
-    flex: 0 0 48%;
+    flex: 0 0 48.5%;
     max-width: 50%;
 }
 
