@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "image": "/course/limit/limit.png",
+        "image": "/course/gaskinetics/gaskinetics.png",
         "title": "Kinematika Gas",
         "subject": "FIS",
         "level": "Beginner",
@@ -10,7 +10,7 @@
     },
     {
         "id": 2,
-        "image": "/course/limit/limit.png",
+        "image": "/course/trigono/trigono.png",
         "title": "Trigonometri",
         "subject": "MTK",
         "level": "Beginner",

@@ -21,6 +21,13 @@ import EventIcon from "@mui/icons-material/Event";
 import BookIcon from "@mui/icons-material/MenuBook";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 
+/*
+GLOSSARY:
+- Navbar = Main page
+- Navbar2 = Course page
+- Navbar3 = Exercise page
+*/
+
 const menuItems = [
     { label: "Home", href: "/", icon: <CottageIcon /> },
     { label: "Blog", href: "/blog", icon: <RateReviewIcon /> },
@@ -278,24 +285,12 @@ const NavButtons2 = ({ menuItems, sx }) => (
 
 export function Navbar2({ course }) {
     const menuItems = [
-        { label: "Home", href: "/" },
-        { label: "Silabus", href: `/course/${course}` },
+        { label: "Home", href: "/", icon: <CottageIcon /> },
+        { label: "Silabus", href: `/course/${course}`, icon: <BookIcon /> },
     ];
-    const [mobileOpen, setMobileOpen] = useState(false);
 
     return (
         <>
-            {/* Mobile Drawer */}
-            <Drawer
-                active={mobileOpen}
-                setActive={setMobileOpen}
-                title="Menu"
-                bgcolor="primary.main"
-                color="#fff"
-                bdcolor="#000"
-                list={menuItems}
-            />
-
             {/* Top Navbar */}
             <AppBar
                 position="sticky"
@@ -308,17 +303,24 @@ export function Navbar2({ course }) {
                 }}
             >
                 <Toolbar sx={{ justifyContent: "space-between" }}>
-                    {/* Mobile Menu Button */}
-                    <MuiButton
-                        color="#fff"
-                        bgcolor="primary.main"
-                        bdcolor="#000"
-                        onClick={() => setMobileOpen(true)}
-                        sx={{ display: { xs: "flex", sm: "none" }, p: 1 }}
+                    {/* Logo */}
+                    <IconButton
+                        color="inherit"
+                        sx={{
+                            p: "1vh 1.5vh",
+                            display: { xs: "flex", sm: "none" },
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}
                     >
-                        <MenuIcon />
-                    </MuiButton>
-
+                        <Icon sx={{ height: "5vh" }}>
+                            <img
+                                src="/putih.svg"
+                                style={{ maxHeight: "5vh" }}
+                                alt="Rumah Ilmiah"
+                            />
+                        </Icon>
+                    </IconButton>
                     <Stack
                         sx={{
                             display: { xs: "block", sm: "flex" },
@@ -333,20 +335,25 @@ export function Navbar2({ course }) {
                             color="inherit"
                             sx={{
                                 p: "1vh 1.5vh",
-                                display: { xs: "none", sm: "block" },
+                                display: { xs: "none", sm: "flex" },
+                                justifyContent: "center",
+                                alignContent: "center",
                             }}
                         >
                             <Icon
                                 sx={{
                                     height: "5vh",
                                     display: "flex",
+                                    maxHeight: "5vh",
                                     alignItems: "center",
                                     justifyContent: "center",
                                 }}
                             >
                                 <img
                                     src="/putih.svg"
-                                    style={{ maxHeight: "5vh" }}
+                                    style={{
+                                        maxHeight: "5vh",
+                                    }}
                                     alt="Rumah Ilmiah"
                                 />
                             </Icon>
@@ -369,6 +376,24 @@ export function Navbar2({ course }) {
                             Masuk/Daftar Akun
                         </MuiButton>
                     </Stack>
+                </Toolbar>
+            </AppBar>
+
+            {/* Bottom Navbar */}
+            <AppBar
+                position="fixed"
+                color="primary"
+                sx={{
+                    bottom: 0,
+                    top: "auto",
+                    borderTop: "3px solid",
+                    borderColor: "kurai_ao.main",
+                    display: { xs: "flex", sm: "none" },
+                    alignItems: "center",
+                }}
+            >
+                <Toolbar>
+                    <BottomNavButtons menuItems={menuItems} />
                 </Toolbar>
             </AppBar>
         </>
@@ -377,10 +402,9 @@ export function Navbar2({ course }) {
 
 export function Navbar3({ exercise }) {
     const menuItems = [
-        { label: "Home", href: "/" },
-        { label: "exercise", href: `/exercise` },
+        { label: "Home", href: "/", icon: <CottageIcon /> },
+        { label: "Exercise", href: `/exercise`, icon: <SchoolIcon /> },
     ];
-    const [mobileOpen, setMobileOpen] = useState(false);
 
     return (
         <>
@@ -396,17 +420,24 @@ export function Navbar3({ exercise }) {
                 }}
             >
                 <Toolbar sx={{ justifyContent: "space-between" }}>
-                    {/* Mobile Menu Button */}
-                    <MuiButton
-                        color="#fff"
-                        bgcolor="primary.main"
-                        bdcolor="#000"
-                        onClick={() => setMobileOpen(true)}
-                        sx={{ display: { xs: "flex", sm: "none" }, p: 1 }}
+                    {/* Logo */}
+                    <IconButton
+                        color="inherit"
+                        sx={{
+                            p: "1vh 1.5vh",
+                            display: { xs: "flex", sm: "none" },
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}
                     >
-                        <MenuIcon />
-                    </MuiButton>
-
+                        <Icon sx={{ height: "5vh" }}>
+                            <img
+                                src="/putih.svg"
+                                style={{ maxHeight: "5vh" }}
+                                alt="Rumah Ilmiah"
+                            />
+                        </Icon>
+                    </IconButton>
                     <Stack
                         sx={{
                             display: { xs: "block", sm: "flex" },
@@ -421,20 +452,25 @@ export function Navbar3({ exercise }) {
                             color="inherit"
                             sx={{
                                 p: "1vh 1.5vh",
-                                display: { xs: "none", sm: "block" },
+                                display: { xs: "none", sm: "flex" },
+                                justifyContent: "center",
+                                alignContent: "center",
                             }}
                         >
                             <Icon
                                 sx={{
                                     height: "5vh",
                                     display: "flex",
+                                    maxHeight: "5vh",
                                     alignItems: "center",
                                     justifyContent: "center",
                                 }}
                             >
                                 <img
                                     src="/putih.svg"
-                                    style={{ maxHeight: "5vh" }}
+                                    style={{
+                                        maxHeight: "5vh",
+                                    }}
                                     alt="Rumah Ilmiah"
                                 />
                             </Icon>
@@ -459,6 +495,24 @@ export function Navbar3({ exercise }) {
                     </Stack>
                 </Toolbar>
             </AppBar>
+
+            {/* Bottom Navbar - POSTPONED WAITING FOR DECISION */}
+            {/* <AppBar
+                position="fixed"
+                color="primary"
+                sx={{
+                    bottom: 0,
+                    top: "auto",
+                    borderTop: "3px solid",
+                    borderColor: "kurai_ao.main",
+                    display: { xs: "flex", sm: "none" },
+                    alignItems: "center",
+                }}
+            >
+                <Toolbar>
+                    <BottomNavButtons menuItems={menuItems} />
+                </Toolbar>
+            </AppBar> */}
         </>
     );
 }
