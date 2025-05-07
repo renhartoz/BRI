@@ -57,7 +57,7 @@ const RenderContent = ({ data }) => {
             case "math":
                 return (
                     <Stack direction={item.direction||"row"} justifyContent={item.justify||"normal"} alignItems={item.align||"normal"} gap={item.gap||0} key={index}>
-                        <Typography key={index} fontSize={item?.size} {...(item.props || {})}>
+                        <Typography key={index} fontSize={item?.size} {...(item.props || {})} overflowX="auto">
                             <MathJax>{item.text}</MathJax>
                         </Typography>
                     </Stack>

@@ -54,6 +54,7 @@ import {
 import * as GK from "./exercise/GasKinetics.jsx";
 import * as TRI from "./exercise/Trigono.jsx";
 import * as LIM from "./exercise/Limit.jsx";
+import * as LIMTRIGINF from "./exercise/LimTrigInfty.jsx";
 import PageNotFound from "./pages/404.jsx";
 import ComingSoon from "./pages/ComingSoon.jsx";
 
@@ -209,6 +210,27 @@ export const routes = [
             { path: "32", element: <LIM.Limit32 /> },
             { path: "33", element: <LIM.Limit33 /> },
         ],
+    },
+    {
+        path: "/exercise/limit-trig-at-infty",
+        element: <ExerciseLayout />,
+        children: [
+            { path: "1", element: <LIMTRIGINF.LimTrigInfty1 /> },
+            { path: "2", element: <LIMTRIGINF.LimTrigInfty2 /> },
+            { path: "3", element: <LIMTRIGINF.LimTrigInfty3 /> },
+            { path: "4", element: <LIMTRIGINF.LimTrigInfty4 /> },
+            { path: "5", element: <LIMTRIGINF.LimTrigInfty5 /> },
+            { path: "6", element: <LIMTRIGINF.LimTrigInfty6 /> },
+            { path: "7", element: <LIMTRIGINF.LimTrigInfty7 /> },
+            { path: "8", element: <LIMTRIGINF.LimTrigInfty8 /> },
+            { path: "9", element: <LIMTRIGINF.LimTrigInfty9 /> },
+            { path: "10", element: <LIMTRIGINF.LimTrigInfty10 /> },
+            { path: "11", element: <LIMTRIGINF.LimTrigInfty11 /> },
+            { path: "12", element: <LIMTRIGINF.LimTrigInfty12 /> },
+            { path: "13", element: <LIMTRIGINF.LimTrigInfty13 /> },
+            { path: "14", element: <LIMTRIGINF.LimTrigInfty14 /> },
+            { path: "15", element: <LIMTRIGINF.LimTrigInfty15 /> },
+        ]
     },
     {
         path: "*",

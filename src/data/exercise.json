@@ -25,5 +25,14 @@
         "level": "Intermediate",
         "Free": true,
         "href": "/exercise/limit-at-infty/1"
+    },
+    {
+        "id": 4,
+        "image": "/course/limit/limit.png",
+        "title": "Limit Trigonometri Tak Hingga",
+        "subject": "MTK",
+        "level": "Intermediate",
+        "Free": true,
+        "href": "/exercise/limit-trig-at-infty/1"
     }
 ]   
