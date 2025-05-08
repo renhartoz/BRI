@@ -325,8 +325,8 @@ export function LimTrigInfty9() {
                         <MathJax>{"\\begin{aligned} \
                             \\lim\\limits_{x \\to 0} \\left( \\frac{\\sin(x)}{x} \\right)^{\\displaystyle \\frac{1}{x^2}} &= \\lim\\limits_{x \\to 0} \\left( 1+\\frac{\\sin (x)}{x}-1 \\right)^{\\displaystyle \\frac{1}{x^2}} \\\\[10pt] \
                             &= \\lim\\limits_{x \\to 0} \\left( 1+\\frac{\\sin(x)-x}{x} \\right)^{\\displaystyle \\frac{1}{x^2}} \\\\[10pt] \
-                            &= \\lim\\limits_{x \\to 0} \\left( \\left[1+\\frac{\\sin(x)-x}{x}\\right]^{\\displaystyle\\frac{x}{\\sin(x)-x}} \\right)^{\\displaystyle \\frac{sin(x)-x}{x} \\cdot \\frac{1}{x^2}} \\\\[10pt] \
-                            &= e^{\\displaystyle \\frac{sin(x)-x}{x^{3}}} \\\\[10pt] \
+                            &= \\lim\\limits_{x \\to 0} \\left( \\left[1+\\frac{\\sin(x)-x}{x}\\right]^{\\displaystyle\\frac{x}{\\sin(x)-x}} \\right)^{\\displaystyle \\frac{\\sin(x)-x}{x} \\cdot \\frac{1}{x^2}} \\\\[10pt] \
+                            &= e^{\\displaystyle \\frac{\\sin(x)-x}{x^{3}}} \\\\[10pt] \
                             &= e^{-\\frac{1}{6}} \
                         \\end{aligned}"}</MathJax>
                     </Typography>
