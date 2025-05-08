@@ -254,8 +254,8 @@ export function LimTrigInfty7() {
                         <MathJax>{"\\begin{aligned} \
                             \\lim\\limits_{x \\to \\infty} \\left( 1 + \\sin\\left( \\frac{1}{2x} \\right) \\right)^{ \\displaystyle \\frac{2 \\cos\\left( \\frac{1}{2x} \\right) - \\cos\\left( \\frac{1}{x} \\right)}{\\sin\\left( \\frac{1}{x} \\right)}} &= \\lim\\limits_{x \\to \\infty} \\left( \\left[1 + \\sin\\left( \\frac{1}{2x} \\right) \\right]^{\\displaystyle \\frac{1}{\\sin\\left( \\frac{1}{2x} \\right)}} \\right)^{ \\displaystyle \\frac{\\sin \\left( \\frac{1}{2x} \\right) \\left(2 \\cos\\left( \\frac{1}{2x} \\right) - \\cos\\left( \\frac{1}{x} \\right)\\right)}{ \\sin\\left( \\frac{1}{x} \\right)}} \\\\[10pt] \
                             &= e^{ \\displaystyle\\lim\\limits_{x \\to \\infty}\\frac{\\sin\\left( \\frac{1}{2x} \\right) \\left(2 \\cos\\left( \\frac{1}{2x} \\right) - \\cos\\left( \\frac{1}{x} \\right)\\right)}{ \\sin\\left( \\frac{1}{x} \\right)}} \\\\[10pt] \
-                            &= e^{ \\left[ (2) \\left( 2-1 \\right) \\right]} \\\\[10pt] \
-                            &= e^{2} \
+                            &= e^{ \\left[ \\left(\\frac{1}{2}\\right) \\left( 2-1 \\right) \\right]} \\\\[10pt] \
+                            &= e^{\\frac{1}{2}} \
                         \\end{aligned}"}</MathJax>
                     </Typography>
                 </Stack>
@@ -396,10 +396,10 @@ export function LimTrigInfty11() {
                         <MathJax>{"\\begin{aligned} \
                             \\lim\\limits_{x \\to 0} \\left(\\sqrt[3]{ 1 - 3x }\\right)^{\\displaystyle\\frac{\\sin (3x)}{1 - \\cos\\left( \\frac{1}{2}x \\right)}} &= \\lim\\limits_{x \\to 0} \\left( 1 - 3x \\right)^{\\displaystyle\\frac{\\sin (3x)}{3\\left(1 - \\cos\\left( \\frac{1}{2}x \\right)\\right)}} \\\\[10pt] \
                             &= \\lim\\limits_{x \\to 0} \\left( \\left[1 - 3x\\right]^{\\textstyle\\frac{1}{-3x}} \\right)^{\\displaystyle\\frac{-3x\\sin (3x)}{3\\left(1 - \\cos\\left( \\frac{1}{2}x \\right)\\right)}} \\\\[10pt] \
-                            &= e^{\\displaystyle\\lim\\limits_{x \\to 0}\\frac{-x\\sin (3x)}{1 - \\left(1-2\\sin^{2}\\left( \\frac{1}{2}x \\right)\\right)}} \\\\[10pt] \
-                            &= e^{\\displaystyle\\lim\\limits_{x \\to 0}\\frac{-x\\sin (3x)}{2\\sin^{2}\\left( \\frac{1}{2}x \\right)}} \\\\[10pt] \
-                            &= e^{-\\frac{3}{2}(2)^{2}} \\\\[10pt] \
-                            &= e^{-6} \
+                            &= e^{\\displaystyle\\lim\\limits_{x \\to 0}\\frac{-x\\sin (3x)}{1 - \\left(1-2\\sin^{2}\\left( \\frac{1}{4}x \\right)\\right)}} \\\\[10pt] \
+                            &= e^{\\displaystyle\\lim\\limits_{x \\to 0}\\frac{-x\\sin (3x)}{2\\sin^{2}\\left( \\frac{1}{4}x \\right)}} \\\\[10pt] \
+                            &= e^{-\\frac{3}{2}(4)^{2}} \\\\[10pt] \
+                            &= e^{-24} \
                         \\end{aligned}"}</MathJax>
                     </Typography>
                 </Stack>
