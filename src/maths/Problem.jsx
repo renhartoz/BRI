@@ -1,13 +1,24 @@
-import React from 'react';
+import React from "react";
 import { Box, Stack, Typography, Grid2 } from "@mui/material";
 import Accordion from "../components/Accordion";
 import { MathJax } from "better-react-mathjax";
 
-export default function Problem({ title, equation, children, instruction, note, accordion_text="Solution", option, sx }) {
+export default function Problem({
+    title,
+    equation,
+    children,
+    instruction,
+    note,
+    accordion_text = "Solution",
+    option,
+    sx,
+}) {
     return (
         <>
             <Stack sx={{ ...sx }}>
-                <Typography fontWeight={600} fontSize={'1.2em'} mt={1}>{title}</Typography>
+                <Typography fontWeight={600} fontSize={"1.2em"} mt={1}>
+                    {title}
+                </Typography>
                 <Stack
                     px={3}
                     py={2}
@@ -20,33 +31,80 @@ export default function Problem({ title, equation, children, instruction, note, 
                         </Typography>
                     )}
                     {equation && (
-                        <Typography fontSize={"1.2em"} sx={{overflowX:"auto", overflowY: "hidden"}}>
+                        <Typography
+                            fontSize={"1.2em"}
+                            sx={{ overflowX: "auto", overflowY: "hidden" }}
+                        >
                             <MathJax>{equation}</MathJax>
                         </Typography>
                     )}
                     {option && (
-                        <Stack gap={option.gap || 0} direction={option.direction || 'column'} justifyContent={option.justify || 'normal'} {...(option.props || {})}>
-                            <Grid2 container spacing={.5} direction={'column'}>
+                        <Stack
+                            gap={option.gap || 0}
+                            direction={option.direction || "column"}
+                            justifyContent={option.justify || "normal"}
+                            {...(option.props || {})}
+                        >
+                            <Grid2 container spacing={0.5} direction={"column"}>
                                 {option.items.map((listItem, listIndex) => (
                                     <Grid2 key={listIndex}>
-                                        <Stack direction="row" alignItems="center" gap={1}>
+                                        <Stack
+                                            direction="row"
+                                            alignItems="center"
+                                            gap={1}
+                                        >
                                             {option.bullet === "1" ? (
-                                                <Typography sx={{ color: option.color||"primary.main", fontSize: "1.2em" }}>{listIndex+1}.&nbsp;</Typography>
+                                                <Typography
+                                                    sx={{
+                                                        color:
+                                                            option.color ||
+                                                            "primary.main",
+                                                        fontSize: "1.2em",
+                                                    }}
+                                                >
+                                                    {listIndex + 1}.&nbsp;
+                                                </Typography>
                                             ) : option.bullet === "a" ? (
-                                                <Typography color={option.color||"primary.main"} fontWeight={600}>{String.fromCharCode(97 + listIndex)}.&nbsp;</Typography>
+                                                <Typography
+                                                    color={
+                                                        option.color ||
+                                                        "primary.main"
+                                                    }
+                                                    fontWeight={600}
+                                                >
+                                                    {String.fromCharCode(
+                                                        97 + listIndex
+                                                    )}
+                                                    .&nbsp;
+                                                </Typography>
                                             ) : option.bullet === "bullet" ? (
-                                                <CircleIcon sx={{ color: option.color||"primary.main", fontSize: "0.8em" }} />
+                                                <CircleIcon
+                                                    sx={{
+                                                        color:
+                                                            option.color ||
+                                                            "primary.main",
+                                                        fontSize: "0.8em",
+                                                    }}
+                                                />
                                             ) : (
-                                                <CheckCircleIcon sx={{ color: option.color||"primary.main", fontSize: "1.2em" }} />
+                                                <CheckCircleIcon
+                                                    sx={{
+                                                        color:
+                                                            option.color ||
+                                                            "primary.main",
+                                                        fontSize: "1.2em",
+                                                    }}
+                                                />
                                             )}
-                                            <Typography 
+                                            <Typography
                                                 variant="body1"
-                                                fontSize={{ xs: ".8em", sm: "1em" }}
+                                                fontSize={{
+                                                    xs: ".8em",
+                                                    sm: "1em",
+                                                }}
                                                 color="black_blue"
                                             >
-                                                <MathJax>
-                                                    {listItem}
-                                                </MathJax>
+                                                <MathJax>{listItem}</MathJax>
                                             </Typography>
                                         </Stack>
                                     </Grid2>
@@ -62,9 +120,11 @@ export default function Problem({ title, equation, children, instruction, note, 
                     <Stack>
                         <Accordion
                             question={
-                                <Typography fontWeight={750}>{accordion_text}</Typography>
+                                <Typography fontWeight={750}>
+                                    {accordion_text}
+                                </Typography>
                             }
-                            answer={ <Box mt={2}>{children}</Box> }
+                            answer={<Box mt={2}>{children}</Box>}
                             bgcolor_title="inherit"
                             color_title="kurai_ao"
                             bgcolor_text="inherit"
@@ -73,13 +133,18 @@ export default function Problem({ title, equation, children, instruction, note, 
                             nohover
                             rawinput
                             sx={{
-                                boxShadow: 0, maxWidth: "100%", border:"none",
-                                "title":{
-                                    padding:0,
+                                boxShadow: 0,
+                                maxWidth: "100%",
+                                border: "none",
+                                title: {
+                                    padding: 0,
                                 },
-                                "text":{
-                                    padding:0,
-                                    overflowX: "auto"
+                                // let me know if u encounter any issue with this.
+                                text: {
+                                    padding: 0,
+                                    overflowX: "auto",
+                                    height: "auto",
+                                    maxHeight: "none",
                                 },
                             }}
                         />
