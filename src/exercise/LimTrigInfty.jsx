@@ -325,8 +325,8 @@ export function LimTrigInfty9() {
                         <MathJax>{"\\begin{aligned} \
                             \\lim\\limits_{x \\to 0} \\left( \\frac{\\sin(x)}{x} \\right)^{\\displaystyle \\frac{1}{x^2}} &= \\lim\\limits_{x \\to 0} \\left( 1+\\frac{\\sin (x)}{x}-1 \\right)^{\\displaystyle \\frac{1}{x^2}} \\\\[10pt] \
                             &= \\lim\\limits_{x \\to 0} \\left( 1+\\frac{\\sin(x)-x}{x} \\right)^{\\displaystyle \\frac{1}{x^2}} \\\\[10pt] \
-                            &= \\lim\\limits_{x \\to 0} \\left( \\left[1+\\frac{\\sin(x)-x}{x}\\right]^{\\displaystyle\\frac{x}{\\sin(x)-x}} \\right)^{\\displaystyle \\frac{sin(x)-x}{x} \\cdot \\frac{1}{x^2}} \\\\[10pt] \
-                            &= e^{\\displaystyle \\frac{sin(x)-x}{x^{3}}} \\\\[10pt] \
+                            &= \\lim\\limits_{x \\to 0} \\left( \\left[1+\\frac{\\sin(x)-x}{x}\\right]^{\\displaystyle\\frac{x}{\\sin(x)-x}} \\right)^{\\displaystyle \\frac{\\sin(x)-x}{x} \\cdot \\frac{1}{x^2}} \\\\[10pt] \
+                            &= e^{\\displaystyle \\frac{\\sin(x)-x}{x^{3}}} \\\\[10pt] \
                             &= e^{-\\frac{1}{6}} \
                         \\end{aligned}"}</MathJax>
                     </Typography>
@@ -468,9 +468,9 @@ export function LimTrigInfty13() {
                     <Typography>
                         <MathJax>{"\\begin{aligned} \
                             \\lim\\limits_{x \\to 0} \\left( \\frac{\\ln\\left( \\cos\\left( \\sin\\left( \\frac{1}{2}x \\right) \\right) \\right)}{\\cos^2\\left( \\frac{1}{3}x \\right) - 1} \\right) &= \\lim\\limits_{x \\to 0} \\left( \\frac{\\ln\\left( 1-2\\sin^{2}\\left( \\frac{\\sin\\left( \\frac{1}{2}x \\right) }{2} \\right) \\right)}{-\\sin^2\\left( \\frac{1}{3}x \\right)} \\right) \\\\[10pt] \
-                            &= \\lim\\limits_{x \\to 0} \\left( \\frac{2\\sin^{2}\\left( \\frac{\\sin\\left( \\frac{1}{2}x \\right) }{2} \\right) }{-\\sin^2\\left( \\frac{1}{3}x \\right)} \\right) \\\\[10pt] \
-                            &= 2\\lim\\limits_{x \\to 0} \\left( \\frac{ \\frac{\\sin^{2}\\left( \\frac{1}{2}x \\right) }{4} }{-\\sin^2\\left( \\frac{1}{3}x \\right)} \\right) \\\\[10pt] \
-                            &= \\frac{2}{4}\\lim\\limits_{x \\to 0} \\left( \\frac{ \\sin^{2}\\left( \\frac{1}{2}x \\right) }{-\\sin^2\\left( \\frac{1}{3}x \\right)} \\right) \\\\[10pt] \
+                            &= \\lim\\limits_{x \\to 0} \\left(\\frac{-2\\sin^{2}\\left( \\frac{\\sin\\left( \\frac{1}{2}x \\right) }{2} \\right) }{-\\sin^2\\left( \\frac{1}{3}x \\right)} \\right) \\\\[10pt] \
+                            &= 2\\lim\\limits_{x \\to 0} \\left( \\frac{ \\frac{\\sin^{2}\\left( \\frac{1}{2}x \\right) }{4} }{\\sin^2\\left( \\frac{1}{3}x \\right)} \\right) \\\\[10pt] \
+                            &= \\frac{2}{4}\\lim\\limits_{x \\to 0} \\left( \\frac{\\sin^{2}\\left( \\frac{1}{2}x \\right) }{\\sin^2\\left( \\frac{1}{3}x \\right)} \\right) \\\\[10pt] \
                             &= \\frac{1}{2}\\left( \\frac{3}{2} \\right)^{2} \\\\[10pt] \
                             &= \\frac{9}{8} \\\\[10pt] \
                         \\end{aligned}"}</MathJax>
