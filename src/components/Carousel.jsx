@@ -40,7 +40,7 @@ const Carousel = ({ slides, time }) => {
             sx={{
                 position: "relative",
                 width: "100%",
-                height: " auto",
+                height: "auto",
                 overflow: "hidden",
             }}
         >
