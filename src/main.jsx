@@ -55,6 +55,7 @@ import * as GK from "./exercise/GasKinetics.jsx";
 import * as TRI from "./exercise/Trigono.jsx";
 import * as LIM from "./exercise/Limit.jsx";
 import * as LIMTRIGINF from "./exercise/LimTrigInfty.jsx";
+import * as THERMO from "./exercise/Thermodynamic.jsx";
 import PageNotFound from "./pages/404.jsx";
 import ComingSoon from "./pages/ComingSoon.jsx";
 
@@ -235,6 +236,37 @@ export const routes = [
     {
         path: "*",
         element: <PageNotFound />,
+    },
+    {
+        path: "/exercise/thermodynamic",
+        element: <ExerciseLayout />,
+        children: [
+            { path: "1", element: <THERMO.Thermo1 /> },
+            { path: "2", element: <THERMO.Thermo2 /> },
+            { path: "3", element: <THERMO.Thermo3 /> },
+            { path: "4", element: <THERMO.Thermo4 /> },
+            { path: "5", element: <THERMO.Thermo5 /> },
+            { path: "6", element: <THERMO.Thermo6 /> },
+            { path: "7", element: <THERMO.Thermo7 /> },
+            { path: "8", element: <THERMO.Thermo8 /> },
+            { path: "9", element: <THERMO.Thermo9 /> },
+            { path: "10", element: <THERMO.Thermo10 /> },
+            { path: "11", element: <THERMO.Thermo11 /> },
+            { path: "12", element: <THERMO.Thermo12 /> },
+            { path: "13", element: <THERMO.Thermo13 /> },
+            { path: "14", element: <THERMO.Thermo14 /> },
+            { path: "15", element: <THERMO.Thermo15 /> },
+            { path: "16", element: <THERMO.Thermo16 /> },
+            { path: "17", element: <THERMO.Thermo17 /> },
+            { path: "18", element: <THERMO.Thermo18 /> },
+            { path: "19", element: <THERMO.Thermo19 /> },
+            { path: "20", element: <THERMO.Thermo20 /> },
+            { path: "21", element: <THERMO.Thermo21 /> },
+            { path: "22", element: <THERMO.Thermo22 /> },
+            { path: "23", element: <THERMO.Thermo23 /> },
+            { path: "24", element: <THERMO.Thermo24 /> },
+            { path: "25", element: <THERMO.Thermo25 /> },
+        ]
     },
 ];
 

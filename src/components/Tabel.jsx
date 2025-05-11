@@ -145,7 +145,7 @@ const StyledTableRow = styled(TableRow)(({ theme, variant }) => {
 export function CustomRawTable({
     content,
     variant = "monotone",
-    spacing = 2,
+    spacing = 0,
     sx,
 }) {
     return (
@@ -153,7 +153,6 @@ export function CustomRawTable({
             <Stack
                 spacing={spacing}
                 sx={{
-                    // mx: { xs: 0, md: "auto" },
                     height: "fit-content",
                     justifyContent: "center",
                     alignItems: "center",
@@ -175,6 +174,7 @@ export function CustomRawTable({
                             component={Paper}
                             sx={{
                                 maxWidth: sx?.maxWidth || "80%",
+                                overflowY:"hidden",
                                 ...sx?.table,
                             }}
                         >
@@ -223,7 +223,7 @@ export function CustomRawTable({
                                   React.isValidElement(col)
                           )
                       ) ? (
-                        <TableContainer component={Paper} sx={{ ...sx?.table }}>
+                        <TableContainer component={Paper} sx={{ overflowY:"hidden", ...sx?.table }}>
                             <Table aria-label="customized table">
                                 <TableHead>
                                     <TableRow>

@@ -31,8 +31,17 @@
         "image": "/course/limit/limit.png",
         "title": "Limit Trigonometri Tak Hingga",
         "subject": "MTK",
-        "level": "Intermediate",
+        "level": "Advance",
         "Free": true,
         "href": "/exercise/limit-trig-at-infty/1"
+    },
+    {
+        "id": 5,
+        "image": "/no_image.jpg",
+        "title": "Termodinamika",
+        "subject": "FIS",
+        "level": "Advance",
+        "Free": true,
+        "href": "/exercise/thermodynamic/1"
     }
 ]   
