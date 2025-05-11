@@ -17,6 +17,7 @@ import ExerciseList from "./pages/ExerciseList.jsx";
 import ClassicEditor from "./editor/ClassicalEditor.jsx";
 import ClassicPreview from "./pages/ClassicPreview.jsx";
 import EditorApp from "./editor/Lexical/App.jsx";
+import ExerciseEditorCanary from "./editor/ExerciseEditorCanary.jsx";
 import LexicalPreview from "./pages/LexicalPreview.jsx";
 
 import {
@@ -76,6 +77,10 @@ export const routes = [
     {
         path: "/editor",
         element: <ClassicEditor />,
+    },
+    {
+        path: "/editor-exercise",
+        element: <ExerciseEditorCanary />,
     },
     {
         path: "/preview",
