@@ -676,9 +676,10 @@ export function Deriv14() {
             >
                 <Typography>
                     <MathJax>{"\\begin{aligned} \
-                        y&=5x^{\\frac{4}{5}}+3x^{\\frac{1}{2}}-6x^{-2} \\\\[10pt] \
-                        y'&=5\\left(\\frac{4}{5}\\right)x^{\\frac{4}{5}-1}+3\\left(\\frac{1}{2}\\right)x^{\\frac{1}{2}-1}-6(-2)x^{-2-1} \\\\[10pt] \
-                        &=4x^{-\\frac{1}{5}}+\\frac{3}{2}x^{-\\frac{1}{2}}+12x^{-3} \\\\[10pt] \
+                        y'&=\\frac{(6x^2 + 6x)(5x^2 + 2)-(2x^3 + 3x^2)(10x)}{(5x^2 + 2)^2} \\\\[10pt] \
+                        &=\\frac{2x[(3x + 3)(5x^2 + 2)-(2x^3 + 3x^2)(5)]}{(5x^2 + 2)^2} \\\\[10pt] \
+                        &=\\frac{2x[15x^{3}+6x+15x^{2}+6-(10x^{3}+15x^{2})]}{(5x^2 + 2)^2} \\\\[10pt] \
+                        &=\\frac{2x[5x^{3}+6x+6]}{(5x^2 + 2)^2} \\\\[10pt] \
                     \\end{aligned}"}</MathJax>
                 </Typography>
             </Problem>
