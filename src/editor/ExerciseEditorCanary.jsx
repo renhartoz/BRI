@@ -49,36 +49,137 @@ export default function ExerciseEditorCanary() {
                     sx={{ backgroundColor: "#fff" }}
                 >
                     <Stack gap={1} direction={"column"}>
-                        <TextField
-                            label="Material"
-                            defaultValue="Trigonometri"
-                            variant="outlined"
-                        />
-                        <TextField
-                            label="Title"
-                            defaultValue="Latihan Soal"
-                            variant="outlined"
-                        />
+                        <Stack gap={1}>
+                            <TextField
+                                placeholder="MATERIAL"
+                                variant="outlined"
+                                sx={{
+                                    "& .MuiOutlinedInput-root": {
+                                        fontSize: "0.875rem",
+                                        color: "#555",
+                                        fontWeight: "normal",
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "transparent",
+                                        },
+                                        "&.Mui-focused": {
+                                            "& .MuiOutlinedInput-notchedOutline":
+                                                {
+                                                    borderColor: "primary.main",
+                                                    borderWidth: "3px",
+                                                },
+                                        },
+                                        "&:hover:not(.Mui-focused)": {
+                                            "& .MuiOutlinedInput-notchedOutline":
+                                                {
+                                                    borderColor: "#000",
+                                                },
+                                        },
+                                    },
+                                    "& .MuiInputLabel-outlined": {
+                                        color: "#555",
+                                        fontWeight: "normal",
+                                        "&.Mui-focused": {
+                                            color: "primary.main",
+                                            fontWeight: "normal",
+                                        },
+                                    },
+                                    "& .MuiInputBase-input::placeholder": {
+                                        opacity: 1,
+                                    },
+                                }}
+                            />
+                            <TextField
+                                placeholder="Title"
+                                variant="outlined"
+                                sx={{
+                                    "& .MuiOutlinedInput-root": {
+                                        color: "#000",
+                                        fontWeight: "700",
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "transparent",
+                                        },
+                                        "&.Mui-focused": {
+                                            "& .MuiOutlinedInput-notchedOutline":
+                                                {
+                                                    borderColor: "primary.main",
+                                                    borderWidth: "3px",
+                                                },
+                                        },
+                                        "&:hover:not(.Mui-focused)": {
+                                            "& .MuiOutlinedInput-notchedOutline":
+                                                {
+                                                    borderColor: "#000",
+                                                },
+                                        },
+                                    },
+                                    "& .MuiInputLabel-outlined": {
+                                        color: "#000",
+                                        fontWeight: "700",
+                                        "&.Mui-focused": {
+                                            color: "primary.main",
+                                            fontWeight: "700",
+                                        },
+                                    },
+                                    "& .MuiInputBase-input::placeholder": {
+                                        opacity: 1,
+                                    },
+                                }}
+                            />
+                        </Stack>
                     </Stack>
                     <TextField
-                        label="Time"
-                        defaultValue="5 min"
+                        placeholder="X min"
                         variant="outlined"
-                        sx={{ width: "150px" }}
+                        sx={{
+                            width: "150px",
+                            "& .MuiOutlinedInput-root": {
+                                color: "#555",
+                                fontWeight: "normal",
+                                "& .MuiOutlinedInput-notchedOutline": {
+                                    borderColor: "transparent",
+                                },
+                                "&.Mui-focused": {
+                                    "& .MuiOutlinedInput-notchedOutline": {
+                                        borderColor: "primary.main",
+                                        borderWidth: "3px",
+                                    },
+                                },
+                                "&:hover:not(.Mui-focused)": {
+                                    "& .MuiOutlinedInput-notchedOutline": {
+                                        borderColor: "#000",
+                                    },
+                                },
+                            },
+                            "& .MuiInputLabel-outlined": {
+                                color: "#555",
+                                fontWeight: "normal",
+                                "&.Mui-focused": {
+                                    color: "primary.main",
+                                    fontWeight: "normal",
+                                },
+                            },
+                            "& .MuiInputBase-input::placeholder": {
+                                color:"#555",
+                                opacity: 1,
+                            },
+                        }}
                     />
                     <hr />
                     <Problem
                         title={
                             <TextField
-                                label="Problem Title"
-                                defaultValue="Soal 1"
+                                placeholder="Problem Title"
                                 variant="outlined"
+                                sx={{
+                                    "& .MuiInputBase-input::placeholder": {
+                                        opacity: 1,
+                                    },
+                                }}
                             />
                         }
                         equation={
                             <TextField
                                 label="Equation"
-                                defaultValue="\\[\\text{Nilai } \\frac{\\sin 150^\\circ + \\sin 120^\\circ}{\\cos 210^\\circ - \\cos 300^\\circ} = \\cdots \\]"
                                 variant="outlined"
                                 multiline
                                 rows={4}
@@ -95,9 +196,7 @@ export default function ExerciseEditorCanary() {
                             </Typography>
                         }
                     >
-                        <Stack
-                            gap={2}
-                        >
+                        <Stack gap={2}>
                             {pembahasanContent.map((block, index) => (
                                 <Stack
                                     key={index}
