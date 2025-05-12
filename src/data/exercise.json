@@ -43,5 +43,14 @@
         "level": "Advance",
         "Free": true,
         "href": "/exercise/thermodynamic/1"
+    },
+    {
+        "id": 6,
+        "image": "/course/derivatif/derivatif.png",
+        "title": "Derivatif",
+        "subject": "MTK",
+        "level": "Intermediate",
+        "Free": true,
+        "href": "/exercise/derivative/1"
     }
 ]   

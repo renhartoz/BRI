@@ -1459,37 +1459,37 @@ export default function ClassicEditor() {
           />
         </DialogContent>
         <DialogActions>
-    <Button onClick={() => setImportOpen(false)}>Cancel</Button>
-    <Button
-        onClick={() => {
-            try {
-                const parsed = JSON.parse(importText);
-                if (
-                    parsed &&
-                    typeof parsed === "object" &&
-                    parsed.name &&
-                    parsed.content &&
-                    Array.isArray(parsed.content)
-                ) {
-                    const { name, url, unit, subunit, time, content } = parsed;
+            <Button onClick={() => setImportOpen(false)}>Cancel</Button>
+            <Button
+                onClick={() => {
+                    try {
+                        const parsed = JSON.parse(importText);
+                        if (
+                            parsed &&
+                            typeof parsed === "object" &&
+                            parsed.name &&
+                            parsed.content &&
+                            Array.isArray(parsed.content)
+                        ) {
+                            const { name, url, unit, subunit, time, content } = parsed;
 
-                    setMeta({ name, url, unit, subunit, time });
-                    setContent(content);
+                            setMeta({ name, url, unit, subunit, time });
+                            setContent(content);
 
-                    localStorage.setItem('editor', JSON.stringify(parsed));
-                    setImportOpen(false);
-                    setImportText('');
-                } else {
-                    alert("Invalid JSON structure.");
-                }
-            } catch (err) {
-                alert("Invalid JSON format.");
-            }
-        }}
-        variant="contained"
-    >
-        Import
-    </Button>
+                            localStorage.setItem('editor', JSON.stringify(parsed));
+                            setImportOpen(false);
+                            setImportText('');
+                        } else {
+                            alert("Invalid JSON structure.");
+                        }
+                    } catch (err) {
+                        alert("Invalid JSON format.");
+                    }
+                }}
+                variant="contained"
+            >
+                Import
+            </Button>
         </DialogActions>
       </Dialog>
     </Theme>

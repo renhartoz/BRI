@@ -57,6 +57,7 @@ import * as TRI from "./exercise/Trigono.jsx";
 import * as LIM from "./exercise/Limit.jsx";
 import * as LIMTRIGINF from "./exercise/LimTrigInfty.jsx";
 import * as THERMO from "./exercise/Thermodynamic.jsx";
+import * as DERIV from "./exercise/Deriv.jsx";
 import PageNotFound from "./pages/404.jsx";
 import ComingSoon from "./pages/ComingSoon.jsx";
 
@@ -245,6 +246,31 @@ export const routes = [
             { path: "3", element: <THERMO.Thermo3 /> },
             { path: "10", element: <THERMO.Thermo10 /> },
             { path: "23", element: <THERMO.Thermo23 /> },
+        ]
+    },
+    {
+        path: "/exercise/derivative",
+        element: <ExerciseLayout />,
+        children: [
+            { path: "1", element: <DERIV.Deriv1 /> },
+            { path: "2", element: <DERIV.Deriv2 /> },
+            { path: "3", element: <DERIV.Deriv3 /> },
+            { path: "4", element: <DERIV.Deriv4 /> },
+            { path: "5", element: <DERIV.Deriv5 /> },
+            { path: "6", element: <DERIV.Deriv6 /> },
+            { path: "7", element: <DERIV.Deriv7 /> },
+            { path: "8", element: <DERIV.Deriv8 /> },
+            { path: "9", element: <DERIV.Deriv9 /> },
+            { path: "10", element: <DERIV.Deriv10 /> },
+            { path: "11", element: <DERIV.Deriv11 /> },
+            { path: "12", element: <DERIV.Deriv12 /> },
+            { path: "13", element: <DERIV.Deriv13 /> },
+            { path: "14", element: <DERIV.Deriv14 /> },
+            { path: "15", element: <DERIV.Deriv15 /> },
+            { path: "16", element: <DERIV.Deriv16 /> },
+            { path: "17", element: <DERIV.Deriv17 /> },
+            { path: "18", element: <DERIV.Deriv18 /> },
+            { path: "19", element: <DERIV.Deriv19 /> },
         ]
     },
 ];
