@@ -472,7 +472,7 @@ export function LimTrigInfty13() {
                             &= 2\\lim\\limits_{x \\to 0} \\left( \\frac{ \\frac{\\sin^{2}\\left( \\frac{1}{2}x \\right) }{4} }{\\sin^2\\left( \\frac{1}{3}x \\right)} \\right) \\\\[10pt] \
                             &= \\frac{2}{4}\\lim\\limits_{x \\to 0} \\left( \\frac{\\sin^{2}\\left( \\frac{1}{2}x \\right) }{\\sin^2\\left( \\frac{1}{3}x \\right)} \\right) \\\\[10pt] \
                             &= \\frac{1}{2}\\left( \\frac{3}{2} \\right)^{2} \\\\[10pt] \
-                            &= \\frac{9}{8} \\\\[10pt] \
+                            &= \\frac{9}{8} \
                         \\end{aligned}"}</MathJax>
                     </Typography>
                 </Stack>

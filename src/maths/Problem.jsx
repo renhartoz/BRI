@@ -139,13 +139,6 @@ export default function Problem({
                                 title: {
                                     padding: 0,
                                 },
-                                // let me know if u encounter any issue with this.
-                                text: {
-                                    padding: 0,
-                                    overflowX: "auto",
-                                    height: "auto",
-                                    maxHeight: "none",
-                                },
                             }}
                         />
                     </Stack>

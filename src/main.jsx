@@ -56,6 +56,7 @@ import * as GK from "./exercise/GasKinetics.jsx";
 import * as TRI from "./exercise/Trigono.jsx";
 import * as LIM from "./exercise/Limit.jsx";
 import * as LIMTRIGINF from "./exercise/LimTrigInfty.jsx";
+import * as THERMO from "./exercise/Thermodynamic.jsx";
 import PageNotFound from "./pages/404.jsx";
 import ComingSoon from "./pages/ComingSoon.jsx";
 
@@ -184,12 +185,6 @@ export const routes = [
             { path: "1", element: <LIM.Limit1 /> },
             { path: "2", element: <LIM.Limit2 /> },
             { path: "3", element: <LIM.Limit3 /> },
-            { path: "4", element: <LIM.Limit4 /> },
-            { path: "5", element: <LIM.Limit5 /> },
-            { path: "6", element: <LIM.Limit6 /> },
-            { path: "7", element: <LIM.Limit7 /> },
-            { path: "8", element: <LIM.Limit8 /> },
-            { path: "9", element: <LIM.Limit9 /> },
             { path: "10", element: <LIM.Limit10 /> },
             { path: "11", element: <LIM.Limit11 /> },
             { path: "12", element: <LIM.Limit12 /> },
@@ -240,6 +235,17 @@ export const routes = [
     {
         path: "*",
         element: <PageNotFound />,
+    },
+    {
+        path: "/exercise/thermodynamic",
+        element: <ExerciseLayout />,
+        children: [
+            { path: "1", element: <THERMO.Thermo1 /> },
+            { path: "2", element: <THERMO.Thermo2 /> },
+            { path: "3", element: <THERMO.Thermo3 /> },
+            { path: "10", element: <THERMO.Thermo10 /> },
+            { path: "23", element: <THERMO.Thermo23 /> },
+        ]
     },
 ];
 
