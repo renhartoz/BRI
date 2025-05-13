@@ -13,7 +13,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "./Drawer";
 import Dropdown from "./Dropdown";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import CottageIcon from "@mui/icons-material/Cottage";
 import SchoolIcon from "@mui/icons-material/School";
@@ -142,6 +142,7 @@ const BottomNavButtons = ({ menuItems }) => (
 );
 
 export default function Navbar() {
+    const nav = useNavigate();
     return (
         <>
             {/* Top Navbar */}
@@ -165,6 +166,7 @@ export default function Navbar() {
                             justifyContent: "center",
                             alignItems: "center",
                         }}
+                        onClick={() => nav("/")}
                     >
                         <Icon sx={{ height: "5vh" }}>
                             <img
@@ -192,6 +194,7 @@ export default function Navbar() {
                                 justifyContent: "center",
                                 alignContent: "center",
                             }}
+                            onClick={() => nav("/")}
                         >
                             <Icon
                                 sx={{
@@ -288,7 +291,7 @@ export function Navbar2({ course }) {
         { label: "Home", href: "/", icon: <CottageIcon /> },
         { label: "Silabus", href: `/course/${course}`, icon: <BookIcon /> },
     ];
-
+    const nav = useNavigate();
     return (
         <>
             {/* Top Navbar */}
@@ -312,6 +315,7 @@ export function Navbar2({ course }) {
                             justifyContent: "center",
                             alignItems: "center",
                         }}
+                        onClick={() => nav("/")}
                     >
                         <Icon sx={{ height: "5vh" }}>
                             <img
@@ -339,6 +343,7 @@ export function Navbar2({ course }) {
                                 justifyContent: "center",
                                 alignContent: "center",
                             }}
+                            onClick={() => nav("/")}
                         >
                             <Icon
                                 sx={{
@@ -405,7 +410,7 @@ export function Navbar3({ exercise }) {
         { label: "Home", href: "/", icon: <CottageIcon /> },
         { label: "Exercise", href: `/exercise`, icon: <SchoolIcon /> },
     ];
-
+    const nav = useNavigate();
     return (
         <>
             {/* Top Navbar */}
@@ -429,6 +434,7 @@ export function Navbar3({ exercise }) {
                             justifyContent: "center",
                             alignItems: "center",
                         }}
+                        onClick={() => nav("/")}
                     >
                         <Icon sx={{ height: "5vh" }}>
                             <img
@@ -456,6 +462,7 @@ export function Navbar3({ exercise }) {
                                 justifyContent: "center",
                                 alignContent: "center",
                             }}
+                            onClick={() => nav("/")}
                         >
                             <Icon
                                 sx={{
