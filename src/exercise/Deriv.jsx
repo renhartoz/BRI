@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack, Typography, Grid2 } from "@mui/material";
+import { Box, Stack, Typography, Grid2 } from "@mui/material";
 import { MathJax } from "better-react-mathjax";
 import Problem from "../maths/Problem";
 import ExerciseHeader from "./ExerciseHeader";
@@ -28,7 +28,7 @@ export function Deriv1() {
                     <MathJax>{"\\[\\begin{aligned} \
                         y&=5x^{\\frac{4}{5}}+3x^{\\frac{1}{2}}-6x^{-2} \\\\[10pt] \
                         y'&=5\\left(\\frac{4}{5}\\right)x^{\\frac{4}{5}-1}+3\\left(\\frac{1}{2}\\right)x^{\\frac{1}{2}-1}-6(-2)x^{-2-1} \\\\[10pt] \
-                        &=4x^{-\\frac{1}{5}}+\\frac{3}{2}x^{-\\frac{1}{2}}+12x^{-3} \\\\[10pt] \
+                        &=\\boxed{4x^{-\\frac{1}{5}}+\\frac{3}{2}x^{-\\frac{1}{2}}+12x^{-3}} \\\\[10pt] \
                     \\end{aligned}\\]"}</MathJax>
                 </Typography>
             </Problem>
@@ -57,7 +57,7 @@ export function Deriv2() {
                 <Typography>
                     <MathJax>{"\\[\\begin{aligned} \
                         y&=3x^{5}+x^{\\frac{3}{4}}+4x^{-\\frac{2}{3}} \\\\[10pt] \
-                        y'&=15x^{4}+\\frac{3}{4}x^{-\\frac{1}{4}}-\\frac{8}{3}x^{-\\frac{5}{3}} \
+                        y'&=\\boxed{15x^{4}+\\frac{3}{4}x^{-\\frac{1}{4}}-\\frac{8}{3}x^{-\\frac{5}{3}}} \
                     \\end{aligned}\\]"}</MathJax>
                 </Typography>
             </Problem>
@@ -95,7 +95,7 @@ export function Deriv3() {
                         &=9(1+1)^2 \\left[-3 - 1 - 8\\right] \\\\[10pt] \
                         &=9(2)^2 \\left[-12\\right] \\\\[10pt] \
                         &=-108(4) \\\\[10pt] \
-                        &=-432 \
+                        &=\\boxed{-432} \
                     \\end{aligned}"}</MathJax>
                 </Typography>
             </Problem>
@@ -134,7 +134,7 @@ export function Deriv4() {
                         &= 24(9 - 3)^2[4(9) + 3] \\\\[10pt] \
                         &= 24(6)^2[39] \\\\[10pt] \
                         &= 936(36) \\\\[10pt] \
-                        &= 33696 \
+                        &= \\boxed{33696} \
                     \\end{aligned}\\]"}</MathJax>
                 </Typography>
             </Problem>
@@ -177,7 +177,7 @@ export function Deriv5() {
                         />
                     </Stack>
                     <Typography>
-                        <MathJax>{"\\[\\text{Hp}=\\{ x \\space \\vert \\space x \\leq 2 \\space \\vee \\space x \\geq 5, \\space x \\in \\mathbb{R} \\}\\]"}</MathJax>
+                        <MathJax>{"\\[\\boxed{\\text{Hp}=\\{ x \\space \\vert \\space x \\leq 2 \\space \\vee \\space x \\geq 5, \\space x \\in \\mathbb{R} \\}}\\]"}</MathJax>
                     </Typography>
                 </Stack>
             </Problem>
@@ -219,7 +219,7 @@ export function Deriv6() {
                         />
                     </Stack>
                     <Typography>
-                        <MathJax>{"\\[\\text{Hp}=\\{ x \\space \\vert \\space x < 2 \\space \\vee \\space x > 3, \\space x \\in \\mathbb{R} \\}\\]"}</MathJax>
+                        <MathJax>{"\\[\\boxed{\\text{Hp}=\\{ x \\space \\vert \\space x < 2 \\space \\vee \\space x > 3, \\space x \\in \\mathbb{R} \\}}\\]"}</MathJax>
                     </Typography>
                 </Stack>
             </Problem>
@@ -268,7 +268,7 @@ export function Deriv7() {
                         \\end{aligned}\\]"}</MathJax>
                     </Typography>
                     <Typography>
-                        <MathJax>{"\\[ a+b=10+(-17) = -7 \\]"}</MathJax>
+                        <MathJax>{"\\[ a+b=10+(-17) = \\boxed{-7} \\]"}</MathJax>
                     </Typography>
                 </Stack>
             </Problem>
@@ -375,7 +375,7 @@ export function Deriv9() {
                             &= 56 - \\frac{105}{2} \\\\[10pt] \
                             &= \\frac{112}{2} - \\frac{105}{2} \\\\[10pt] \
                             &= \\frac{7}{2} \\\\[10pt] \
-                            2q&= 7 \
+                            2q&= \\boxed{7} \
                         \\end{aligned}\\]"}</MathJax>
                     </Typography>
                 </Stack>
@@ -436,7 +436,7 @@ export function Deriv10() {
                         \\end{aligned}\\]"}</MathJax>
                     </Typography>
                     <Typography>
-                        <MathJax>{"\\[2q+p^{2} = 8+(2)^{2} = 8+4 = 12 \\]"}</MathJax>
+                        <MathJax>{"\\[2q+p^{2} = 8+(2)^{2} = 8+4 = \\boxed{12} \\]"}</MathJax>
                     </Typography>
                 </Stack>
             </Problem>
@@ -569,7 +569,7 @@ export function Deriv12() {
                         \\end{aligned}\\]"}</MathJax>
                     </Typography>
                     <Typography>
-                        <MathJax>{"\\[ 2a+3b=2(1)+3(3)=2+9=11 \\]"}</MathJax>
+                        <MathJax>{"\\[ 2a+3b=2(1)+3(3)=2+9=\\boxed{11} \\]"}</MathJax>
                     </Typography>
                 </Stack>
             </Problem>
@@ -679,7 +679,7 @@ export function Deriv14() {
                         y'&=\\frac{(6x^2 + 6x)(5x^2 + 2)-(2x^3 + 3x^2)(10x)}{(5x^2 + 2)^2} \\\\[10pt] \
                         &=\\frac{2x[(3x + 3)(5x^2 + 2)-(2x^3 + 3x^2)(5)]}{(5x^2 + 2)^2} \\\\[10pt] \
                         &=\\frac{2x[15x^{3}+6x+15x^{2}+6-(10x^{3}+15x^{2})]}{(5x^2 + 2)^2} \\\\[10pt] \
-                        &=\\frac{2x[5x^{3}+6x+6]}{(5x^2 + 2)^2} \\\\[10pt] \
+                        &=\\boxed{\\frac{2x[5x^{3}+6x+6]}{(5x^2 + 2)^2}} \\\\[10pt] \
                     \\end{aligned}"}</MathJax>
                 </Typography>
             </Problem>
@@ -705,13 +705,28 @@ export function Deriv15() {
                 equation={"Jika turunan dari fungsi \\( f(x) = \\frac{3x^4 + x^3}{5x^5 + 3} \\) adalah \\( f'(x) = \\frac{-15x^8 + ax^7 + 36x^3 + bx^2}{25x^{10} + 30x^5 + 9} \\), maka tentukan nilai \\( (a + b) \\)"}
                 accordion_text="Pembahasan"
             >
-                <Typography>
-                    <MathJax>{"\\begin{aligned} \
-                        y&=5x^{\\frac{4}{5}}+3x^{\\frac{1}{2}}-6x^{-2} \\\\[10pt] \
-                        y'&=5\\left(\\frac{4}{5}\\right)x^{\\frac{4}{5}-1}+3\\left(\\frac{1}{2}\\right)x^{\\frac{1}{2}-1}-6(-2)x^{-2-1} \\\\[10pt] \
-                        &=4x^{-\\frac{1}{5}}+\\frac{3}{2}x^{-\\frac{1}{2}}+12x^{-3} \\\\[10pt] \
-                    \\end{aligned}"}</MathJax>
-                </Typography>
+                <Stack gap={3}>
+                    <Typography>
+                        <MathJax>{"\\begin{aligned} \
+                            f'(x)&=\\frac{(12x^3 + 3x^2)(5x^5 + 3)-(3x^4 + x^3)(25x^4)}{(5x^5 + 3)^{2}} \\\\[10pt] \
+                            &=\\frac{60x^8+36x^3+15x^7+9x^2-(75x^8+25x^7)}{25x^{10} + 30x^5 + 9} \\\\[10pt] \
+                            &=\\frac{-15x^8-10x^7+36x^3+9x^2}{25x^{10} + 30x^5 + 9} \
+                        \\end{aligned}"}</MathJax>
+                    </Typography>
+                    <Typography>
+                        <MathJax>{"\\begin{aligned} \
+                            \\frac{-15x^8 + ax^7 + 36x^3 + bx^2}{25x^{10} + 30x^5 + 9}&=\\frac{-15x^8-10x^7+36x^3+9x^2}{25x^{10} + 30x^5 + 9} \\\\[10pt] \
+                            ax^7+bx^2&=-10x^7+9x^2 \\\\[5pt] \
+                            a&=-10 \\\\[5pt] \
+                            b&=9 \\\\[5pt] \
+                        \\end{aligned}"}</MathJax>
+                    </Typography>
+                    <Typography>
+                        <MathJax>
+                            {"\\[ a+b = -10+9 = \\boxed{-1} \\]"}
+                        </MathJax>
+                    </Typography>
+                </Stack>
             </Problem>
         </Stack>
     );
@@ -737,9 +752,20 @@ export function Deriv16() {
             >
                 <Typography>
                     <MathJax>{"\\begin{aligned} \
-                        y&=5x^{\\frac{4}{5}}+3x^{\\frac{1}{2}}-6x^{-2} \\\\[10pt] \
-                        y'&=5\\left(\\frac{4}{5}\\right)x^{\\frac{4}{5}-1}+3\\left(\\frac{1}{2}\\right)x^{\\frac{1}{2}-1}-6(-2)x^{-2-1} \\\\[10pt] \
-                        &=4x^{-\\frac{1}{5}}+\\frac{3}{2}x^{-\\frac{1}{2}}+12x^{-3} \\\\[10pt] \
+                        p+l&=100 \\\\[5pt] \
+                        l&=100-p \\\\[10pt] \
+                        A&=p \\cdot l \\\\[5pt] \
+                        &=p(100-p) \\\\[5pt] \
+                        &=100p-p^2 \\\\[10pt] \
+                        A'&=100-2p \\\\[5pt] \
+                        0&=100-2p \\\\[5pt] \
+                        2p&=100 \\\\[5pt] \
+                        p&=50 \\\\[10pt] \
+                        l&=100-50 \\\\[5pt] \
+                        &=50 \\\\[10pt] \
+                        A&=p \\cdot l \\\\[5pt] \
+                        &=50 \\cdot 50 \\\\[5pt] \
+                        &=\\boxed{2500 \\space \\text{m}^{2}} \\\\[5pt] \
                     \\end{aligned}"}</MathJax>
                 </Typography>
             </Problem>
@@ -765,13 +791,35 @@ export function Deriv17() {
                 equation={"Danar akan membuat balok tanpa tutup dengan menggunting empat persegi pojok sebuah kertas karton berukuran \\(24 \\space \\text{cm} \\times 15 \\space \\text{cm}\\). Tentukan volume maksimum balok yang dapat dibentuk."}
                 accordion_text="Pembahasan"
             >
-                <Typography>
-                    <MathJax>{"\\begin{aligned} \
-                        y&=5x^{\\frac{4}{5}}+3x^{\\frac{1}{2}}-6x^{-2} \\\\[10pt] \
-                        y'&=5\\left(\\frac{4}{5}\\right)x^{\\frac{4}{5}-1}+3\\left(\\frac{1}{2}\\right)x^{\\frac{1}{2}-1}-6(-2)x^{-2-1} \\\\[10pt] \
-                        &=4x^{-\\frac{1}{5}}+\\frac{3}{2}x^{-\\frac{1}{2}}+12x^{-3} \\\\[10pt] \
-                    \\end{aligned}"}</MathJax>
-                </Typography>
+                <Stack gap={3}>
+                    <Box height={500} width={"auto"} sx={{display:'flex', justifyContent:'center'}}>
+                        <img src={'/exercise/derivative/soal_17.svg'} alt="img" width={"100%"} />
+                    </Box>
+                    <Typography>
+                        <MathJax>{"\\begin{aligned} \
+                            V&=(24-2x)(15-2x)x \\\\[10pt] \
+                            &=x(360-78x+4x^2) \\\\[10pt] \
+                            &=4x^3-78x^2+360x \\\\[20pt] \
+                            V'&=12x^2-156x+360 \\\\[10pt] \
+                            0&=12x^2-156x+360 \\\\[10pt] \
+                            0&=x^2-13x+30 \\\\[10pt] \
+                            0&=(x-3)(x-10) \
+                        \\end{aligned}"}</MathJax>
+                        <MathJax>
+                            {"\\[ x=3 \\quad \\vee \\quad x=10 \\\\[10pt] \ \\]"}
+                        </MathJax>
+                    </Typography>
+                    <Stack justifyContent={'center'} alignItems={'center'}>
+                        <NumberLine dots={[[3,1],[10,1]]} signs={['+','-','+']}/>
+                    </Stack>
+                    <Typography>
+                        <MathJax>{"\\begin{aligned} \
+                            V_{max}=V(3)&=(24-2(3))(15-2(3))(3) \\\\[10pt] \
+                            &=18 \\cdot 9 \\cdot 3 \\\\[10pt] \
+                            &=\\boxed{486 \\space \\text{cm}^{3}} \
+                        \\end{aligned}"}</MathJax>
+                    </Typography>
+                </Stack>
             </Problem>
         </Stack>
     );
@@ -795,13 +843,27 @@ export function Deriv18() {
                 equation={"Diketahui proyek pembangunan Gedung Arga Mandiri diperkirakan akan selesai dalam \\( x \\) hari. Jika biaya proyek per hari adalah \\( (5x - 150 + \\frac{2100}{x}) \\) juta rupiah, maka agar biaya proyek minimum proyek harus diselesaikan dalam waktu berapa hari dan tentukan besar biaya perharinya."}
                 accordion_text="Pembahasan"
             >
-                <Typography>
-                    <MathJax>{"\\begin{aligned} \
-                        y&=5x^{\\frac{4}{5}}+3x^{\\frac{1}{2}}-6x^{-2} \\\\[10pt] \
-                        y'&=5\\left(\\frac{4}{5}\\right)x^{\\frac{4}{5}-1}+3\\left(\\frac{1}{2}\\right)x^{\\frac{1}{2}-1}-6(-2)x^{-2-1} \\\\[10pt] \
-                        &=4x^{-\\frac{1}{5}}+\\frac{3}{2}x^{-\\frac{1}{2}}+12x^{-3} \\\\[10pt] \
-                    \\end{aligned}"}</MathJax>
-                </Typography>
+                <Stack gap={3}>
+                    <Typography>
+                        <MathJax>{"\\begin{aligned} \
+                            y'&=0 \\\\[10pt] \
+                            5-2100x^{-2} &= 0 \\\\[10pt] \
+                            5 &= \\frac{2100}{x^{2}} \\\\[10pt] \
+                            5x^{2} &= 2100 \\\\[10pt] \
+                            x^{2} &= 420 \\\\[10pt] \
+                            x &= \\sqrt{420} \\\\[10pt] \
+                            x&= \\boxed {2\\sqrt{105} \\text{ hari}} \
+                        \\end{aligned}"}</MathJax>
+                    </Typography>
+                    <Typography>
+                        <MathJax>{"\\begin{aligned} \
+                            y&=5(2\\sqrt{105}) - 150 + \\frac{2100}{(2\\sqrt{105})} \\\\[10pt] \
+                            &=10\\sqrt{105} - 150 + \\frac{1050}{\\sqrt{105}} \\\\[10pt] \
+                            &=10\\sqrt{105} - 150 + 10\\sqrt{105} \\\\[10pt] \
+                            &=\\boxed{(20\\sqrt{105} - 150) \\text{ juta rupiah}} \
+                        \\end{aligned}"}</MathJax>
+                    </Typography>
+                </Stack>
             </Problem>
         </Stack>
     );
@@ -825,13 +887,33 @@ export function Deriv19() {
                 equation={"Sebuah perusahaan mebel mampu menjual produk kursi sebanyak \\( (2000 - 10x) \\) unit setiap bulannya dengan harga jual setiap unit adalah \\( x \\) ribu rupiah. Jika biaya produksi yang dikeluarkan perusahaan tersebut untuk produksi seluruh kursi adalah \\( (25000 + 400x) \\) ribu rupiah, maka tentukan biaya produksi perusahaan tersebut agar diperoleh keuntungan maksimum!"}
                 accordion_text="Pembahasan"
             >
+                <Stack gap={3}>
                 <Typography>
-                    <MathJax>{"\\begin{aligned} \
-                        y&=5x^{\\frac{4}{5}}+3x^{\\frac{1}{2}}-6x^{-2} \\\\[10pt] \
-                        y'&=5\\left(\\frac{4}{5}\\right)x^{\\frac{4}{5}-1}+3\\left(\\frac{1}{2}\\right)x^{\\frac{1}{2}-1}-6(-2)x^{-2-1} \\\\[10pt] \
-                        &=4x^{-\\frac{1}{5}}+\\frac{3}{2}x^{-\\frac{1}{2}}+12x^{-3} \\\\[10pt] \
-                    \\end{aligned}"}</MathJax>
-                </Typography>
+                        <MathJax>{"\\begin{aligned} \
+                            r(x)&=x(2000-10x)=2000x-10x^2 \\\\[5pt] \
+                            c(x)&=25000 + 400x \
+                        \\end{aligned}"}</MathJax>
+                    </Typography>
+                    <Typography>
+                        <MathJax>{"\\begin{aligned} \
+                            p(x)&=r(x)-c(x) \\\\[5pt] \
+                            &=2000x-10x^{2}-25000-400x \\\\[5pt] \
+                            &=-10x^{2}+1600x-25000 \\\\[5pt] \
+                            p'(x)&=-20x+1600 \\\\[5pt] \
+                            0&=-20x+1600 \\\\[5pt] \
+                            20x&=1600 \\\\[5pt] \
+                            x&=80 \
+                        \\end{aligned}"}</MathJax>
+                    </Typography>
+                    <Typography>
+                        <MathJax>{"\\begin{aligned} \
+                            c(80)&=25000 + 400x \\\\[5pt] \
+                            &=25000 + 400(80) \\\\[5pt] \
+                            &=25000 + 32000 \\\\[5pt] \
+                            &=\\boxed{57000 \\text{ ribu rupiah}} \
+                        \\end{aligned}"}</MathJax>
+                    </Typography>
+                </Stack>
             </Problem>
         </Stack>
     );
