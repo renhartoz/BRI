@@ -846,21 +846,20 @@ export function Deriv18() {
                 <Stack gap={3}>
                     <Typography>
                         <MathJax>{"\\begin{aligned} \
-                            y'&=0 \\\\[10pt] \
-                            5-2100x^{-2} &= 0 \\\\[10pt] \
-                            5 &= \\frac{2100}{x^{2}} \\\\[10pt] \
-                            5x^{2} &= 2100 \\\\[10pt] \
-                            x^{2} &= 420 \\\\[10pt] \
-                            x &= \\sqrt{420} \\\\[10pt] \
-                            x&= \\boxed {2\\sqrt{105} \\text{ hari}} \
+                            s(x)&=x(c(x)) \\\\[10pt] \
+                            s(x)&=x(5x - 150 + \\frac{2100}{x}) \\\\[10pt] \
+                            &=5x^2 - 150x + 2100 \\\\[10pt] \
+                            s'(x)&=10x-150 \\\\[10pt] \
+                            0&=10x-150 \\\\[10pt] \
+                            10x&=150 \\\\[10pt] \
+                            x&=\\boxed{15 \\text{ hari}} \\\\[10pt] \
                         \\end{aligned}"}</MathJax>
                     </Typography>
                     <Typography>
                         <MathJax>{"\\begin{aligned} \
-                            y&=5(2\\sqrt{105}) - 150 + \\frac{2100}{(2\\sqrt{105})} \\\\[10pt] \
-                            &=10\\sqrt{105} - 150 + \\frac{1050}{\\sqrt{105}} \\\\[10pt] \
-                            &=10\\sqrt{105} - 150 + 10\\sqrt{105} \\\\[10pt] \
-                            &=\\boxed{(20\\sqrt{105} - 150) \\text{ juta rupiah}} \
+                            c(15)&=5(15) - 150 + \\frac{2100}{15} \\\\[10pt] \
+                            &=75 - 150 + 140 \\\\[10pt] \
+                            &=\\boxed{65\\text{ juta rupiah}} \\\\[10pt] \
                         \\end{aligned}"}</MathJax>
                     </Typography>
                 </Stack>
