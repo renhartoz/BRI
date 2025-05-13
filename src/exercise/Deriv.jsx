@@ -747,27 +747,33 @@ export function Deriv16() {
             />
             <Problem
                 title={"Soal 16"}
-                equation={"Seorang arsitek taman ingin membangun taman berbentuk persegi panjang di tengah lapangan. Seluruh sisi taman akan diberi pagar kawat. Jika tersedia 100 meter kawat untuk pagar, tentukan ukuran taman agar luasnya maksimum."}
+                equation={"Seorang arsitek taman ingin membangun taman berbentuk persegi panjang di tengah lapangan. Seluruh sisi taman akan diberi pagar kawat. Jika tersedia \\(100\\) meter kawat untuk pagar, tentukan ukuran taman agar luasnya maksimum."}
                 accordion_text="Pembahasan"
             >
-                <Typography>
-                    <MathJax>{"\\begin{aligned} \
-                        p+l&=100 \\\\[5pt] \
-                        l&=100-p \\\\[10pt] \
-                        A&=p \\cdot l \\\\[5pt] \
-                        &=p(100-p) \\\\[5pt] \
-                        &=100p-p^2 \\\\[10pt] \
-                        A'&=100-2p \\\\[5pt] \
-                        0&=100-2p \\\\[5pt] \
-                        2p&=100 \\\\[5pt] \
-                        p&=50 \\\\[10pt] \
-                        l&=100-50 \\\\[5pt] \
-                        &=50 \\\\[10pt] \
-                        A&=p \\cdot l \\\\[5pt] \
-                        &=50 \\cdot 50 \\\\[5pt] \
-                        &=\\boxed{2500 \\space \\text{m}^{2}} \\\\[5pt] \
-                    \\end{aligned}"}</MathJax>
-                </Typography>
+                <Stack gap={3}>
+                    <Typography>
+                        <MathJax>{"\\begin{aligned} \
+                            K&=100 \\\\[5pt] \
+                            2(p+l)&=100 \\\\[5pt] \
+                            p+l&=50 \\\\[5pt] \
+                            l&=50-p \\\\[10pt] \
+                            A&=p \\cdot l \\\\[5pt] \
+                            &=p(50-p) \\\\[5pt] \
+                            &=50p-p^2 \\\\[20pt] \
+                            A'&=50-2p \\\\[5pt] \
+                            0&=50-2p \\\\[5pt] \
+                            2p&=50 \\\\[5pt] \
+                            p&=25\\text{ m} \\\\[20pt] \
+                            l&=50-25 \\\\[5pt] \
+                            &=25\\text{ m} \\\\[20pt] \
+                        \\end{aligned}"}</MathJax>
+                    </Typography>
+                    <Typography>
+                        <MathJax>
+                            {"\\[ \\boxed{(p, \\space l)=(25\\text{ m}, \\space 25\\text{ m})} \\]"}
+                        </MathJax>
+                    </Typography>
+                </Stack>
             </Problem>
         </Stack>
     );
