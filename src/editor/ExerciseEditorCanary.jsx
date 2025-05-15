@@ -263,13 +263,13 @@ export default function ExerciseEditorCanary() {
                     py={4}
                     gap={3}>
                     <Stack>
-                        <Button>Preview</Button>
+                        <Button variant="outlined">Preview</Button>
                     </Stack>
                     <Stack>
-                        <Button>Save</Button>
+                        <Button variant="contained">Save</Button>
                     </Stack>
                     <Stack>
-                        <Button>Export</Button>
+                        <Button variant="contained">Export</Button>
                     </Stack>
                 </Stack>
             </MathJaxContext>
