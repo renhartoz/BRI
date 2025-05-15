@@ -90,7 +90,7 @@ export function Thermo1() {
                 equation={
                     <Box sx={{display:'flex', justifyContent:'center'}}>
                         <img
-                            src="/course/thermodynamic/soal_1.png"
+                            src="/exercise/thermodynamic/soal_1.png"
                             alt="Soal 1"
                         />
                     </Box>
@@ -205,7 +205,7 @@ export function Thermo2() {
                 equation={
                     <Box sx={{display:'flex', justifyContent:'center'}}>
                         <img
-                            src="/course/thermodynamic/soal_2.png"
+                            src="/exercise/thermodynamic/soal_2.png"
                             alt="Soal 2"
                         />
                     </Box>
@@ -289,7 +289,7 @@ export function Thermo10() {
                 equation={
                     <Box sx={{display:'flex', justifyContent:'center'}}>
                         <img
-                            src="/course/thermodynamic/soal_10.png"
+                            src="/exercise/thermodynamic/soal_10.png"
                             alt="Soal 10"
                         />
                     </Box>
