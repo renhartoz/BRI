@@ -104,8 +104,8 @@ export default function ComingSoon() {
             >
                 <Stack className="parallax__bg"></Stack>
                 <Stack className="parallax__mountain"></Stack>
-                <Stack className="parallax__cloud"></Stack>
                 <Stack className="parallax__mist"></Stack>
+                <Stack className="parallax__cloud"></Stack>
                 <Stack
                     className="parallax__button"
                     sx={{

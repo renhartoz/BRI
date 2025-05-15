@@ -95,6 +95,7 @@ export default function ExerciseEditorCanary() {
                                     "& .MuiOutlinedInput-root": {
                                         color: "#000",
                                         fontWeight: "700",
+                                        fontSize: "1.5rem",
                                         "& .MuiOutlinedInput-notchedOutline": {
                                             borderColor: "transparent",
                                         },
@@ -171,6 +172,25 @@ export default function ExerciseEditorCanary() {
                                 placeholder="Problem Title"
                                 variant="outlined"
                                 sx={{
+                                    width: "100%",
+                                    "& .MuiOutlinedInput-root": {
+                                        fontWeight: "600",
+                                        fontSize: "1.2em",
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "transparent",
+                                        },
+                                        "&.Mui-focused": {
+                                            "& .MuiOutlinedInput-notchedOutline": {
+                                                borderColor: "primary.main",
+                                                borderWidth: "3px",
+                                            },
+                                        },
+                                        "&:hover:not(.Mui-focused)": {
+                                            "& .MuiOutlinedInput-notchedOutline": {
+                                                borderColor: "#000",
+                                            },
+                                        },
+                                    },
                                     "& .MuiInputBase-input::placeholder": {
                                         opacity: 1,
                                     },
@@ -190,7 +210,7 @@ export default function ExerciseEditorCanary() {
                         accordion_text={
                             <Typography
                                 variant="h6"
-                                sx={{ color: "kurai_ao.dark" }}
+                                sx={{ color: "kurai_ao.dark", fontWeight: "750" }}
                             >
                                 Pembahasan
                             </Typography>
@@ -237,6 +257,20 @@ export default function ExerciseEditorCanary() {
                             </Button>
                         </Stack>
                     </Problem>
+                </Stack>
+                <Stack direction={"row"} justifyContent={"flex-end"}
+                    px={{ xs: 5, sm: 8, md: 10 }}
+                    py={4}
+                    gap={3}>
+                    <Stack>
+                        <Button>Preview</Button>
+                    </Stack>
+                    <Stack>
+                        <Button>Save</Button>
+                    </Stack>
+                    <Stack>
+                        <Button>Export</Button>
+                    </Stack>
                 </Stack>
             </MathJaxContext>
         </Theme>

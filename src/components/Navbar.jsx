@@ -30,7 +30,7 @@ GLOSSARY:
 
 const menuItems = [
     { label: "Home", href: "/", icon: <CottageIcon /> },
-    { label: "Blog", href: "/blog", icon: <RateReviewIcon /> },
+    { label: "Blog", href: "/comingsoon", icon: <RateReviewIcon /> },
     {
         label: "Study",
         dropdown: [
