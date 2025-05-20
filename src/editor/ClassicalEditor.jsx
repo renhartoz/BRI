@@ -51,7 +51,7 @@ import WebIcon from '@mui/icons-material/Web';
 import DownloadIcon from '@mui/icons-material/Download';
 import UploadIcon from '@mui/icons-material/Upload';
 
-function MenuButtons({ addBlock }) {
+export function MenuButtons({ addBlock }) {
   return (
       <Stack direction="row" justifyContent={'center'} alignItems={'center'} flexWrap={'nowrap'} spacing={2} sx={{overflowX:'auto'}}>
         <Tooltip title="Add Paragraph">
@@ -724,7 +724,6 @@ function RenderBlock({ path = [], setContent, content }) {
             <Collapse in={expandedBlocks[fullPath]}>
               <Stack spacing={2} sx={{ pl: 2, borderLeft: '2px solid #ccc', mt: 2 }}>
                 <Typography variant="subtitle2">Options</Typography>
-
                 <Stack gap={3}>
                   {(block.option?.items || []).map((item, idx) => (
                     <Stack key={idx} direction="row" spacing={1} alignItems="center">
@@ -1194,7 +1193,7 @@ function RenderBlock({ path = [], setContent, content }) {
   );
 }
 
-const MemoizedRenderBlock = React.memo(RenderBlock);
+export const MemoizedRenderBlock = React.memo(RenderBlock);
 
 export default function ClassicEditor() {
   const navigate = useNavigate();

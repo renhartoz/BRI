@@ -3,6 +3,8 @@ import { Stack, Typography, Grid2 } from "@mui/material";
 import { MathJax } from "better-react-mathjax";
 import Problem from "../maths/Problem";
 import ExerciseHeader from "./ExerciseHeader";
+import Template from "./Template";
+import exerciseData from "../data/exercise/LimTrigAtInfty.json";
 
 export function LimTrigInfty1() {
     return (
@@ -548,4 +550,58 @@ export function LimTrigInfty15() {
             </Problem>
         </Stack>
     );
+}
+
+export function LimTrigInfty16() {
+    return (
+        <Template blogData={exerciseData} id={"16"}/>
+    )
+}
+
+export function LimTrigInfty17() {
+    return (
+        <Template blogData={exerciseData} id={"17"}/>
+    )
+}
+
+export function LimTrigInfty18() {
+    return (
+        <Template blogData={exerciseData} id={"18"}/>
+    )
+}
+
+export function LimTrigInfty19() {
+    return (
+        <Template blogData={exerciseData} id={"19"}/>
+    )
+}
+
+export function LimTrigInfty20() {
+    return (
+        <Template blogData={exerciseData} id={"20"}/>
+    )
+}
+
+export function LimTrigInfty21() {
+    return (
+        <Template blogData={exerciseData} id={"21"}/>
+    )
+}
+
+export function LimTrigInfty22() {
+    return (
+        <Template blogData={exerciseData} id={"22"}/>
+    )
+}
+
+export function LimTrigInfty23() {
+    return (
+        <Template blogData={exerciseData} id={"23"}/>
+    )
+}
+
+export function LimTrigInfty24() {
+    return (
+        <Template blogData={exerciseData} id={"24"}/>
+    )
 }

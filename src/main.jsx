@@ -17,7 +17,8 @@ import ExerciseList from "./pages/ExerciseList.jsx";
 import ClassicEditor from "./editor/ClassicalEditor.jsx";
 import ClassicPreview from "./pages/ClassicPreview.jsx";
 import EditorApp from "./editor/Lexical/App.jsx";
-import ExerciseEditorCanary from "./editor/ExerciseEditorCanary.jsx";
+import ExerciseEditor from "./editor/ExerciseEditor.jsx";
+import ExercisePreview from "./pages/ExercisePreview.jsx";
 import LexicalPreview from "./pages/LexicalPreview.jsx";
 
 import {
@@ -81,11 +82,15 @@ export const routes = [
     },
     {
         path: "/editor-exercise",
-        element: <ExerciseEditorCanary />,
+        element: <ExerciseEditor />,
     },
     {
         path: "/preview",
         element: <ClassicPreview />,
+    },
+    {
+        path: "/exercise-preview",
+        element: <ExercisePreview />,
     },
     {
         path: "/lexical-editor",
@@ -231,6 +236,15 @@ export const routes = [
             { path: "13", element: <LIMTRIGINF.LimTrigInfty13 /> },
             { path: "14", element: <LIMTRIGINF.LimTrigInfty14 /> },
             { path: "15", element: <LIMTRIGINF.LimTrigInfty15 /> },
+            { path: "16", element: <LIMTRIGINF.LimTrigInfty16 /> },
+            { path: "17", element: <LIMTRIGINF.LimTrigInfty17 /> },
+            { path: "18", element: <LIMTRIGINF.LimTrigInfty18 /> },
+            { path: "19", element: <LIMTRIGINF.LimTrigInfty19 /> },
+            { path: "20", element: <LIMTRIGINF.LimTrigInfty20 /> },
+            { path: "21", element: <LIMTRIGINF.LimTrigInfty21 /> },
+            { path: "22", element: <LIMTRIGINF.LimTrigInfty22 /> },
+            { path: "23", element: <LIMTRIGINF.LimTrigInfty23 /> },
+            { path: "24", element: <LIMTRIGINF.LimTrigInfty24 /> },
         ]
     },
     {

@@ -38,7 +38,7 @@ export default function Problem({
                             <MathJax>{equation}</MathJax>
                         </Typography>
                     )}
-                    {option && (
+                    {option && option.items.length>0 && (
                         <Stack
                             gap={option.gap || 0}
                             direction={option.direction || "column"}

@@ -156,7 +156,7 @@ const RenderContent = ({ data }) => {
                         key={index}
                         title={item.title}
                         instruction={item.instruction}
-                        equation={item.equation}
+                        equation={typeof(item.equation)==='string'?item.equation:<RenderContent data={item.equation} />}
                         option={item.option}
                         note={item.note}
                         accordion_text={item.accordion_text}
