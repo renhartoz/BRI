@@ -428,7 +428,7 @@ export function Navbar3({ exercise }) {
                 <Toolbar sx={{ justifyContent: "space-between" }}>
                     {/* Logo */}
                     <Stack direction="row">
-                    <IconButton onClick={()=>setIsDrawerOpen(true)}>
+                    <IconButton sx={{ display: { xs: 'flex', sm: 'none' } }} onClick={()=>setIsDrawerOpen(true)}>
                         <MenuIcon sx={{ color: "#fff" }}/>
                     </IconButton>
                     <IconButton
