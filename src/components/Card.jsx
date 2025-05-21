@@ -21,6 +21,7 @@ export default function CourseCard({
     subject,
     bgColor = "primary",
     href,
+    isExercise = false,
 }) {
     const theme = useTheme();
 
@@ -83,9 +84,27 @@ export default function CourseCard({
                         py: 0.5,
                     }}
                 >
-                    <Typography variant="body2" fontWeight="bold" color="#fff">
-                        {Free ? "Free course" : "Paid course"}
-                    </Typography>
+                    {isExercise ? (
+                        <>
+                            <Typography
+                                variant="body2"
+                                fontWeight="bold"
+                                color="#fff"
+                            >
+                                {Free ? "Free exercise" : "Paid exercise"}
+                            </Typography>
+                        </>
+                    ) : (
+                        <>
+                            <Typography
+                                variant="body2"
+                                fontWeight="bold"
+                                color="#fff"
+                            >
+                                {Free ? "Free course" : "Paid course"}
+                            </Typography>
+                        </>
+                    )}
                 </Box>
 
                 {/* Course Details */}
