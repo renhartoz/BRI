@@ -3,6 +3,8 @@ import { Stack, Typography, Grid2 } from "@mui/material";
 import { MathJax } from "better-react-mathjax";
 import Problem from "../maths/Problem";
 import ExerciseHeader from "./ExerciseHeader";
+import Template from "./Template";
+import exerciseData from "../data/exercise/LimTrigAtInfty.json";
 
 export function LimTrigInfty1() {
     return (
@@ -13,7 +15,7 @@ export function LimTrigInfty1() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -53,7 +55,7 @@ export function LimTrigInfty2() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -89,7 +91,7 @@ export function LimTrigInfty3() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -127,7 +129,7 @@ export function LimTrigInfty4() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -165,7 +167,7 @@ export function LimTrigInfty5() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="10 min"
             />
@@ -201,7 +203,7 @@ export function LimTrigInfty6() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -238,7 +240,7 @@ export function LimTrigInfty7() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -273,7 +275,7 @@ export function LimTrigInfty8() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -309,7 +311,7 @@ export function LimTrigInfty9() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -345,7 +347,7 @@ export function LimTrigInfty10() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="10 min"
             />
@@ -380,7 +382,7 @@ export function LimTrigInfty11() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -417,7 +419,7 @@ export function LimTrigInfty12() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -453,7 +455,7 @@ export function LimTrigInfty13() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="10 min"
             />
@@ -490,7 +492,7 @@ export function LimTrigInfty14() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -525,7 +527,7 @@ export function LimTrigInfty15() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -548,4 +550,58 @@ export function LimTrigInfty15() {
             </Problem>
         </Stack>
     );
+}
+
+export function LimTrigInfty16() {
+    return (
+        <Template blogData={exerciseData} id={"16"}/>
+    )
+}
+
+export function LimTrigInfty17() {
+    return (
+        <Template blogData={exerciseData} id={"17"}/>
+    )
+}
+
+export function LimTrigInfty18() {
+    return (
+        <Template blogData={exerciseData} id={"18"}/>
+    )
+}
+
+export function LimTrigInfty19() {
+    return (
+        <Template blogData={exerciseData} id={"19"}/>
+    )
+}
+
+export function LimTrigInfty20() {
+    return (
+        <Template blogData={exerciseData} id={"20"}/>
+    )
+}
+
+export function LimTrigInfty21() {
+    return (
+        <Template blogData={exerciseData} id={"21"}/>
+    )
+}
+
+export function LimTrigInfty22() {
+    return (
+        <Template blogData={exerciseData} id={"22"}/>
+    )
+}
+
+export function LimTrigInfty23() {
+    return (
+        <Template blogData={exerciseData} id={"23"}/>
+    )
+}
+
+export function LimTrigInfty24() {
+    return (
+        <Template blogData={exerciseData} id={"24"}/>
+    )
 }
