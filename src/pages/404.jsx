@@ -62,7 +62,7 @@ export default function PageNotFound() {
     return (
         <>
             <Typography display={"none"}>
-                WELCOME TO @KOMATSUBEN 'S HIDEOUT: THE INFINITE VOID OF
+                WELCOME TO @KOMATSUBEN 'S DOMAIN: THE INFINITE VOID OF
                 NOTHINGNESS(404)
             </Typography>
             <Stack
