@@ -15,7 +15,7 @@ export function LimTrigInfty1() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -55,7 +55,7 @@ export function LimTrigInfty2() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -91,7 +91,7 @@ export function LimTrigInfty3() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -129,7 +129,7 @@ export function LimTrigInfty4() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -167,7 +167,7 @@ export function LimTrigInfty5() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="10 min"
             />
@@ -203,7 +203,7 @@ export function LimTrigInfty6() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -240,7 +240,7 @@ export function LimTrigInfty7() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -275,7 +275,7 @@ export function LimTrigInfty8() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -311,7 +311,7 @@ export function LimTrigInfty9() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -347,7 +347,7 @@ export function LimTrigInfty10() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="10 min"
             />
@@ -382,7 +382,7 @@ export function LimTrigInfty11() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -419,7 +419,7 @@ export function LimTrigInfty12() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -455,7 +455,7 @@ export function LimTrigInfty13() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="10 min"
             />
@@ -492,7 +492,7 @@ export function LimTrigInfty14() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
@@ -527,7 +527,7 @@ export function LimTrigInfty15() {
             sx={{ backgroundColor: "#fff" }}
         >
             <ExerciseHeader
-                material="Limit Trigonometri Menuju Tak Hingga"
+                material="Limit Trigonometri Tak Hingga"
                 title="Latihan Soal"
                 time="5 min"
             />
