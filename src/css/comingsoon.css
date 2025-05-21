@@ -14,7 +14,7 @@ body {
 }
 
 .parallax__bg,
-.parallax__clouds,
+.parallax__cloud,
 .parallax__mountain,
 .parallax__mist {
     position: fixed;

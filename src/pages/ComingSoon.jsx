@@ -46,21 +46,20 @@ export default function ComingSoon() {
 
     return (
         <>
-            <Stack
-                sx={{
-                    width: "100vw",
+            <Stack sx={{
                     height: "100vh",
                     display: { xs: "flex", sm: "none" },
-                    background:
-                        "radial-gradient(50px at top,#749bc2 99%,#0000), radial-gradient(50px at bottom,#749bc2 99%,#0000) 50px 0",
-                    backgroundSize: "100px 100px",
-                    backgroundColor: "#f6f4eb",
-                    zIndex: 0,
-                    p: 5,
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    backdropFilter: "blur(2px)",
+                    color: "#fef0da",
+                    px: 5,
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    zIndex: 1,
                 }}
                 justifyContent="center"
-                alignItems="start"
-            >
+                alignItems="start">
                 <Typography
                     variant="h1"
                     sx={{
@@ -92,6 +91,24 @@ export default function ComingSoon() {
                 >
                     Go Home &rArr;
                 </Button>
+            </Stack>
+            <Stack
+                sx={{
+                    width: "100vw",
+                    height: "100vh",
+                    display: { xs: "flex", sm: "none" },
+                    background:
+                        "radial-gradient(50px at top,#749bc2 99%,#0000), radial-gradient(50px at bottom,#749bc2 99%,#0000) 50px 0",
+                    backgroundSize: "100px 100px",
+                    backgroundColor: "#f6f4eb",
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    zIndex: 0,
+                }}
+                justifyContent="center"
+                alignItems="start"
+            >
             </Stack>
 
             <Stack

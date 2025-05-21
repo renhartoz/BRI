@@ -406,6 +406,7 @@ export function Navbar2({ course }) {
 }
 
 export function Navbar3({ exercise }) {
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const menuItems = [
         { label: "Home", href: "/", icon: <CottageIcon /> },
         { label: "Exercise", href: `/exercise`, icon: <SchoolIcon /> },
@@ -426,6 +427,10 @@ export function Navbar3({ exercise }) {
             >
                 <Toolbar sx={{ justifyContent: "space-between" }}>
                     {/* Logo */}
+                    <Stack direction="row">
+                    <IconButton sx={{ display: { xs: 'flex', sm: 'none' } }} onClick={()=>setIsDrawerOpen(true)}>
+                        <MenuIcon sx={{ color: "#fff" }}/>
+                    </IconButton>
                     <IconButton
                         color="inherit"
                         sx={{
@@ -444,6 +449,9 @@ export function Navbar3({ exercise }) {
                             />
                         </Icon>
                     </IconButton>
+
+                    </Stack>
+                    
                     <Stack
                         sx={{
                             display: { xs: "block", sm: "flex" },
@@ -520,6 +528,18 @@ export function Navbar3({ exercise }) {
                     <BottomNavButtons menuItems={menuItems} />
                 </Toolbar>
             </AppBar> */}
+            <Drawer 
+                active={isDrawerOpen}
+                setActive={setIsDrawerOpen}
+                bgcolor="#ffffff"
+                color="#000000"
+                bdcolor="#e0e0e0"
+                list={[
+                    {label:"Home", href:"/"},
+                    {label:"Exercise", href:"/exercise"},
+                ]} // Add your menu items here
+                title="Menu"
+            />
         </>
     );
 }

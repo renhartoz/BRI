@@ -164,7 +164,7 @@ export default function Home() {
                             >
                                 Uji Kompetensi
                             </Typography>
-                            <Link to={"/course"}>
+                            <Link to={"/exercise"}>
                                 <Typography color="#DB6400" fontSize={"1em"}>
                                     Lihat Semua
                                 </Typography>
