@@ -2,6 +2,8 @@ import React from "react";
 import { Box, Stack, Typography, Grid2 } from "@mui/material";
 import Accordion from "../components/Accordion";
 import { MathJax } from "better-react-mathjax";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CircleIcon from '@mui/icons-material/Circle';
 
 export default function Problem({
     title,
