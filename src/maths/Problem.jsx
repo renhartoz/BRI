@@ -126,7 +126,7 @@ export default function Problem({
                                     {accordion_text}
                                 </Typography>
                             }
-                            answer={<Box mt={2} overflowX={'auto'} overflowY={'hidden'}>{children}</Box>}
+                            answer={<Box mt={2} sx={{overflowX:"auto", overflowY:"hidden"}}>{children}</Box>}
                             bgcolor_title="inherit"
                             color_title="kurai_ao"
                             bgcolor_text="inherit"

@@ -268,7 +268,7 @@ export default function ExerciseList() {
                             >
                                 {filteredexercises.map((exercise) => (
                                     <Grid2 key={exercise.id} maxWidth={300}>
-                                        <CourseCard {...exercise} />
+                                        <CourseCard {...exercise} isExercise={true} />
                                     </Grid2>
                                 ))}
                             </Grid2>
