@@ -2486,7 +2486,7 @@
                                     {
                                         "type": "math",
                                         "justify": "center",
-                                        "text": "\\[ \\begin{aligned} &\\lim\\limits_{x \\to \\infty} \\Bigl(\\sqrt{4x^{2}-3x-1}-\\sqrt{4x^{2}}\\Bigl)+\\lim\\limits_{x \\to \\infty} \\Bigl(\\sqrt{9x^{2}}-\\sqrt{9x^{2}-x+7}\\Bigl) - \\lim\\limits_{x \\to \\infty} 2 \\\\ &= \\frac{-3-0}{2\\sqrt{4}}+\\frac{2-(-1)}{2\\sqrt{9}}-2 \\\\ &= -\\frac{3}{4} + \\frac{1}{2}-2 \\\\ &= \\frac{5}{4} \\end{aligned} \\]"
+                                        "text": "\\[ \\begin{aligned} &\\lim\\limits_{x \\to \\infty} \\Bigl(\\sqrt{4x^{2}-3x-1}-\\sqrt{4x^{2}}\\Bigl)+\\lim\\limits_{x \\to \\infty} \\Bigl(\\sqrt{9x^{2}}-\\sqrt{9x^{2}-x+7}\\Bigl) - \\lim\\limits_{x \\to \\infty} 2 \\\\ &= \\frac{-3-0}{2\\sqrt{4}}+\\frac{0-(-1)}{2\\sqrt{9}}-2 \\\\ &= -\\frac{3}{4} + \\frac{1}{6}-2 \\\\ &= -\\frac{31}{12} \\end{aligned} \\]"
                                     }
                                 ]
                             }
