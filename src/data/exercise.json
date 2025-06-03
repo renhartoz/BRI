@@ -52,5 +52,14 @@
         "level": "Intermediate",
         "Free": true,
         "href": "/exercise/derivative/1"
+    },
+    {
+        "id": 7,
+        "image": "/course/vektor/vektor.png",
+        "title": "Vektor",
+        "subject": "MTK",
+        "level": "Beginner",
+        "Free": true,
+        "href": "/exercise/vektor/1"
     }
 ]   
