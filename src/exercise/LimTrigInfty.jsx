@@ -6,6 +6,8 @@ import ExerciseHeader from "./ExerciseHeader";
 import Template from "./Template";
 import exerciseData from "../data/exercise/LimTrigAtInfty.json";
 
+
+
 export function LimTrigInfty1() {
     return (
         <Stack

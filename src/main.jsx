@@ -59,6 +59,7 @@ import * as LIM from "./exercise/Limit.jsx";
 import * as LIMTRIGINF from "./exercise/LimTrigInfty.jsx";
 import * as THERMO from "./exercise/Thermodynamic.jsx";
 import * as DERIV from "./exercise/Deriv.jsx";
+import * as VEKTOR from "./exercise/Vektor.jsx";
 import PageNotFound from "./pages/404.jsx";
 import ComingSoon from "./pages/ComingSoon.jsx";
 
@@ -248,10 +249,6 @@ export const routes = [
         ]
     },
     {
-        path: "*",
-        element: <PageNotFound />,
-    },
-    {
         path: "/exercise/thermodynamic",
         element: <ExerciseLayout />,
         children: [
@@ -286,6 +283,21 @@ export const routes = [
             { path: "18", element: <DERIV.Deriv18 /> },
             { path: "19", element: <DERIV.Deriv19 /> },
         ]
+    },
+    {
+        path:"/exercise/vektor",
+        element: <ExerciseLayout />,
+        children: [
+            { path: "1", element: <VEKTOR.Vektor1 /> },
+            { path: "2", element: <VEKTOR.Vektor2 /> },
+        ]
+    },
+    
+    
+
+    {
+        path: "*",
+        element: <PageNotFound />,
     },
 ];
 
