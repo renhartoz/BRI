@@ -21,17 +21,43 @@ const Accordion = ({
     const contentRef = useRef(null);
 
     useEffect(() => {
-        if (contentRef.current) {
-            setContentHeight(contentRef.current.scrollHeight);
-        }
+        const node = contentRef.current;
+        if (!node) return;
+
+        // ResizeObserver instance
+        const resizeObserver = new ResizeObserver(() => {
+            setContentHeight(node.scrollHeight);
+        });
+
+        // Observe the container
+        resizeObserver.observe(node);
+
+        // Recursively observe all child nodes
+        const observeAllChildren = (element) => {
+            Array.from(element.children).forEach((child) => {
+                resizeObserver.observe(child);
+                if (child.children.length > 0) {
+                    observeAllChildren(child);
+                }
+            });
+        };
+
+        observeAllChildren(node); // Observe nested elements
+
+        // Initial height
+        setContentHeight(node.scrollHeight);
+
+        return () => {
+            resizeObserver.disconnect();
+        };
     }, [isOpen]);
+
 
     return (
         <Paper
             elevation={3}
             sx={{
                 width: "100%",
-                maxWidth: 600,
                 border: `2px solid ${bdcolor}`,
                 borderRadius: "8px",
                 overflow: "hidden",
