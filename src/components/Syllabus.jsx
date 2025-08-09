@@ -26,7 +26,7 @@ const Syllabus = ({ syllabusData }) => {
                             md: "left",
                         }}
                     >
-                        {syllabusData.title}
+                        {syllabus_title}
                     </Typography>
                     <Typography variant="subtitle1" color="text.secondary">
                         {syllabusData.unit} units • {syllabusData.subunit}{" "}

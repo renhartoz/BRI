@@ -217,7 +217,7 @@ export default function CourseList() {
                             {/* Course Grid2 */}
                             <Grid2 container spacing={6} justifyContent="center">
                                 {filteredCourses.map((course) => (
-                                    <Grid2 key={course.id} maxWidth={300}>
+                                    <Grid2 key={course.id} width={300}>
                                         <CourseCard {...course} />
                                     </Grid2>
                                 ))}

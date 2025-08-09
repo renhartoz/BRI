@@ -22,6 +22,8 @@ export default function CourseCard({
     bgColor = "primary",
     href,
     isExercise = false,
+    maxChar = null,
+    sx={}
 }) {
     const theme = useTheme();
 
@@ -39,6 +41,7 @@ export default function CourseCard({
                         transform: "translate(-4px, -4px)",
                         boxShadow: "8px 8px 0px black",
                     },
+                    ...sx
                 }}
             >
                 {/* Course Image with Subject Chip */}
@@ -114,7 +117,7 @@ export default function CourseCard({
                         fontWeight="bold"
                         color={theme.palette[bgColor]?.main || bgColor}
                     >
-                        {title}
+                        {maxChar && title.length > maxChar ? `${title.slice(0, maxChar-3)}...` : title}
                     </Typography>
                     {desc && (
                         <Typography

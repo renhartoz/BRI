@@ -267,8 +267,8 @@ export default function ExerciseList() {
                                 justifyContent="center"
                             >
                                 {filteredexercises.map((exercise) => (
-                                    <Grid2 key={exercise.id} maxWidth={300}>
-                                        <CourseCard {...exercise} isExercise={true} />
+                                    <Grid2 key={exercise.id} width={300}>
+                                        <CourseCard {...exercise} isExercise={true} maxChar={25} />
                                     </Grid2>
                                 ))}
                             </Grid2>

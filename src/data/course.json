@@ -3,19 +3,59 @@
         "id": 1,
         "image": "/course/limit/limit.png",
         "title": "Limit Fungsi",
-        "color": "#FF5733",
-        "desc": "Konsep dasar dalam kalkulus dan analisis hasil fungsi di dekat input tertentu.",
+        "desc": "Konsep dasar dalam kalkulus dan analisis mengenai hasil fungsi di dekat input tertentu.",
         "subject": "MTK",
         "level": "Beginner",
         "Free": true,
-        "href": "/course/limit"
+        "href": "/course/limit",
+
+        "color": "#FF5733",
+        "first_url": "/course/limit/intro",
+        "time": 15,
+        "unit": 6,
+        "subunit": 9,
+        "important_unit": ["Teorema Limit", "Limit Tak Tentu", "Limit Tak Hingga"],
+        "prereq": "Aljabar Lanjut",
+        "quiz": 8,
+        "skills": [
+            "Konsep Fundamental Limit Fungsi",
+            "Penerapan Limit Fungsi",
+            "Persiapan untuk konsep derivatif"
+        ],
+        "prolog": "Dalam matematika, limit adalah nilai yang didekati suatu fungsi saat mendekati nilai tertentu. Limit sangat penting dalam kalkulus dan analisis matematika. Dalam kursus ini, Anda akan mempelajari dasar-dasar limit fungsi dan mengeksplorasi berbagai teori mengenai limit fungsi.",
+        "syllabus": [
+            {
+                "point": "Konsep Dasar Limit",
+                "desc": "Memahami pengertian limit fungsi dan bagaimana konsep ini digunakan dalam kalkulus."
+            },
+            {
+                "point": "Teknik Evaluasi Limit",
+                "desc": "Menggunakan metode matematis untuk mencari nilai limit suatu fungsi."
+            },
+            {
+                "point": "Limit Tak Hingga",
+                "desc": "Menghitung limit fungsi ketika x mendekati nilai tak hingga."
+            },
+            {
+                "point": "Limit Logaritma dan Eksponensial",
+                "desc": "Memahami bagaimana cara menyelesaikan limit fungsi yang mengandung logaritma dan eksponensial."
+            },
+            {
+                "point": "Limit Fungsi Trigonometri",
+                "desc": "Menghitung limit fungsi trigonometri dengan berbagai teknik."
+            },
+            {
+                "point": "Limit Menggunakan Kaidah L'Hôpital",
+                "desc": "Mengenal dan menggunakan aturan L'Hôpital untuk menyelesaikan limit dengan bentuk tak tentu."
+            }
+        ]
     },
     {
         "id": 2,
         "image": "/course/derivatif/derivatif.png",
         "color": "#FF5733",
         "title": "Derivatif",
-        "desc": "Konsep dasar dalam kalkulus untuk mengukur intensitas perubahan nilai fungsi terhadap perubahan nilai variabelnya.",
+        "desc": "Konsep dasar dalam kalkulus untuk mengukur intensitas perubahan nilai fungsi.",
         "subject": "MTK",
         "level": "Beginner",
         "Free": true,

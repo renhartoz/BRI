@@ -204,7 +204,7 @@ export default function Home() {
                                     alignItems={"center"}
                                     maxWidth={300}
                                 >
-                                    <CourseCard {...item} />
+                                    <CourseCard {...item} maxChar={20} />
                                 </Stack>
                             </Grid2>
                         ))}
@@ -474,16 +474,7 @@ export default function Home() {
                                 fontWeight={800}
                             >
                                 Rumah Ilmiah
-                            </Typography>{" "}
-                            mulai dari{" "}
-                            <Typography
-                                component="b"
-                                color="secondary"
-                                fontWeight={800}
-                            >
-                                Rp. 2.000,-
-                            </Typography>{" "}
-                            perhari.
+                            </Typography>
                         </Typography>
                     </Stack>
 

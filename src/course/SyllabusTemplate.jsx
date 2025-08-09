@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React  from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Stack, Typography, Grid2 } from "@mui/material";
+import { Stack, Typography, Grid2, Box, Card, CardContent } from "@mui/material";
 
 import Button from "../components/Button";
-import Syllabus from "../components/Syllabus";
 import Template from "./Template";
 import blogData from "../data/blogs/limit.json";
 
@@ -15,39 +14,34 @@ import LeaderboardOutlinedIcon from "@mui/icons-material/LeaderboardOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import ExtensionOutlinedIcon from "@mui/icons-material/ExtensionOutlined";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
-import { DescriptionRounded } from "@mui/icons-material";
 
 export default function SyllabusTemplate({
     color,
     title,
     desc,
-    subUnits,
-    firstPageURL,
+    unit,
+    subunit,
+    important_unit,
+    quiz,
+    first_url,
     level,
     time,
-    subUnit,
-    preReq,
-    descSyllabus,
+    prereq,
     skills,
-    syllabusData,
+    syllabus,
+    prolog
 }) {
     return (
         <>
             <Stack className="radialbg2">
                 {/* add color for each subject */}
                 <Stack
-                    sx={{
-                        width: "100%",
-                        height: "100%",
-                    }}
-                    px={{ xs: 4, sm: 6, md: 10 }}
+                    px={{ xs: 4, sm: 6, md: 8 }}
                     py={5}
-                    pb={5}
                     direction={"column"}
                     justifyContent={"center"}
                     alignItems={"center"}
-                    flexWrap={{ xs: "wrap", md: "nowrap" }}
-                    gap={6}
+                    flexWrap={{ xs: "wrap", sm: "nowrap" }}
                 >
                     <Stack
                         alignItems={"flex-start"}
@@ -55,7 +49,7 @@ export default function SyllabusTemplate({
                         px={4}
                         py={3}
                         sx={{
-                            backgroundColor: "#f5f5f5",
+                            backgroundColor: "#f7f7ff",
                             borderRadius: "8px",
                         }}
                     >
@@ -69,7 +63,7 @@ export default function SyllabusTemplate({
                                 direction={"column"}
                                 gap={2}
                                 flexGrow={1}
-                                maxWidth={{ xs: "100%", md: "40vw" }}
+                                maxWidth={{ xs: "100%", md: "42vw" }}
                             >
                                 <Typography
                                     fontFamily={"monospace"}
@@ -77,14 +71,12 @@ export default function SyllabusTemplate({
                                 >
                                     Course
                                 </Typography>
-                                {/* title */}
                                 <Typography
                                     fontSize={{ xs: "2em", md: "2.4em" }}
                                     fontWeight={700}
                                 >
                                     {title}
                                 </Typography>
-                                {/* desc */}
                                 <Typography
                                     fontSize={{ xs: "1em", md: "1.2em" }}
                                 >
@@ -93,14 +85,13 @@ export default function SyllabusTemplate({
                                 <Typography
                                     fontSize={{ xs: "1em", md: "1.2em" }}
                                 >
-                                    Termasuk {/* subunits(make it in array) */}
-                                    {/* change b to span */}
+                                    Termasuk {""} 
                                     <Typography
                                         component={"span"}
                                         fontSize={"inherit"}
                                         fontWeight={600}
                                     >
-                                        {subUnits.join(", ")}
+                                        {important_unit.join(", ")}
                                     </Typography>
                                     , dan lain-lain
                                 </Typography>
@@ -195,7 +186,7 @@ export default function SyllabusTemplate({
                         </Stack>
                         <Stack>
                             {/* url that send to first page */}
-                            <Link to={firstPageURL}>
+                            <Link to={first_url}>
                                 <Button bdcolor={"#000"} sx={{ width: "5em" }}>
                                     {" "}
                                     Mulai
@@ -243,7 +234,7 @@ export default function SyllabusTemplate({
                             }}
                             px={{ xs: 6, sm: 8, md: 4 }}
                             py={4}
-                            columns={{ xs: 1, sm: 2, md: 2, lg: 4 }}
+                            columns={{ xs: 1, sm: 1, md: 2, lg: 4 }}
                             direction={"row"}
                             justifyContent={"space-around"}
                             alignItems={"center"}
@@ -332,13 +323,12 @@ export default function SyllabusTemplate({
                                         >
                                             Subtopik
                                         </Typography>
-                                        {/* subunit */}
                                         <Typography
                                             fontSize={"1.5em"}
                                             letterSpacing={-1}
                                             fontWeight={600}
                                         >
-                                            {subUnit}
+                                            {subunit}
                                         </Typography>
                                     </Stack>
                                 </Stack>
@@ -369,7 +359,7 @@ export default function SyllabusTemplate({
                                             letterSpacing={-1}
                                             fontWeight={600}
                                         >
-                                            {preReq}
+                                            {prereq}
                                         </Typography>
                                     </Stack>
                                 </Stack>
@@ -378,28 +368,31 @@ export default function SyllabusTemplate({
                     </Stack>
                 </Stack>
             </Stack>
-            <Stack
-                px={{ xs: 5, sm: 7, md: 10 }}
-                py={4}
-                direction={"row"}
-                flexWrap={{ xs: "wrap", md: "no-wrap" }}
-                gap={{ xs: 5, sm: 7, md: 10 }}
+            <Grid2
+                container
                 justifyContent={"center"}
+                alignItems={"center"}
+                direction={"row"}
+                columns={{xs: 1, sm: 4}}
+                px={{xs:5, sm: 0}}
+                py={3}
+                gap={6}
             >
-                <Stack
-                    direction={"column"}
-                    gap={1}
-                    maxWidth={{ xs: "100vw", md: "50vw" }}
-                >
-                    <Typography fontSize={"1.5em"} fontWeight={600}>
-                        Deskripsi Kursus
-                    </Typography>
-                    {/* desc_syllabus */}
-                    <Typography textAlign={"justify"}>
-                        {descSyllabus}
-                    </Typography>
-                </Stack>
-                <Stack gap={1}>
+                {prolog && (
+                    <Grid2
+                        direction={"column"}
+                        gap={1}
+                        size={2}
+                    >
+                        <Typography fontSize={"1.5em"} fontWeight={600}>
+                            Deskripsi Kursus
+                        </Typography>
+                        <Typography textAlign={"justify"}>
+                            {prolog}
+                        </Typography>
+                    </Grid2>
+                )}
+                <Grid2 size={1} gap={1}>
                     <Typography
                         fontWeight={600}
                         borderBottom={"1px solid #000"}
@@ -411,10 +404,9 @@ export default function SyllabusTemplate({
                         container
                         spacing={1.6}
                         direction={"column"}
-                        sx={{ width: { xs: "80vw", sm: "25vw", lg: "30vw" } }}
                     >
                         {/* skills (make it to an array) */}
-                        {skills.map((item, index) => (
+                        {skills?.map((item, index) => (
                             <Grid2 xs={3} sm={3} key={index}>
                                 <Stack
                                     direction="row"
@@ -438,10 +430,100 @@ export default function SyllabusTemplate({
                             </Grid2>
                         ))}
                     </Grid2>
-                </Stack>
-            </Stack>
+                </Grid2>
+            </Grid2>
             <Stack>
-                <Syllabus syllabusData={syllabusData} />
+                <Stack alignItems={"center"} justifyContent={"center"} my={5}>
+                <Box
+                    sx={{ backgroundColor: "#fff", border: "1px solid #000" }}
+                    width={"80vw"}
+                >
+                    {/* Header */}
+                    <Stack borderBottom={"1px solid #000"} px={5} py={2}>
+                        <Typography
+                            variant="h5"
+                            sx={{ fontWeight: "bold" }}
+                            textAlign={{
+                                xs: "left",
+                                sm: "left",
+                                md: "left",
+                            }}
+                        >
+                            Silabus: {title}
+                        </Typography>
+                        <Typography variant="subtitle1" color="text.secondary">
+                            {unit} units • {subunit}{" "}
+                            lessons • {quiz} quizzes
+                        </Typography>
+                    </Stack>
+
+                    {/* Content Cards */}
+                    <Grid2 container>
+                        {syllabus.map((item, index) => (
+                            <Grid2 key={index} width={"100%"}>
+                                <Card
+                                    sx={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        px: { xs: 2, sm: 3, md: 5 },
+                                        py: 2,
+                                        borderBottom:
+                                            index !==
+                                            syllabus.length - 1
+                                                ? "1px solid #000"
+                                                : "none",
+                                    }}
+                                >
+                                    {/* Number Circle */}
+                                    <Stack
+                                        mr={2}
+                                        alignItems="center"
+                                        justifyContent="center"
+                                    >
+                                        <Typography
+                                            backgroundColor="black_blue.main"
+                                            color="#fff"
+                                            sx={{
+                                                width: "2.5em",
+                                                aspectRatio: "1/1",
+                                                borderRadius: "50%",
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                                fontWeight: "bold",
+                                            }}
+                                            fontSize={"1em"}
+                                        >
+                                            {index + 1}
+                                        </Typography>
+                                    </Stack>
+
+                                    {/* Card Content */}
+                                    <CardContent>
+                                        <Typography
+                                            variant="h6"
+                                            sx={{ fontWeight: "bold" }}
+                                            textAlign={{
+                                                xs: "left",
+                                                sm: "left",
+                                                md: "left",
+                                            }}
+                                        >
+                                            {item.point}
+                                        </Typography>
+                                        <Typography
+                                            variant="body2"
+                                            color="text.secondary"
+                                        >
+                                            {item.desc}
+                                        </Typography>
+                                    </CardContent>
+                                </Card>
+                            </Grid2>
+                        ))}
+                    </Grid2>
+                </Box>
+            </Stack>
             </Stack>
         </>
     );
