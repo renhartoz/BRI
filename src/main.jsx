@@ -10,8 +10,14 @@ import {
     createBrowserRouter,
     Navigate,
 } from "react-router-dom";
+
+import Login from "./auth/Login.jsx";
+import Logout from "./auth/Logout.jsx";
+import SignUp from "./auth/SignUp.jsx";
+
 import Home from "./pages/Home.jsx";
 import Testing from "./pages/BoilerPlate.jsx";
+
 import CourseList from "./pages/CourseList.jsx";
 import ExerciseList from "./pages/ExerciseList.jsx";
 import ClassicEditor from "./editor/ClassicalEditor.jsx";
@@ -76,6 +82,18 @@ export const routes = [
             { path: "course/limit", element: <LimitSyllabus /> },
             { path: "course/deriv", element: <DerivSyllabus /> },
         ],
+    },
+    {
+        path: "/login",
+        element: <Login />,
+    },
+    {
+        path: "/logout",
+        element: <Logout />,
+    },
+    {
+        path: "/signup",
+        element: <SignUp />,
     },
     {
         path: "/editor",

@@ -23,6 +23,7 @@
     "@mui/icons-material": "^6.1.9",
     "@mui/material": "^6.1.9",
     "@mui/x-charts": "^8.1.0",
+    "axios": "^1.11.0",
     "better-react-mathjax": "^2.1.0",
     "html-react-parser": "^5.2.3",
     "katex": "^0.16.22",
