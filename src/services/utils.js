@@ -19,13 +19,15 @@ export const getCSRFToken = () => {
 }
 
 import { jwtDecode } from "jwt-decode";
-export function isTokenExpired(token) {
+import { getAccessToken } from "./token";
+export function isTokenExpired() {
+    const token = getAccessToken();
     if (!token) return true;
     
     try {
-        const { exp } = jwtDecode(token); // exp is in seconds
+        const { exp } = jwtDecode(token);
         if (!exp) return true;
-        return Date.now() >= exp * 1000;
+        return Date.now() >= exp * 1000
     } catch {
         return true;
     }

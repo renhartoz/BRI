@@ -14,6 +14,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "./Drawer";
 import Dropdown from "./Dropdown";
 import { Link, useNavigate } from "react-router-dom";
+import { isTokenExpired } from "../services/utils";
+import { getAccessToken } from "../services/token";
 
 import CottageIcon from "@mui/icons-material/Cottage";
 import SchoolIcon from "@mui/icons-material/School";
@@ -28,6 +30,7 @@ GLOSSARY:
 - Navbar3 = Exercise page
 */
 
+const token = getAccessToken();
 const menuItems = [
     { label: "Home", href: "/", icon: <CottageIcon /> },
     { label: "Blog", href: "/comingsoon", icon: <RateReviewIcon /> },
@@ -221,14 +224,15 @@ export default function Navbar() {
                         />
 
                         {/* Login Button */}
+                        
                         <MuiButton
                             color="inherit"
                             variant="outlined"
                             component={Link}
                             sx={{ textTransform: "capitalize", p: "1vh 1.5vh" }}
-                            to="/login"
+                            to={isTokenExpired() ? "/login" : "/logout"}
                         >
-                            Masuk/Daftar Akun
+                            {isTokenExpired() ? "Masuk/Daftar Akun" : "Keluar"}
                         </MuiButton>
                     </Stack>
                 </Toolbar>
