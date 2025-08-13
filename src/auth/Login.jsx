@@ -4,6 +4,7 @@ import { Box, Button, TextField, Typography, Container, CircularProgress, Stack,
 import { Visibility, VisibilityOff, Person, Key } from '@mui/icons-material';
 import axios from 'axios';
 import { getCSRFToken } from '../services/utils';
+import { setAccessToken } from '../services/token';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -31,8 +32,7 @@ const Login = () => {
                 },
             });
 
-            localStorage.setItem('access_token', res.data.access);
-            localStorage.setItem('refresh_token', res.data.refresh);
+            setAccessToken(res.data.access);
             localStorage.setItem('user', JSON.stringify(res.data.user));
             
             setError(null);

@@ -26,6 +26,7 @@
     "axios": "^1.11.0",
     "better-react-mathjax": "^2.1.0",
     "html-react-parser": "^5.2.3",
+    "jwt-decode": "^4.0.0",
     "katex": "^0.16.22",
     "lexical": "^0.30.0",
     "lodash-es": "^4.17.21",
