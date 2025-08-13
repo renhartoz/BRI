@@ -63,7 +63,7 @@ const Login = () => {
     return (
         <Box sx={{ backgroundColor: '#f0f0f0', backgroundImage: 'linear-gradient(#444cf7 1px, transparent 1px), linear-gradient(to right, #444cf7 1px, #f0f0f0 1px);', backgroundSize:'10vh 10vh' }}>
             <Container maxWidth="sm">
-                <Stack minHeight={'100vh'} justifyContent="center" alignItems="center" sx={{ py: 4 }}>
+                <Stack minHeight={'100vh'} justifyContent="center" alignItems="center" py={4}>
                     {error && (
                         <Box px={2} py={1} bgcolor="error.light" border={'1px solid'} borderColor={'error.main'} mb={2}>
                             {error.map((err, index) => (

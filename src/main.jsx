@@ -14,6 +14,7 @@ import {
 import Login from "./auth/Login.jsx";
 import Logout from "./auth/Logout.jsx";
 import SignUp from "./auth/SignUp.jsx";
+import ResendVerif from "./auth/ResendVerif.jsx";
 
 import Home from "./pages/Home.jsx";
 import Testing from "./pages/BoilerPlate.jsx";
@@ -94,6 +95,10 @@ export const routes = [
     {
         path: "/signup",
         element: <SignUp />,
+    },
+    {
+        path: "/resend",
+        element: <ResendVerif />,
     },
     {
         path: "/editor",

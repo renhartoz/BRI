@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Button, TextField, Typography, Container, CircularProgress, Stack } from '@mui/material';
+import { Box, Button, TextField, Typography, Container, CircularProgress, Stack, Paper, InputAdornment, IconButton } from '@mui/material';
+import { Visibility, VisibilityOff, Person, Key, Email, LockReset, FirstPage, LastPage } from '@mui/icons-material';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { getCSRFToken } from '../services/utils';
@@ -14,9 +15,19 @@ const SignUp = () => {
     const [last_name, setLastName] = useState('');
     const [password, setPassword] = useState('');
     const [confirm_password, setConfirmPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
+
+    const handleClickShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
+
+    const handleClickShowConfirmPassword = () => {
+        setShowConfirmPassword(!showConfirmPassword);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -46,8 +57,8 @@ const SignUp = () => {
             setSuccess('Account created. Please check your email to verify your account.');
             
             setTimeout(() => {
-                navigate('/login');
-            }, 5000);
+                navigate('/resend?email=' + encodeURIComponent(email));
+            }, 3000);
 
         } catch (err) {
             console.log(err)
@@ -69,47 +80,257 @@ const SignUp = () => {
     };
 
     return (
-        <Container maxWidth="xs">
-            <Box sx={{ mt: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <Box sx={{ backgroundImage: 'repeating-linear-gradient( 45deg, #444cf7, #444cf7 5px, #e5e5f7 5px, #e5e5f7 60px );' }}>
+            <Container maxWidth="xs">
+                <Stack direction={'column'} alignItems={'center'} justifyContent={'center'} minHeight={'100vh'} py={4}>
                     {error && (
-                    <Box px={2} py={1} bgcolor="error.light" border={'1px solid'} borderColor={'error.main'} mb={2}>
-                        {error.map((err, index) => (
-                        <Typography key={index} color="#fff">{err}</Typography>
-                        ))}
-                    </Box>
+                        <Box px={2} py={1} bgcolor="error.light" border={'1px solid'} borderColor={'error.main'} mb={2}>
+                            {error.map((err, index) => (
+                            <Typography key={index} color="#fff">{err}</Typography>
+                            ))}
+                        </Box>
                     )}
                     {success && (
-                    <Box px={2} py={1} bgcolor="success.light" border={'1px solid'} borderColor={'success.main'} mb={2}>
-                        <Typography color="#fff">{success}</Typography>
-                    </Box>
+                        <Box px={2} py={1} bgcolor="success.light" border={'1px solid'} borderColor={'success.main'} mb={2}>
+                            <Typography color="#fff">{success}</Typography>
+                        </Box>
                     )}
-                    <Typography component="h1" variant="h5">Sign Up</Typography>
-                    <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
-                    <TextField label="Username" name="username" value={username} onChange={(e) => setUsername(e.target.value)} margin="normal" fullWidth required />
-                    <TextField label="Email" name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} margin="normal" fullWidth required />
-                    <TextField label="First Name" name="first_name" value={first_name} onChange={(e) => setFirstName(e.target.value)} margin="normal" fullWidth />
-                    <TextField label="Last Name" name="last_name" value={last_name} onChange={(e) => setLastName(e.target.value)} margin="normal" fullWidth />
-                    <TextField label="Password" name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} margin="normal" fullWidth required />
-                    <TextField label="Confirm Password" name="confirm_password" type="password" value={confirm_password} onChange={(e) => setConfirmPassword(e.target.value)} margin="normal" fullWidth required />
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        sx={{ mt: 2 }}
-                        disabled={loading}
-                        endIcon={loading && <CircularProgress size={20} color="inherit" />}
-                    >
-                        {loading ? 'Creating...' : 'Sign Up'}
-                    </Button>
-                </Box>
-                <Stack direction="row" spacing={2} justifyContent="center">
-                    <Typography variant="body2" color="text.secondary">
-                        Already have an account? <Link to="/login">Login</Link>
-                    </Typography>
+                    <Paper backgroundColor={'#f0f0f0'} borderRadius={2} boxShadow={3} elevation={3} sx={{ width: 600, overflow: 'hidden'}}>
+                        <Box
+                            sx={{
+                                background: 'linear-gradient(135deg, #2196f3, #21cbf3)',
+                                p: 2,
+                                textAlign: 'center',
+                            }}
+                        >
+                            <Typography component="h1" variant="h5" color='#fff' fontWeight={'bold'}>Sign Up</Typography>
+                        </Box>
+                        <Stack direction={'column'} gap={4} sx={{ p: 4 }}>
+                            <Stack component="form" onSubmit={handleSubmit} gap={2}>
+                                <TextField placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} fullWidth required
+                                    slotProps={{
+                                        input: {
+                                            startAdornment: (
+                                                <InputAdornment position="start">
+                                                    <Person />
+                                                </InputAdornment>
+                                            ),
+                                        },
+                                    }}
+                                    sx={{
+                                        input: {
+                                            '::placeholder': {
+                                                color: '#888',
+                                                fontWeight: 600,
+                                                opacity: 1,
+                                            },
+                                        },
+                                        '&:hover .MuiInputAdornment-root': {
+                                            color: '#000'
+                                        },
+                                        '& .Mui-focused .MuiInputAdornment-root': {
+                                            color: 'primary.main'
+                                        },
+                                    }}
+                                />
+                                <TextField placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} fullWidth required
+                                    slotProps={{
+                                        input: {
+                                            startAdornment: (
+                                                <InputAdornment position="start">
+                                                    <Email />
+                                                </InputAdornment>
+                                            ),
+                                        },
+                                    }}
+                                    sx={{
+                                        input: {
+                                            '::placeholder': {
+                                                color: '#888',
+                                                fontWeight: 600,
+                                                opacity: 1,
+                                            },
+                                        },
+                                        '&:hover .MuiInputAdornment-root': {
+                                            color: '#000'
+                                        },
+                                        '& .Mui-focused .MuiInputAdornment-root': {
+                                            color: 'primary.main'
+                                        },
+                                    }}
+                                />
+                                <Stack direction={'row'} gap={2}>
+                                    <TextField placeholder="First Name" value={first_name} onChange={(e) => setFirstName(e.target.value)} fullWidth required
+                                        slotProps={{
+                                            input: {
+                                                startAdornment: (
+                                                    <InputAdornment position="start">
+                                                        <FirstPage />
+                                                    </InputAdornment>
+                                                ),
+                                            },
+                                        }}
+                                        sx={{
+                                            input: {
+                                                '::placeholder': {
+                                                    color: '#888',
+                                                    fontWeight: 600,
+                                                    opacity: 1,
+                                                },
+                                            },
+                                            '&:hover .MuiInputAdornment-root': {
+                                                color: '#000'
+                                            },
+                                            '& .Mui-focused .MuiInputAdornment-root': {
+                                                color: 'primary.main'
+                                            },
+                                        }}
+                                    />
+                                    <TextField placeholder="Last Name" value={last_name} onChange={(e) => setLastName(e.target.value)} fullWidth required
+                                        slotProps={{
+                                            input: {
+                                                startAdornment: (
+                                                    <InputAdornment position="start">
+                                                        <LastPage />
+                                                    </InputAdornment>
+                                                ),
+                                            },
+                                        }}
+                                        sx={{
+                                            input: {
+                                                '::placeholder': {
+                                                    color: '#888',
+                                                    fontWeight: 600,
+                                                    opacity: 1,
+                                                },
+                                            },
+                                            '&:hover .MuiInputAdornment-root': {
+                                                color: '#000'
+                                            },
+                                            '& .Mui-focused .MuiInputAdornment-root': {
+                                                color: 'primary.main'
+                                            },
+                                        }}
+                                    />
+                                </Stack>
+                                <TextField placeholder="Password" type={showPassword?"text":"password"} value={password} onChange={(e) => setPassword(e.target.value)} fullWidth required 
+                                    slotProps={{
+                                        input: {
+                                            startAdornment: (
+                                                <InputAdornment position="start">
+                                                    <Key />
+                                                </InputAdornment>
+                                            ),
+                                            endAdornment: (
+                                                <InputAdornment position="end">
+                                                    <IconButton
+                                                        aria-label="toggle password visibility"
+                                                        onClick={handleClickShowPassword}
+                                                        edge="end"
+                                                    >
+                                                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                                                    </IconButton>
+                                                </InputAdornment>
+                                            ),
+                                        },
+                                    }}
+                                    sx={{
+                                        input: {
+                                            '::placeholder': {
+                                                color: '#888',
+                                                fontWeight: 600,
+                                                opacity: 1,
+                                            },
+                                        },
+                                        '&:hover .MuiInputAdornment-root, &:hover .MuiInputAdornment-root button' : {
+                                            color: '#000'
+                                        },
+                                        '& .Mui-focused .MuiInputAdornment-root, .Mui-focused .MuiInputAdornment-root button': {
+                                            color: 'primary.main'
+                                        },
+                                    }}
+                                />
+                                <TextField placeholder="Confirm Password" type={showConfirmPassword?"text":"password"} value={confirm_password} onChange={(e) => setConfirmPassword(e.target.value)} fullWidth required 
+                                    slotProps={{
+                                        input: {
+                                            startAdornment: (
+                                                <InputAdornment position="start">
+                                                    <LockReset />
+                                                </InputAdornment>
+                                            ),
+                                            endAdornment: (
+                                                <InputAdornment position="end">
+                                                    <IconButton
+                                                        aria-label="toggle password visibility"
+                                                        onClick={handleClickShowConfirmPassword}
+                                                        edge="end"
+                                                    >
+                                                        {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                                                    </IconButton>
+                                                </InputAdornment>
+                                            ),
+                                        },
+                                    }}
+                                    sx={{
+                                        input: {
+                                            '::placeholder': {
+                                                color: '#888',
+                                                fontWeight: 600,
+                                                opacity: 1,
+                                            },
+                                        },
+                                        '&:hover .MuiInputAdornment-root, &:hover .MuiInputAdornment-root button' : {
+                                            color: '#000'
+                                        },
+                                        '& .Mui-focused .MuiInputAdornment-root, .Mui-focused .MuiInputAdornment-root button': {
+                                            color: 'primary.main'
+                                        },
+                                    }}
+                                />
+                                <Button
+                                    type="submit"
+                                    fullWidth
+                                    variant="contained"
+                                    size="large"
+                                    disabled={loading}
+                                    sx={{
+                                        py: 1.5,
+                                        background: 'linear-gradient(135deg, #2196f3, #21cbf3)',
+                                        '&:hover': {
+                                            background: 'linear-gradient(135deg, #1976d2, #00bcd4)',
+                                        },
+                                    }}
+                                >
+                                    {loading ? (
+                                        <>
+                                            <CircularProgress size={20} color="inherit" sx={{ mr: 1 }} />
+                                            Signing Up...
+                                        </>
+                                    ) : (
+                                        'Sign In'
+                                    )}
+                                </Button>
+                                <Box textAlign="center">
+                                    <Typography variant="body2" color="text.secondary">
+                                        Already have an account?{' '}
+                                        <Link
+                                            to="/login"
+                                            style={{
+                                            color: '#2196f3',
+                                            textDecoration: 'none',
+                                            fontWeight: 'bold',
+                                            }}
+                                        >
+                                            Sign In
+                                        </Link>
+                                    </Typography>
+                                </Box>
+                            </Stack>
+                        </Stack>
+                    </Paper>
                 </Stack>
-            </Box>
-        </Container>
+            </Container>
+        </Box>
     );
 };
 
