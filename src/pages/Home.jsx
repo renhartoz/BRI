@@ -487,7 +487,7 @@ export default function Home() {
                             "Dukungan Prioritas CS",
                             "Sertifikat sesuai Jam Pelajaran yang diikuti",
                         ].map((item, index) => (
-                            <Grid2 xs={12} sm={6} key={index}>
+                            <Grid2 key={index}>
                                 <Stack
                                     direction="row"
                                     alignItems="center"

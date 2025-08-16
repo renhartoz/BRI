@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Stack, AppBar, Typography, Button } from "@mui/material";
+import { Stack, AppBar, Typography } from "@mui/material";
+import Button from "./components/Button";
 import Navbar from "./components/Navbar";
 import Theme from "./components/Theme";
 import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
 import { MathJaxContext } from "better-react-mathjax";
 import ScrollToTop from "./components/ScrollToTop";
-import { isTokenExpired } from "./services/utils";
-import { getAccessToken } from "./services/token";
+import { restoreSession, isTokenExpired } from "./services/token.js";
 
 const config = {
     loader: { load: ['[tex]/color'] },
@@ -16,16 +16,20 @@ const config = {
     },
 };
 
-const token = getAccessToken();
-if (token) {
-    useEffect(()=>{
-        if (isTokenExpired()) {
-            window.location.href = '/login';
-        }
-    }, []);
-}
-
 export default function App() {
+    const [isReady, setIsReady] = useState(false);
+    useEffect(() => {
+        const init = async () => {
+            await restoreSession();
+            setIsReady(true);
+        };
+        init();
+    }, []);
+
+    if (!isReady) {
+        return <p>Loading...</p>;
+    }
+
     return (
         <>
             <Stack sx={{minHeight: '100vh'}}>

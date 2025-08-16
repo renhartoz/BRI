@@ -17,15 +17,13 @@ import SignUp from "./auth/SignUp.jsx";
 import ResendVerif from "./auth/ResendVerif.jsx";
 
 import Home from "./pages/Home.jsx";
-import Testing from "./pages/BoilerPlate.jsx";
-
 import CourseList from "./pages/CourseList.jsx";
 import ExerciseList from "./pages/ExerciseList.jsx";
 import ClassicEditor from "./editor/ClassicalEditor.jsx";
 import ClassicPreview from "./pages/ClassicPreview.jsx";
-import EditorApp from "./editor/Lexical/App.jsx";
 import ExerciseEditor from "./editor/ExerciseEditor.jsx";
 import ExercisePreview from "./pages/ExercisePreview.jsx";
+import EditorApp from "./editor/Lexical/App.jsx";
 import LexicalPreview from "./pages/LexicalPreview.jsx";
 
 import {
@@ -76,7 +74,6 @@ export const routes = [
         element: <App />,
         children: [
             { path: "", element: <Home /> },
-            { path: "test", element: <Testing /> },
             { path: "course", element: <CourseList /> },
             { path: "exercise", element: <ExerciseList /> },
             { path: "course/trigonometri", element: <TrigonoSyllabus /> },

@@ -14,8 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "./Drawer";
 import Dropdown from "./Dropdown";
 import { Link, useNavigate } from "react-router-dom";
-import { isTokenExpired } from "../services/utils";
-import { getAccessToken } from "../services/token";
+import { isTokenExpired } from "../services/token";
 
 import CottageIcon from "@mui/icons-material/Cottage";
 import SchoolIcon from "@mui/icons-material/School";
@@ -30,7 +29,6 @@ GLOSSARY:
 - Navbar3 = Exercise page
 */
 
-const token = getAccessToken();
 const menuItems = [
     { label: "Home", href: "/", icon: <CottageIcon /> },
     { label: "Blog", href: "/comingsoon", icon: <RateReviewIcon /> },
