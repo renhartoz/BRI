@@ -15,7 +15,7 @@ export default function ResendVerif() {
     const [searchParams] = useSearchParams();
     useEffect(()=>{
         setIdentifier(searchParams.get('email') || '');
-    }, [])
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

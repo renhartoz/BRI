@@ -16,12 +16,13 @@ import {
   Collapse,
   Box
 } from '@mui/material';
+import api from '../services/auth';
 
 import SortableItem from './SortableItem';
 import { DndContext, closestCenter } from '@dnd-kit/core';
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import CustomInput from '../form/CustomInput';
 import CustomInputNumber from '../form/CustomInputNumber';
 import CustomCheck from '../form/CustomCheck';
@@ -50,6 +51,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import WebIcon from '@mui/icons-material/Web';
 import DownloadIcon from '@mui/icons-material/Download';
 import UploadIcon from '@mui/icons-material/Upload';
+import PublishIcon from '@mui/icons-material/Publish';
 
 export function MenuButtons({ addBlock }) {
   return (
@@ -1197,6 +1199,10 @@ export const MemoizedRenderBlock = React.memo(RenderBlock);
 
 export default function ClassicEditor() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const [uuid, setUuid] = useState('');
+  const [course, setCourse] = useState(() => loadBlog('editor')?.course || {});
+
   const [time, setTime] = useState(()=>loadBlog('editor')?.time.split(' ')[0]||'');
   const [timeUnit, setTimeUnit] = useState(()=>loadBlog('editor')?.time.split(' ')[1]||'min');
   const [content, setContent] = useState(() => loadBlog('editor')?.content || []);
@@ -1225,7 +1231,7 @@ export default function ClassicEditor() {
   
   useEffect(() => {
     const handler = setTimeout(() => {
-      saveBlog('editor', { ...meta, content });
+      saveBlog('editor', { ...meta, content, uuid, course });
     }, 500);
   
     return () => clearTimeout(handler);
@@ -1247,6 +1253,47 @@ export default function ClassicEditor() {
     navigate('/preview');
   };
 
+  useEffect(()=>{
+    const url = searchParams.get('url') || '';
+    setUuid('');
+    setCourse('');
+    if (url) {
+      api.get(`/course/details/url/${url}`).then(res => {
+        if (res.data) {
+          setMeta({
+            name: res.data.name,
+            url: res.data.url,
+            unit: res.data.unit,
+            subunit: res.data.subunit,
+            time: res.data.time || '0 min',
+          });
+          setContent(res.data.content || []);
+          setUuid(res.data.id || '');
+          setCourse(res.data.course || {});
+        }
+      }).catch(err => {
+        console.error("Failed to load blog data:", err);
+      });
+    }
+  }, []);
+
+  function handleSubmit() {
+    const formData = new FormData();
+    formData.append('course', course);
+    formData.append('name', meta.name);
+    formData.append('url', meta.url);
+    formData.append('unit', meta.unit);
+    formData.append('subunit', meta.subunit);
+    formData.append('time', meta.time);
+    formData.append('content', JSON.stringify(content));
+
+    if (uuid) {
+      api.put(`/course/${course}/details/${uuid}/`, formData)
+    } else {
+      api.post(`/course/${course}/details/`, formData)
+    }
+  }
+
   return (
     <Theme>
       <Stack spacing={3} p={3}>
@@ -1262,6 +1309,17 @@ export default function ClassicEditor() {
         </Button>
 
         <Stack gap={4} width={'100%'} alignItems={'center'}>
+          <Stack width={'80%'}>
+              <Typography>Course</Typography>
+              <CustomInput
+                  type='text'
+                  palette='#abcdef'
+                  required
+                  name='course'
+                  value={course}
+                  setValue={(val) => setCourse(val)}
+              />
+          </Stack>
           <Stack width={'80%'}>
               <Typography>Blog Name</Typography>
               <CustomInput
@@ -1388,6 +1446,16 @@ export default function ClassicEditor() {
               }}
             >
               <WebIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Submit">
+            <IconButton 
+              color="primary" 
+              variant="outlined" 
+              onClick={() => handleSubmit()}
+              sx={{ border: '1px solid', borderRadius: '8px', padding: '8px' }}
+            >
+              <PublishIcon />
             </IconButton>
           </Tooltip>
         </Stack>
