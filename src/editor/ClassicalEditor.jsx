@@ -912,7 +912,6 @@ function RenderBlock({ path = [], setContent, content }) {
                             val={itm[1]}
                             setVal={(val) => {
                                 const updatedDots = [...block.dots];
-                                console.log(val);
                                 updatedDots[i][1] = val;
                                 updateBlock(fullPath, 'dots', updatedDots);
                             }}
@@ -1220,6 +1219,7 @@ export default function ClassicEditor() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [importOpen, setImportOpen] = useState(false);
   const [importText, setImportText] = useState("");
+  const [deleteOpen, setDeleteOpen] = useState(false);
 
   // 💾 Save to localStorage on change
   useEffect(() => {
@@ -1233,7 +1233,6 @@ export default function ClassicEditor() {
     const handler = setTimeout(() => {
       saveBlog('editor', { ...meta, content, uuid, course });
     }, 500);
-  
     return () => clearTimeout(handler);
   }, [content, meta]);
 
@@ -1258,7 +1257,7 @@ export default function ClassicEditor() {
     setUuid('');
     setCourse('');
     if (url) {
-      api.get(`/course/details/url/${url}`).then(res => {
+      api.get(`/course/details/url/?url=${url}`).then(res => {
         if (res.data) {
           setMeta({
             name: res.data.name,
@@ -1267,7 +1266,7 @@ export default function ClassicEditor() {
             subunit: res.data.subunit,
             time: res.data.time || '0 min',
           });
-          setContent(res.data.content || []);
+          setContent(JSON.parse(res.data.content) || []);
           setUuid(res.data.id || '');
           setCourse(res.data.course || {});
         }
@@ -1450,12 +1449,22 @@ export default function ClassicEditor() {
           </Tooltip>
           <Tooltip title="Submit">
             <IconButton 
-              color="primary" 
+              color="success" 
               variant="outlined" 
               onClick={() => handleSubmit()}
               sx={{ border: '1px solid', borderRadius: '8px', padding: '8px' }}
             >
               <PublishIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Delete">
+            <IconButton 
+              color="error" 
+              variant="outlined" 
+              onClick={() => setDeleteOpen(true)}
+              sx={{ border: '1px solid', borderRadius: '8px', padding: '8px' }}
+            >
+              <DeleteIcon />
             </IconButton>
           </Tooltip>
         </Stack>
@@ -1556,6 +1565,41 @@ export default function ClassicEditor() {
                 variant="contained"
             >
                 Import
+            </Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog open={deleteOpen} onClose={() => setDeleteOpen(false)} maxWidth="sm" fullWidth>
+        <DialogTitle>Delete Course Details</DialogTitle>
+        <DialogContent>
+          <Typography fontFamily={'Inter'}>Are you sure you want to delete course with URL: <Typography fontSize={'inherit'} fontFamily={'Suisse'} component={'span'}>{meta.url}</Typography>?</Typography>
+          <Typography fontFamily={'Inter'} typography={'subtitle2'} color={'error'}>This action cannot be undone</Typography>
+        </DialogContent>
+        <DialogActions>
+            <Button onClick={() => setDeleteOpen(false)}>Cancel</Button>
+            <Button
+                onClick={() => {
+                    try {
+                      api.delete(`/course/${course}/details/${uuid}/`)
+                      setUuid('');
+                      setCourse('');
+                      setMeta({
+                        name: '',
+                        url: '',
+                        unit: '',
+                        subunit: '',
+                        time: '0 min'
+                      });
+                      setContent([]);
+                      setDeleteOpen(false);
+                      navigate('/editor');
+                    } catch (err) {
+                      alert("Error while deleting course details.");
+                    }
+                }}
+                variant="contained"
+                color='error'
+            >
+                Delete
             </Button>
         </DialogActions>
       </Dialog>

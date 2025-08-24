@@ -19,7 +19,7 @@ export default function CourseCard({
     duration,
     Free,
     subject,
-    bgColor = "primary",
+    color = "primary",
     href,
     isExercise = false,
     maxChar = null,
@@ -49,7 +49,7 @@ export default function CourseCard({
                     <CardMedia
                         component="img"
                         height="140"
-                        image={image}
+                        image={image||"/no_image.jpg"}
                         alt={title}
                         sx={{ borderBottom: "4px solid black" }}
                     />
@@ -115,7 +115,7 @@ export default function CourseCard({
                     <Typography
                         variant="h6"
                         fontWeight="bold"
-                        color={theme.palette[bgColor]?.main || bgColor}
+                        color={color.main || "primary"}
                     >
                         {maxChar && title.length > maxChar ? `${title.slice(0, maxChar-3)}...` : title}
                     </Typography>
@@ -144,7 +144,7 @@ export default function CourseCard({
                             <Divider sx={{ my: 2, borderStyle: "dotted" }} />
                             <Box display="flex" justifyContent="space-between">
                                 <Typography variant="body2" fontWeight="bold">
-                                    📈 {level}
+                                    {level}
                                 </Typography>
                                 <Typography variant="body2" fontWeight="bold">
                                     {duration}

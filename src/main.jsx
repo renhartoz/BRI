@@ -25,6 +25,7 @@ import ExerciseEditor from "./editor/ExerciseEditor.jsx";
 import ExercisePreview from "./pages/ExercisePreview.jsx";
 import EditorApp from "./editor/Lexical/App.jsx";
 import LexicalPreview from "./pages/LexicalPreview.jsx";
+import CreateCourse from "./course/CreateCourse.jsx";
 
 import {
     LimitSyllabus,
@@ -95,6 +96,10 @@ export const routes = [
     {
         path: "/resend",
         element: <ResendVerif />,
+    },
+    {
+        path: "/admin/course",
+        element: <CreateCourse />,
     },
     {
         path: "/editor",

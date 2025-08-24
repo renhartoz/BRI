@@ -67,7 +67,7 @@ export default function CourseList() {
                 { value: "MTK", label: "Matematika" },
                 { value: "FIS", label: "Fisika" },
                 { value: "KIM", label: "Kimia" },
-                { value: "INF", label: "Informatika" },
+                { value: "TIK", label: "Informatika" },
                 { value: "EKO", label: "Ekonomi" },
                 { value: "AKUN", label: "Akuntansi" },
             ],

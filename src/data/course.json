@@ -9,7 +9,11 @@
         "Free": true,
         "href": "/course/limit",
 
-        "color": "#FF5733",
+        "color": {
+            "light": "#119fe683",
+            "main": "#1976d2",
+            "dark": "#151855"
+        },
         "first_url": "/course/limit/intro",
         "time": 15,
         "unit": 6,

@@ -118,7 +118,7 @@ export default function Home() {
                         direction={"row"}
                         justifyContent={"center"}
                         alignItems={"center"}
-                        columns={{ xs: 1, sm: 2, md: 4 }}
+                        columns={{ xs: 1, sm: 2, md: 2, lg: 4 }}
                     >
                         {courses.map((item) => (
                             <Grid2
@@ -131,7 +131,7 @@ export default function Home() {
                                 <Stack
                                     justifyContent={"center"}
                                     alignItems={"center"}
-                                    maxWidth={300}
+                                    width={300}
                                 >
                                     <CourseCard {...item} />
                                 </Stack>
@@ -189,7 +189,7 @@ export default function Home() {
                         direction={"row"}
                         justifyContent={"center"}
                         alignItems={"center"}
-                        columns={{ xs: 1, sm: 2, md: 4 }}
+                        columns={{ xs: 1, sm: 2, md: 2, lg: 4 }}
                     >
                         {exercises.map((item) => (
                             <Grid2
@@ -202,7 +202,7 @@ export default function Home() {
                                 <Stack
                                     justifyContent={"center"}
                                     alignItems={"center"}
-                                    maxWidth={300}
+                                    width={300}
                                 >
                                     <CourseCard {...item} maxChar={20} />
                                 </Stack>

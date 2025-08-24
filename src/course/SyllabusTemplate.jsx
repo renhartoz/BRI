@@ -33,8 +33,7 @@ export default function SyllabusTemplate({
 }) {
     return (
         <>
-            <Stack className="radialbg2">
-                {/* add color for each subject */}
+            <Stack sx={{ backgroundImage:`radial-gradient(${color.light} 1.5px, transparent 0)`, backgroundSize:"6px 6px" }}>
                 <Stack
                     px={{ xs: 4, sm: 6, md: 8 }}
                     py={5}
@@ -126,14 +125,14 @@ export default function SyllabusTemplate({
                                     >
                                         <AutoAwesomeOutlinedIcon
                                             sx={{
-                                                color: "primary.main",
+                                                color: `${color.main}`,
                                                 fontSize: "1.2em",
                                             }}
                                         />
                                         <Typography
                                             variant="body1"
                                             fontSize={{ xs: ".8em", sm: "1em" }}
-                                            color="black_blue"
+                                            color={`${color.dark}`}
                                         >
                                             Konsep dasar untuk menambah
                                             pengetahuan
@@ -148,14 +147,14 @@ export default function SyllabusTemplate({
                                     >
                                         <ArticleOutlinedIcon
                                             sx={{
-                                                color: "primary.main",
+                                                color: `${color.main}`,
                                                 fontSize: "1.2em",
                                             }}
                                         />
                                         <Typography
                                             variant="body1"
                                             fontSize={{ xs: ".8em", sm: "1em" }}
-                                            color="black_blue"
+                                            color={`${color.dark}`}
                                         >
                                             Ringkasan padat mengenai topik
                                             kursus
@@ -169,14 +168,14 @@ export default function SyllabusTemplate({
                                     >
                                         <QuizOutlinedIcon
                                             sx={{
-                                                color: "primary.main",
+                                                color: `${color.main}`,
                                                 fontSize: "1.2em",
                                             }}
                                         />
                                         <Typography
                                             variant="body1"
                                             fontSize={{ xs: ".8em", sm: "1em" }}
-                                            color="black_blue"
+                                            color={`${color.dark}`}
                                         >
                                             Kuis untuk menguji pengetahuan Anda
                                         </Typography>
@@ -187,8 +186,7 @@ export default function SyllabusTemplate({
                         <Stack>
                             {/* url that send to first page */}
                             <Link to={first_url}>
-                                <Button bdcolor={"#000"} sx={{ width: "5em" }}>
-                                    {" "}
+                                <Button bdcolor={"#000"} sx={{ width: "5em" }} bgcolor={color.main}>
                                     Mulai
                                 </Button>
                             </Link>
@@ -235,7 +233,6 @@ export default function SyllabusTemplate({
                             px={{ xs: 6, sm: 8, md: 4 }}
                             py={4}
                             columns={{ xs: 1, sm: 1, md: 2, lg: 4 }}
-                            direction={"row"}
                             justifyContent={"space-around"}
                             alignItems={"center"}
                             spacing={6}
@@ -248,7 +245,7 @@ export default function SyllabusTemplate({
                                 >
                                     <LeaderboardOutlinedIcon
                                         sx={{
-                                            color: "primary.main",
+                                            color: `${color.main}`,
                                             fontSize: "4em",
                                         }}
                                     />
@@ -280,7 +277,7 @@ export default function SyllabusTemplate({
                                 >
                                     <AccessTimeOutlinedIcon
                                         sx={{
-                                            color: "primary.main",
+                                            color: `${color.main}`,
                                             fontSize: "4em",
                                         }}
                                     />
@@ -311,7 +308,7 @@ export default function SyllabusTemplate({
                                 >
                                     <ExtensionOutlinedIcon
                                         sx={{
-                                            color: "primary.main",
+                                            color: `${color.main}`,
                                             fontSize: "4em",
                                         }}
                                     />
@@ -341,7 +338,7 @@ export default function SyllabusTemplate({
                                 >
                                     <FormatListBulletedIcon
                                         sx={{
-                                            color: "primary.main",
+                                            color: `${color.main}`,
                                             fontSize: "4em",
                                         }}
                                     />
@@ -372,7 +369,6 @@ export default function SyllabusTemplate({
                 container
                 justifyContent={"center"}
                 alignItems={"center"}
-                direction={"row"}
                 columns={{xs: 1, sm: 4}}
                 px={{xs:5, sm: 0}}
                 py={3}
@@ -380,7 +376,6 @@ export default function SyllabusTemplate({
             >
                 {prolog && (
                     <Grid2
-                        direction={"column"}
                         gap={1}
                         size={2}
                     >
@@ -407,7 +402,7 @@ export default function SyllabusTemplate({
                     >
                         {/* skills (make it to an array) */}
                         {skills?.map((item, index) => (
-                            <Grid2 xs={3} sm={3} key={index}>
+                            <Grid2 key={index}>
                                 <Stack
                                     direction="row"
                                     alignItems="center"
@@ -415,14 +410,14 @@ export default function SyllabusTemplate({
                                 >
                                     <CheckCircleIcon
                                         sx={{
-                                            color: "primary.main",
+                                            color: `${color.main}`,
                                             fontSize: "1.2em",
                                         }}
                                     />
                                     <Typography
                                         variant="body1"
                                         fontSize={{ xs: ".8em", sm: "1em" }}
-                                        color="black_blue"
+                                        color={`${color.dark}`}
                                     >
                                         {item}
                                     </Typography>
@@ -481,7 +476,7 @@ export default function SyllabusTemplate({
                                         justifyContent="center"
                                     >
                                         <Typography
-                                            backgroundColor="black_blue.main"
+                                            backgroundColor={`${color.dark}`}
                                             color="#fff"
                                             sx={{
                                                 width: "2.5em",

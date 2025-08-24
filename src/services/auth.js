@@ -5,7 +5,7 @@ import { getAccessToken, setAccessToken, clearAccessToken } from './token';
 const api = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL,
     headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data',
         'X-CSRFToken': getCSRFToken()   
     },
     withCredentials: true,

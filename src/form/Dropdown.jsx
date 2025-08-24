@@ -4,15 +4,16 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 export default function Dropdown({
-    label,
+    label='',
     icon,
-    items = [],
+    choices = [],
     value,
-    onChange,
+    setValue,
     renderItem,
     sx,
     children,
     arrow=true,
+    null_label="Select"
 }) {
     const [anchorEl, setAnchorEl] = useState(null);
     const isOpen = Boolean(anchorEl);
@@ -20,18 +21,18 @@ export default function Dropdown({
 
     return (
         <>
-            <IconButton onClick={(e) => setAnchorEl(e.currentTarget)}>
+            <IconButton onClick={(e) => setAnchorEl(e.currentTarget)} sx={{width: '100%', border: '1px solid #aaa', borderRadius:1, py:2, px:1.75, ...sx?.button}}>
                 {icon?(
                     <Tooltip title={label}>
-                        <Stack direction="row" alignItems="center" spacing={0.5}>
+                        <Stack direction="row" alignchoices="center" spacing={0.5} width={'100%'}>
                             {icon}
                             {arrow && (isOpen ? <KeyboardArrowUpIcon fontSize="small" /> : <KeyboardArrowDownIcon fontSize="small" />)}
                         </Stack>
                     </Tooltip>
                 ):(
-                    <Stack direction="row" alignItems="center" spacing={0.5}>
+                    <Stack direction="row" alignchoices="center" spacing={0.5} width={'100%'} justifyContent={"space-between"} sx={sx?.label}>
                         <Typography>
-                            {items.find((i)=>i.value==value).label}
+                            {choices.find((i)=>i.value==value)?.label||choices.find((i) => JSON.stringify(i.value) === JSON.stringify(value))?.label||null_label}
                         </Typography>
                         {arrow && (isOpen ? <KeyboardArrowUpIcon fontSize="small" /> : <KeyboardArrowDownIcon fontSize="small" />)}
                     </Stack>
@@ -43,18 +44,18 @@ export default function Dropdown({
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                {items.length>0?(
-                    items.map((item, index) => (
+                {choices.length>0?(
+                    choices.map((item, index) => (
                         <MenuItem
                             key={index}
                             selected={item.value === value}
                             onClick={() => {
-                                onChange(item);
+                                setValue(item.value);
                                 handleClose();
                             }}
                         >
                             {renderItem ? renderItem(item) : (
-                                    <Stack direction="row" spacing={1} alignItems="center" sx={typeof sx?.item === 'function' ? sx.item(item) : sx?.item}>
+                                    <Stack direction="row" spacing={1} alignchoices="center" sx={typeof sx?.item === 'function' ? sx.item(item) : sx?.item}>
                                         {item?.icon}
                                         {item?.label}
                                     </Stack>

@@ -6,7 +6,6 @@ const Button = ({ children, onClick, sx, color, bgcolor, bdcolor, startIcon, dis
             onClick={onClick}
             variant="contained"
             disableElevation
-            // color={bgcolor}
             sx={{
                 minWidth: 0,
                 display: 'flex',
@@ -16,7 +15,7 @@ const Button = ({ children, onClick, sx, color, bgcolor, bdcolor, startIcon, dis
                 px:2,
                 fontSize: {sm:'.8em',md:'1em'},
                 fontWeight: 600,
-                background: `${bgcolor}`,
+                backgroundColor: `${bgcolor}`,
                 color: `${color}`,
                 textTransform: 'none',
                 border: `2px solid ${bdcolor}`,
