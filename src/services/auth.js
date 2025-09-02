@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getCSRFToken } from './utils';
-import { getAccessToken, setAccessToken, clearAccessToken } from './token';
+import { getAccessToken, setAccessToken, clearAccessToken, restoreSession } from './token';
 
 const api = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL,
@@ -29,15 +29,10 @@ api.interceptors.response.use(
 
         if (error.response?.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true;
-            const newToken = await refreshAccessToken();
-            if (newToken) {
-                setAccessToken(newToken);
-                originalRequest.headers['Authorization'] = `Bearer ${newToken}`;
-                return api(originalRequest);
-            } else {
-                clearAccessToken();
-                window.location.href = '/login';
-            }
+            restoreSession();
+            const token = getAccessToken();
+            if (!token) window.location.href = '/login';
+            originalRequest.headers['Authorization'] = `Bearer ${token}`; 
         }
         return Promise.reject(error);
     }

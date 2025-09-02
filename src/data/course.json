@@ -6,7 +6,7 @@
         "desc": "Konsep dasar dalam kalkulus dan analisis mengenai hasil fungsi di dekat input tertentu.",
         "subject": "MTK",
         "level": "Beginner",
-        "Free": true,
+        "free": true,
         "href": "/course/limit",
 
         "color": {
@@ -62,7 +62,7 @@
         "desc": "Konsep dasar dalam kalkulus untuk mengukur intensitas perubahan nilai fungsi.",
         "subject": "MTK",
         "level": "Beginner",
-        "Free": true,
+        "free": true,
         "href": "/course/deriv"
     }
 ]

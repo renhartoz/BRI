@@ -18,11 +18,9 @@ import Button from "../components/Button";
 import SearchIcon from "@mui/icons-material/Search";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import CloseIcon from "@mui/icons-material/Close";
-import courses_data from "../data/course.json";
+import api from "../services/auth";
 
-const courses = courses_data;
-
-export default function CourseList() {
+export default function Course() {
     const [search, setSearch] = useState("");
     const [query] = useSearchParams();
     const isMobile = useMediaQuery("(max-width:900px)");
@@ -34,6 +32,17 @@ export default function CourseList() {
         }, []);
     }
 
+    useEffect(()=>{
+        api.get('/course/')
+        .then(res=>{
+            setCourses(res.data);
+        })
+        .catch(err=>{
+            console.error(err);
+        })
+    }, [])
+
+    const [courses, setCourses] = useState([]);
     const [subject, setSubject] = useState([]);
     const [level, setLevel] = useState([]);
     const [paid, setPaid] = useState([]);
@@ -218,7 +227,7 @@ export default function CourseList() {
                             <Grid2 container spacing={6} justifyContent="center">
                                 {filteredCourses.map((course) => (
                                     <Grid2 key={course.id} width={300}>
-                                        <CourseCard {...course} />
+                                        <CourseCard {...course} href={`edit?href=${course.href}`} image={`https://res.cloudinary.com/do5ni0oje/${course.image}`} />
                                     </Grid2>
                                 ))}
                             </Grid2>

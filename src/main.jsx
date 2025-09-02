@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import CourseLayout from "./CourseLayout.jsx";
 import ExerciseLayout from "./ExerciseLayout.jsx";
+import AdminLayout from "./AdminLayout.jsx";
 import "./index.css";
 
 import {
@@ -25,6 +26,8 @@ import ExerciseEditor from "./editor/ExerciseEditor.jsx";
 import ExercisePreview from "./pages/ExercisePreview.jsx";
 import EditorApp from "./editor/Lexical/App.jsx";
 import LexicalPreview from "./pages/LexicalPreview.jsx";
+
+import Course from "./course/Course.jsx";
 import CreateCourse from "./course/CreateCourse.jsx";
 
 import {
@@ -98,8 +101,12 @@ export const routes = [
         element: <ResendVerif />,
     },
     {
-        path: "/admin/course",
-        element: <CreateCourse />,
+        path: "/admin",
+        element: <AdminLayout />,
+        children: [
+            { path: "course", element: <Course />, },
+            { path: "course/edit", element: <CreateCourse />, },
+        ],
     },
     {
         path: "/editor",

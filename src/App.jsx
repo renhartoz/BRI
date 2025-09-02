@@ -3,11 +3,11 @@ import { Stack, AppBar, Typography } from "@mui/material";
 import Button from "./components/Button";
 import Navbar from "./components/Navbar";
 import Theme from "./components/Theme";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Footer from "./components/Footer";
 import { MathJaxContext } from "better-react-mathjax";
 import ScrollToTop from "./components/ScrollToTop";
-import { restoreSession, isTokenExpired } from "./services/token.js";
+import { restoreSession, isTokenExpired, getAccessToken } from "./services/token.js";
 
 const config = {
     loader: { load: ['[tex]/color'] },
@@ -17,7 +17,9 @@ const config = {
 };
 
 export default function App() {
+    const navigate = useNavigate();
     const [isReady, setIsReady] = useState(false);
+
     useEffect(() => {
         const init = async () => {
             await restoreSession();

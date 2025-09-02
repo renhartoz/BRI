@@ -251,7 +251,7 @@ const CreateCourse = () => {
                             title={title || "Course Title"}
                             desc={desc || "Course Description"}
                             subject={subject || "Subject"}
-                            Free={free}
+                            free={free}
                             href={href}
                         />
                     </Stack>

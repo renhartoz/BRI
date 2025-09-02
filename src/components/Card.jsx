@@ -17,7 +17,7 @@ export default function CourseCard({
     desc,
     level,
     duration,
-    Free,
+    free,
     subject,
     color = "primary",
     href,
@@ -77,10 +77,10 @@ export default function CourseCard({
                     )}
                 </Box>
 
-                {/* Free Course Label */}
+                {/* free Course Label */}
                 <Box
                     sx={{
-                        backgroundColor: Free
+                        backgroundColor: free
                             ? "secondary.main"
                             : "tertiary.main",
                         px: 1,
@@ -94,7 +94,7 @@ export default function CourseCard({
                                 fontWeight="bold"
                                 color="#fff"
                             >
-                                {Free ? "Free exercise" : "Paid exercise"}
+                                {free ? "Free exercise" : "Paid exercise"}
                             </Typography>
                         </>
                     ) : (
@@ -104,7 +104,7 @@ export default function CourseCard({
                                 fontWeight="bold"
                                 color="#fff"
                             >
-                                {Free ? "Free course" : "Paid course"}
+                                {free ? "Free course" : "Paid course"}
                             </Typography>
                         </>
                     )}
