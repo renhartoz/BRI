@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Stack, Typography } from "@mui/material";
+import { useLocation, useParams } from "react-router-dom";
 import RenderContent from "../editor/RenderContent";
 import Loading from "../components/Loading";
+import api from "../services/auth";
 
-export default function Template({ blogData, url }) {
+export default function Template() {
+    const { courseId, detailId } = useParams();
+    const location = useLocation();
     const [blog, setBlog] = useState(null);
-
     useEffect(() => {
-        const pageUrl = url;
-        const foundBlog = blogData.find((b) => b.url === pageUrl);
-        setBlog(foundBlog || null);
-    }, []);
+        setBlog(null);
+        api.get(`/course/details/url/?url=${location.pathname}`)
+        .then(response => setBlog(response.data||null))
+        .catch(error => console.error('Error fetching blog data:', error))
+    }, [courseId, detailId]);
 
     if (!blog) return <Loading />;
 

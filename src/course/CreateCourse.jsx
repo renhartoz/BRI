@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import api from "../services/auth";
-import Theme from "../components/Theme";
 
-import { Stack, Typography, TextField, Container, Divider, InputAdornment, Button, IconButton, Grid2, Chip, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
+import { Stack, Typography, TextField, Container, Divider, InputAdornment, IconButton, Grid2, Chip, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
+import Button from "../components/Button";
 import DeleteIcon from '@mui/icons-material/Delete';
 import CourseCard from "../components/Card";
 import SyllabusTemplate from "./SyllabusTemplate";
@@ -13,7 +13,7 @@ import Dropdown from "../form/Dropdown";
 
 const CreateCourse = () => {
     const navigate = useNavigate();
-    const [searchParams] = useSearchParams();
+    const { id: paramId } = useParams();
 
     async function urlToFile(url, filename, mimeType) {
         const res = await fetch(url);
@@ -62,15 +62,15 @@ const CreateCourse = () => {
 
     const COLOR = [
         {label: "Blue", value: {light: "#119fe683", main: "#1976d2", dark: "#151855"}},
-        {label: "Green", value: {light: "#33aba0", main: "#009688", dark: "#00786d"}},
-        {label: "Red", value: {light: "#ea615d", main: "#e53935", dark: "#b72e2a"}},
-        {label: "Orange", value: {light: "#ffb333", main: "#ffa000", dark: "#cc8000"}},
-        {label: "Purple", value: {light: "#a77bca", main: "#9c27b0", dark: "#7b1fa2"}},
+        {label: "Green", value: {light: "#33aba0", main: "#009688", dark: "#01413cff"}},
+        {label: "Red", value: {light: "#ea615d", main: "#e53935", dark: "#5e0c09ff"}},
+        {label: "Orange", value: {light: "#fbbd66ff", main: "#ff8000ff", dark: "#9a5d09ff"}},
+        {label: "Purple", value: {light: "#a77bca", main: "#9c27b0", dark: "#4e0f69ff"}},
     ];
 
     useEffect(() => {
-        if (searchParams.get("href")) {
-            api.get(`/course/href/?href=${searchParams.get("href")}`)
+        if (paramId) {
+            api.get(`/course/${paramId}/`)
             .then(response => {
                 const course = response.data;
                 setId(course.id);
@@ -91,10 +91,11 @@ const CreateCourse = () => {
                 setSkills(JSON.parse(course.skills));
                 setSyllabus((course.syllabus));
                 setLevel(course.level);
+                setPublished(course.published);
                 
                 async function fetchImage() {
                     const file = await urlToFile(
-                        `https://res.cloudinary.com/do5ni0oje/${course.image}`,
+                        `https://res.cloudinary.com/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/${course.image}`,
                         "course_image.jpg",
                         "image/jpeg"
                     );
@@ -107,7 +108,7 @@ const CreateCourse = () => {
                 navigate('/admin/course');
             });
         }
-    }, [searchParams]);
+    }, [paramId]);
 
     const [id, setId] = useState("");
     const [image, setImage] = useState(null);
@@ -135,12 +136,12 @@ const CreateCourse = () => {
         "Persiapan untuk konsep {next_materi}"
     ]);
     const [syllabus, setSyllabus] = useState([{point:"A", desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}, {point:"B", desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}]);
+    const [published, setPublished] = useState(false);
 
     const [deleteOpen, setDeleteOpen] = useState(false);
 
     const handleSubmit = () => {
         const courseData = new FormData();
-        console.log(image);
         courseData.append('image', image);
         courseData.append('title', title);
         courseData.append('desc', desc);
@@ -162,8 +163,9 @@ const CreateCourse = () => {
         courseData.append('skills', JSON.stringify(skills));
         courseData.append('prolog', prolog);
         courseData.append('syllabus', JSON.stringify(syllabus));
+        courseData.append('published', published);
 
-        if (searchParams.get("href")) {
+        if (paramId) {
             courseData.append('id', id);
             api.put(`/course/${id}/`, courseData)
             .then(response => {
@@ -195,12 +197,15 @@ const CreateCourse = () => {
     }
 
     return (
-        <Theme>
+        <>
             <Container sx={{ my: 4 }}>
-                {searchParams.get("href") && <Chip label={`#${id}`} color="primary" sx={{ mb: 2, fontFamily:"Suisse" }}/>}
+                {paramId && <Chip label={`#${id}`} color="primary" sx={{ mb: 2, fontFamily:"Suisse" }}/>}
                 <Stack justifyContent={"center"} alignItems="center" gap={2}>
-                    <Stack width={"100%"}>
-                        <Typography variant="h4" color="primary" textAlign={'left'} width={"100%"}>Create Course</Typography>
+                    <Stack width={"100%"} direction={"column"} gap={2}>
+                        <Stack direction={'row'} alignItems={'center'}  justifyContent={'space-between'} width={"100%"} flexWrap={'wrap'}>
+                            <Typography variant="h4" color="primary" textAlign={'left'}>{paramId?"Edit":"Create"} Course</Typography>
+                            <Button onClick={()=>navigate('/admin/course')}>Back to Course</Button>
+                        </Stack>
                         <Divider sx={{ width: "100%", borderWidth:2}} />
                     </Stack>
                     <TextField
@@ -241,6 +246,10 @@ const CreateCourse = () => {
                         <Stack direction={"row"} spacing={.2} alignItems={"center"}>
                             <Typography variant="h5">Free:</Typography>
                             <CustomCheck val={free} setVal={setFree}/>
+                        </Stack>
+                        <Stack direction={"row"} spacing={.2} alignItems={"center"}>
+                            <Typography variant="h5">Published:</Typography>
+                            <CustomCheck val={published} setVal={setPublished}/>
                         </Stack>
                     </Stack>
 
@@ -468,9 +477,16 @@ const CreateCourse = () => {
                 skills={skills}
                 syllabus={syllabus}
             />
+
+            <Divider sx={{borderColor:'#555', borderWidth:3}} />
             <Container>
-                <Stack mb={4} direction={"row"} justifyContent={"center"} alignItems={"center"}>
-                    {searchParams.get("href") && <Button variant="contained" color="error" sx={{ mr:2 }} onClick={()=>setDeleteOpen(true)}>Delete</Button>}
+                <Stack my={4} direction={"row"} justifyContent={"center"} alignItems={"center"} gap={3}>
+                    {paramId && (
+                        <Stack gap={2} direction={"row"}>
+                            <Button bgcolor="error" sx={{ mr:2 }} onClick={()=>setDeleteOpen(true)}>Delete</Button>
+                            <Button bgcolor={'secondary'} onClick={()=>navigate(`/admin/course/${id}`)}>View Course Details</Button>
+                        </Stack>
+                    )}
                     <Button variant="contained" onClick={()=>handleSubmit()}>Submit</Button>
                 </Stack>
             </Container>
@@ -481,17 +497,18 @@ const CreateCourse = () => {
                     <Typography fontFamily={'Inter'} typography={'subtitle2'} color={'error'}>This action cannot be undone</Typography>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => setDeleteOpen(false)}>Cancel</Button>
-                    <Button
-                        onClick={() => handleDelete()}
-                        variant="contained"
-                        color='error'
-                    >
-                        Delete
-                    </Button>
+                    <Stack direction={"row"} gap={2} mb={2} mr={2}>
+                        <Button onClick={() => setDeleteOpen(false)}>Cancel</Button>
+                        <Button
+                            bgcolor={'tertiary'}
+                            onClick={() => handleDelete()}
+                        >
+                            Delete
+                        </Button>
+                    </Stack>
                 </DialogActions>
             </Dialog>
-        </Theme>
+        </>
     );
 }
 

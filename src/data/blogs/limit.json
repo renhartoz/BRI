@@ -13,7 +13,10 @@
                     {
                         "type": "paragraph",
                         "text": "tepat pada satu momen",
-                        "props": { "fontWeight": 600, "className": "highlight" }
+                        "props": { 
+                            "fontWeight": 600, 
+                            "className": "highlight" 
+                        }
                     },
                     {
                         "type": "paragraph",
@@ -28,7 +31,10 @@
                     {
                         "type": "paragraph",
                         "text": "pada satu titik tertentu",
-                        "props": { "fontWeight": 600, "className": "highlight" }
+                        "props": { 
+                            "fontWeight": 600, 
+                            "className": "highlight" 
+                        }
                     },
                     {
                         "type": "paragraph",
@@ -37,7 +43,10 @@
                     {
                         "type": "paragraph",
                         "text": "limit",
-                        "props": { "fontWeight": 600, "className": "highlight" }
+                        "props": { 
+                            "fontWeight": 600, 
+                            "className": "highlight" 
+                        }
                     },
                     {
                         "type": "paragraph",
@@ -68,11 +77,6 @@
                     "paddingX": 2,
                     "paddingY": 1
                 }
-            },
-            {
-                "type": "image",
-                "src": "/course/limit/old_limit.png",
-                "alt": "limit_graph"
             },
             {
                 "type": "paragraph",

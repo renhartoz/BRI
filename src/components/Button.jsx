@@ -1,11 +1,12 @@
 import { Button as MuiButton } from '@mui/material';
 
-const Button = ({ children, onClick, sx, color, bgcolor, bdcolor, startIcon, disabled, type }) => {
+const Button = ({ children, onClick, sx, color='#fff', bgcolor, bdcolor='#000', startIcon, disabled, type }) => {
     return (
         <MuiButton
             onClick={onClick}
             variant="contained"
             disableElevation
+            color={bgcolor}
             sx={{
                 minWidth: 0,
                 display: 'flex',
@@ -15,7 +16,7 @@ const Button = ({ children, onClick, sx, color, bgcolor, bdcolor, startIcon, dis
                 px:2,
                 fontSize: {sm:'.8em',md:'1em'},
                 fontWeight: 600,
-                backgroundColor: `${bgcolor}`,
+                background: `${bgcolor}`,
                 color: `${color}`,
                 textTransform: 'none',
                 border: `2px solid ${bdcolor}`,

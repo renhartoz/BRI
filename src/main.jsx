@@ -18,7 +18,6 @@ import SignUp from "./auth/SignUp.jsx";
 import ResendVerif from "./auth/ResendVerif.jsx";
 
 import Home from "./pages/Home.jsx";
-import CourseList from "./pages/CourseList.jsx";
 import ExerciseList from "./pages/ExerciseList.jsx";
 import ClassicEditor from "./editor/ClassicalEditor.jsx";
 import ClassicPreview from "./pages/ClassicPreview.jsx";
@@ -29,38 +28,8 @@ import LexicalPreview from "./pages/LexicalPreview.jsx";
 
 import Course from "./course/Course.jsx";
 import CreateCourse from "./course/CreateCourse.jsx";
-
-import {
-    LimitSyllabus,
-    LimitIntro,
-    LimitApproach,
-    LimitProperty,
-    LimitEvaluation,
-    LimitInf,
-    LimitAtInf,
-    LimitAtInf2,
-} from "./course/Limit.jsx";
-
-import {
-    DerivSyllabus,
-    DerivIntro,
-    DerivProperty,
-    DerivChain,
-    DerivProduct,
-    DerivInterpretation,
-    DerivGraph,
-} from "./course/Deriv.jsx";
-
-import {
-    TrigonoSyllabus,
-    TrigonoIntro,
-    TrigonoRadian,
-    TrigonoRelations,
-    TrigonoIdentity,
-    TrigonoAngleProp,
-    TrigonoOtherProp,
-    TrigonoEquation,
-} from "./course/Trigono.jsx";
+import CourseDetail from "./course/CourseDetail.jsx";
+import CreateCourseDetail from "./course/CreateCourseDetail.jsx";
 
 import * as GK from "./exercise/GasKinetics.jsx";
 import * as TRI from "./exercise/Trigono.jsx";
@@ -70,6 +39,8 @@ import * as THERMO from "./exercise/Thermodynamic.jsx";
 import * as DERIV from "./exercise/Deriv.jsx";
 import PageNotFound from "./pages/404.jsx";
 import ComingSoon from "./pages/ComingSoon.jsx";
+import SyllabusTemplate from "./course/SyllabusTemplate.jsx";
+import Template from "./course/Template.jsx";
 
 export const routes = [
     {
@@ -77,11 +48,10 @@ export const routes = [
         element: <App />,
         children: [
             { path: "", element: <Home /> },
-            { path: "course", element: <CourseList /> },
+            { path: "course", element: <Course /> },
             { path: "exercise", element: <ExerciseList /> },
-            { path: "course/trigonometri", element: <TrigonoSyllabus /> },
-            { path: "course/limit", element: <LimitSyllabus /> },
-            { path: "course/deriv", element: <DerivSyllabus /> },
+            { path: "course/limit", element: <SyllabusTemplate published /> },
+            // { path: "course/deriv", element: <DerivSyllabus /> },
         ],
     },
     {
@@ -104,8 +74,12 @@ export const routes = [
         path: "/admin",
         element: <AdminLayout />,
         children: [
-            { path: "course", element: <Course />, },
-            { path: "course/edit", element: <CreateCourse />, },
+            { path: "course", element: <Course admin /> },
+            { path: "course/edit", element: <CreateCourse /> },
+            { path: "course/edit/:id", element: <CreateCourse /> },
+            { path: "course/:id", element: <CourseDetail /> },
+            { path: "course/:course_id/edit/", element: <CreateCourseDetail /> },
+            { path: "course/:course_id/edit/:id", element: <CreateCourseDetail /> },
         ],
     },
     {
@@ -137,43 +111,50 @@ export const routes = [
         element: <ComingSoon />,
     },
     {
-        path: "/course/limit",
+        path: "/course/:courseId",
         element: <CourseLayout />,
         children: [
-            { path: "intro", element: <LimitIntro /> },
-            { path: "approach", element: <LimitApproach /> },
-            { path: "property", element: <LimitProperty /> },
-            { path: "evaluation", element: <LimitEvaluation /> },
-            { path: "infinity", element: <LimitInf /> },
-            { path: "atinfinity", element: <LimitAtInf /> },
-            { path: "atinfinity2", element: <LimitAtInf2 /> },
-        ],
+            { path: ":detailId", element: <Template /> },
+        ]
     },
-    {
-        path: "/course/deriv",
-        element: <CourseLayout />,
-        children: [
-            { path: "intro", element: <DerivIntro /> },
-            { path: "property", element: <DerivProperty /> },
-            { path: "chain", element: <DerivChain /> },
-            { path: "product", element: <DerivProduct /> },
-            { path: "interpretation", element: <DerivInterpretation /> },
-            { path: "graph", element: <DerivGraph /> },
-        ],
-    },
-    {
-        path: "/course/trigonometri",
-        element: <CourseLayout />,
-        children: [
-            { path: "intro", element: <TrigonoIntro /> },
-            { path: "radian", element: <TrigonoRadian /> },
-            { path: "relations", element: <TrigonoRelations /> },
-            { path: "identity", element: <TrigonoIdentity /> },
-            { path: "angle-prop", element: <TrigonoAngleProp /> },
-            { path: "other-prop", element: <TrigonoOtherProp /> },
-            { path: "equation", element: <TrigonoEquation /> },
-        ],
-    },
+    // {
+    //     path: "/course/limit",
+    //     element: <CourseLayout />,
+    //     children: [
+    //         { path: "intro", element: <Template /> },
+    //         { path: "approach", element: <Template /> },
+            // { path: "property", element: <LimitProperty /> },
+            // { path: "evaluation", element: <LimitEvaluation /> },
+            // { path: "infinity", element: <LimitInf /> },
+            // { path: "atinfinity", element: <LimitAtInf /> },
+            // { path: "atinfinity2", element: <LimitAtInf2 /> },
+    //     ],
+    // },
+    // {
+    //     path: "/course/deriv",
+    //     element: <CourseLayout />,
+    //     children: [
+    //         { path: "intro", element: <DerivIntro /> },
+    //         { path: "property", element: <DerivProperty /> },
+    //         { path: "chain", element: <DerivChain /> },
+    //         { path: "product", element: <DerivProduct /> },
+    //         { path: "interpretation", element: <DerivInterpretation /> },
+    //         { path: "graph", element: <DerivGraph /> },
+    //     ],
+    // },
+    // {
+    //     path: "/course/trigonometri",
+    //     element: <CourseLayout />,
+    //     children: [
+    //         { path: "intro", element: <TrigonoIntro /> },
+    //         { path: "radian", element: <TrigonoRadian /> },
+    //         { path: "relations", element: <TrigonoRelations /> },
+    //         { path: "identity", element: <TrigonoIdentity /> },
+    //         { path: "angle-prop", element: <TrigonoAngleProp /> },
+    //         { path: "other-prop", element: <TrigonoOtherProp /> },
+    //         { path: "equation", element: <TrigonoEquation /> },
+    //     ],
+    // },
     {
         path: "/exercise/gas-kinetics",
         element: <ExerciseLayout />,

@@ -1198,10 +1198,6 @@ export const MemoizedRenderBlock = React.memo(RenderBlock);
 
 export default function ClassicEditor() {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const [uuid, setUuid] = useState('');
-  const [course, setCourse] = useState(() => loadBlog('editor')?.course || {});
-
   const [time, setTime] = useState(()=>loadBlog('editor')?.time.split(' ')[0]||'');
   const [timeUnit, setTimeUnit] = useState(()=>loadBlog('editor')?.time.split(' ')[1]||'min');
   const [content, setContent] = useState(() => loadBlog('editor')?.content || []);
@@ -1219,7 +1215,6 @@ export default function ClassicEditor() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [importOpen, setImportOpen] = useState(false);
   const [importText, setImportText] = useState("");
-  const [deleteOpen, setDeleteOpen] = useState(false);
 
   // 💾 Save to localStorage on change
   useEffect(() => {
@@ -1231,7 +1226,7 @@ export default function ClassicEditor() {
   
   useEffect(() => {
     const handler = setTimeout(() => {
-      saveBlog('editor', { ...meta, content, uuid, course });
+      saveBlog('editor', { ...meta, content });
     }, 500);
     return () => clearTimeout(handler);
   }, [content, meta]);
@@ -1252,47 +1247,6 @@ export default function ClassicEditor() {
     navigate('/preview');
   };
 
-  useEffect(()=>{
-    const url = searchParams.get('url') || '';
-    setUuid('');
-    setCourse('');
-    if (url) {
-      api.get(`/course/details/url/?url=${url}`).then(res => {
-        if (res.data) {
-          setMeta({
-            name: res.data.name,
-            url: res.data.url,
-            unit: res.data.unit,
-            subunit: res.data.subunit,
-            time: res.data.time || '0 min',
-          });
-          setContent(JSON.parse(res.data.content) || []);
-          setUuid(res.data.id || '');
-          setCourse(res.data.course || {});
-        }
-      }).catch(err => {
-        console.error("Failed to load blog data:", err);
-      });
-    }
-  }, []);
-
-  function handleSubmit() {
-    const formData = new FormData();
-    formData.append('course', course);
-    formData.append('name', meta.name);
-    formData.append('url', meta.url);
-    formData.append('unit', meta.unit);
-    formData.append('subunit', meta.subunit);
-    formData.append('time', meta.time);
-    formData.append('content', JSON.stringify(content));
-
-    if (uuid) {
-      api.put(`/course/${course}/details/${uuid}/`, formData)
-    } else {
-      api.post(`/course/${course}/details/`, formData)
-    }
-  }
-
   return (
     <Theme>
       <Stack spacing={3} p={3}>
@@ -1308,17 +1262,6 @@ export default function ClassicEditor() {
         </Button>
 
         <Stack gap={4} width={'100%'} alignItems={'center'}>
-          <Stack width={'80%'}>
-              <Typography>Course</Typography>
-              <CustomInput
-                  type='text'
-                  palette='#abcdef'
-                  required
-                  name='course'
-                  value={course}
-                  setValue={(val) => setCourse(val)}
-              />
-          </Stack>
           <Stack width={'80%'}>
               <Typography>Blog Name</Typography>
               <CustomInput
@@ -1447,26 +1390,6 @@ export default function ClassicEditor() {
               <WebIcon />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Submit">
-            <IconButton 
-              color="success" 
-              variant="outlined" 
-              onClick={() => handleSubmit()}
-              sx={{ border: '1px solid', borderRadius: '8px', padding: '8px' }}
-            >
-              <PublishIcon />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Delete">
-            <IconButton 
-              color="error" 
-              variant="outlined" 
-              onClick={() => setDeleteOpen(true)}
-              sx={{ border: '1px solid', borderRadius: '8px', padding: '8px' }}
-            >
-              <DeleteIcon />
-            </IconButton>
-          </Tooltip>
         </Stack>
       </Stack>
       <Dialog
@@ -1565,41 +1488,6 @@ export default function ClassicEditor() {
                 variant="contained"
             >
                 Import
-            </Button>
-        </DialogActions>
-      </Dialog>
-      <Dialog open={deleteOpen} onClose={() => setDeleteOpen(false)} maxWidth="sm" fullWidth>
-        <DialogTitle>Delete Course Details</DialogTitle>
-        <DialogContent>
-          <Typography fontFamily={'Inter'}>Are you sure you want to delete course with URL: <Typography fontSize={'inherit'} fontFamily={'Suisse'} component={'span'}>{meta.url}</Typography>?</Typography>
-          <Typography fontFamily={'Inter'} typography={'subtitle2'} color={'error'}>This action cannot be undone</Typography>
-        </DialogContent>
-        <DialogActions>
-            <Button onClick={() => setDeleteOpen(false)}>Cancel</Button>
-            <Button
-                onClick={() => {
-                    try {
-                      api.delete(`/course/${course}/details/${uuid}/`)
-                      setUuid('');
-                      setCourse('');
-                      setMeta({
-                        name: '',
-                        url: '',
-                        unit: '',
-                        subunit: '',
-                        time: '0 min'
-                      });
-                      setContent([]);
-                      setDeleteOpen(false);
-                      navigate('/editor');
-                    } catch (err) {
-                      alert("Error while deleting course details.");
-                    }
-                }}
-                variant="contained"
-                color='error'
-            >
-                Delete
             </Button>
         </DialogActions>
       </Dialog>

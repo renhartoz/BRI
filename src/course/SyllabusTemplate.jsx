@@ -1,10 +1,8 @@
-import React  from "react";
+import React, { useEffect, useState }  from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Stack, Typography, Grid2, Box, Card, CardContent } from "@mui/material";
-
 import Button from "../components/Button";
-import Template from "./Template";
-import blogData from "../data/blogs/limit.json";
+import api from "../services/auth";
 
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
@@ -16,24 +14,53 @@ import ExtensionOutlinedIcon from "@mui/icons-material/ExtensionOutlined";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 
 export default function SyllabusTemplate({
-    color,
-    title,
-    desc,
-    unit,
-    subunit,
-    important_unit,
-    quiz,
-    first_url,
-    level,
-    time,
-    prereq,
-    skills,
-    syllabus,
-    prolog
+    color={light:"#aaa", main:'#555', dark:'#000'},
+    title="Course Title",
+    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sollicitudin placerat elementum.",
+    unit=0,
+    subunit=0,
+    important_unit=[],
+    quiz=0,
+    first_url='/comingsoon',
+    level="Beginner",
+    time=0,
+    prereq="",
+    skills=[],
+    syllabus=[],
+    prolog="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sollicitudin placerat elementum. Sed euismod, nunc ut.",
+    published,
 }) {
+    const [course, setCourse] = useState(null);
+
+    useEffect(() => {
+        if (published) {
+            api.get(`/course/href/?href=${window.location.pathname}`)
+            .then(res => setCourse(res.data))
+            .catch(err => console.log(err));
+        }
+    }, [published]);
+
+    if (!course && published) return <p>Loading...</p>;
+
+    const {
+        color: c = color,
+        title: t = title,
+        desc: d = desc,
+        unit: u = unit,
+        subunit: su = subunit,
+        important_unit: iu = important_unit,
+        quiz: q = quiz,
+        first_url: f = first_url,
+        level: l = level,
+        time: ti = time,
+        prereq: p = prereq,
+        skills: sk = skills,
+        syllabus: sy = syllabus,
+        prolog: pr = prolog,
+    } = course || {};
     return (
         <>
-            <Stack sx={{ backgroundImage:`radial-gradient(${color.light} 1.5px, transparent 0)`, backgroundSize:"6px 6px" }}>
+            <Stack sx={{ backgroundImage:`radial-gradient(${c.light} 1.5px, transparent 0)`, backgroundSize:"6px 6px" }}>
                 <Stack
                     px={{ xs: 4, sm: 6, md: 8 }}
                     py={5}
@@ -74,12 +101,12 @@ export default function SyllabusTemplate({
                                     fontSize={{ xs: "2em", md: "2.4em" }}
                                     fontWeight={700}
                                 >
-                                    {title}
+                                    {t}
                                 </Typography>
                                 <Typography
                                     fontSize={{ xs: "1em", md: "1.2em" }}
                                 >
-                                    {desc}
+                                    {d}
                                 </Typography>
                                 <Typography
                                     fontSize={{ xs: "1em", md: "1.2em" }}
@@ -90,7 +117,7 @@ export default function SyllabusTemplate({
                                         fontSize={"inherit"}
                                         fontWeight={600}
                                     >
-                                        {important_unit.join(", ")}
+                                        {published?JSON.parse(iu).join(", "):iu.join(", ")}
                                     </Typography>
                                     , dan lain-lain
                                 </Typography>
@@ -125,14 +152,14 @@ export default function SyllabusTemplate({
                                     >
                                         <AutoAwesomeOutlinedIcon
                                             sx={{
-                                                color: `${color.main}`,
+                                                color: `${c.main}`,
                                                 fontSize: "1.2em",
                                             }}
                                         />
                                         <Typography
                                             variant="body1"
                                             fontSize={{ xs: ".8em", sm: "1em" }}
-                                            color={`${color.dark}`}
+                                            color={`${c.dark}`}
                                         >
                                             Konsep dasar untuk menambah
                                             pengetahuan
@@ -147,14 +174,14 @@ export default function SyllabusTemplate({
                                     >
                                         <ArticleOutlinedIcon
                                             sx={{
-                                                color: `${color.main}`,
+                                                color: `${c.main}`,
                                                 fontSize: "1.2em",
                                             }}
                                         />
                                         <Typography
                                             variant="body1"
                                             fontSize={{ xs: ".8em", sm: "1em" }}
-                                            color={`${color.dark}`}
+                                            color={`${c.dark}`}
                                         >
                                             Ringkasan padat mengenai topik
                                             kursus
@@ -168,14 +195,14 @@ export default function SyllabusTemplate({
                                     >
                                         <QuizOutlinedIcon
                                             sx={{
-                                                color: `${color.main}`,
+                                                color: `${c.main}`,
                                                 fontSize: "1.2em",
                                             }}
                                         />
                                         <Typography
                                             variant="body1"
                                             fontSize={{ xs: ".8em", sm: "1em" }}
-                                            color={`${color.dark}`}
+                                            color={`${c.dark}`}
                                         >
                                             Kuis untuk menguji pengetahuan Anda
                                         </Typography>
@@ -184,9 +211,8 @@ export default function SyllabusTemplate({
                             </Stack>
                         </Stack>
                         <Stack>
-                            {/* url that send to first page */}
-                            <Link to={first_url}>
-                                <Button bdcolor={"#000"} sx={{ width: "5em" }} bgcolor={color.main}>
+                            <Link to={f}>
+                                <Button bdcolor={"#000"} sx={{ width: "5em" }} bgcolor={c.main}>
                                     Mulai
                                 </Button>
                             </Link>
@@ -245,7 +271,7 @@ export default function SyllabusTemplate({
                                 >
                                     <LeaderboardOutlinedIcon
                                         sx={{
-                                            color: `${color.main}`,
+                                            color: `${c.main}`,
                                             fontSize: "4em",
                                         }}
                                     />
@@ -257,14 +283,12 @@ export default function SyllabusTemplate({
                                         >
                                             Skill Level
                                         </Typography>
-                                        {/* level */}
-
                                         <Typography
                                             fontSize={"1.5em"}
                                             letterSpacing={-1}
                                             fontWeight={600}
                                         >
-                                            {level}
+                                            {l}
                                         </Typography>
                                     </Stack>
                                 </Stack>
@@ -277,7 +301,7 @@ export default function SyllabusTemplate({
                                 >
                                     <AccessTimeOutlinedIcon
                                         sx={{
-                                            color: `${color.main}`,
+                                            color: `${c.main}`,
                                             fontSize: "4em",
                                         }}
                                     />
@@ -289,13 +313,13 @@ export default function SyllabusTemplate({
                                         >
                                             Estimasi Waktu
                                         </Typography>
-                                        {/* time */}
                                         <Typography
                                             fontSize={"1.5em"}
                                             letterSpacing={-1}
                                             fontWeight={600}
                                         >
-                                            {time}
+                                            {/* TODO: Make it flexible later not only hour */}
+                                            {ti} hour(s)
                                         </Typography>
                                     </Stack>
                                 </Stack>
@@ -308,7 +332,7 @@ export default function SyllabusTemplate({
                                 >
                                     <ExtensionOutlinedIcon
                                         sx={{
-                                            color: `${color.main}`,
+                                            color: `${c.main}`,
                                             fontSize: "4em",
                                         }}
                                     />
@@ -325,7 +349,7 @@ export default function SyllabusTemplate({
                                             letterSpacing={-1}
                                             fontWeight={600}
                                         >
-                                            {subunit}
+                                            {su}
                                         </Typography>
                                     </Stack>
                                 </Stack>
@@ -338,7 +362,7 @@ export default function SyllabusTemplate({
                                 >
                                     <FormatListBulletedIcon
                                         sx={{
-                                            color: `${color.main}`,
+                                            color: `${c.main}`,
                                             fontSize: "4em",
                                         }}
                                     />
@@ -350,13 +374,12 @@ export default function SyllabusTemplate({
                                         >
                                             Prasyarat
                                         </Typography>
-                                        {/* pre-requisite */}
                                         <Typography
                                             fontSize={"1.5em"}
                                             letterSpacing={-1}
                                             fontWeight={600}
                                         >
-                                            {prereq}
+                                            {p}
                                         </Typography>
                                     </Stack>
                                 </Stack>
@@ -383,7 +406,7 @@ export default function SyllabusTemplate({
                             Deskripsi Kursus
                         </Typography>
                         <Typography textAlign={"justify"}>
-                            {prolog}
+                            {pr}
                         </Typography>
                     </Grid2>
                 )}
@@ -400,8 +423,7 @@ export default function SyllabusTemplate({
                         spacing={1.6}
                         direction={"column"}
                     >
-                        {/* skills (make it to an array) */}
-                        {skills?.map((item, index) => (
+                        {published?JSON.parse(sk).map((item, index) => (
                             <Grid2 key={index}>
                                 <Stack
                                     direction="row"
@@ -410,14 +432,37 @@ export default function SyllabusTemplate({
                                 >
                                     <CheckCircleIcon
                                         sx={{
-                                            color: `${color.main}`,
+                                            color: `${c.main}`,
                                             fontSize: "1.2em",
                                         }}
                                     />
                                     <Typography
                                         variant="body1"
                                         fontSize={{ xs: ".8em", sm: "1em" }}
-                                        color={`${color.dark}`}
+                                        color={`${c.dark}`}
+                                    >
+                                        {item}
+                                    </Typography>
+                                </Stack>
+                            </Grid2>
+                        )):
+                        sk?.map((item, index) => (
+                            <Grid2 key={index}>
+                                <Stack
+                                    direction="row"
+                                    alignItems="center"
+                                    gap={1}
+                                >
+                                    <CheckCircleIcon
+                                        sx={{
+                                            color: `${c.main}`,
+                                            fontSize: "1.2em",
+                                        }}
+                                    />
+                                    <Typography
+                                        variant="body1"
+                                        fontSize={{ xs: ".8em", sm: "1em" }}
+                                        color={`${c.dark}`}
                                     >
                                         {item}
                                     </Typography>
@@ -433,7 +478,6 @@ export default function SyllabusTemplate({
                     sx={{ backgroundColor: "#fff", border: "1px solid #000" }}
                     width={"80vw"}
                 >
-                    {/* Header */}
                     <Stack borderBottom={"1px solid #000"} px={5} py={2}>
                         <Typography
                             variant="h5"
@@ -444,17 +488,15 @@ export default function SyllabusTemplate({
                                 md: "left",
                             }}
                         >
-                            Silabus: {title}
+                            Silabus: {t}
                         </Typography>
                         <Typography variant="subtitle1" color="text.secondary">
-                            {unit} units • {subunit}{" "}
-                            lessons • {quiz} quizzes
+                            {u} units • {su}{" "}
+                            lessons • {q} quizzes
                         </Typography>
                     </Stack>
-
-                    {/* Content Cards */}
                     <Grid2 container>
-                        {syllabus.map((item, index) => (
+                        {sy.map((item, index) => (
                             <Grid2 key={index} width={"100%"}>
                                 <Card
                                     sx={{
@@ -469,14 +511,13 @@ export default function SyllabusTemplate({
                                                 : "none",
                                     }}
                                 >
-                                    {/* Number Circle */}
                                     <Stack
                                         mr={2}
                                         alignItems="center"
                                         justifyContent="center"
                                     >
                                         <Typography
-                                            backgroundColor={`${color.dark}`}
+                                            backgroundColor={`${c.dark}`}
                                             color="#fff"
                                             sx={{
                                                 width: "2.5em",
@@ -492,8 +533,6 @@ export default function SyllabusTemplate({
                                             {index + 1}
                                         </Typography>
                                     </Stack>
-
-                                    {/* Card Content */}
                                     <CardContent>
                                         <Typography
                                             variant="h6"
@@ -522,32 +561,4 @@ export default function SyllabusTemplate({
             </Stack>
         </>
     );
-}
-
-export function LimitIntro() {
-    return <Template blogData={blogData} url={"/course/limit/intro"} />;
-}
-
-export function LimitApproach() {
-    return <Template blogData={blogData} url={"/course/limit/approach"} />;
-}
-
-export function LimitProperty() {
-    return <Template blogData={blogData} url={"/course/limit/property"} />;
-}
-
-export function LimitEvaluation() {
-    return <Template blogData={blogData} url={"/course/limit/evaluation"} />;
-}
-
-export function LimitInf() {
-    return <Template blogData={blogData} url={"/course/limit/infinity"} />;
-}
-
-export function LimitAtInf() {
-    return <Template blogData={blogData} url={"/course/limit/atinfinity"} />;
-}
-
-export function LimitAtInf2() {
-    return <Template blogData={blogData} url={"/course/limit/atinfinity2"} />;
 }

@@ -26,17 +26,20 @@ api.interceptors.response.use(
     (response) => response,
     async (error) => {
         const originalRequest = error.config;
-
         if (error.response?.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true;
-            restoreSession();
+            const ok = await restoreSession();
             const token = getAccessToken();
-            if (!token) window.location.href = '/login';
-            originalRequest.headers['Authorization'] = `Bearer ${token}`; 
+            if (!ok || !token) {
+                clearAccessToken();
+                window.location.href = '/login';
+                return Promise.reject(error);
+            }
+            originalRequest.headers['Authorization'] = `Bearer ${token}`;
+            return api(originalRequest);
         }
         return Promise.reject(error);
     }
 );
-
 
 export default api;

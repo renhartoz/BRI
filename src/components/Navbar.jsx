@@ -222,7 +222,6 @@ export default function Navbar() {
                         />
 
                         {/* Login Button */}
-                        
                         <MuiButton
                             color="inherit"
                             variant="outlined"
@@ -371,17 +370,6 @@ export function Navbar2({ course }) {
                             menuItems={menuItems}
                             sx={{ display: { xs: "none", sm: "block" } }}
                         />
-
-                        {/* Login Button */}
-                        <MuiButton
-                            color="inherit"
-                            variant="outlined"
-                            component={Link}
-                            sx={{ textTransform: "capitalize", p: "1vh 1.5vh" }}
-                            to="/login"
-                        >
-                            Masuk/Daftar Akun
-                        </MuiButton>
                     </Stack>
                 </Toolbar>
             </AppBar>

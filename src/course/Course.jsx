@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import {
     Box,
     Stack,
@@ -20,7 +20,8 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import CloseIcon from "@mui/icons-material/Close";
 import api from "../services/auth";
 
-export default function Course() {
+export default function Course({admin}) {
+    const navigate = useNavigate();
     const [search, setSearch] = useState("");
     const [query] = useSearchParams();
     const isMobile = useMediaQuery("(max-width:900px)");
@@ -35,12 +36,13 @@ export default function Course() {
     useEffect(()=>{
         api.get('/course/')
         .then(res=>{
-            setCourses(res.data);
+            if (!admin) setCourses(res.data.filter(c=>c?.published===true));
+            else setCourses(res.data);
         })
         .catch(err=>{
             console.error(err);
         })
-    }, [])
+    }, []);
 
     const [courses, setCourses] = useState([]);
     const [subject, setSubject] = useState([]);
@@ -100,11 +102,14 @@ export default function Course() {
     return (
         <>
             <Stack direction={'column'}>
-                <Stack px={4} py={2} direction={'row'} gap={3} alignItems={'center'}>
-                    <Typography fontSize={'2.5em'} color="primary" fontWeight={700}>
-                        Course List
-                    </Typography>
-                    <Chip label={ <Typography fontSize="1.2em" fontFamily={"monospace"}>{course_len} results</Typography> } size="small" sx={{color:"#fff", backgroundColor: "#000", px:1, py:2}} />
+                <Stack px={4} py={2} direction={'row'} alignItems={'center'} justifyContent={'space-between'} borderBottom={'1px solid #000'}>
+                    <Stack direction={'row'} alignItems={'center'} gap={3}>
+                        <Typography fontSize={'2.5em'} color="primary" fontWeight={1200}>
+                            Course List
+                        </Typography>
+                        <Chip label={ <Typography fontSize="1.2em" fontFamily={"monospace"}>{course_len} results</Typography> } size="small" sx={{color:"#fff", backgroundColor: "#000", px:1, py:2}} />
+                    </Stack>
+                    {admin&&<Button bgcolor={'secondary'} onClick={()=>navigate('edit')}>Create Course</Button>}
                 </Stack>
                 <Grid2 container columns={4} border={'1px solid #000'} borderRight={'none'} mb={5}>
                     {!isMobile && (
@@ -227,7 +232,11 @@ export default function Course() {
                             <Grid2 container spacing={6} justifyContent="center">
                                 {filteredCourses.map((course) => (
                                     <Grid2 key={course.id} width={300}>
-                                        <CourseCard {...course} href={`edit?href=${course.href}`} image={`https://res.cloudinary.com/do5ni0oje/${course.image}`} />
+                                        {admin?(
+                                            <CourseCard {...course} href={`edit/${course.id}`} image={`https://res.cloudinary.com/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/${course.image}`} />
+                                        ):(
+                                            <CourseCard {...course} image={`https://res.cloudinary.com/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/${course.image}`} />
+                                        )}
                                     </Grid2>
                                 ))}
                             </Grid2>

@@ -7,7 +7,6 @@ import {
     Box,
     Divider,
     Chip,
-    useTheme,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
@@ -25,7 +24,6 @@ export default function CourseCard({
     maxChar = null,
     sx={}
 }) {
-    const theme = useTheme();
 
     return (
         <Link to={href ? href : "/comingsoon"}>
