@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import { MathJaxContext } from "better-react-mathjax";
 import ScrollToTop from "./components/ScrollToTop";
 import { restoreSession, isTokenExpired, getAccessToken } from "./services/token.js";
+import Loading from './components/Loading.jsx';
 
 const config = {
     loader: { load: ['[tex]/color'] },
@@ -29,7 +30,7 @@ export default function App() {
     }, []);
 
     if (!isReady) {
-        return <p>Loading...</p>;
+        return <Loading/>;
     }
 
     return (

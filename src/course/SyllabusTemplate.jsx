@@ -39,7 +39,7 @@ export default function SyllabusTemplate({
             .then(res => setCourse(res.data))
             .catch(err => console.log(err));
         }
-    }, [published, courseName]);
+    }, [published, course_name]);
 
     if (!course && published) return <p>Loading...</p>;
 
