@@ -133,7 +133,7 @@ export default function Home() {
                                     alignItems={"center"}
                                     width={300}
                                 >
-                                    <CourseCard {...item} image={`https://res.cloudinary.com/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/${item.img}`} />
+                                    <CourseCard {...item} image={`https://res.cloudinary.com/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/${item.image}`} />
                                 </Stack>
                             </Grid2>
                         ))}
