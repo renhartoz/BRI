@@ -50,8 +50,7 @@ export const routes = [
             { path: "", element: <Home /> },
             { path: "course", element: <Course /> },
             { path: "exercise", element: <ExerciseList /> },
-            { path: "course/limit", element: <SyllabusTemplate published /> },
-            // { path: "course/deriv", element: <DerivSyllabus /> },
+            { path: "course/:course_name", element: <SyllabusTemplate published /> },
         ],
     },
     {
@@ -117,19 +116,6 @@ export const routes = [
             { path: ":detailId", element: <Template /> },
         ]
     },
-    // {
-    //     path: "/course/limit",
-    //     element: <CourseLayout />,
-    //     children: [
-    //         { path: "intro", element: <Template /> },
-    //         { path: "approach", element: <Template /> },
-            // { path: "property", element: <LimitProperty /> },
-            // { path: "evaluation", element: <LimitEvaluation /> },
-            // { path: "infinity", element: <LimitInf /> },
-            // { path: "atinfinity", element: <LimitAtInf /> },
-            // { path: "atinfinity2", element: <LimitAtInf2 /> },
-    //     ],
-    // },
     // {
     //     path: "/course/deriv",
     //     element: <CourseLayout />,

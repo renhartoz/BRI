@@ -1,58 +1,13 @@
 [
     {
         "id": 1,
-        "image": "/course/limit/limit.png",
+        "image": "image/upload/v1757265827/bnpfwpdx2yr7eybafs2c.png",
         "title": "Limit Fungsi",
         "desc": "Konsep dasar dalam kalkulus dan analisis mengenai hasil fungsi di dekat input tertentu.",
         "subject": "MTK",
         "level": "Beginner",
         "free": true,
-        "href": "/course/limit",
-
-        "color": {
-            "light": "#119fe683",
-            "main": "#1976d2",
-            "dark": "#151855"
-        },
-        "first_url": "/course/limit/intro",
-        "time": 15,
-        "unit": 6,
-        "subunit": 9,
-        "important_unit": ["Teorema Limit", "Limit Tak Tentu", "Limit Tak Hingga"],
-        "prereq": "Aljabar Lanjut",
-        "quiz": 8,
-        "skills": [
-            "Konsep Fundamental Limit Fungsi",
-            "Penerapan Limit Fungsi",
-            "Persiapan untuk konsep derivatif"
-        ],
-        "prolog": "Dalam matematika, limit adalah nilai yang didekati suatu fungsi saat mendekati nilai tertentu. Limit sangat penting dalam kalkulus dan analisis matematika. Dalam kursus ini, Anda akan mempelajari dasar-dasar limit fungsi dan mengeksplorasi berbagai teori mengenai limit fungsi.",
-        "syllabus": [
-            {
-                "point": "Konsep Dasar Limit",
-                "desc": "Memahami pengertian limit fungsi dan bagaimana konsep ini digunakan dalam kalkulus."
-            },
-            {
-                "point": "Teknik Evaluasi Limit",
-                "desc": "Menggunakan metode matematis untuk mencari nilai limit suatu fungsi."
-            },
-            {
-                "point": "Limit Tak Hingga",
-                "desc": "Menghitung limit fungsi ketika x mendekati nilai tak hingga."
-            },
-            {
-                "point": "Limit Logaritma dan Eksponensial",
-                "desc": "Memahami bagaimana cara menyelesaikan limit fungsi yang mengandung logaritma dan eksponensial."
-            },
-            {
-                "point": "Limit Fungsi Trigonometri",
-                "desc": "Menghitung limit fungsi trigonometri dengan berbagai teknik."
-            },
-            {
-                "point": "Limit Menggunakan Kaidah L'Hôpital",
-                "desc": "Mengenal dan menggunakan aturan L'Hôpital untuk menyelesaikan limit dengan bentuk tak tentu."
-            }
-        ]
+        "href": "/course/limit"
     },
     {
         "id": 2,

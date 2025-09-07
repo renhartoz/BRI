@@ -1,5 +1,5 @@
 import React, { useEffect, useState }  from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Stack, Typography, Grid2, Box, Card, CardContent } from "@mui/material";
 import Button from "../components/Button";
 import api from "../services/auth";
@@ -30,15 +30,16 @@ export default function SyllabusTemplate({
     prolog="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sollicitudin placerat elementum. Sed euismod, nunc ut.",
     published,
 }) {
+    const {course_name} = useParams();
     const [course, setCourse] = useState(null);
 
     useEffect(() => {
         if (published) {
-            api.get(`/course/href/?href=${window.location.pathname}`)
+            api.get(`/course/href/?href=/course/${course_name}`)
             .then(res => setCourse(res.data))
             .catch(err => console.log(err));
         }
-    }, [published]);
+    }, [published, courseName]);
 
     if (!course && published) return <p>Loading...</p>;
 
