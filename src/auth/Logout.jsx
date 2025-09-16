@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import api from '../services/auth';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../components/Loading'
 
 export default function Logout() {
     const navigate = useNavigate();
@@ -8,8 +9,6 @@ export default function Logout() {
     const handleLogout = async () => {
         try {
             await api.post('/user/logout/');
-            localStorage.removeItem('access_token');
-            localStorage.removeItem('refresh_token');
             localStorage.removeItem('user');
             navigate('/login');
         } catch (error) {
@@ -20,4 +19,8 @@ export default function Logout() {
     useEffect(() => {
         handleLogout();
     }, []);
+
+    return (
+        <Loading text={"Logging out"} />
+    )
 }

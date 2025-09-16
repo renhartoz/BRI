@@ -57,7 +57,7 @@ const SignUp = () => {
             setSuccess('Account created. Please check your email to verify your account.');
             
             setTimeout(() => {
-                navigate('/resend?email=' + encodeURIComponent(email));
+                navigate('/login');
             }, 3000);
 
         } catch (err) {
@@ -107,7 +107,7 @@ const SignUp = () => {
                         </Box>
                         <Stack direction={'column'} gap={4} sx={{ p: 4 }}>
                             <Stack component="form" onSubmit={handleSubmit} gap={2}>
-                                <TextField placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} fullWidth required
+                                <TextField placeholder="Username" name='nickname' value={username} onChange={(e) => setUsername(e.target.value)} fullWidth required
                                     slotProps={{
                                         input: {
                                             startAdornment: (
@@ -133,7 +133,7 @@ const SignUp = () => {
                                         },
                                     }}
                                 />
-                                <TextField placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} fullWidth required
+                                <TextField placeholder="Email" name='email' type='email' value={email} onChange={(e) => setEmail(e.target.value)} fullWidth required
                                     slotProps={{
                                         input: {
                                             startAdornment: (
@@ -160,7 +160,7 @@ const SignUp = () => {
                                     }}
                                 />
                                 <Stack direction={'row'} gap={2}>
-                                    <TextField placeholder="First Name" value={first_name} onChange={(e) => setFirstName(e.target.value)} fullWidth required
+                                    <TextField placeholder="First Name" name='given-name' value={first_name} onChange={(e) => setFirstName(e.target.value)} fullWidth required
                                         slotProps={{
                                             input: {
                                                 startAdornment: (
@@ -186,7 +186,7 @@ const SignUp = () => {
                                             },
                                         }}
                                     />
-                                    <TextField placeholder="Last Name" value={last_name} onChange={(e) => setLastName(e.target.value)} fullWidth required
+                                    <TextField placeholder="Last Name" name='family-name' value={last_name} onChange={(e) => setLastName(e.target.value)} fullWidth required
                                         slotProps={{
                                             input: {
                                                 startAdornment: (
@@ -213,7 +213,7 @@ const SignUp = () => {
                                         }}
                                     />
                                 </Stack>
-                                <TextField placeholder="Password" type={showPassword?"text":"password"} value={password} onChange={(e) => setPassword(e.target.value)} fullWidth required 
+                                <TextField placeholder="Password" autoComplete='off' type={showPassword?"text":"password"} value={password} onChange={(e) => setPassword(e.target.value)} fullWidth required 
                                     slotProps={{
                                         input: {
                                             startAdornment: (
@@ -250,7 +250,7 @@ const SignUp = () => {
                                         },
                                     }}
                                 />
-                                <TextField placeholder="Confirm Password" type={showConfirmPassword?"text":"password"} value={confirm_password} onChange={(e) => setConfirmPassword(e.target.value)} fullWidth required 
+                                <TextField placeholder="Confirm Password" autoComplete='off' type={showConfirmPassword?"text":"password"} value={confirm_password} onChange={(e) => setConfirmPassword(e.target.value)} fullWidth required 
                                     slotProps={{
                                         input: {
                                             startAdornment: (

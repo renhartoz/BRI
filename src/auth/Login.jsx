@@ -11,12 +11,52 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
+    const [email, setEmail] = useState(false);
+
+    const handleResend = async (e) => {
+        e.preventDefault();
+        setMessage('');
+        setError('');
+        setEmail(false);
+
+        const formData = new FormData();
+        formData.append('identifier', username);
+
+        try {
+            const res = await axios.post('/user/resend-verification/', formData, { 
+                baseURL: import.meta.env.VITE_API_BASE_URL,
+                withCredentials: true,
+                headers: {
+                    "X-CSRFToken": getCSRFToken(),
+                    "Content-Type": "multipart/form-data",
+                }, 
+            });
+            setMessage(['Verification email sent.']);
+        } catch (err) {
+            const data = err.response?.data || {};
+            const messages = [];
+
+            for (const key in data) {
+                if (Array.isArray(data[key])) {
+                    messages.push(...data[key]);
+                } else if (typeof data[key] === 'string') {
+                    messages.push(data[key]);
+                }
+            }
+            setError(messages.length ? messages : ['Failed to resend verification email.']);
+            setLoading(false);
+        }
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         setLoading(true);
+        setMessage('');
+        setError('');
+        setEmail(false);
 
         const formData = new FormData();
         formData.append('username', username);
@@ -48,9 +88,8 @@ const Login = () => {
                     messages.push(data[key]);
                 }
             }
-            console.log(err)
-
             setError(messages.length ? messages : ['Login failed.']);
+            if (err.response.status === 403) setEmail(true); 
         } finally {
             setLoading(false);
         }
@@ -69,6 +108,20 @@ const Login = () => {
                             {error.map((err, index) => (
                                 <Typography key={index} color="#fff">{err}</Typography>
                             ))}
+                        </Box>
+                    )}
+                    {message && (
+                        <Box px={2} py={1} bgcolor="secondary.light" border={'1px solid'} borderColor={'secondary.main'} mb={2}>
+                            {message.map((msg, index) => (
+                                <Typography key={index} color="#fff">{msg}</Typography>
+                            ))}
+                        </Box>
+                    )}
+                    {email && (
+                        <Box component={Button} sx={{textTransform:'none'}} px={2} py={1} bgcolor="#00f" border={'1px solid'} borderColor={'#007'} mb={2} onClick={handleResend}>
+                            <Typography color="#fff">
+                                Click here to send the Email Verification
+                            </Typography>
                         </Box>
                     )}
                     <Paper elevation={3} sx={{ width: '100%', maxWidth: 400, borderRadius: 2, overflow: 'hidden'}}>

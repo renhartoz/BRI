@@ -1,7 +1,7 @@
 import React from "react";
 import { CircularProgress, Stack, Typography } from "@mui/material";
 
-export default function Loading() {
+export default function Loading({text="Loading"}) {
     return (
         <Stack
             sx={{
@@ -15,7 +15,7 @@ export default function Loading() {
             }}
         >
             <CircularProgress color="primary" size="99px" />
-            <Typography sx={{ py: 5, fontSize: "1em" }}>Loading...</Typography>
+            <Typography sx={{ py: 5, fontSize: "1em" }}>{text}</Typography>
         </Stack>
     );
 }
