@@ -41,6 +41,13 @@ const getVariantStyles = (theme, variant) => {
         };
     }
     switch (variant) {
+        case "null":
+            return {
+                headBackground: "#FFF",
+                headColor: "#000",
+                rowBackground: "#FFF",
+                borderColor: "#000",
+            };
         case "monotone":
             return {
                 headBackground: "#000", // Black header
