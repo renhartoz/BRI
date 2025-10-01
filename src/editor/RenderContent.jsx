@@ -175,7 +175,7 @@ const RenderContent = ({ data }) => {
                             ))
                         )}
                         key={index}
-                        variant={"secondary"}
+                        variant={item.variant||"secondary"}
                         {...(item.props || {})}
                     />
                 )
