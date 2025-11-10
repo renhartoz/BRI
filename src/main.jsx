@@ -41,6 +41,7 @@ import PageNotFound from "./pages/404.jsx";
 import ComingSoon from "./pages/ComingSoon.jsx";
 import SyllabusTemplate from "./course/SyllabusTemplate.jsx";
 import Template from "./course/Template.jsx";
+import CourseGenerator from "./coursegen/CourseGenerator.jsx";
 
 export const routes = [
     {
@@ -141,6 +142,12 @@ export const routes = [
     //         { path: "equation", element: <TrigonoEquation /> },
     //     ],
     // },
+
+    {
+        path: "/generator",
+        element: <CourseGenerator />,
+    },
+
     {
         path: "/exercise/gas-kinetics",
         element: <ExerciseLayout />,
