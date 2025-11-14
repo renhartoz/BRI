@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Stack, TextField, Box, Typography, Paper } from '@mui/material';
+import api from "../services/auth";
 
 export function CourseForm({ onGenerate }) {
   const [formValues, setFormValues] = useState({
