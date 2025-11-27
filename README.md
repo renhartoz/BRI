@@ -87,3 +87,8 @@ No license is specified for this project. All rights are reserved by the owner.
 ## Acknowledgments (if relevant)
 
 *   This project utilizes React, Vite, and other open-source tools. Special thanks to the developers and maintainers of these technologies.
+
+## Authors
+- [@renhartoz](https://www.github.com/renhartoz)
+- [@tokinohana](https://www.github.com/tokinohana)
+- [@Rethaaa](https://www.github.com/Rethaaa)
