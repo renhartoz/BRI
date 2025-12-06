@@ -3,23 +3,73 @@ import { Button, Stack, TextField, Box, Typography, Paper } from '@mui/material'
 import api from "../services/auth";
 
 export function CourseForm({ onGenerate }) {
-  const [formValues, setFormValues] = useState({
-    course_topic: '',
-    course_subtopic: '',
-    course_name: '',
-    course_url: '',
-    course_duration: '',
-  });
+  const [courseName, setCourseName] = useState('');
+  const [topic, setTopic] = useState('');
+  const [subtopic, setSubtopic] = useState('');
+  const [url, setUrl] = useState('');
+  const [duration, setDuration] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {
-    setFormValues({
-      ...formValues,
-      [e.target.id]: e.target.value,
-    });
-  };
+  const handleSubmit = async () => {
+    setLoading(true);
+    onGenerate('');
 
-  const handleSubmit = () => {
-    onGenerate(formValues);
+    const data = {
+      course_name: courseName,
+      topic: topic,
+      subtopic: subtopic,
+      url: url,
+      duration: duration,
+    };
+
+    try {
+      let lastProcessedIndex = 0;
+
+      await api.post('/ai/course/', data, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        responseType: 'text',
+        onDownloadProgress: (progressEvent) => {
+          const xhr = progressEvent.event ? progressEvent.event.target : progressEvent.target;
+          if (!xhr) {
+            console.log("No XHR found in progressEvent", progressEvent);
+            return;
+          }
+
+          const response = xhr.responseText;
+          console.log("Stream progress, total length:", response.length);
+
+          const newContent = response.substring(lastProcessedIndex);
+          lastProcessedIndex = response.length;
+
+          console.log("New chunk:", newContent);
+
+          const lines = newContent.split('\n\n');
+
+          for (const line of lines) {
+            if (line.startsWith('data: ')) {
+              const dataStr = line.slice(6);
+              if (dataStr === '[DONE]') {
+                console.log("Stream done signal received");
+                break;
+              }
+              try {
+                const parsedChunk = JSON.parse(dataStr);
+                onGenerate((prev) => prev + parsedChunk);
+              } catch (e) {
+                console.error('Error parsing chunk:', e, "dataStr:", dataStr);
+              }
+            }
+          }
+        }
+      });
+    } catch (error) {
+      console.error('Error generating course JSON:', error);
+      onGenerate(`Error: ${error.message}`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -29,14 +79,14 @@ export function CourseForm({ onGenerate }) {
       </Typography>
 
       <Stack direction="column" spacing={2}>
-        <TextField required id="course_topic" label="Course Topic" value={formValues.course_topic} onChange={handleChange} />
-        <TextField required id="course_subtopic" label="Course Subtopic" value={formValues.course_subtopic} onChange={handleChange} />
-        <TextField required id="course_name" label="Course Name" value={formValues.course_name} onChange={handleChange} />
-        <TextField required id="course_url" label="Course URL" value={formValues.course_url} onChange={handleChange} />
-        <TextField required id="course_duration" label="Course Duration" value={formValues.course_duration} onChange={handleChange} />
+        <TextField required id="course_name" label="Course Name" value={courseName} onChange={(e) => setCourseName(e.target.value)} />
+        <TextField required id="topic" label="Course Topic" value={topic} onChange={(e) => setTopic(e.target.value)} />
+        <TextField required id="subtopic" label="Course Subtopic" value={subtopic} onChange={(e) => setSubtopic(e.target.value)} />
+        <TextField required id="url" label="Course URL" value={url} onChange={(e) => setUrl(e.target.value)} />
+        <TextField required id="duration" label="Course Duration" value={duration} onChange={(e) => setDuration(e.target.value)} />
 
-        <Button variant="contained" color="primary" onClick={handleSubmit}>
-          Generate JSON
+        <Button variant="contained" color="primary" onClick={handleSubmit} disabled={loading}>
+          {loading ? 'Generating...' : 'Generate JSON'}
         </Button>
       </Stack>
     </Paper>

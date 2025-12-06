@@ -106,7 +106,7 @@ const Login = () => {
                     {error && (
                         <Box px={2} py={1} bgcolor="error.light" border={'1px solid'} borderColor={'error.main'} mb={2}>
                             {error.map((err, index) => (
-                                <Typography key={index} color="#fff">{err}</Typography>
+                                <Typography key={index} color="#fff" textTransform={'capitalize'}>{err}</Typography>
                             ))}
                         </Box>
                     )}

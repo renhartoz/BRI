@@ -41,7 +41,7 @@ import PageNotFound from "./pages/404.jsx";
 import ComingSoon from "./pages/ComingSoon.jsx";
 import SyllabusTemplate from "./course/SyllabusTemplate.jsx";
 import Template from "./course/Template.jsx";
-import CourseGenerator from "./coursegen/CourseGenerator.jsx";
+import CourseGenerator from "./ai/CourseGenerator.jsx";
 
 export const routes = [
     {
