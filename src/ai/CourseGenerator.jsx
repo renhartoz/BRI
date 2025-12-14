@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Button, Stack, TextField, Box, Typography, Paper } from '@mui/material';
+import { Button, Stack, TextField, Box, Typography, Paper, IconButton, Tooltip } from '@mui/material';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import api from "../services/auth";
 
 export function CourseForm({ onGenerate }) {
@@ -56,6 +57,8 @@ export function CourseForm({ onGenerate }) {
               }
               try {
                 const parsedChunk = JSON.parse(dataStr);
+                // Functional update to avoid stale closure if we were using it inside a closure, 
+                // but here we are in a callback. Ideally we trust the setter.
                 onGenerate((prev) => prev + parsedChunk);
               } catch (e) {
                 console.error('Error parsing chunk:', e, "dataStr:", dataStr);
@@ -94,6 +97,12 @@ export function CourseForm({ onGenerate }) {
 }
 
 export function CourseJSONDisplay({ courseJSON }) {
+  const handleCopy = () => {
+    if (courseJSON) {
+      navigator.clipboard.writeText(typeof courseJSON === 'string' ? courseJSON : JSON.stringify(courseJSON, null, 2));
+    }
+  };
+
   return (
     <Paper
       elevation={3}
@@ -102,31 +111,60 @@ export function CourseJSONDisplay({ courseJSON }) {
         backgroundColor: '#1e1e1e',
         color: '#fff',
         borderRadius: 2,
-        overflow: 'auto',
+        overflow: 'hidden',
         height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
-      <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
-        JSON Output
-      </Typography>
-      <pre
-        style={{
+      <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 2 }}>
+        <Typography variant="h6" fontWeight="bold">
+          JSON Output
+        </Typography>
+        <Tooltip title="Copy to Clipboard">
+          <IconButton onClick={handleCopy} sx={{ color: '#fff' }}>
+            <ContentCopyIcon />
+          </IconButton>
+        </Tooltip>
+      </Stack>
+
+      <Box
+        sx={{
+          flex: 1,
+          overflowY: 'auto',
           backgroundColor: '#2b2b2b',
-          padding: '16px',
           borderRadius: '8px',
-          overflowX: 'auto',
-          margin: 0,
-          color: '#fff',
+          p: 2,
+          '&::-webkit-scrollbar': {
+            width: '8px',
+          },
+          '&::-webkit-scrollbar-track': {
+            background: '#1e1e1e',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            background: '#555',
+            borderRadius: '4px',
+          },
         }}
       >
-        {courseJSON ? JSON.stringify(courseJSON, null, 2) : '// Generated JSON will appear here'}
-      </pre>
+        <pre
+          style={{
+            margin: 0,
+            whiteSpace: 'pre-wrap',
+            wordBreak: 'break-word',
+            fontFamily: 'monospace',
+            color: '#fff',
+          }}
+        >
+          {courseJSON ? (typeof courseJSON === 'string' ? courseJSON : JSON.stringify(courseJSON, null, 2)) : '// Generated JSON will appear here'}
+        </pre>
+      </Box>
     </Paper>
   );
 }
 
 export default function CourseGenerator() {
-  const [courseJSON, setCourseJSON] = useState(null);
+  const [courseJSON, setCourseJSON] = useState('');
 
   const handleGenerate = (data) => {
     setCourseJSON(data);
