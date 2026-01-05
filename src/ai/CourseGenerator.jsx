@@ -24,49 +24,14 @@ export function CourseForm({ onGenerate }) {
     };
 
     try {
-      let lastProcessedIndex = 0;
-
-      await api.post('/ai/course/', data, {
+      const response = await api.post('/ai/course/', data, {
         headers: {
           'Content-Type': 'application/json',
         },
-        responseType: 'text',
-        onDownloadProgress: (progressEvent) => {
-          const xhr = progressEvent.event ? progressEvent.event.target : progressEvent.target;
-          if (!xhr) {
-            console.log("No XHR found in progressEvent", progressEvent);
-            return;
-          }
-
-          const response = xhr.responseText;
-          console.log("Stream progress, total length:", response.length);
-
-          const newContent = response.substring(lastProcessedIndex);
-          lastProcessedIndex = response.length;
-
-          console.log("New chunk:", newContent);
-
-          const lines = newContent.split('\n\n');
-
-          for (const line of lines) {
-            if (line.startsWith('data: ')) {
-              const dataStr = line.slice(6);
-              if (dataStr === '[DONE]') {
-                console.log("Stream done signal received");
-                break;
-              }
-              try {
-                const parsedChunk = JSON.parse(dataStr);
-                // Functional update to avoid stale closure if we were using it inside a closure, 
-                // but here we are in a callback. Ideally we trust the setter.
-                onGenerate((prev) => prev + parsedChunk);
-              } catch (e) {
-                console.error('Error parsing chunk:', e, "dataStr:", dataStr);
-              }
-            }
-          }
-        }
       });
+
+      console.log("Response received:", response.data);
+      onGenerate(response.data);
     } catch (error) {
       console.error('Error generating course JSON:', error);
       onGenerate(`Error: ${error.message}`);
