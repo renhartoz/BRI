@@ -23,8 +23,6 @@ import ClassicEditor from "./editor/ClassicalEditor.jsx";
 import ClassicPreview from "./pages/ClassicPreview.jsx";
 import ExerciseEditor from "./editor/ExerciseEditor.jsx";
 import ExercisePreview from "./pages/ExercisePreview.jsx";
-import EditorApp from "./editor/Lexical/App.jsx";
-import LexicalPreview from "./pages/LexicalPreview.jsx";
 
 import Course from "./course/Course.jsx";
 import CreateCourse from "./course/CreateCourse.jsx";
@@ -97,14 +95,6 @@ export const routes = [
     {
         path: "/exercise-preview",
         element: <ExercisePreview />,
-    },
-    {
-        path: "/lexical-editor",
-        element: <EditorApp />,
-    },
-    {
-        path: "/lexical-preview",
-        element: <LexicalPreview />,
     },
     {
         path: "/comingsoon",
