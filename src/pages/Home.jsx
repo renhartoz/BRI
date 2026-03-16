@@ -24,22 +24,22 @@ const exercises = exercise_data.slice(0, 4);
 export default function Home() {
     const slides = [
         {
-            bg: "/hero/hero_1.png",
+            bg: "/hero/hero_1.avif",
             titleColor: "primary",
             color: "#fff",
         },
         {
-            bg: "/hero/hero_2.png",
+            bg: "/hero/hero_2.avif",
             titleColor: "secondary",
             color: "#fff",
         },
         {
-            bg: "/hero/hero_3.png",
+            bg: "/hero/hero_3.avif",
             titleColor: "tertiary",
             color: "#fff",
         },
         {
-            bg: "/hero/hero_4.png",
+            bg: "/hero/hero_4.avif",
             titleColor: "quaternary",
             color: "#fff",
         },
@@ -382,7 +382,7 @@ export default function Home() {
                 </Stack>
                 <Stack>
                     <Tiles
-                        bg={"/misc/jaminan.png"}
+                        bg={"/misc/jaminan.avif"}
                         bgcolor={"primary.main"}
                         bdcolor={"#000"}
                         sx={{
@@ -408,7 +408,7 @@ export default function Home() {
             >
                 <Stack>
                     <Tiles
-                        bg={"/misc/membership.png"}
+                        bg={"/misc/membership.avif"}
                         bgcolor={"secondary.main"}
                         bdcolor={"#000"}
                         sx={{
