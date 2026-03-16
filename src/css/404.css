@@ -28,7 +28,7 @@
 }
 
 .parallax__mountainbg {
-    background-image: url("/404_1.png");
+    background-image: url("/404_1.avif");
     transform: translate(
         calc(-50% + var(--parallax_mountainbg-x) * 25px),
         calc(-50% + var(--parallax_mountainbg-y) * 25px)
@@ -36,7 +36,7 @@
 }
 
 .parallax__mountainfg {
-    background-image: url("/404_4.png");
+    background-image: url("/404_4.avif");
     transform: translate(
         calc(-50% + var(--parallax_mountainfg-x) * 50px),
         calc(-50% + var(--parallax_mountainfg-y) * 50px)
@@ -44,7 +44,7 @@
 }
 
 .parallax__clouds {
-    background-image: url("/404_2.png");
+    background-image: url("/404_2.avif");
     transform: translate(
         calc(-50% + var(--parallax_clouds-x) * 150px),
         calc(-50% + var(--parallax_clouds-y) * 150px)
@@ -52,7 +52,7 @@
 }
 
 .parallax__sun {
-    background-image: url("/404_3.png");
+    background-image: url("/404_3.avif");
     transform: translate(
         calc(-50% + var(--parallax_sun-x) * 1px),
         calc(-50% + var(--parallax_sun-y) * 100px)
