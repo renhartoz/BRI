@@ -46,7 +46,7 @@
     },
     {
         "id": 6,
-        "image": "/course/derivatif/derivatif.avif",
+        "image": "/course/derivatif/derivatif.webp",
         "title": "Derivatif",
         "subject": "MTK",
         "level": "Intermediate",
@@ -55,7 +55,7 @@
     },
     {
         "id": 7,
-        "image": "/course/vektor/vektor.avif",
+        "image": "/course/vektor/vektor.webp",
         "title": "Vektor",
         "subject": "MTK",
         "level": "Beginner",
