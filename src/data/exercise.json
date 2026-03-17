@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "image": "/course/gaskinetics/gaskinetics.avif",
+        "image": "/course/gaskinetics/gaskinetics.webp",
         "title": "Kinematika Gas",
         "subject": "FIS",
         "level": "Beginner",
@@ -10,7 +10,7 @@
     },
     {
         "id": 2,
-        "image": "/course/trigono/trigono.avif",
+        "image": "/course/trigono/trigono.webp",
         "title": "Trigonometri",
         "subject": "MTK",
         "level": "Beginner",
@@ -19,7 +19,7 @@
     },
     {
         "id": 3,
-        "image": "/course/limit/limit.avif",
+        "image": "/course/limit/limit.webp",
         "title": "Limit Tak Hingga",
         "subject": "MTK",
         "level": "Intermediate",
@@ -28,7 +28,7 @@
     },
     {
         "id": 4,
-        "image": "/course/limit/limit.avif",
+        "image": "/course/limit/limit.webp",
         "title": "Limit Trigonometri Tak Hingga",
         "subject": "MTK",
         "level": "Advance",

@@ -29,7 +29,7 @@ body {
 }
 
 .parallax__bg {
-    background-image: url("/cs_1.avif");
+    background-image: url("/cs_1.webp");
     transform: translate(
         calc(-50% + var(--parallax_bg-x) * 25px),
         calc(-50% + var(--parallax_bg-y) * 25px)
@@ -37,7 +37,7 @@ body {
 }
 
 .parallax__mountain {
-    background-image: url("/cs_4.avif");
+    background-image: url("/cs_4.webp");
     transform: translate(
         calc(-50% + var(--parallax_clouds-x) * 50px),
         calc(-50% + var(--parallax_clouds-y) * 50px)
@@ -45,7 +45,7 @@ body {
 }
 
 .parallax__cloud {
-    background-image: url("/cs_2.avif");
+    background-image: url("/cs_2.webp");
     transform: translate(
         calc(-50% + var(--parallax_mist-x) * 150px),
         calc(-50% + var(--parallax_mist-y) * 150px)
@@ -53,7 +53,7 @@ body {
 }
 
 .parallax__mist {
-    background-image: url("/cs_3.avif");
+    background-image: url("/cs_3.webp");
     transform: translate(
         calc(-50% + var(--parallax_mountain-x) * 1px),
         calc(-50% + var(--parallax_mountain-y) * 100px)
