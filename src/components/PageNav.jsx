@@ -50,7 +50,7 @@ export default function PageNav({ pages, courseName }) {
                 backgroundColor: "kurai_ao.main",
                 borderTop: "2px solid black",
                 pt: 1,
-                pb: 2,
+                pb: {xs: 10, sm: 2},
             }}
         >
             {/* Main Navigation */}
@@ -153,7 +153,7 @@ export default function PageNav({ pages, courseName }) {
                     {index + 1} / {pages.length}
                 </Typography>
 
-                <Stack direction="row" gap={3}>
+                <Stack direction="row" gap={2}>
                     <Button
                         disabled={index === 0}
                         sx={{ width: "4em", px: 2, py: 1 }}
@@ -228,7 +228,7 @@ export function PageNav2({ pages, exerciseName }) {
                 backgroundColor: "kurai_ao.main",
                 borderTop: "2px solid black",
                 pt: 1,
-                pb: 2,
+                pb: {xs: 10, sm: 2},
             }}
         >
             {/* Main Navigation */}
