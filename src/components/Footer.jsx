@@ -54,7 +54,15 @@ const footerLinks = [
 ];
 
 const SocialButtons = ({ sx }) => (
-    <Stack direction="row" gap={1.5} sx={sx}>
+    <Stack
+        direction="row"
+        gap={{ xs: 1.5, sm: 2 }}
+        sx={{
+            flexWrap: "wrap",
+            justifyContent: { xs: "flex-start", sm: "center", md: "flex-start" },
+            ...sx,
+        }}
+    >
         {socialMedia.map(({ icon, color, href, label }, idx) => (
             <a
                 key={idx}
@@ -69,8 +77,8 @@ const SocialButtons = ({ sx }) => (
                     bdcolor={"#000"}
                     color="#fff"
                     sx={{
-                        px: 1.2,
-                        py: 0.8,
+                        px: { xs: 1, sm: 1.2 },
+                        py: { xs: 0.6, sm: 0.8 },
                         minWidth: 0,
                         "&:hover": {
                             transform: "translate(3px, 3px)",
@@ -99,33 +107,38 @@ export default function Footer({ sx }) {
             }}
         >
             <Stack
-                direction={{ xs: "column", md: "row" }}
-                gap={{ xs: 4, md: 6 }}
+                direction={{ xs: "column", sm: "column", md: "row" }}
+                gap={{ xs: 4, sm: 5, md: 6 }}
+                alignItems={{ xs: "flex-start", sm: "center", md: "flex-start" }}
                 sx={{
                     mb: { xs: "3.932rem", sm: 0 },
-                    py: { xs: 6, md: 8 },
-                    px: { xs: 3, sm: 5, md: 8 },
+                    py: { xs: 5, sm: 6, md: 8 },
+                    px: { xs: 2.5, sm: 4, md: 6, lg: 8 },
                 }}
             >
                 {/* Left Section — Branding */}
                 <Stack
-                    width={{ md: "35%" }}
-                    gap={2}
-                    justifyContent="space-between"
+                    width={{ xs: "100%", sm: "100%", md: "35%" }}
+                    gap={{ xs: 2, sm: 2.5 }}
+                    alignItems={{ xs: "flex-start", sm: "center", md: "flex-start" }}
+                    textAlign={{ xs: "left", sm: "center", md: "left" }}
                 >
-                    <Stack gap={1.5}>
+                    <Stack gap={{ xs: 1.5, sm: 2 }}>
                         <Typography
                             variant="h5"
                             fontWeight={800}
-                            sx={{ color: "#fff" }}
+                            sx={{
+                                color: "#fff",
+                                fontSize: { xs: "1.1rem", sm: "1.25rem" },
+                            }}
                         >
                             Bimbel Rumah Ilmiah
                         </Typography>
                         <Typography
                             sx={{
                                 color: "rgba(255,255,255,0.8)",
-                                fontSize: { xs: "0.9rem", sm: "1rem" },
-                                maxWidth: "360px",
+                                fontSize: { xs: "0.875rem", sm: "0.95rem", md: "1rem" },
+                                maxWidth: { xs: "100%", sm: "400px", md: "360px" },
                                 lineHeight: 1.6,
                             }}
                         >
@@ -136,22 +149,23 @@ export default function Footer({ sx }) {
                     </Stack>
 
                     <SocialButtons
-                        sx={{ display: { xs: "none", md: "flex" } }}
+                        sx={{ display: { xs: "none", sm: "none", md: "flex" } }}
                     />
                 </Stack>
 
-                {/* Middle Section (Desktop) — Link Columns */}
+                {/* Desktop Link Columns (md+) */}
                 <Stack
                     direction="row"
                     sx={{
-                        display: { xs: "none", md: "flex" },
+                        display: { xs: "none", sm: "none", md: "flex" },
                         width: { md: "65%" },
                     }}
                     justifyContent="flex-end"
-                    gap={6}
+                    gap={{ md: 4, lg: 6 }}
+                    flexWrap="wrap"
                 >
                     {footerLinks.map((list, id) => (
-                        <Stack key={id} gap={1.5} minWidth={140}>
+                        <Stack key={id} gap={1.5} minWidth={{ md: 130, lg: 140 }}>
                             <Typography
                                 fontWeight={700}
                                 sx={{
@@ -186,18 +200,66 @@ export default function Footer({ sx }) {
                     ))}
                 </Stack>
 
-                {/* Middle Section (Mobile) — Stacked Links */}
+                {/* Tablet Link Grid (sm only) */}
                 <Stack
                     direction="row"
                     flexWrap="wrap"
-                    gap={3}
-                    sx={{ display: { md: "none", xs: "flex" } }}
+                    gap={4}
+                    justifyContent="center"
+                    sx={{
+                        display: { xs: "none", sm: "flex", md: "none" },
+                        width: "100%",
+                    }}
                 >
                     {footerLinks.map((list, id) => (
-                        <Stack key={id} gap={1} minWidth={120}>
+                        <Stack key={id} gap={1.5} minWidth={140} flex={1}>
                             <Typography
                                 fontWeight={700}
-                                sx={{ color: "#fff", fontSize: "0.95rem" }}
+                                sx={{
+                                    color: "#fff",
+                                    fontSize: "0.95rem",
+                                }}
+                            >
+                                {list.title}
+                            </Typography>
+                            {list.items.map((item, idx) => (
+                                <Link
+                                    key={idx}
+                                    to={item.href}
+                                    style={{ textDecoration: "none" }}
+                                >
+                                    <Typography
+                                        sx={{
+                                            color: "rgba(255,255,255,0.7)",
+                                            fontSize: "0.9rem",
+                                        }}
+                                    >
+                                        {item.label}
+                                    </Typography>
+                                </Link>
+                            ))}
+                        </Stack>
+                    ))}
+                </Stack>
+
+                {/* Mobile Stacked Links (xs only) */}
+                <Stack
+                    direction="row"
+                    flexWrap="wrap"
+                    gap={{ xs: 2.5, sm: 3 }}
+                    sx={{
+                        display: { xs: "flex", sm: "none" },
+                        width: "100%",
+                    }}
+                >
+                    {footerLinks.map((list, id) => (
+                        <Stack key={id} gap={1} minWidth={110}>
+                            <Typography
+                                fontWeight={700}
+                                sx={{
+                                    color: "#fff",
+                                    fontSize: "0.9rem",
+                                }}
                             >
                                 {list.title}
                             </Typography>
@@ -211,6 +273,7 @@ export default function Footer({ sx }) {
                                         sx={{
                                             color: "rgba(255,255,255,0.7)",
                                             fontSize: "0.85rem",
+                                            py: 0.25,
                                         }}
                                     >
                                         {item.label}
@@ -221,9 +284,13 @@ export default function Footer({ sx }) {
                     ))}
                 </Stack>
 
-                {/* Social Media (Mobile) */}
+                {/* Social Media (Mobile + Tablet) */}
                 <SocialButtons
-                    sx={{ display: { xs: "flex", md: "none" } }}
+                    sx={{
+                        display: { xs: "flex", sm: "flex", md: "none" },
+                        width: { xs: "100%", sm: "auto" },
+                        justifyContent: { xs: "flex-start", sm: "center" },
+                    }}
                 />
             </Stack>
 

@@ -1028,7 +1028,7 @@ export default function SummerClass() {
                         justifyContent="center"
                         columns={{ xs: 1, sm: 2 }}
                     >
-                        {/* Frontend Instructor */}
+                        {/* Frontend Instructor — Benedict */}
                         <Grid2 size={1} display="flex" justifyContent="center">
                             <Stack
                                 sx={{
@@ -1040,7 +1040,7 @@ export default function SummerClass() {
                                     alignItems: "center",
                                     textAlign: "center",
                                     width: "100%",
-                                    maxWidth: "300px",
+                                    maxWidth: "320px",
                                     transition: "all 0.2s ease",
                                     "&:hover": {
                                         transform: "translate(4px, -4px)",
@@ -1049,23 +1049,19 @@ export default function SummerClass() {
                                 }}
                             >
                                 <Box
+                                    component="img"
+                                    src="/misc/ben.webp"
+                                    alt="Benedict Halim"
                                     sx={{
-                                        width: 100,
-                                        height: 100,
+                                        width: 110,
+                                        height: 110,
                                         borderRadius: "50%",
-                                        bgcolor: "primary.light",
+                                        objectFit: "cover",
                                         border: "3px solid #000",
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
+                                        objectPosition: "top",
                                         mb: 2,
                                     }}
-                                >
-                                    <PersonIcon
-                                        sx={{ fontSize: 50, color: "#fff" }}
-                                        color="primary.main"
-                                    />
-                                </Box>
+                                />
                                 <Typography
                                     sx={{
                                         fontWeight: 800,
@@ -1073,10 +1069,10 @@ export default function SummerClass() {
                                         mb: 0.5,
                                     }}
                                 >
-                                    Frontend Instructor
+                                    Benedict Halim
                                 </Typography>
                                 <Chip
-                                    label="React & UI"
+                                    label="Frontend — React & UI"
                                     size="small"
                                     sx={{
                                         bgcolor: "primary.main",
@@ -1085,20 +1081,45 @@ export default function SummerClass() {
                                         mb: 2,
                                     }}
                                 />
-                                <Typography
-                                    sx={{
-                                        fontSize: "0.9rem",
-                                        color: "#555",
-                                    }}
+                                <Stack
+                                    gap={1}
+                                    sx={{ textAlign: "left", width: "100%" }}
                                 >
-                                    Berpengalaman dalam pengembangan frontend
-                                    dengan React, Tailwind CSS, dan modern web
-                                    technologies.
-                                </Typography>
+                                    {[
+                                        "ReactJS, Tailwind CSS, API integration",
+                                        "1,200+ real users, CC CUP registration platform",
+                                        "Won 1th place at the PesonaEdu web design competition",
+                                    ].map((line, i) => (
+                                        <Stack
+                                            key={i}
+                                            direction="row"
+                                            alignItems="flex-start"
+                                            gap={1}
+                                        >
+                                            <CheckCircleIcon
+                                                sx={{
+                                                    color: "primary.main",
+                                                    fontSize: "1rem",
+                                                    mt: "2px",
+                                                    flexShrink: 0,
+                                                }}
+                                            />
+                                            <Typography
+                                                sx={{
+                                                    fontSize: "0.85rem",
+                                                    color: "#444",
+                                                    lineHeight: 1.4,
+                                                }}
+                                            >
+                                                {line}
+                                            </Typography>
+                                        </Stack>
+                                    ))}
+                                </Stack>
                             </Stack>
                         </Grid2>
 
-                        {/* Backend Instructor */}
+                        {/* Backend Instructor — Aaron */}
                         <Grid2 size={1} display="flex" justifyContent="center">
                             <Stack
                                 sx={{
@@ -1110,7 +1131,7 @@ export default function SummerClass() {
                                     alignItems: "center",
                                     textAlign: "center",
                                     width: "100%",
-                                    maxWidth: "300px",
+                                    maxWidth: "320px",
                                     transition: "all 0.2s ease",
                                     "&:hover": {
                                         transform: "translate(4px, -4px)",
@@ -1119,22 +1140,18 @@ export default function SummerClass() {
                                 }}
                             >
                                 <Box
+                                    component="img"
+                                    src="/misc/aaron.webp"
+                                    alt="Aaron"
                                     sx={{
-                                        width: 100,
-                                        height: 100,
+                                        width: 110,
+                                        height: 110,
                                         borderRadius: "50%",
-                                        bgcolor: "secondary.main",
+                                        objectFit: "cover",
                                         border: "3px solid #000",
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
                                         mb: 2,
                                     }}
-                                >
-                                    <PersonIcon
-                                        sx={{ fontSize: 50, color: "#fff" }}
-                                    />
-                                </Box>
+                                />
                                 <Typography
                                     sx={{
                                         fontWeight: 800,
@@ -1142,10 +1159,10 @@ export default function SummerClass() {
                                         mb: 0.5,
                                     }}
                                 >
-                                    Backend Instructor
+                                    Aaron
                                 </Typography>
                                 <Chip
-                                    label="Python & FastAPI"
+                                    label="Backend — Python & FastAPI"
                                     size="small"
                                     sx={{
                                         bgcolor: "secondary.main",
@@ -1154,15 +1171,41 @@ export default function SummerClass() {
                                         mb: 2,
                                     }}
                                 />
-                                <Typography
-                                    sx={{
-                                        fontSize: "0.9rem",
-                                        color: "#555",
-                                    }}
+                                <Stack
+                                    gap={1}
+                                    sx={{ textAlign: "left", width: "100%" }}
                                 >
-                                    Berpengalaman dalam Python backend development,
-                                    FastAPI, database design, dan REST API architecture.
-                                </Typography>
+                                    {[
+                                        "BNCC elite team, backend specialist",
+                                        "Multiple hackathon winner",
+                                        "Production apps with real users",
+                                    ].map((line, i) => (
+                                        <Stack
+                                            key={i}
+                                            direction="row"
+                                            alignItems="flex-start"
+                                            gap={1}
+                                        >
+                                            <CheckCircleIcon
+                                                sx={{
+                                                    color: "secondary.dark",
+                                                    fontSize: "1rem",
+                                                    mt: "2px",
+                                                    flexShrink: 0,
+                                                }}
+                                            />
+                                            <Typography
+                                                sx={{
+                                                    fontSize: "0.85rem",
+                                                    color: "#444",
+                                                    lineHeight: 1.4,
+                                                }}
+                                            >
+                                                {line}
+                                            </Typography>
+                                        </Stack>
+                                    ))}
+                                </Stack>
                             </Stack>
                         </Grid2>
                     </Grid2>
