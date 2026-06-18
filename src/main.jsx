@@ -37,6 +37,7 @@ import * as THERMO from "./exercise/Thermodynamic.jsx";
 import * as DERIV from "./exercise/Deriv.jsx";
 import PageNotFound from "./pages/404.jsx";
 import ComingSoon from "./pages/ComingSoon.jsx";
+import SummerClass from "./pages/SummerClass.jsx";
 import SyllabusTemplate from "./course/SyllabusTemplate.jsx";
 import Template from "./course/Template.jsx";
 import CourseGenerator from "./ai/CourseGenerator.jsx";
@@ -50,6 +51,7 @@ export const routes = [
             { path: "course", element: <Course /> },
             { path: "exercise", element: <ExerciseList /> },
             { path: "course/:course_name", element: <SyllabusTemplate published /> },
+            { path: "summer-class", element: <SummerClass /> },
         ],
     },
     {
