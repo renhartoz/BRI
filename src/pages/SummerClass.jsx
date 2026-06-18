@@ -1051,7 +1051,7 @@ export default function SummerClass() {
                                 <Box
                                     component="img"
                                     src="/misc/ben.webp"
-                                    alt="Benedict Halim"
+                                    alt="Ben"
                                     sx={{
                                         width: 110,
                                         height: 110,
