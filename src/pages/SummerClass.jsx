@@ -1142,7 +1142,7 @@ export default function SummerClass() {
                                 <Box
                                     component="img"
                                     src="/misc/aaron.webp"
-                                    alt="Aaron"
+                                    alt="Aaron Hartono"
                                     sx={{
                                         width: 110,
                                         height: 110,
@@ -1159,7 +1159,7 @@ export default function SummerClass() {
                                         mb: 0.5,
                                     }}
                                 >
-                                    Aaron
+                                    Aaron Hartono
                                 </Typography>
                                 <Chip
                                     label="Backend — Python & FastAPI"
@@ -1278,7 +1278,7 @@ export default function SummerClass() {
                                     fontSize: "1.2rem",
                                 }}
                             >
-                                Rp 1.200K
+                                Rp 1.500K
                             </Typography>
                             <Typography
                                 sx={{
@@ -1287,7 +1287,7 @@ export default function SummerClass() {
                                     fontSize: "2rem",
                                 }}
                             >
-                                Rp 600K
+                                Rp 800K
                             </Typography>
                         </Stack>
 
