@@ -1088,6 +1088,7 @@ export default function SummerClass() {
                                     {[
                                         "ReactJS, Tailwind CSS, API integration",
                                         "1,200+ real users, CC CUP registration platform",
+                                        "Built the Canisius Vanguard SDGs website, raising $1,500 to plant 1,500+ trees.",
                                         "Won 1th place at the PesonaEdu web design competition",
                                     ].map((line, i) => (
                                         <Stack
@@ -1176,9 +1177,10 @@ export default function SummerClass() {
                                     sx={{ textAlign: "left", width: "100%" }}
                                 >
                                     {[
-                                        "BNCC elite team, backend specialist",
-                                        "Multiple hackathon winner",
-                                        "Production apps with real users",
+                                        "Expertise in Python, FastAPI, PostgreSQL, and SQLAlchemy",
+                                        "BNCC Elite Team bidang Web Development",
+                                        "St. Robert Southwell Award for Best Student in Canicomp (2025)",
+                                        "Developed Canisius Charity Concert, ticketing system with real-time payment updates, serving 500+ active users",
                                     ].map((line, i) => (
                                         <Stack
                                             key={i}
