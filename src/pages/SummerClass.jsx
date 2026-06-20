@@ -362,7 +362,7 @@ export default function SummerClass() {
                                         color: "primary.main",
                                     }}
                                 >
-                                    Rp 600K
+                                    Rp 800K
                                 </Typography>
                             </Stack>
                             <Typography
@@ -1303,7 +1303,7 @@ export default function SummerClass() {
                             }}
                             onClick={() => window.open(FORM_URL, "_blank")}
                         >
-                            Daftar Sekarang — Rp 600K
+                            Daftar Sekarang — Rp 800K
                         </Button>
 
                         <Typography
