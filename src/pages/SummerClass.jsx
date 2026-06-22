@@ -186,7 +186,7 @@ export default function SummerClass() {
                             sx={{ position: "relative", zIndex: 1 }}
                         >
                             <Chip
-                                label="Summer Class 2026"
+                                label="Summer Class 2026 • Online"
                                 sx={{
                                     bgcolor: "#fff",
                                     color: "primary.main",
@@ -217,7 +217,7 @@ export default function SummerClass() {
                                     color: "rgba(255,255,255,0.95)",
                                 }}
                             >
-                                Web Development Summer Class
+                                Web Development Summer Class (Online)
                             </Typography>
                             <Typography
                                 sx={{
@@ -227,8 +227,8 @@ export default function SummerClass() {
                                     lineHeight: 1.6,
                                 }}
                             >
-                                3 minggu intensif belajar web development dari nol
-                                sampai bisa bikin aplikasi fullstack sendiri.
+                                3 minggu intensif belajar web development secara online,
+                                dari nol sampai bisa bikin aplikasi fullstack sendiri.
                                 Cocok untuk pemula!
                             </Typography>
 
@@ -379,6 +379,7 @@ export default function SummerClass() {
 
                             <Stack gap={1.5} mb={3}>
                                 {[
+                                    "100% Online — belajar dari mana saja",
                                     "15 sesi live class",
                                     "Akses rekaman sesi",
                                     "Repository GitHub",
