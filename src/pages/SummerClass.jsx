@@ -381,9 +381,7 @@ export default function SummerClass() {
                                 {[
                                     "100% Online — belajar dari mana saja",
                                     "15 sesi live class",
-                                    "Akses rekaman sesi",
                                     "Repository GitHub",
-                                    "Sertifikat kelulusan",
                                     "Grup diskusi",
                                 ].map((item, i) => (
                                     <Stack
